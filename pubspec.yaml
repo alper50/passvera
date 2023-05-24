@@ -13,9 +13,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  local_auth: ^2.1.6
+  # local_auth: ^2.1.6
   password_strength: ^0.2.0 # password strength checks from both dictionary and bruteforce ways
   cupertino_icons: ^1.0.2
+  flutter_secure_storage: ^8.0.0
 
 dev_dependencies:
   flutter_test:
