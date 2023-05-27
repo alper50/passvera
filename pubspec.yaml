@@ -20,7 +20,7 @@ dependencies:
   flutter_secure_storage: ^8.0.0
   #general
   flutter_bloc: ^8.1.3          # state management 
-  auto_route: ^7.2.0            # simplified routing mechanism
+  auto_route: ^5.0.1           # simplified routing mechanism
   freezed_annotation: ^2.2.0
   injectable: ^2.1.1
   get_it: ^7.6.0                #service locator
@@ -31,13 +31,12 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-  auto_route_generator: ^7.1.1
+  auto_route_generator: ^5.0.2
   injectable_generator: ^2.1.5
   build_runner: ^2.4.4
   freezed: ^2.3.4               #code generator for data-classes/unions/pattern-matching/cloning
 
 flutter:
-  generate: true
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
