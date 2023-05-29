@@ -15,7 +15,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeEvent>(
       (event, emit) async {
         await event.map(
-          getKeys: (_) async {
+          getAllValues: (_) async {
             final result = await _keysRepository.getAllValues();
             result.fold(
               (failure) => emit(HomeState.keysLoadFail(e: failure)),
