@@ -164,55 +164,15 @@ abstract class _GetKeys implements HomeEvent {
 
 /// @nodoc
 mixin _$HomeState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() keysLoading,
-    required TResult Function(List<ApplicationModel> models) keysLoadSucces,
-    required TResult Function(dynamic e) keysLoadFail,
-  }) =>
+  List<ApplicationModel> get values => throw _privateConstructorUsedError;
+  bool get isValuesLoading => throw _privateConstructorUsedError;
+  bool get isValueEncrypting => throw _privateConstructorUsedError;
+  bool get isValueDeleting => throw _privateConstructorUsedError;
+  Option<StorageFailure> get storageFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? keysLoading,
-    TResult? Function(List<ApplicationModel> models)? keysLoadSucces,
-    TResult? Function(dynamic e)? keysLoadFail,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? keysLoading,
-    TResult Function(List<ApplicationModel> models)? keysLoadSucces,
-    TResult Function(dynamic e)? keysLoadFail,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_KeysLoading value) keysLoading,
-    required TResult Function(_KeysLoadSucces value) keysLoadSucces,
-    required TResult Function(_KeysLoadFail value) keysLoadFail,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_KeysLoading value)? keysLoading,
-    TResult? Function(_KeysLoadSucces value)? keysLoadSucces,
-    TResult? Function(_KeysLoadFail value)? keysLoadFail,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_KeysLoading value)? keysLoading,
-    TResult Function(_KeysLoadSucces value)? keysLoadSucces,
-    TResult Function(_KeysLoadFail value)? keysLoadFail,
-    required TResult orElse(),
-  }) =>
+
+  @JsonKey(ignore: true)
+  $HomeStateCopyWith<HomeState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -220,6 +180,13 @@ mixin _$HomeState {
 abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
+  @useResult
+  $Res call(
+      {List<ApplicationModel> values,
+      bool isValuesLoading,
+      bool isValueEncrypting,
+      bool isValueDeleting,
+      Option<StorageFailure> storageFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -231,530 +198,186 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_Initial implements _Initial {
-  const _$_Initial();
-
-  @override
-  String toString() {
-    return 'HomeState.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() keysLoading,
-    required TResult Function(List<ApplicationModel> models) keysLoadSucces,
-    required TResult Function(dynamic e) keysLoadFail,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? keysLoading,
-    TResult? Function(List<ApplicationModel> models)? keysLoadSucces,
-    TResult? Function(dynamic e)? keysLoadFail,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? keysLoading,
-    TResult Function(List<ApplicationModel> models)? keysLoadSucces,
-    TResult Function(dynamic e)? keysLoadFail,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_KeysLoading value) keysLoading,
-    required TResult Function(_KeysLoadSucces value) keysLoadSucces,
-    required TResult Function(_KeysLoadFail value) keysLoadFail,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_KeysLoading value)? keysLoading,
-    TResult? Function(_KeysLoadSucces value)? keysLoadSucces,
-    TResult? Function(_KeysLoadFail value)? keysLoadFail,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_KeysLoading value)? keysLoading,
-    TResult Function(_KeysLoadSucces value)? keysLoadSucces,
-    TResult Function(_KeysLoadFail value)? keysLoadFail,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements HomeState {
-  const factory _Initial() = _$_Initial;
-}
-
-/// @nodoc
-abstract class _$$_KeysLoadingCopyWith<$Res> {
-  factory _$$_KeysLoadingCopyWith(
-          _$_KeysLoading value, $Res Function(_$_KeysLoading) then) =
-      __$$_KeysLoadingCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_KeysLoadingCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_KeysLoading>
-    implements _$$_KeysLoadingCopyWith<$Res> {
-  __$$_KeysLoadingCopyWithImpl(
-      _$_KeysLoading _value, $Res Function(_$_KeysLoading) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_KeysLoading implements _KeysLoading {
-  const _$_KeysLoading();
-
-  @override
-  String toString() {
-    return 'HomeState.keysLoading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_KeysLoading);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() keysLoading,
-    required TResult Function(List<ApplicationModel> models) keysLoadSucces,
-    required TResult Function(dynamic e) keysLoadFail,
-  }) {
-    return keysLoading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? keysLoading,
-    TResult? Function(List<ApplicationModel> models)? keysLoadSucces,
-    TResult? Function(dynamic e)? keysLoadFail,
-  }) {
-    return keysLoading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? keysLoading,
-    TResult Function(List<ApplicationModel> models)? keysLoadSucces,
-    TResult Function(dynamic e)? keysLoadFail,
-    required TResult orElse(),
-  }) {
-    if (keysLoading != null) {
-      return keysLoading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_KeysLoading value) keysLoading,
-    required TResult Function(_KeysLoadSucces value) keysLoadSucces,
-    required TResult Function(_KeysLoadFail value) keysLoadFail,
-  }) {
-    return keysLoading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_KeysLoading value)? keysLoading,
-    TResult? Function(_KeysLoadSucces value)? keysLoadSucces,
-    TResult? Function(_KeysLoadFail value)? keysLoadFail,
-  }) {
-    return keysLoading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_KeysLoading value)? keysLoading,
-    TResult Function(_KeysLoadSucces value)? keysLoadSucces,
-    TResult Function(_KeysLoadFail value)? keysLoadFail,
-    required TResult orElse(),
-  }) {
-    if (keysLoading != null) {
-      return keysLoading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _KeysLoading implements HomeState {
-  const factory _KeysLoading() = _$_KeysLoading;
-}
-
-/// @nodoc
-abstract class _$$_KeysLoadSuccesCopyWith<$Res> {
-  factory _$$_KeysLoadSuccesCopyWith(
-          _$_KeysLoadSucces value, $Res Function(_$_KeysLoadSucces) then) =
-      __$$_KeysLoadSuccesCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<ApplicationModel> models});
-}
-
-/// @nodoc
-class __$$_KeysLoadSuccesCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_KeysLoadSucces>
-    implements _$$_KeysLoadSuccesCopyWith<$Res> {
-  __$$_KeysLoadSuccesCopyWithImpl(
-      _$_KeysLoadSucces _value, $Res Function(_$_KeysLoadSucces) _then)
-      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? models = null,
+    Object? values = null,
+    Object? isValuesLoading = null,
+    Object? isValueEncrypting = null,
+    Object? isValueDeleting = null,
+    Object? storageFailureOrSuccessOption = null,
   }) {
-    return _then(_$_KeysLoadSucces(
-      models: null == models
-          ? _value._models
-          : models // ignore: cast_nullable_to_non_nullable
+    return _then(_value.copyWith(
+      values: null == values
+          ? _value.values
+          : values // ignore: cast_nullable_to_non_nullable
               as List<ApplicationModel>,
-    ));
+      isValuesLoading: null == isValuesLoading
+          ? _value.isValuesLoading
+          : isValuesLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isValueEncrypting: null == isValueEncrypting
+          ? _value.isValueEncrypting
+          : isValueEncrypting // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isValueDeleting: null == isValueDeleting
+          ? _value.isValueDeleting
+          : isValueDeleting // ignore: cast_nullable_to_non_nullable
+              as bool,
+      storageFailureOrSuccessOption: null == storageFailureOrSuccessOption
+          ? _value.storageFailureOrSuccessOption
+          : storageFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<StorageFailure>,
+    ) as $Val);
   }
 }
 
 /// @nodoc
-
-class _$_KeysLoadSucces implements _KeysLoadSucces {
-  const _$_KeysLoadSucces({required final List<ApplicationModel> models})
-      : _models = models;
-
-  final List<ApplicationModel> _models;
+abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
+  factory _$$_HomeStateCopyWith(
+          _$_HomeState value, $Res Function(_$_HomeState) then) =
+      __$$_HomeStateCopyWithImpl<$Res>;
   @override
-  List<ApplicationModel> get models {
-    if (_models is EqualUnmodifiableListView) return _models;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_models);
-  }
-
-  @override
-  String toString() {
-    return 'HomeState.keysLoadSucces(models: $models)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_KeysLoadSucces &&
-            const DeepCollectionEquality().equals(other._models, _models));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_models));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_KeysLoadSuccesCopyWith<_$_KeysLoadSucces> get copyWith =>
-      __$$_KeysLoadSuccesCopyWithImpl<_$_KeysLoadSucces>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() keysLoading,
-    required TResult Function(List<ApplicationModel> models) keysLoadSucces,
-    required TResult Function(dynamic e) keysLoadFail,
-  }) {
-    return keysLoadSucces(models);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? keysLoading,
-    TResult? Function(List<ApplicationModel> models)? keysLoadSucces,
-    TResult? Function(dynamic e)? keysLoadFail,
-  }) {
-    return keysLoadSucces?.call(models);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? keysLoading,
-    TResult Function(List<ApplicationModel> models)? keysLoadSucces,
-    TResult Function(dynamic e)? keysLoadFail,
-    required TResult orElse(),
-  }) {
-    if (keysLoadSucces != null) {
-      return keysLoadSucces(models);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_KeysLoading value) keysLoading,
-    required TResult Function(_KeysLoadSucces value) keysLoadSucces,
-    required TResult Function(_KeysLoadFail value) keysLoadFail,
-  }) {
-    return keysLoadSucces(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_KeysLoading value)? keysLoading,
-    TResult? Function(_KeysLoadSucces value)? keysLoadSucces,
-    TResult? Function(_KeysLoadFail value)? keysLoadFail,
-  }) {
-    return keysLoadSucces?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_KeysLoading value)? keysLoading,
-    TResult Function(_KeysLoadSucces value)? keysLoadSucces,
-    TResult Function(_KeysLoadFail value)? keysLoadFail,
-    required TResult orElse(),
-  }) {
-    if (keysLoadSucces != null) {
-      return keysLoadSucces(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _KeysLoadSucces implements HomeState {
-  const factory _KeysLoadSucces(
-      {required final List<ApplicationModel> models}) = _$_KeysLoadSucces;
-
-  List<ApplicationModel> get models;
-  @JsonKey(ignore: true)
-  _$$_KeysLoadSuccesCopyWith<_$_KeysLoadSucces> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_KeysLoadFailCopyWith<$Res> {
-  factory _$$_KeysLoadFailCopyWith(
-          _$_KeysLoadFail value, $Res Function(_$_KeysLoadFail) then) =
-      __$$_KeysLoadFailCopyWithImpl<$Res>;
   @useResult
-  $Res call({dynamic e});
+  $Res call(
+      {List<ApplicationModel> values,
+      bool isValuesLoading,
+      bool isValueEncrypting,
+      bool isValueDeleting,
+      Option<StorageFailure> storageFailureOrSuccessOption});
 }
 
 /// @nodoc
-class __$$_KeysLoadFailCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_KeysLoadFail>
-    implements _$$_KeysLoadFailCopyWith<$Res> {
-  __$$_KeysLoadFailCopyWithImpl(
-      _$_KeysLoadFail _value, $Res Function(_$_KeysLoadFail) _then)
+class __$$_HomeStateCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$_HomeState>
+    implements _$$_HomeStateCopyWith<$Res> {
+  __$$_HomeStateCopyWithImpl(
+      _$_HomeState _value, $Res Function(_$_HomeState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? e = freezed,
+    Object? values = null,
+    Object? isValuesLoading = null,
+    Object? isValueEncrypting = null,
+    Object? isValueDeleting = null,
+    Object? storageFailureOrSuccessOption = null,
   }) {
-    return _then(_$_KeysLoadFail(
-      e: freezed == e
-          ? _value.e
-          : e // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+    return _then(_$_HomeState(
+      values: null == values
+          ? _value._values
+          : values // ignore: cast_nullable_to_non_nullable
+              as List<ApplicationModel>,
+      isValuesLoading: null == isValuesLoading
+          ? _value.isValuesLoading
+          : isValuesLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isValueEncrypting: null == isValueEncrypting
+          ? _value.isValueEncrypting
+          : isValueEncrypting // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isValueDeleting: null == isValueDeleting
+          ? _value.isValueDeleting
+          : isValueDeleting // ignore: cast_nullable_to_non_nullable
+              as bool,
+      storageFailureOrSuccessOption: null == storageFailureOrSuccessOption
+          ? _value.storageFailureOrSuccessOption
+          : storageFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<StorageFailure>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_KeysLoadFail implements _KeysLoadFail {
-  const _$_KeysLoadFail({required this.e});
+class _$_HomeState implements _HomeState {
+  const _$_HomeState(
+      {required final List<ApplicationModel> values,
+      required this.isValuesLoading,
+      required this.isValueEncrypting,
+      required this.isValueDeleting,
+      required this.storageFailureOrSuccessOption})
+      : _values = values;
+
+  final List<ApplicationModel> _values;
+  @override
+  List<ApplicationModel> get values {
+    if (_values is EqualUnmodifiableListView) return _values;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_values);
+  }
 
   @override
-  final dynamic e;
+  final bool isValuesLoading;
+  @override
+  final bool isValueEncrypting;
+  @override
+  final bool isValueDeleting;
+  @override
+  final Option<StorageFailure> storageFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'HomeState.keysLoadFail(e: $e)';
+    return 'HomeState(values: $values, isValuesLoading: $isValuesLoading, isValueEncrypting: $isValueEncrypting, isValueDeleting: $isValueDeleting, storageFailureOrSuccessOption: $storageFailureOrSuccessOption)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_KeysLoadFail &&
-            const DeepCollectionEquality().equals(other.e, e));
+            other is _$_HomeState &&
+            const DeepCollectionEquality().equals(other._values, _values) &&
+            (identical(other.isValuesLoading, isValuesLoading) ||
+                other.isValuesLoading == isValuesLoading) &&
+            (identical(other.isValueEncrypting, isValueEncrypting) ||
+                other.isValueEncrypting == isValueEncrypting) &&
+            (identical(other.isValueDeleting, isValueDeleting) ||
+                other.isValueDeleting == isValueDeleting) &&
+            (identical(other.storageFailureOrSuccessOption,
+                    storageFailureOrSuccessOption) ||
+                other.storageFailureOrSuccessOption ==
+                    storageFailureOrSuccessOption));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(e));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_values),
+      isValuesLoading,
+      isValueEncrypting,
+      isValueDeleting,
+      storageFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_KeysLoadFailCopyWith<_$_KeysLoadFail> get copyWith =>
-      __$$_KeysLoadFailCopyWithImpl<_$_KeysLoadFail>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() keysLoading,
-    required TResult Function(List<ApplicationModel> models) keysLoadSucces,
-    required TResult Function(dynamic e) keysLoadFail,
-  }) {
-    return keysLoadFail(e);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? keysLoading,
-    TResult? Function(List<ApplicationModel> models)? keysLoadSucces,
-    TResult? Function(dynamic e)? keysLoadFail,
-  }) {
-    return keysLoadFail?.call(e);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? keysLoading,
-    TResult Function(List<ApplicationModel> models)? keysLoadSucces,
-    TResult Function(dynamic e)? keysLoadFail,
-    required TResult orElse(),
-  }) {
-    if (keysLoadFail != null) {
-      return keysLoadFail(e);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_KeysLoading value) keysLoading,
-    required TResult Function(_KeysLoadSucces value) keysLoadSucces,
-    required TResult Function(_KeysLoadFail value) keysLoadFail,
-  }) {
-    return keysLoadFail(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_KeysLoading value)? keysLoading,
-    TResult? Function(_KeysLoadSucces value)? keysLoadSucces,
-    TResult? Function(_KeysLoadFail value)? keysLoadFail,
-  }) {
-    return keysLoadFail?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_KeysLoading value)? keysLoading,
-    TResult Function(_KeysLoadSucces value)? keysLoadSucces,
-    TResult Function(_KeysLoadFail value)? keysLoadFail,
-    required TResult orElse(),
-  }) {
-    if (keysLoadFail != null) {
-      return keysLoadFail(this);
-    }
-    return orElse();
-  }
+  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
+      __$$_HomeStateCopyWithImpl<_$_HomeState>(this, _$identity);
 }
 
-abstract class _KeysLoadFail implements HomeState {
-  const factory _KeysLoadFail({required final dynamic e}) = _$_KeysLoadFail;
+abstract class _HomeState implements HomeState {
+  const factory _HomeState(
+      {required final List<ApplicationModel> values,
+      required final bool isValuesLoading,
+      required final bool isValueEncrypting,
+      required final bool isValueDeleting,
+      required final Option<StorageFailure>
+          storageFailureOrSuccessOption}) = _$_HomeState;
 
-  dynamic get e;
+  @override
+  List<ApplicationModel> get values;
+  @override
+  bool get isValuesLoading;
+  @override
+  bool get isValueEncrypting;
+  @override
+  bool get isValueDeleting;
+  @override
+  Option<StorageFailure> get storageFailureOrSuccessOption;
+  @override
   @JsonKey(ignore: true)
-  _$$_KeysLoadFailCopyWith<_$_KeysLoadFail> get copyWith =>
+  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
       throw _privateConstructorUsedError;
 }
