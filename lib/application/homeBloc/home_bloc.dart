@@ -43,13 +43,31 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               ),
             );
           },
-          // encryptValue: (e) async {
-          //   final model = ApplicationModel(key: e.key, value: e.value);
-          //   final result = await _keysRepository.encryptValue(appModel: model);
-          //   if(result){
-
-          //   }
-          // },
+          encryptValue: (e) async {
+            emit(
+              state.copyWith(
+                isValueEncrypting: true,
+                storageFailureOrSuccessOption: none(),
+              ),
+            );
+            final model = ApplicationModel(key: e.key, value: e.value);
+            final result = await _keysRepository.encryptValue(appModel: model);
+            result.fold(
+              (failure) => emit(
+                state.copyWith(
+                  isValueEncrypting: false,
+                  storageFailureOrSuccessOption: optionOf(failure),
+                ),
+              ),
+              (succes) => emit(
+                state.copyWith(
+                  isValueEncrypting: false,
+                  storageFailureOrSuccessOption: none(),
+                ),
+              ),
+            );
+          },
+          deleteValue: (e) {},
         );
       },
     );

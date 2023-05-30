@@ -24,47 +24,55 @@ class HomeView extends StatelessWidget {
                 message: failure.map(
                   unexpected: (e) => e.toString(),
                   insufficientPermission: (_) => 'Permission Denied',
+                  keyAlreadyUsed: (_) => 'This key already used',
                 ),
               ),
             },
           );
         },
-        child: Scaffold(
-          body: HomeViewBody(),
-        ),
+        child: const ScaffoldView(),
       ),
     );
   }
 }
 
-class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({
+class ScaffoldView extends StatelessWidget {
+  const ScaffoldView({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
-      builder: (context, state) {
-        return state.isValuesLoading
-            ? const CircularProgressIndicator()
-            : state.values.isEmpty
-                ? const Center(
-                    child: Text(
-                      'EMPTY',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  )
-                : ListView.builder(
-                    itemCount: state.values.length,
-                    itemBuilder: (context, index) {
-                      ApplicationModel current = state.values[index];
-                      return ListTile(
-                        title: Text(current.key),
-                      );
-                    },
-                  );
-      },
+    return Scaffold(
+      body: BlocBuilder<HomeBloc, HomeState>(
+        builder: (context, state) {
+          return state.isValuesLoading
+              ? const CircularProgressIndicator()
+              : state.values.isEmpty
+                  ? const Center(
+                      child: Text(
+                        'EMPTY',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    )
+                  : ListView.builder(
+                      itemCount: state.values.length,
+                      itemBuilder: (context, index) {
+                        ApplicationModel current = state.values[index];
+                        return ListTile(
+                          title: Text(current.key),
+                        );
+                      },
+                    );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          context.read<HomeBloc>().add(
+                HomeEvent.encryptValue(key: 'testt', value: 'test'),
+              );
+        },
+      ),
     );
   }
 }

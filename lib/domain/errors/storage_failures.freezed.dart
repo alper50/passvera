@@ -19,18 +19,21 @@ mixin _$StorageFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(dynamic e) unexpected,
+    required TResult Function() keyAlreadyUsed,
     required TResult Function() insufficientPermission,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(dynamic e)? unexpected,
+    TResult? Function()? keyAlreadyUsed,
     TResult? Function()? insufficientPermission,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(dynamic e)? unexpected,
+    TResult Function()? keyAlreadyUsed,
     TResult Function()? insufficientPermission,
     required TResult orElse(),
   }) =>
@@ -38,6 +41,7 @@ mixin _$StorageFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
   }) =>
@@ -45,12 +49,14 @@ mixin _$StorageFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     required TResult orElse(),
   }) =>
@@ -141,6 +147,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(dynamic e) unexpected,
+    required TResult Function() keyAlreadyUsed,
     required TResult Function() insufficientPermission,
   }) {
     return unexpected(e);
@@ -150,6 +157,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(dynamic e)? unexpected,
+    TResult? Function()? keyAlreadyUsed,
     TResult? Function()? insufficientPermission,
   }) {
     return unexpected?.call(e);
@@ -159,6 +167,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(dynamic e)? unexpected,
+    TResult Function()? keyAlreadyUsed,
     TResult Function()? insufficientPermission,
     required TResult orElse(),
   }) {
@@ -172,6 +181,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
   }) {
@@ -182,6 +192,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
   }) {
     return unexpected?.call(this);
@@ -191,6 +202,7 @@ class _$_Unexpected implements _Unexpected {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     required TResult orElse(),
   }) {
@@ -208,6 +220,115 @@ abstract class _Unexpected implements StorageFailure {
   @JsonKey(ignore: true)
   _$$_UnexpectedCopyWith<_$_Unexpected> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_KeyAlreadyUsedCopyWith<$Res> {
+  factory _$$_KeyAlreadyUsedCopyWith(
+          _$_KeyAlreadyUsed value, $Res Function(_$_KeyAlreadyUsed) then) =
+      __$$_KeyAlreadyUsedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_KeyAlreadyUsedCopyWithImpl<$Res>
+    extends _$StorageFailureCopyWithImpl<$Res, _$_KeyAlreadyUsed>
+    implements _$$_KeyAlreadyUsedCopyWith<$Res> {
+  __$$_KeyAlreadyUsedCopyWithImpl(
+      _$_KeyAlreadyUsed _value, $Res Function(_$_KeyAlreadyUsed) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_KeyAlreadyUsed implements _KeyAlreadyUsed {
+  const _$_KeyAlreadyUsed();
+
+  @override
+  String toString() {
+    return 'StorageFailure.keyAlreadyUsed()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_KeyAlreadyUsed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(dynamic e) unexpected,
+    required TResult Function() keyAlreadyUsed,
+    required TResult Function() insufficientPermission,
+  }) {
+    return keyAlreadyUsed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(dynamic e)? unexpected,
+    TResult? Function()? keyAlreadyUsed,
+    TResult? Function()? insufficientPermission,
+  }) {
+    return keyAlreadyUsed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(dynamic e)? unexpected,
+    TResult Function()? keyAlreadyUsed,
+    TResult Function()? insufficientPermission,
+    required TResult orElse(),
+  }) {
+    if (keyAlreadyUsed != null) {
+      return keyAlreadyUsed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+  }) {
+    return keyAlreadyUsed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+  }) {
+    return keyAlreadyUsed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    required TResult orElse(),
+  }) {
+    if (keyAlreadyUsed != null) {
+      return keyAlreadyUsed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _KeyAlreadyUsed implements StorageFailure {
+  const factory _KeyAlreadyUsed() = _$_KeyAlreadyUsed;
 }
 
 /// @nodoc
@@ -250,6 +371,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(dynamic e) unexpected,
+    required TResult Function() keyAlreadyUsed,
     required TResult Function() insufficientPermission,
   }) {
     return insufficientPermission();
@@ -259,6 +381,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(dynamic e)? unexpected,
+    TResult? Function()? keyAlreadyUsed,
     TResult? Function()? insufficientPermission,
   }) {
     return insufficientPermission?.call();
@@ -268,6 +391,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(dynamic e)? unexpected,
+    TResult Function()? keyAlreadyUsed,
     TResult Function()? insufficientPermission,
     required TResult orElse(),
   }) {
@@ -281,6 +405,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
   }) {
@@ -291,6 +416,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
   }) {
     return insufficientPermission?.call(this);
@@ -300,6 +426,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     required TResult orElse(),
   }) {

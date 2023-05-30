@@ -19,32 +19,44 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllValues,
+    required TResult Function(String key, String value) encryptValue,
+    required TResult Function(String key) deleteValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllValues,
+    TResult? Function(String key, String value)? encryptValue,
+    TResult? Function(String key)? deleteValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllValues,
+    TResult Function(String key, String value)? encryptValue,
+    TResult Function(String key)? deleteValue,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetKeys value) getAllValues,
+    required TResult Function(_EncrpytValue value) encryptValue,
+    required TResult Function(_DeleteValue value) deleteValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetKeys value)? getAllValues,
+    TResult? Function(_EncrpytValue value)? encryptValue,
+    TResult? Function(_DeleteValue value)? deleteValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetKeys value)? getAllValues,
+    TResult Function(_EncrpytValue value)? encryptValue,
+    TResult Function(_DeleteValue value)? deleteValue,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -105,6 +117,8 @@ class _$_GetKeys implements _GetKeys {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllValues,
+    required TResult Function(String key, String value) encryptValue,
+    required TResult Function(String key) deleteValue,
   }) {
     return getAllValues();
   }
@@ -113,6 +127,8 @@ class _$_GetKeys implements _GetKeys {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllValues,
+    TResult? Function(String key, String value)? encryptValue,
+    TResult? Function(String key)? deleteValue,
   }) {
     return getAllValues?.call();
   }
@@ -121,6 +137,8 @@ class _$_GetKeys implements _GetKeys {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllValues,
+    TResult Function(String key, String value)? encryptValue,
+    TResult Function(String key)? deleteValue,
     required TResult orElse(),
   }) {
     if (getAllValues != null) {
@@ -133,6 +151,8 @@ class _$_GetKeys implements _GetKeys {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetKeys value) getAllValues,
+    required TResult Function(_EncrpytValue value) encryptValue,
+    required TResult Function(_DeleteValue value) deleteValue,
   }) {
     return getAllValues(this);
   }
@@ -141,6 +161,8 @@ class _$_GetKeys implements _GetKeys {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetKeys value)? getAllValues,
+    TResult? Function(_EncrpytValue value)? encryptValue,
+    TResult? Function(_DeleteValue value)? deleteValue,
   }) {
     return getAllValues?.call(this);
   }
@@ -149,6 +171,8 @@ class _$_GetKeys implements _GetKeys {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetKeys value)? getAllValues,
+    TResult Function(_EncrpytValue value)? encryptValue,
+    TResult Function(_DeleteValue value)? deleteValue,
     required TResult orElse(),
   }) {
     if (getAllValues != null) {
@@ -160,6 +184,295 @@ class _$_GetKeys implements _GetKeys {
 
 abstract class _GetKeys implements HomeEvent {
   const factory _GetKeys() = _$_GetKeys;
+}
+
+/// @nodoc
+abstract class _$$_EncrpytValueCopyWith<$Res> {
+  factory _$$_EncrpytValueCopyWith(
+          _$_EncrpytValue value, $Res Function(_$_EncrpytValue) then) =
+      __$$_EncrpytValueCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String key, String value});
+}
+
+/// @nodoc
+class __$$_EncrpytValueCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$_EncrpytValue>
+    implements _$$_EncrpytValueCopyWith<$Res> {
+  __$$_EncrpytValueCopyWithImpl(
+      _$_EncrpytValue _value, $Res Function(_$_EncrpytValue) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? key = null,
+    Object? value = null,
+  }) {
+    return _then(_$_EncrpytValue(
+      key: null == key
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as String,
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_EncrpytValue implements _EncrpytValue {
+  const _$_EncrpytValue({required this.key, required this.value});
+
+  @override
+  final String key;
+  @override
+  final String value;
+
+  @override
+  String toString() {
+    return 'HomeEvent.encryptValue(key: $key, value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_EncrpytValue &&
+            (identical(other.key, key) || other.key == key) &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, key, value);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_EncrpytValueCopyWith<_$_EncrpytValue> get copyWith =>
+      __$$_EncrpytValueCopyWithImpl<_$_EncrpytValue>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAllValues,
+    required TResult Function(String key, String value) encryptValue,
+    required TResult Function(String key) deleteValue,
+  }) {
+    return encryptValue(key, value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAllValues,
+    TResult? Function(String key, String value)? encryptValue,
+    TResult? Function(String key)? deleteValue,
+  }) {
+    return encryptValue?.call(key, value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAllValues,
+    TResult Function(String key, String value)? encryptValue,
+    TResult Function(String key)? deleteValue,
+    required TResult orElse(),
+  }) {
+    if (encryptValue != null) {
+      return encryptValue(key, value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetKeys value) getAllValues,
+    required TResult Function(_EncrpytValue value) encryptValue,
+    required TResult Function(_DeleteValue value) deleteValue,
+  }) {
+    return encryptValue(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetKeys value)? getAllValues,
+    TResult? Function(_EncrpytValue value)? encryptValue,
+    TResult? Function(_DeleteValue value)? deleteValue,
+  }) {
+    return encryptValue?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetKeys value)? getAllValues,
+    TResult Function(_EncrpytValue value)? encryptValue,
+    TResult Function(_DeleteValue value)? deleteValue,
+    required TResult orElse(),
+  }) {
+    if (encryptValue != null) {
+      return encryptValue(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EncrpytValue implements HomeEvent {
+  const factory _EncrpytValue(
+      {required final String key,
+      required final String value}) = _$_EncrpytValue;
+
+  String get key;
+  String get value;
+  @JsonKey(ignore: true)
+  _$$_EncrpytValueCopyWith<_$_EncrpytValue> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_DeleteValueCopyWith<$Res> {
+  factory _$$_DeleteValueCopyWith(
+          _$_DeleteValue value, $Res Function(_$_DeleteValue) then) =
+      __$$_DeleteValueCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String key});
+}
+
+/// @nodoc
+class __$$_DeleteValueCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$_DeleteValue>
+    implements _$$_DeleteValueCopyWith<$Res> {
+  __$$_DeleteValueCopyWithImpl(
+      _$_DeleteValue _value, $Res Function(_$_DeleteValue) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? key = null,
+  }) {
+    return _then(_$_DeleteValue(
+      key: null == key
+          ? _value.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DeleteValue implements _DeleteValue {
+  const _$_DeleteValue({required this.key});
+
+  @override
+  final String key;
+
+  @override
+  String toString() {
+    return 'HomeEvent.deleteValue(key: $key)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DeleteValue &&
+            (identical(other.key, key) || other.key == key));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, key);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DeleteValueCopyWith<_$_DeleteValue> get copyWith =>
+      __$$_DeleteValueCopyWithImpl<_$_DeleteValue>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAllValues,
+    required TResult Function(String key, String value) encryptValue,
+    required TResult Function(String key) deleteValue,
+  }) {
+    return deleteValue(key);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAllValues,
+    TResult? Function(String key, String value)? encryptValue,
+    TResult? Function(String key)? deleteValue,
+  }) {
+    return deleteValue?.call(key);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAllValues,
+    TResult Function(String key, String value)? encryptValue,
+    TResult Function(String key)? deleteValue,
+    required TResult orElse(),
+  }) {
+    if (deleteValue != null) {
+      return deleteValue(key);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetKeys value) getAllValues,
+    required TResult Function(_EncrpytValue value) encryptValue,
+    required TResult Function(_DeleteValue value) deleteValue,
+  }) {
+    return deleteValue(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetKeys value)? getAllValues,
+    TResult? Function(_EncrpytValue value)? encryptValue,
+    TResult? Function(_DeleteValue value)? deleteValue,
+  }) {
+    return deleteValue?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetKeys value)? getAllValues,
+    TResult Function(_EncrpytValue value)? encryptValue,
+    TResult Function(_DeleteValue value)? deleteValue,
+    required TResult orElse(),
+  }) {
+    if (deleteValue != null) {
+      return deleteValue(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteValue implements HomeEvent {
+  const factory _DeleteValue({required final String key}) = _$_DeleteValue;
+
+  String get key;
+  @JsonKey(ignore: true)
+  _$$_DeleteValueCopyWith<_$_DeleteValue> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

@@ -11,12 +11,20 @@ class KeysService {
       );
   late final storage = FlutterSecureStorage(aOptions: _getAndroidOptions());
 
-  Future<bool> encryptValue({required ApplicationModel appModel}) async {
+  Future<Either<StorageFailure, Unit>> encryptValue(
+      {required ApplicationModel appModel}) async {
     try {
-      await storage.write(key: appModel.key, value: appModel.value);
-      return true;
+      final resultIfKeyExist = await getSingleValue(key: appModel.key);
+      if (resultIfKeyExist.isLeft()) {
+        return const Left(StorageFailure.keyAlreadyUsed());
+      } else {
+        await storage.write(key: appModel.key, value: appModel.value);
+        return const Right(unit);
+      }
     } catch (e) {
-      return false;
+      return Left(
+        StorageFailure.unexpected(e),
+      );
     }
   }
 
@@ -29,6 +37,20 @@ class KeysService {
         models.add(model);
       });
       return Right(models);
+    } catch (e) {
+      return Left(StorageFailure.unexpected(e));
+    }
+  }
+
+  Future<Either<StorageFailure, Unit>> getSingleValue(
+      {required String key}) async {
+    try {
+      final result = await storage.read(key: key);
+      if (result == key) {
+        return const Left(StorageFailure.keyAlreadyUsed());
+      } else {
+        return const Right(unit);
+      }
     } catch (e) {
       return Left(StorageFailure.unexpected(e));
     }

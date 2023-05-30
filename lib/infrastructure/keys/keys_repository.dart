@@ -12,12 +12,12 @@ class KeysRepository extends IKeysRepository {
   KeysRepository(this._service);
 
   @override
-  Future<bool> encryptValue({required ApplicationModel appModel}) {
-    return _service.encryptValue(appModel: appModel);
+  Future<Either<StorageFailure,Unit>> encryptValue({required ApplicationModel appModel}) async{
+    return await _service.encryptValue(appModel: appModel);
   }
 
   @override
-  Future<Either<StorageFailure, List<ApplicationModel>>> getAllValues() {
-    return _service.getAllValues();
+  Future<Either<StorageFailure, List<ApplicationModel>>> getAllValues() async{
+    return await _service.getAllValues();
   }
 }
