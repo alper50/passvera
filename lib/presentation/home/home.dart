@@ -69,7 +69,7 @@ class ScaffoldView extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           context.read<HomeBloc>().add(
-                HomeEvent.encryptValue(key: 'testt', value: 'test'),
+                HomeEvent.encryptValue(appKey: 'testt', appValue: 'test'),
               );
         },
       ),

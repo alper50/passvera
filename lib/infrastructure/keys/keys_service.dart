@@ -55,4 +55,14 @@ class KeysService {
       return Left(StorageFailure.unexpected(e));
     }
   }
+
+    Future<Either<StorageFailure, Unit>> deleteSingleValue(
+      {required String appKey}) async {
+    try {
+      await storage.delete(key: appKey);
+      return const Right(unit);
+    } catch (e) {
+      return Left(StorageFailure.unexpected(e));
+    }
+  }
 }

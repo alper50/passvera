@@ -50,7 +50,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
                 storageFailureOrSuccessOption: none(),
               ),
             );
-            final model = ApplicationModel(key: e.key, value: e.value);
+            final model = ApplicationModel(key: e.appKey, value: e.appValue);
             final result = await _keysRepository.encryptValue(appModel: model);
             result.fold(
               (failure) => emit(
@@ -67,7 +67,31 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               ),
             );
           },
-          deleteValue: (e) {},
+          deleteValue: (e) async {
+            emit(
+              state.copyWith(
+                isValueDeleting: true,
+                storageFailureOrSuccessOption: none(),
+              ),
+            );
+
+            final result = await _keysRepository.deleteValue(appKey: e.appKey);
+            
+            result.fold(
+              (failure) => emit(
+                state.copyWith(
+                  isValueDeleting: false,
+                  storageFailureOrSuccessOption: optionOf(failure),
+                ),
+              ),
+              (succes) => emit(
+                state.copyWith(
+                  isValueDeleting: false,
+                  storageFailureOrSuccessOption: none(),
+                ),
+              ),
+            );
+          },
         );
       },
     );
