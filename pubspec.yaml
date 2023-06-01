@@ -45,12 +45,14 @@ flutter:
 # assets:
 #   - google_fonts/Quicksand-Regular.ttf
 
-fonts:
-  - family: Quicksand
-    fonts:
-      - asset: google_fonts/Quicksand-Regular.ttf
-      - asset: google_fonts/Quicksand-Bold.ttf
-        weight: 700
+  fonts:
+    - family: Quicksand
+      fonts:
+        - asset: assets/google_fonts/Quicksand-Regular.ttf
+        - asset: assets/google_fonts/Quicksand-Bold.ttf
+          weight: 700
+        - asset: assets/google_fonts/Quicksand-SemiBold.ttf
+          weight: 500
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

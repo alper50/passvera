@@ -3,6 +3,7 @@ import 'package:passvera/application/homeBloc/home_bloc.dart';
 import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
 
 class HomeView extends StatelessWidget {
@@ -60,7 +61,10 @@ class ScaffoldView extends StatelessWidget {
                       itemBuilder: (context, index) {
                         ApplicationModel current = state.values[index];
                         return ListTile(
-                          title: Text(current.key),
+                          title: Text(
+                            current.key,
+                            style: MyTextStyles.headline2,
+                          ),
                         );
                       },
                     );

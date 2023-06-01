@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 enum ThemeMode { system, systemLight, systemDark, light, dark }
 
 class MyThemeData {
   MyThemeData._();
   static final ThemeData lightheme = ThemeData(
-    fontFamily: "QuickSand", //TODO font fix in pubspec
+    fontFamily: "QuickSand",
     splashColor: Colors.transparent,
     highlightColor: Colors.transparent,
     brightness: Brightness.light,
