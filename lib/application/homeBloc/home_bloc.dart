@@ -27,7 +27,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             );
 
             final result = await _keysRepository.getAllValues();
-
+            await Future.delayed(Duration(milliseconds: 3300), () async{});
+            
             result.fold(
               (failure) => emit(
                 state.copyWith(

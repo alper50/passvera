@@ -8,6 +8,8 @@ class MyCircularProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Lottie.asset('assets/animation/loading.json');
+    return Center(
+      child: Lottie.asset('assets/animation/loading-black.json'),
+    );
   }
 }

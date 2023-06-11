@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passvera/application/homeBloc/home_bloc.dart';
 import 'package:passvera/domain/application_model.dart';
@@ -6,11 +7,9 @@ import 'package:passvera/presentation/core/theme/text_styles.dart';
 
 class MyListContainer extends StatefulWidget {
   final List<ApplicationModel> modelsList;
-  final void Function()? onCopy;
   const MyListContainer({
     super.key,
     required this.modelsList,
-    this.onCopy,
   });
 
   @override
@@ -58,7 +57,7 @@ class _MyListContainerState extends State<MyListContainer> {
               Row(
                 children: [
                   InkWell(
-                    onTap: widget.onCopy,
+                    onTap: ()=> Clipboard.setData(ClipboardData(text: current.value)),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.yellow,
