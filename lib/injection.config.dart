@@ -17,8 +17,6 @@ import 'domain/i_keys_repository.dart' as _i4;
 import 'infrastructure/keys/keys_repository.dart' as _i5;
 import 'infrastructure/keys/keys_service.dart' as _i3;
 
-// ignore_for_file: unnecessary_lambdas
-// ignore_for_file: lines_longer_than_80_chars
 // initializes the registration of main-scope dependencies inside of GetIt
 _i1.GetIt $initGetIt(
   _i1.GetIt getIt, {

@@ -36,6 +36,7 @@ class KeysService {
         ApplicationModel model = ApplicationModel(key: key, value: value);
         models.add(model);
       });
+      models.sort((a, b) => a.key.toLowerCase().compareTo(b.key.toLowerCase()));
       return Right(models);
     } catch (e) {
       return Left(StorageFailure.unexpected(e));

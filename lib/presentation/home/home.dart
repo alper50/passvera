@@ -4,6 +4,7 @@ import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
+import 'package:passvera/presentation/core/widgets/form_dialog.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
 
 class HomeView extends StatelessWidget {
@@ -72,9 +73,27 @@ class ScaffoldView extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          context.read<HomeBloc>().add(
-                HomeEvent.encryptValue(appKey: 'testt', appValue: 'test'),
-              );
+          var controllerAppKey = TextEditingController();
+          var controllerAppValue = TextEditingController();
+
+          return showFormDialog(
+            context: context,
+            onPressed: () {
+              context.read<HomeBloc>().add(
+                    HomeEvent.encryptValue(
+                      appKey: controllerAppKey.text,
+                      appValue: controllerAppValue.text,
+                    ),
+                  );
+                Navigator.of(context).pop();
+              context.read<HomeBloc>().add(
+                    HomeEvent.getAllValues(
+                    ),
+                  );
+            },
+            controllerAppKey: controllerAppKey,
+            controllerAppValue: controllerAppValue,
+          );
         },
       ),
     );

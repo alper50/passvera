@@ -5,6 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/domain/errors/storage_failures.dart';
 import 'package:passvera/domain/i_keys_repository.dart';
+import 'package:passvera/injection.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
@@ -53,19 +54,20 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             final model = ApplicationModel(key: e.appKey, value: e.appValue);
             final result = await _keysRepository.encryptValue(appModel: model);
             result.fold(
-              (failure) => emit(
-                state.copyWith(
-                  isValueEncrypting: false,
-                  storageFailureOrSuccessOption: optionOf(failure),
-                ),
-              ),
-              (succes) => emit(
+                (failure) => emit(
+                      state.copyWith(
+                        isValueEncrypting: false,
+                        storageFailureOrSuccessOption: optionOf(failure),
+                      ),
+                    ), (succes) {
+              emit(
                 state.copyWith(
                   isValueEncrypting: false,
                   storageFailureOrSuccessOption: none(),
                 ),
-              ),
-            );
+              );
+              // getIt<HomeBloc>().add(HomeEvent.getAllValues());
+            },);
           },
           deleteValue: (e) async {
             emit(
@@ -76,7 +78,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             );
 
             final result = await _keysRepository.deleteValue(appKey: e.appKey);
-            
+
             result.fold(
               (failure) => emit(
                 state.copyWith(

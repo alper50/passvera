@@ -12,7 +12,7 @@ class HomeState with _$HomeState {
 
   factory HomeState.initial() => HomeState(
         values: [],
-        isValuesLoading: false,
+        isValuesLoading: true,
         isValueEncrypting: false,
         isValueDeleting: false,
         storageFailureOrSuccessOption: none(),
