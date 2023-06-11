@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:passvera/application/homeBloc/home_bloc.dart';
-import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
@@ -49,6 +48,28 @@ class ScaffoldView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white10,
+        elevation: 0,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SizedBox(),
+            Text(
+              'PassVera',
+              style: MyTextStyles.headline3Bold.copyWith(color: Colors.black),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.search,
+                color: Colors.black,
+                size: 30,
+              ),
+            ),
+          ],
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.only(
           top: 20,
@@ -85,6 +106,21 @@ class ScaffoldView extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        elevation: 8.0,
+        highlightElevation: 12.0,
+        backgroundColor: Colors.yellow,
+        foregroundColor: Colors.black,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+          side: BorderSide(
+            color: Colors.black,
+            width: 3.0,
+          ),
+        ),
+        child: Icon(
+          Icons.add_rounded,
+          size: 50,
+        ),
         onPressed: () {
           var controllerAppKey = TextEditingController();
           var controllerAppValue = TextEditingController();

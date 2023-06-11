@@ -5,7 +5,6 @@ import 'package:injectable/injectable.dart';
 import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/domain/errors/storage_failures.dart';
 import 'package:passvera/domain/i_keys_repository.dart';
-import 'package:passvera/injection.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
