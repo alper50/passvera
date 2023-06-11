@@ -27,6 +27,7 @@ dependencies:
   get_it: ^7.6.0                #service locator
   cupertino_icons: ^1.0.2
   google_fonts: ^4.0.5
+  lottie: ^2.4.0
 
 
 dev_dependencies:
@@ -42,8 +43,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-# assets:
-#   - google_fonts/Quicksand-Regular.ttf
+  assets:
+    - assets/animation/
 
   fonts:
     - family: Quicksand

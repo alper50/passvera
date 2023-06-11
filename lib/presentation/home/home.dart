@@ -5,6 +5,9 @@ import 'package:passvera/injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/core/widgets/form_dialog.dart';
+import 'package:passvera/presentation/core/widgets/my_circular_progress.dart';
+import 'package:passvera/presentation/core/widgets/my_empty_widget.dart';
+import 'package:passvera/presentation/core/widgets/my_list_container.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
 
 class HomeView extends StatelessWidget {
@@ -46,30 +49,40 @@ class ScaffoldView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<HomeBloc, HomeState>(
-        builder: (context, state) {
-          return state.isValuesLoading
-              ? const CircularProgressIndicator()
-              : state.values.isEmpty
-                  ? const Center(
-                      child: Text(
-                        'EMPTY',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    )
-                  : ListView.builder(
-                      itemCount: state.values.length,
-                      itemBuilder: (context, index) {
-                        ApplicationModel current = state.values[index];
-                        return ListTile(
-                          title: Text(
-                            current.key,
-                            style: MyTextStyles.headline2,
+      body: Padding(
+        padding: const EdgeInsets.only(
+          top: 20,
+          left: 20,
+        ),
+        child: BlocBuilder<HomeBloc, HomeState>(
+          builder: (context, state) {
+            return state.isValuesLoading
+                ? const MyCircularProgress()
+                : state.values.isEmpty
+                    ? const MyEmptyWidget()
+                    : Column(
+                        children: [
+                          const Expanded(
+                            flex: 3,
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Apps',
+                                style: MyTextStyles.headline1Bold,
+                              ),
+                            ),
                           ),
-                        );
-                      },
-                    );
-        },
+                          Expanded(
+                            flex: 8,
+                            child: MyListContainer(
+                              modelsList: state.values,
+                            ),
+                          ),
+                          Expanded(flex: 8, child: Container()),
+                        ],
+                      );
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -85,10 +98,9 @@ class ScaffoldView extends StatelessWidget {
                       appValue: controllerAppValue.text,
                     ),
                   );
-                Navigator.of(context).pop();
+              Navigator.of(context).pop();
               context.read<HomeBloc>().add(
-                    HomeEvent.getAllValues(
-                    ),
+                    HomeEvent.getAllValues(),
                   );
             },
             controllerAppKey: controllerAppKey,
