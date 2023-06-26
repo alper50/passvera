@@ -9,6 +9,15 @@ class MyThemeData {
     splashColor: Colors.transparent,
     highlightColor: Colors.transparent,
     brightness: Brightness.light,
+    snackBarTheme: SnackBarThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+        side: BorderSide(
+          color: Colors.black,
+          width: 3.0,
+        ),
+      ),
+    ),
     // listTileTheme: ListTileThemeData(
     //   tileColor: MyColors.lightSecondaryColor,
     //   textColor: MyColors.lightPrimaryColor,

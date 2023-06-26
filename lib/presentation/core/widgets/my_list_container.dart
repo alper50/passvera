@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passvera/application/homeBloc/home_bloc.dart';
 import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
+import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
 
 class MyListContainer extends StatefulWidget {
   final List<ApplicationModel> modelsList;
@@ -57,7 +58,14 @@ class _MyListContainerState extends State<MyListContainer> {
               Row(
                 children: [
                   InkWell(
-                    onTap: ()=> Clipboard.setData(ClipboardData(text: current.value)),
+                    onTap: () async{ //TODO create an event
+                      await Clipboard.setData(ClipboardData(text: current.value));
+                      showMySnackBar(
+                isError: false,
+                context: context,
+                message: current.key + ' pasword copied'
+              );
+                    },
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.yellow,
@@ -85,7 +93,9 @@ class _MyListContainerState extends State<MyListContainer> {
                     width: 20,
                   ),
                   InkWell(
-                    onTap: ()=>context.read<HomeBloc>().add(HomeEvent.deleteValue(appKey: current.key)),
+                    onTap: () => context
+                        .read<HomeBloc>()
+                        .add(HomeEvent.deleteValue(appKey: current.key)),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.yellow,

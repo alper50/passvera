@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:passvera/presentation/core/theme/text_styles.dart';
 
 void showMySnackBar({required BuildContext context,required String message, bool isError=false}) {
   ScaffoldMessenger.of(context).showSnackBar(
@@ -10,10 +11,10 @@ SnackBar displaySnackBar(
     {required String message, String? actionMessage, VoidCallback? onClick, bool isError=false}) {
   return SnackBar(
     behavior: SnackBarBehavior.floating,
-    elevation: 3.0,
+    elevation: 5.0,
     content: Text(
       message,
-      style: TextStyle(color: Colors.white, fontSize: 14.0),
+      style: MyTextStyles.bodyLarge.copyWith(color: Colors.black)
     ),
     action: (actionMessage != null)
         ? SnackBarAction(
@@ -24,7 +25,7 @@ SnackBar displaySnackBar(
             },
           )
         : null,
-    duration: Duration(seconds: 2),
-    backgroundColor: Colors.red, //isError? MyColors.errorColor: MyColors.primaryColor, TODO color constants
+    duration: Duration(seconds: 4),
+    backgroundColor: Colors.yellow, //isError? MyColors.errorColor: MyColors.primaryColor, TODO color constants
   );
 }
