@@ -21,14 +21,14 @@ class _MyListContainerState extends State<MyListContainer> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      scrollDirection: Axis.horizontal,
+      scrollDirection: Axis.vertical,
       shrinkWrap: true,
       itemCount: widget.modelsList.length,
       itemBuilder: (context, index) {
         ApplicationModel current = widget.modelsList[index];
         return Container(
           margin: EdgeInsets.all(10.0),
-          padding: EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(15.0),
           constraints: BoxConstraints(
             minWidth: 100.0,
           ),
@@ -48,23 +48,24 @@ class _MyListContainerState extends State<MyListContainer> {
               ),
             ],
           ),
-          child: Column(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 current.key,
-                style: MyTextStyles.headline3Bold,
+                style: MyTextStyles.headline2Bold,
               ),
               Row(
                 children: [
                   InkWell(
-                    onTap: () async{ //TODO create an event
-                      await Clipboard.setData(ClipboardData(text: current.value));
+                    onTap: () async {
+                      //TODO create an event
+                      await Clipboard.setData(
+                          ClipboardData(text: current.value));
                       showMySnackBar(
-                isError: false,
-                context: context,
-                message: current.key + ' pasword copied'
-              );
+                          isError: false,
+                          context: context,
+                          message: current.key + ' pasword copied');
                     },
                     child: Container(
                       decoration: BoxDecoration(

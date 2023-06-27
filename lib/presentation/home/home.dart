@@ -48,6 +48,7 @@ class ScaffoldView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
       appBar: AppBar(
         backgroundColor: Colors.white10,
         elevation: 0,
@@ -72,8 +73,7 @@ class ScaffoldView extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.only(
-          top: 20,
-          left: 20,
+          left: 10,
         ),
         child: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
@@ -83,8 +83,8 @@ class ScaffoldView extends StatelessWidget {
                     ? const MyEmptyWidget()
                     : Column(
                         children: [
-                          const Expanded(
-                            flex: 3,
+                          Expanded(
+                            flex: 1,
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
@@ -94,12 +94,25 @@ class ScaffoldView extends StatelessWidget {
                             ),
                           ),
                           Expanded(
-                            flex: 8,
+                            flex: 9,
                             child: MyListContainer(
                               modelsList: state.values,
                             ),
                           ),
-                          Expanded(flex: 8, child: Container()),
+                          Expanded(
+                              flex: 1,
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.white,
+                                      blurRadius: 15.0,
+                                      spreadRadius: 30,
+                                      blurStyle: BlurStyle.normal,
+                                    ),
+                                  ],
+                                ),
+                              ))
                         ],
                       );
           },
