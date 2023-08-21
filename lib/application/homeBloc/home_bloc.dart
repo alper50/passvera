@@ -13,86 +13,23 @@ part 'home_bloc.freezed.dart';
 @injectable
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final IKeysRepository _keysRepository;
-  HomeBloc(this._keysRepository) : super(HomeState.initial()) {
+  HomeBloc(this._keysRepository) : super(const HomeState.initial()) {
     on<HomeEvent>(
       (event, emit) async {
         await event.map(
           getAllValues: (_) async {
-            emit(
-              state.copyWith(
-                isValuesLoading: true,
-                storageFailureOrSuccessOption: none(),
-              ),
-            );
+            emit(const HomeState.valuesLoading());
 
             final result = await _keysRepository.getAllValues();
-            await Future.delayed(Duration(milliseconds: 3300), () async{});
-            
-            result.fold(
-              (failure) => emit(
-                state.copyWith(
-                  isValuesLoading: false,
-                  storageFailureOrSuccessOption: optionOf(failure),
-                ),
-              ),
-              (succes) => emit(
-                state.copyWith(
-                  isValuesLoading: false,
-                  storageFailureOrSuccessOption: none(),
-                  values: succes,
-                ),
-              ),
-            );
-          },
-          encryptValue: (e) async {
-            emit(
-              state.copyWith(
-                isValueEncrypting: true,
-                storageFailureOrSuccessOption: none(),
-              ),
-            );
-            final model = ApplicationModel(key: e.appKey, value: e.appValue);
-            final result = await _keysRepository.encryptValue(appModel: model);
-            result.fold(
-                (failure) => emit(
-                      state.copyWith(
-                        isValueEncrypting: false,
-                        storageFailureOrSuccessOption: optionOf(failure),
-                      ),
-                    ), (succes) {
-              emit(
-                state.copyWith(
-                  isValueEncrypting: false,
-                  storageFailureOrSuccessOption: none(),
-                ),
-              );
-              // getIt<HomeBloc>().add(HomeEvent.getAllValues());
-            },);
-          },
-          deleteValue: (e) async {
-            emit(
-              state.copyWith(
-                isValueDeleting: true,
-                storageFailureOrSuccessOption: none(),
-              ),
-            );
-
-            final result = await _keysRepository.deleteValue(appKey: e.appKey);
 
             result.fold(
-              (failure) => emit(
-                state.copyWith(
-                  isValueDeleting: false,
-                  storageFailureOrSuccessOption: optionOf(failure),
-                ),
-              ),
-              (succes) => emit(
-                state.copyWith(
-                  isValueDeleting: false,
-                  storageFailureOrSuccessOption: none(),
-                ),
-              ),
-            );
+                (failure) => emit(HomeState.loadFailed(
+                    storageFailureOrSuccessOption: optionOf(failure))),
+                (succes) {
+              succes.isEmpty
+                  ? emit(const HomeState.loadSuccesEmpty())
+                  : emit(HomeState.loadSucces(values: succes));
+            });
           },
         );
       },

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:passvera/application/homeBloc/home_bloc.dart';
 import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
@@ -31,6 +29,7 @@ class _MyListContainerState extends State<MyListContainer> {
           padding: EdgeInsets.all(15.0),
           constraints: BoxConstraints(
             minWidth: 100.0,
+            minHeight: 80,
           ),
           decoration: BoxDecoration(
             color: Colors.yellow,
@@ -93,33 +92,33 @@ class _MyListContainerState extends State<MyListContainer> {
                   SizedBox(
                     width: 20,
                   ),
-                  InkWell(
-                    onTap: () => context
-                        .read<HomeBloc>()
-                        .add(HomeEvent.deleteValue(appKey: current.key)),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.yellow,
-                        borderRadius: BorderRadius.circular(3.0),
-                        border: Border.all(
-                          color: Colors.black,
-                          width: 3.0,
-                        ),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.black54,
-                            offset: Offset(-3.0, 3.0),
-                            blurRadius: 5.0,
-                            blurStyle: BlurStyle.solid,
-                          ),
-                        ],
-                      ),
-                      child: Icon(
-                        Icons.delete,
-                        size: 30,
-                      ),
-                    ),
-                  ),
+                  // InkWell( DELETE BUTTON
+                  //   onTap: () => context
+                  //       .read<HomeActionBloc>()
+                  //       .add(HomeActionEvent.deleteValue(appKey: current.key)),
+                  //   child: Container(
+                  //     decoration: BoxDecoration(
+                  //       color: Colors.yellow,
+                  //       borderRadius: BorderRadius.circular(3.0),
+                  //       border: Border.all(
+                  //         color: Colors.black,
+                  //         width: 3.0,
+                  //       ),
+                  //       boxShadow: const [
+                  //         BoxShadow(
+                  //           color: Colors.black54,
+                  //           offset: Offset(-3.0, 3.0),
+                  //           blurRadius: 5.0,
+                  //           blurStyle: BlurStyle.solid,
+                  //         ),
+                  //       ],
+                  //     ),
+                  //     child: Icon(
+                  //       Icons.delete,
+                  //       size: 30,
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ],

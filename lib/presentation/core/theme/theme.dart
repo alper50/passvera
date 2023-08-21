@@ -18,6 +18,19 @@ class MyThemeData {
         ),
       ),
     ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      elevation: 8.0,
+      highlightElevation: 12.0,
+      backgroundColor: Colors.yellow,
+      foregroundColor: Colors.black,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12.0),
+        side: BorderSide(
+          color: Colors.black,
+          width: 3.0,
+        ),
+      ),
+    ),
     // listTileTheme: ListTileThemeData(
     //   tileColor: MyColors.lightSecondaryColor,
     //   textColor: MyColors.lightPrimaryColor,
@@ -39,9 +52,7 @@ class MyThemeData {
   //   //     borderRadius: BorderRadius.circular(15),
   //   //   ),
   //   // ),
-  //   floatingActionButtonTheme: FloatingActionButtonThemeData(
-  //     backgroundColor: MyColors.lightSecondaryColor,
-  //   ),
+
   //   appBarTheme: AppBarTheme(
   //     iconTheme: IconThemeData(color: MyColors.primaryColor),
   //       elevation: 2,

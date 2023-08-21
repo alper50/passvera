@@ -19,44 +19,32 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllValues,
-    required TResult Function(String appKey, String appValue) encryptValue,
-    required TResult Function(String appKey) deleteValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllValues,
-    TResult? Function(String appKey, String appValue)? encryptValue,
-    TResult? Function(String appKey)? deleteValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllValues,
-    TResult Function(String appKey, String appValue)? encryptValue,
-    TResult Function(String appKey)? deleteValue,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetKeys value) getAllValues,
-    required TResult Function(_EncrpytValue value) encryptValue,
-    required TResult Function(_DeleteValue value) deleteValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetKeys value)? getAllValues,
-    TResult? Function(_EncrpytValue value)? encryptValue,
-    TResult? Function(_DeleteValue value)? deleteValue,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetKeys value)? getAllValues,
-    TResult Function(_EncrpytValue value)? encryptValue,
-    TResult Function(_DeleteValue value)? deleteValue,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -117,8 +105,6 @@ class _$_GetKeys implements _GetKeys {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllValues,
-    required TResult Function(String appKey, String appValue) encryptValue,
-    required TResult Function(String appKey) deleteValue,
   }) {
     return getAllValues();
   }
@@ -127,8 +113,6 @@ class _$_GetKeys implements _GetKeys {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllValues,
-    TResult? Function(String appKey, String appValue)? encryptValue,
-    TResult? Function(String appKey)? deleteValue,
   }) {
     return getAllValues?.call();
   }
@@ -137,8 +121,6 @@ class _$_GetKeys implements _GetKeys {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllValues,
-    TResult Function(String appKey, String appValue)? encryptValue,
-    TResult Function(String appKey)? deleteValue,
     required TResult orElse(),
   }) {
     if (getAllValues != null) {
@@ -151,8 +133,6 @@ class _$_GetKeys implements _GetKeys {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetKeys value) getAllValues,
-    required TResult Function(_EncrpytValue value) encryptValue,
-    required TResult Function(_DeleteValue value) deleteValue,
   }) {
     return getAllValues(this);
   }
@@ -161,8 +141,6 @@ class _$_GetKeys implements _GetKeys {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetKeys value)? getAllValues,
-    TResult? Function(_EncrpytValue value)? encryptValue,
-    TResult? Function(_DeleteValue value)? deleteValue,
   }) {
     return getAllValues?.call(this);
   }
@@ -171,8 +149,6 @@ class _$_GetKeys implements _GetKeys {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetKeys value)? getAllValues,
-    TResult Function(_EncrpytValue value)? encryptValue,
-    TResult Function(_DeleteValue value)? deleteValue,
     required TResult orElse(),
   }) {
     if (getAllValues != null) {
@@ -187,306 +163,66 @@ abstract class _GetKeys implements HomeEvent {
 }
 
 /// @nodoc
-abstract class _$$_EncrpytValueCopyWith<$Res> {
-  factory _$$_EncrpytValueCopyWith(
-          _$_EncrpytValue value, $Res Function(_$_EncrpytValue) then) =
-      __$$_EncrpytValueCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String appKey, String appValue});
-}
-
-/// @nodoc
-class __$$_EncrpytValueCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res, _$_EncrpytValue>
-    implements _$$_EncrpytValueCopyWith<$Res> {
-  __$$_EncrpytValueCopyWithImpl(
-      _$_EncrpytValue _value, $Res Function(_$_EncrpytValue) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? appKey = null,
-    Object? appValue = null,
-  }) {
-    return _then(_$_EncrpytValue(
-      appKey: null == appKey
-          ? _value.appKey
-          : appKey // ignore: cast_nullable_to_non_nullable
-              as String,
-      appValue: null == appValue
-          ? _value.appValue
-          : appValue // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_EncrpytValue implements _EncrpytValue {
-  const _$_EncrpytValue({required this.appKey, required this.appValue});
-
-  @override
-  final String appKey;
-  @override
-  final String appValue;
-
-  @override
-  String toString() {
-    return 'HomeEvent.encryptValue(appKey: $appKey, appValue: $appValue)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_EncrpytValue &&
-            (identical(other.appKey, appKey) || other.appKey == appKey) &&
-            (identical(other.appValue, appValue) ||
-                other.appValue == appValue));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, appKey, appValue);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_EncrpytValueCopyWith<_$_EncrpytValue> get copyWith =>
-      __$$_EncrpytValueCopyWithImpl<_$_EncrpytValue>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getAllValues,
-    required TResult Function(String appKey, String appValue) encryptValue,
-    required TResult Function(String appKey) deleteValue,
-  }) {
-    return encryptValue(appKey, appValue);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getAllValues,
-    TResult? Function(String appKey, String appValue)? encryptValue,
-    TResult? Function(String appKey)? deleteValue,
-  }) {
-    return encryptValue?.call(appKey, appValue);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllValues,
-    TResult Function(String appKey, String appValue)? encryptValue,
-    TResult Function(String appKey)? deleteValue,
-    required TResult orElse(),
-  }) {
-    if (encryptValue != null) {
-      return encryptValue(appKey, appValue);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetKeys value) getAllValues,
-    required TResult Function(_EncrpytValue value) encryptValue,
-    required TResult Function(_DeleteValue value) deleteValue,
-  }) {
-    return encryptValue(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetKeys value)? getAllValues,
-    TResult? Function(_EncrpytValue value)? encryptValue,
-    TResult? Function(_DeleteValue value)? deleteValue,
-  }) {
-    return encryptValue?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetKeys value)? getAllValues,
-    TResult Function(_EncrpytValue value)? encryptValue,
-    TResult Function(_DeleteValue value)? deleteValue,
-    required TResult orElse(),
-  }) {
-    if (encryptValue != null) {
-      return encryptValue(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _EncrpytValue implements HomeEvent {
-  const factory _EncrpytValue(
-      {required final String appKey,
-      required final String appValue}) = _$_EncrpytValue;
-
-  String get appKey;
-  String get appValue;
-  @JsonKey(ignore: true)
-  _$$_EncrpytValueCopyWith<_$_EncrpytValue> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_DeleteValueCopyWith<$Res> {
-  factory _$$_DeleteValueCopyWith(
-          _$_DeleteValue value, $Res Function(_$_DeleteValue) then) =
-      __$$_DeleteValueCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String appKey});
-}
-
-/// @nodoc
-class __$$_DeleteValueCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res, _$_DeleteValue>
-    implements _$$_DeleteValueCopyWith<$Res> {
-  __$$_DeleteValueCopyWithImpl(
-      _$_DeleteValue _value, $Res Function(_$_DeleteValue) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? appKey = null,
-  }) {
-    return _then(_$_DeleteValue(
-      appKey: null == appKey
-          ? _value.appKey
-          : appKey // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_DeleteValue implements _DeleteValue {
-  const _$_DeleteValue({required this.appKey});
-
-  @override
-  final String appKey;
-
-  @override
-  String toString() {
-    return 'HomeEvent.deleteValue(appKey: $appKey)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_DeleteValue &&
-            (identical(other.appKey, appKey) || other.appKey == appKey));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, appKey);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_DeleteValueCopyWith<_$_DeleteValue> get copyWith =>
-      __$$_DeleteValueCopyWithImpl<_$_DeleteValue>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getAllValues,
-    required TResult Function(String appKey, String appValue) encryptValue,
-    required TResult Function(String appKey) deleteValue,
-  }) {
-    return deleteValue(appKey);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getAllValues,
-    TResult? Function(String appKey, String appValue)? encryptValue,
-    TResult? Function(String appKey)? deleteValue,
-  }) {
-    return deleteValue?.call(appKey);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllValues,
-    TResult Function(String appKey, String appValue)? encryptValue,
-    TResult Function(String appKey)? deleteValue,
-    required TResult orElse(),
-  }) {
-    if (deleteValue != null) {
-      return deleteValue(appKey);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetKeys value) getAllValues,
-    required TResult Function(_EncrpytValue value) encryptValue,
-    required TResult Function(_DeleteValue value) deleteValue,
-  }) {
-    return deleteValue(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetKeys value)? getAllValues,
-    TResult? Function(_EncrpytValue value)? encryptValue,
-    TResult? Function(_DeleteValue value)? deleteValue,
-  }) {
-    return deleteValue?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetKeys value)? getAllValues,
-    TResult Function(_EncrpytValue value)? encryptValue,
-    TResult Function(_DeleteValue value)? deleteValue,
-    required TResult orElse(),
-  }) {
-    if (deleteValue != null) {
-      return deleteValue(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _DeleteValue implements HomeEvent {
-  const factory _DeleteValue({required final String appKey}) = _$_DeleteValue;
-
-  String get appKey;
-  @JsonKey(ignore: true)
-  _$$_DeleteValueCopyWith<_$_DeleteValue> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 mixin _$HomeState {
-  List<ApplicationModel> get values => throw _privateConstructorUsedError;
-  bool get isValuesLoading => throw _privateConstructorUsedError;
-  bool get isValueEncrypting => throw _privateConstructorUsedError;
-  bool get isValueDeleting => throw _privateConstructorUsedError;
-  Option<StorageFailure> get storageFailureOrSuccessOption =>
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() valuesLoading,
+    required TResult Function(List<ApplicationModel> values) loadSucces,
+    required TResult Function() loadSuccesEmpty,
+    required TResult Function(
+            Option<StorageFailure> storageFailureOrSuccessOption)
+        loadFailed,
+  }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $HomeStateCopyWith<HomeState> get copyWith =>
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? valuesLoading,
+    TResult? Function(List<ApplicationModel> values)? loadSucces,
+    TResult? Function()? loadSuccesEmpty,
+    TResult? Function(Option<StorageFailure> storageFailureOrSuccessOption)?
+        loadFailed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? valuesLoading,
+    TResult Function(List<ApplicationModel> values)? loadSucces,
+    TResult Function()? loadSuccesEmpty,
+    TResult Function(Option<StorageFailure> storageFailureOrSuccessOption)?
+        loadFailed,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadingFarmOverviews value) valuesLoading,
+    required TResult Function(_LoadSucces value) loadSucces,
+    required TResult Function(_LoadSuccesEmpty value) loadSuccesEmpty,
+    required TResult Function(_LoadFailed value) loadFailed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadingFarmOverviews value)? valuesLoading,
+    TResult? Function(_LoadSucces value)? loadSucces,
+    TResult? Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
+    TResult? Function(_LoadFailed value)? loadFailed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingFarmOverviews value)? valuesLoading,
+    TResult Function(_LoadSucces value)? loadSucces,
+    TResult Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
+    TResult Function(_LoadFailed value)? loadFailed,
+    required TResult orElse(),
+  }) =>
       throw _privateConstructorUsedError;
 }
 
@@ -494,13 +230,6 @@ mixin _$HomeState {
 abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
-  @useResult
-  $Res call(
-      {List<ApplicationModel> values,
-      bool isValuesLoading,
-      bool isValueEncrypting,
-      bool isValueDeleting,
-      Option<StorageFailure> storageFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -512,107 +241,290 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
 
-  @pragma('vm:prefer-inline')
+/// @nodoc
+abstract class _$$_InitialCopyWith<$Res> {
+  factory _$$_InitialCopyWith(
+          _$_Initial value, $Res Function(_$_Initial) then) =
+      __$$_InitialCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$_Initial>
+    implements _$$_InitialCopyWith<$Res> {
+  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_Initial implements _Initial {
+  const _$_Initial();
+
   @override
-  $Res call({
-    Object? values = null,
-    Object? isValuesLoading = null,
-    Object? isValueEncrypting = null,
-    Object? isValueDeleting = null,
-    Object? storageFailureOrSuccessOption = null,
+  String toString() {
+    return 'HomeState.initial()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Initial);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() valuesLoading,
+    required TResult Function(List<ApplicationModel> values) loadSucces,
+    required TResult Function() loadSuccesEmpty,
+    required TResult Function(
+            Option<StorageFailure> storageFailureOrSuccessOption)
+        loadFailed,
   }) {
-    return _then(_value.copyWith(
-      values: null == values
-          ? _value.values
-          : values // ignore: cast_nullable_to_non_nullable
-              as List<ApplicationModel>,
-      isValuesLoading: null == isValuesLoading
-          ? _value.isValuesLoading
-          : isValuesLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isValueEncrypting: null == isValueEncrypting
-          ? _value.isValueEncrypting
-          : isValueEncrypting // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isValueDeleting: null == isValueDeleting
-          ? _value.isValueDeleting
-          : isValueDeleting // ignore: cast_nullable_to_non_nullable
-              as bool,
-      storageFailureOrSuccessOption: null == storageFailureOrSuccessOption
-          ? _value.storageFailureOrSuccessOption
-          : storageFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<StorageFailure>,
-    ) as $Val);
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? valuesLoading,
+    TResult? Function(List<ApplicationModel> values)? loadSucces,
+    TResult? Function()? loadSuccesEmpty,
+    TResult? Function(Option<StorageFailure> storageFailureOrSuccessOption)?
+        loadFailed,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? valuesLoading,
+    TResult Function(List<ApplicationModel> values)? loadSucces,
+    TResult Function()? loadSuccesEmpty,
+    TResult Function(Option<StorageFailure> storageFailureOrSuccessOption)?
+        loadFailed,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadingFarmOverviews value) valuesLoading,
+    required TResult Function(_LoadSucces value) loadSucces,
+    required TResult Function(_LoadSuccesEmpty value) loadSuccesEmpty,
+    required TResult Function(_LoadFailed value) loadFailed,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadingFarmOverviews value)? valuesLoading,
+    TResult? Function(_LoadSucces value)? loadSucces,
+    TResult? Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
+    TResult? Function(_LoadFailed value)? loadFailed,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingFarmOverviews value)? valuesLoading,
+    TResult Function(_LoadSucces value)? loadSucces,
+    TResult Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
+    TResult Function(_LoadFailed value)? loadFailed,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
   }
 }
 
-/// @nodoc
-abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
-  factory _$$_HomeStateCopyWith(
-          _$_HomeState value, $Res Function(_$_HomeState) then) =
-      __$$_HomeStateCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {List<ApplicationModel> values,
-      bool isValuesLoading,
-      bool isValueEncrypting,
-      bool isValueDeleting,
-      Option<StorageFailure> storageFailureOrSuccessOption});
+abstract class _Initial implements HomeState {
+  const factory _Initial() = _$_Initial;
 }
 
 /// @nodoc
-class __$$_HomeStateCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_HomeState>
-    implements _$$_HomeStateCopyWith<$Res> {
-  __$$_HomeStateCopyWithImpl(
-      _$_HomeState _value, $Res Function(_$_HomeState) _then)
+abstract class _$$_LoadingFarmOverviewsCopyWith<$Res> {
+  factory _$$_LoadingFarmOverviewsCopyWith(_$_LoadingFarmOverviews value,
+          $Res Function(_$_LoadingFarmOverviews) then) =
+      __$$_LoadingFarmOverviewsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_LoadingFarmOverviewsCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$_LoadingFarmOverviews>
+    implements _$$_LoadingFarmOverviewsCopyWith<$Res> {
+  __$$_LoadingFarmOverviewsCopyWithImpl(_$_LoadingFarmOverviews _value,
+      $Res Function(_$_LoadingFarmOverviews) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_LoadingFarmOverviews implements _LoadingFarmOverviews {
+  const _$_LoadingFarmOverviews();
+
+  @override
+  String toString() {
+    return 'HomeState.valuesLoading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_LoadingFarmOverviews);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() valuesLoading,
+    required TResult Function(List<ApplicationModel> values) loadSucces,
+    required TResult Function() loadSuccesEmpty,
+    required TResult Function(
+            Option<StorageFailure> storageFailureOrSuccessOption)
+        loadFailed,
+  }) {
+    return valuesLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? valuesLoading,
+    TResult? Function(List<ApplicationModel> values)? loadSucces,
+    TResult? Function()? loadSuccesEmpty,
+    TResult? Function(Option<StorageFailure> storageFailureOrSuccessOption)?
+        loadFailed,
+  }) {
+    return valuesLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? valuesLoading,
+    TResult Function(List<ApplicationModel> values)? loadSucces,
+    TResult Function()? loadSuccesEmpty,
+    TResult Function(Option<StorageFailure> storageFailureOrSuccessOption)?
+        loadFailed,
+    required TResult orElse(),
+  }) {
+    if (valuesLoading != null) {
+      return valuesLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadingFarmOverviews value) valuesLoading,
+    required TResult Function(_LoadSucces value) loadSucces,
+    required TResult Function(_LoadSuccesEmpty value) loadSuccesEmpty,
+    required TResult Function(_LoadFailed value) loadFailed,
+  }) {
+    return valuesLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadingFarmOverviews value)? valuesLoading,
+    TResult? Function(_LoadSucces value)? loadSucces,
+    TResult? Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
+    TResult? Function(_LoadFailed value)? loadFailed,
+  }) {
+    return valuesLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingFarmOverviews value)? valuesLoading,
+    TResult Function(_LoadSucces value)? loadSucces,
+    TResult Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
+    TResult Function(_LoadFailed value)? loadFailed,
+    required TResult orElse(),
+  }) {
+    if (valuesLoading != null) {
+      return valuesLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadingFarmOverviews implements HomeState {
+  const factory _LoadingFarmOverviews() = _$_LoadingFarmOverviews;
+}
+
+/// @nodoc
+abstract class _$$_LoadSuccesCopyWith<$Res> {
+  factory _$$_LoadSuccesCopyWith(
+          _$_LoadSucces value, $Res Function(_$_LoadSucces) then) =
+      __$$_LoadSuccesCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<ApplicationModel> values});
+}
+
+/// @nodoc
+class __$$_LoadSuccesCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$_LoadSucces>
+    implements _$$_LoadSuccesCopyWith<$Res> {
+  __$$_LoadSuccesCopyWithImpl(
+      _$_LoadSucces _value, $Res Function(_$_LoadSucces) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? values = null,
-    Object? isValuesLoading = null,
-    Object? isValueEncrypting = null,
-    Object? isValueDeleting = null,
-    Object? storageFailureOrSuccessOption = null,
   }) {
-    return _then(_$_HomeState(
+    return _then(_$_LoadSucces(
       values: null == values
           ? _value._values
           : values // ignore: cast_nullable_to_non_nullable
               as List<ApplicationModel>,
-      isValuesLoading: null == isValuesLoading
-          ? _value.isValuesLoading
-          : isValuesLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isValueEncrypting: null == isValueEncrypting
-          ? _value.isValueEncrypting
-          : isValueEncrypting // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isValueDeleting: null == isValueDeleting
-          ? _value.isValueDeleting
-          : isValueDeleting // ignore: cast_nullable_to_non_nullable
-              as bool,
-      storageFailureOrSuccessOption: null == storageFailureOrSuccessOption
-          ? _value.storageFailureOrSuccessOption
-          : storageFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<StorageFailure>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_HomeState implements _HomeState {
-  const _$_HomeState(
-      {required final List<ApplicationModel> values,
-      required this.isValuesLoading,
-      required this.isValueEncrypting,
-      required this.isValueDeleting,
-      required this.storageFailureOrSuccessOption})
+class _$_LoadSucces implements _LoadSucces {
+  const _$_LoadSucces({required final List<ApplicationModel> values})
       : _values = values;
 
   final List<ApplicationModel> _values;
@@ -624,31 +536,296 @@ class _$_HomeState implements _HomeState {
   }
 
   @override
-  final bool isValuesLoading;
-  @override
-  final bool isValueEncrypting;
-  @override
-  final bool isValueDeleting;
-  @override
-  final Option<StorageFailure> storageFailureOrSuccessOption;
-
-  @override
   String toString() {
-    return 'HomeState(values: $values, isValuesLoading: $isValuesLoading, isValueEncrypting: $isValueEncrypting, isValueDeleting: $isValueDeleting, storageFailureOrSuccessOption: $storageFailureOrSuccessOption)';
+    return 'HomeState.loadSucces(values: $values)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HomeState &&
-            const DeepCollectionEquality().equals(other._values, _values) &&
-            (identical(other.isValuesLoading, isValuesLoading) ||
-                other.isValuesLoading == isValuesLoading) &&
-            (identical(other.isValueEncrypting, isValueEncrypting) ||
-                other.isValueEncrypting == isValueEncrypting) &&
-            (identical(other.isValueDeleting, isValueDeleting) ||
-                other.isValueDeleting == isValueDeleting) &&
+            other is _$_LoadSucces &&
+            const DeepCollectionEquality().equals(other._values, _values));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_values));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LoadSuccesCopyWith<_$_LoadSucces> get copyWith =>
+      __$$_LoadSuccesCopyWithImpl<_$_LoadSucces>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() valuesLoading,
+    required TResult Function(List<ApplicationModel> values) loadSucces,
+    required TResult Function() loadSuccesEmpty,
+    required TResult Function(
+            Option<StorageFailure> storageFailureOrSuccessOption)
+        loadFailed,
+  }) {
+    return loadSucces(values);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? valuesLoading,
+    TResult? Function(List<ApplicationModel> values)? loadSucces,
+    TResult? Function()? loadSuccesEmpty,
+    TResult? Function(Option<StorageFailure> storageFailureOrSuccessOption)?
+        loadFailed,
+  }) {
+    return loadSucces?.call(values);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? valuesLoading,
+    TResult Function(List<ApplicationModel> values)? loadSucces,
+    TResult Function()? loadSuccesEmpty,
+    TResult Function(Option<StorageFailure> storageFailureOrSuccessOption)?
+        loadFailed,
+    required TResult orElse(),
+  }) {
+    if (loadSucces != null) {
+      return loadSucces(values);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadingFarmOverviews value) valuesLoading,
+    required TResult Function(_LoadSucces value) loadSucces,
+    required TResult Function(_LoadSuccesEmpty value) loadSuccesEmpty,
+    required TResult Function(_LoadFailed value) loadFailed,
+  }) {
+    return loadSucces(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadingFarmOverviews value)? valuesLoading,
+    TResult? Function(_LoadSucces value)? loadSucces,
+    TResult? Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
+    TResult? Function(_LoadFailed value)? loadFailed,
+  }) {
+    return loadSucces?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingFarmOverviews value)? valuesLoading,
+    TResult Function(_LoadSucces value)? loadSucces,
+    TResult Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
+    TResult Function(_LoadFailed value)? loadFailed,
+    required TResult orElse(),
+  }) {
+    if (loadSucces != null) {
+      return loadSucces(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadSucces implements HomeState {
+  const factory _LoadSucces({required final List<ApplicationModel> values}) =
+      _$_LoadSucces;
+
+  List<ApplicationModel> get values;
+  @JsonKey(ignore: true)
+  _$$_LoadSuccesCopyWith<_$_LoadSucces> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_LoadSuccesEmptyCopyWith<$Res> {
+  factory _$$_LoadSuccesEmptyCopyWith(
+          _$_LoadSuccesEmpty value, $Res Function(_$_LoadSuccesEmpty) then) =
+      __$$_LoadSuccesEmptyCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_LoadSuccesEmptyCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$_LoadSuccesEmpty>
+    implements _$$_LoadSuccesEmptyCopyWith<$Res> {
+  __$$_LoadSuccesEmptyCopyWithImpl(
+      _$_LoadSuccesEmpty _value, $Res Function(_$_LoadSuccesEmpty) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_LoadSuccesEmpty implements _LoadSuccesEmpty {
+  const _$_LoadSuccesEmpty();
+
+  @override
+  String toString() {
+    return 'HomeState.loadSuccesEmpty()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_LoadSuccesEmpty);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() valuesLoading,
+    required TResult Function(List<ApplicationModel> values) loadSucces,
+    required TResult Function() loadSuccesEmpty,
+    required TResult Function(
+            Option<StorageFailure> storageFailureOrSuccessOption)
+        loadFailed,
+  }) {
+    return loadSuccesEmpty();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? valuesLoading,
+    TResult? Function(List<ApplicationModel> values)? loadSucces,
+    TResult? Function()? loadSuccesEmpty,
+    TResult? Function(Option<StorageFailure> storageFailureOrSuccessOption)?
+        loadFailed,
+  }) {
+    return loadSuccesEmpty?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? valuesLoading,
+    TResult Function(List<ApplicationModel> values)? loadSucces,
+    TResult Function()? loadSuccesEmpty,
+    TResult Function(Option<StorageFailure> storageFailureOrSuccessOption)?
+        loadFailed,
+    required TResult orElse(),
+  }) {
+    if (loadSuccesEmpty != null) {
+      return loadSuccesEmpty();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadingFarmOverviews value) valuesLoading,
+    required TResult Function(_LoadSucces value) loadSucces,
+    required TResult Function(_LoadSuccesEmpty value) loadSuccesEmpty,
+    required TResult Function(_LoadFailed value) loadFailed,
+  }) {
+    return loadSuccesEmpty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadingFarmOverviews value)? valuesLoading,
+    TResult? Function(_LoadSucces value)? loadSucces,
+    TResult? Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
+    TResult? Function(_LoadFailed value)? loadFailed,
+  }) {
+    return loadSuccesEmpty?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingFarmOverviews value)? valuesLoading,
+    TResult Function(_LoadSucces value)? loadSucces,
+    TResult Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
+    TResult Function(_LoadFailed value)? loadFailed,
+    required TResult orElse(),
+  }) {
+    if (loadSuccesEmpty != null) {
+      return loadSuccesEmpty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadSuccesEmpty implements HomeState {
+  const factory _LoadSuccesEmpty() = _$_LoadSuccesEmpty;
+}
+
+/// @nodoc
+abstract class _$$_LoadFailedCopyWith<$Res> {
+  factory _$$_LoadFailedCopyWith(
+          _$_LoadFailed value, $Res Function(_$_LoadFailed) then) =
+      __$$_LoadFailedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Option<StorageFailure> storageFailureOrSuccessOption});
+}
+
+/// @nodoc
+class __$$_LoadFailedCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$_LoadFailed>
+    implements _$$_LoadFailedCopyWith<$Res> {
+  __$$_LoadFailedCopyWithImpl(
+      _$_LoadFailed _value, $Res Function(_$_LoadFailed) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? storageFailureOrSuccessOption = null,
+  }) {
+    return _then(_$_LoadFailed(
+      storageFailureOrSuccessOption: null == storageFailureOrSuccessOption
+          ? _value.storageFailureOrSuccessOption
+          : storageFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<StorageFailure>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_LoadFailed implements _LoadFailed {
+  const _$_LoadFailed({required this.storageFailureOrSuccessOption});
+
+  @override
+  final Option<StorageFailure> storageFailureOrSuccessOption;
+
+  @override
+  String toString() {
+    return 'HomeState.loadFailed(storageFailureOrSuccessOption: $storageFailureOrSuccessOption)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LoadFailed &&
             (identical(other.storageFailureOrSuccessOption,
                     storageFailureOrSuccessOption) ||
                 other.storageFailureOrSuccessOption ==
@@ -656,42 +833,106 @@ class _$_HomeState implements _HomeState {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_values),
-      isValuesLoading,
-      isValueEncrypting,
-      isValueDeleting,
-      storageFailureOrSuccessOption);
+  int get hashCode => Object.hash(runtimeType, storageFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
-      __$$_HomeStateCopyWithImpl<_$_HomeState>(this, _$identity);
+  _$$_LoadFailedCopyWith<_$_LoadFailed> get copyWith =>
+      __$$_LoadFailedCopyWithImpl<_$_LoadFailed>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() valuesLoading,
+    required TResult Function(List<ApplicationModel> values) loadSucces,
+    required TResult Function() loadSuccesEmpty,
+    required TResult Function(
+            Option<StorageFailure> storageFailureOrSuccessOption)
+        loadFailed,
+  }) {
+    return loadFailed(storageFailureOrSuccessOption);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? valuesLoading,
+    TResult? Function(List<ApplicationModel> values)? loadSucces,
+    TResult? Function()? loadSuccesEmpty,
+    TResult? Function(Option<StorageFailure> storageFailureOrSuccessOption)?
+        loadFailed,
+  }) {
+    return loadFailed?.call(storageFailureOrSuccessOption);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? valuesLoading,
+    TResult Function(List<ApplicationModel> values)? loadSucces,
+    TResult Function()? loadSuccesEmpty,
+    TResult Function(Option<StorageFailure> storageFailureOrSuccessOption)?
+        loadFailed,
+    required TResult orElse(),
+  }) {
+    if (loadFailed != null) {
+      return loadFailed(storageFailureOrSuccessOption);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadingFarmOverviews value) valuesLoading,
+    required TResult Function(_LoadSucces value) loadSucces,
+    required TResult Function(_LoadSuccesEmpty value) loadSuccesEmpty,
+    required TResult Function(_LoadFailed value) loadFailed,
+  }) {
+    return loadFailed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadingFarmOverviews value)? valuesLoading,
+    TResult? Function(_LoadSucces value)? loadSucces,
+    TResult? Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
+    TResult? Function(_LoadFailed value)? loadFailed,
+  }) {
+    return loadFailed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingFarmOverviews value)? valuesLoading,
+    TResult Function(_LoadSucces value)? loadSucces,
+    TResult Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
+    TResult Function(_LoadFailed value)? loadFailed,
+    required TResult orElse(),
+  }) {
+    if (loadFailed != null) {
+      return loadFailed(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _HomeState implements HomeState {
-  const factory _HomeState(
-      {required final List<ApplicationModel> values,
-      required final bool isValuesLoading,
-      required final bool isValueEncrypting,
-      required final bool isValueDeleting,
-      required final Option<StorageFailure>
-          storageFailureOrSuccessOption}) = _$_HomeState;
+abstract class _LoadFailed implements HomeState {
+  const factory _LoadFailed(
+      {required final Option<StorageFailure>
+          storageFailureOrSuccessOption}) = _$_LoadFailed;
 
-  @override
-  List<ApplicationModel> get values;
-  @override
-  bool get isValuesLoading;
-  @override
-  bool get isValueEncrypting;
-  @override
-  bool get isValueDeleting;
-  @override
   Option<StorageFailure> get storageFailureOrSuccessOption;
-  @override
   @JsonKey(ignore: true)
-  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
+  _$$_LoadFailedCopyWith<_$_LoadFailed> get copyWith =>
       throw _privateConstructorUsedError;
 }

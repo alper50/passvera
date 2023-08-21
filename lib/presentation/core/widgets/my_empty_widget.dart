@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:passvera/presentation/core/theme/text_styles.dart';
 
 class MyEmptyWidget extends StatelessWidget {
   const MyEmptyWidget({
@@ -9,15 +10,16 @@ class MyEmptyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: Column(
-          children: [
-            Text(
-              'EMPTY',
-              style: TextStyle(color: Colors.black),
-            ),
-            Lottie.asset('assets/animation/empty.json'),
-          ],
-        ),
-      );
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Lottie.asset('assets/animation/empty.json'),
+          Text(
+            'Cant see any password here',
+            style: MyTextStyles.headline3,
+          ),
+        ],
+      ),
+    );
   }
 }
