@@ -66,4 +66,14 @@ class KeysService {
       return Left(StorageFailure.unexpected(e));
     }
   }
+
+   Future<Either<StorageFailure, Unit>> updateSingleValue(
+      {required ApplicationModel model}) async {
+    try {
+      await storage.write(key: model.key, value: model.value);
+      return const Right(unit);
+    } catch (e) {
+      return Left(StorageFailure.unexpected(e));
+    }
+  }
 }

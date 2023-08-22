@@ -27,4 +27,9 @@ class KeysRepository extends IKeysRepository {
       {required String appKey}) async {
     return await _service.deleteSingleValue(appKey: appKey);
   }
+  
+  @override
+  Future<Either<StorageFailure, Unit>> updateSingleValue({required ApplicationModel model}) async{
+   return await _service.updateSingleValue(model: model);
+  }
 }

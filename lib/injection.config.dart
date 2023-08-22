@@ -12,8 +12,9 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import 'application/homeActionBloc/home_action_bloc.dart' as _i6;
-import 'application/homeBloc/home_bloc.dart' as _i7;
+import 'application/homeActionBloc/home_action_bloc.dart' as _i7;
+import 'application/homeBloc/home_bloc.dart' as _i8;
+import 'application/passActionBloc/pass_action_bloc.dart' as _i6;
 import 'domain/i_keys_repository.dart' as _i4;
 import 'infrastructure/keys/keys_repository.dart' as _i5;
 import 'infrastructure/keys/keys_service.dart' as _i3;
@@ -34,8 +35,10 @@ _i1.GetIt $initGetIt(
   gh.lazySingleton<_i3.KeysService>(() => _i3.KeysService());
   gh.lazySingleton<_i4.IKeysRepository>(
       () => _i5.KeysRepository(gh<_i3.KeysService>()));
-  gh.factory<_i6.HomeActionBloc>(
-      () => _i6.HomeActionBloc(gh<_i4.IKeysRepository>()));
-  gh.factory<_i7.HomeBloc>(() => _i7.HomeBloc(gh<_i4.IKeysRepository>()));
+  gh.factory<_i6.PassActionBloc>(
+      () => _i6.PassActionBloc(gh<_i4.IKeysRepository>()));
+  gh.factory<_i7.HomeActionBloc>(
+      () => _i7.HomeActionBloc(gh<_i4.IKeysRepository>()));
+  gh.factory<_i8.HomeBloc>(() => _i8.HomeBloc(gh<_i4.IKeysRepository>()));
   return getIt;
 }
