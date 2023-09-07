@@ -3,14 +3,15 @@ import 'package:passvera/presentation/core/theme/text_styles.dart';
 
 void showFormDialog(
     {required BuildContext context,
-    required void Function()? onPressed,
-    String? title='Lets Add New One',
+    required void Function() onPressed,
+    String? title = 'Lets Add New One',
     TextEditingController? controllerAppKey,
     TextEditingController? controllerAppValue}) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
+        actionsAlignment: MainAxisAlignment.center,
         backgroundColor: Colors.yellow,
         contentPadding: EdgeInsets.all(30),
         shape: RoundedRectangleBorder(
@@ -42,40 +43,56 @@ void showFormDialog(
           ),
         ),
         actions: [
-          TextButton(
-            onPressed: onPressed,
-            child: Text('Send'),
+          MyFormButton(
+            title: 'Send',
+            onPressed: () => onPressed(),
           ),
-          ElevatedButton(
-            child: Text('Close'),
-            style: ElevatedButton.styleFrom(
-              primary: Colors.yellow,
-              onPrimary: Colors.black,
-              textStyle: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
-              padding: EdgeInsets.symmetric(
-                vertical: 16.0,
-                horizontal: 32.0,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-                side: BorderSide(
-                  color: Colors.black,
-                  width: 2.0,
-                ),
-              ),
-              elevation: 0.0,
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
+          MyFormButton(
+            title: 'Close',
+            onPressed: () => Navigator.of(context).pop(),
           ),
         ],
       );
     },
   );
+}
+
+class MyFormButton extends StatelessWidget {
+  const MyFormButton({
+    super.key,
+    required this.title,
+    required this.onPressed,
+  });
+  final String title;
+  final void Function() onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      child: Text(title),
+      style: ElevatedButton.styleFrom(
+        primary: Colors.yellow,
+        onPrimary: Colors.black,
+        textStyle: TextStyle(
+          fontSize: 18.0,
+          fontWeight: FontWeight.bold,
+        ),
+        padding: EdgeInsets.symmetric(
+          vertical: 16.0,
+          horizontal: 32.0,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          side: BorderSide(
+            color: Colors.black,
+            width: 2.0,
+          ),
+        ),
+        elevation: 0.0,
+      ),
+      onPressed: () => onPressed(),
+    );
+  }
 }
 
 class MyTextField extends StatelessWidget {
