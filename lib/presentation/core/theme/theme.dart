@@ -6,6 +6,10 @@ class MyThemeData {
   MyThemeData._();
   static final ThemeData lightheme = ThemeData(
     fontFamily: "QuickSand",
+    iconTheme: IconThemeData(
+      size: 40,
+      color: Colors.black,
+    ),
     splashColor: Colors.transparent,
     highlightColor: Colors.transparent,
     brightness: Brightness.light,

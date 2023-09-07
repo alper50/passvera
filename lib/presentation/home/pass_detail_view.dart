@@ -7,11 +7,12 @@ import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/injection.dart';
 import 'package:passvera/presentation/core/route/route.gr.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
+import 'package:passvera/presentation/core/widgets/my_small_button.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
 
 class PassDetailView extends StatelessWidget {
   final ApplicationModel model;
-  const PassDetailView({super.key, required this.model});
+  PassDetailView({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -44,15 +45,32 @@ class PassDetailView extends StatelessWidget {
           );
         },
         child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.yellow,
+            elevation: 0,
+            automaticallyImplyLeading: false,
+            leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                AutoRouter.of(context).pop();
+              },
+            ),
+          ),
           backgroundColor: Colors.yellow,
-          body: PassDetailBody(model: model),
+          body: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: PassDetailBody(model: model),
+          ),
         ),
       ),
     );
   }
 }
 
-class PassDetailBody extends StatelessWidget {
+class PassDetailBody extends StatefulWidget {
   const PassDetailBody({
     super.key,
     required this.model,
@@ -61,30 +79,113 @@ class PassDetailBody extends StatelessWidget {
   final ApplicationModel model;
 
   @override
+  State<PassDetailBody> createState() => _PassDetailBodyState();
+}
+
+class _PassDetailBodyState extends State<PassDetailBody> {
+  bool isEyeOpen = false;
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<PassActionBloc, PassActionState>(
       builder: (context, state) {
         return Column(
           children: [
-            Hero(
-              transitionOnUserGestures: true,
-              tag: model.key,
-              child: Text(
-                model.key,
-                style: MyTextStyles.headline2,
+            Expanded(
+              flex: 1,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'App:  ' + widget.model.key,
+                    style: MyTextStyles.headline2,
+                  ),
+                  MySmallButton(
+                    icon: Icon(
+                      Icons.edit_outlined,
+                    ),
+                    onTap: () => context.read<PassActionBloc>().add(
+                          PassActionEvent.updatePass(pass: widget.model),
+                        ),
+                  ),
+                ],
               ),
             ),
-            IconButton(
-              onPressed: () {
-                context
-                    .read<PassActionBloc>()
-                    .add(PassActionEvent.deletePass(pass: model));
-              },
-              icon: Icon(Icons.delete),
-            )
+            Expanded(
+              flex: 1,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  isEyeOpen
+                      ? Text(
+                          'Password:  ' + widget.model.value,
+                          style: MyTextStyles.headline2,
+                        )
+                      : Text(
+                          'Password:  ' + '*****',
+                          style: MyTextStyles.headline2,
+                        ),
+                  MySmallButton(
+                    icon: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 300),
+                        transitionBuilder: (child, anim) => RotationTransition(
+                              turns: child.key == ValueKey('icon1')
+                                  ? Tween<double>(begin: 1, end: 0.0)
+                                      .animate(anim)
+                                  : Tween<double>(begin: 0.0, end: 1)
+                                      .animate(anim),
+                              child:
+                                  FadeTransition(opacity: anim, child: child),
+                            ),
+                        child: isEyeOpen
+                            ? Icon(
+                                Icons.remove_red_eye_outlined,
+                                key: const ValueKey('icon1'),
+                              )
+                            : Icon(
+                                Icons.elderly_outlined,
+                                key: const ValueKey(
+                                  'icon2',
+                                ),
+                              )),
+                    onTap: () {
+                      changeEyeState();
+                    },
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 8,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'If you want to Delete  ---->  ',
+                    style: MyTextStyles.headline3Bold,
+                  ),
+                  MySmallButton(
+                    icon: Icon(
+                      Icons.delete_outlined,
+                      size: 45,
+                    ),
+                    onTap: () => context.read<PassActionBloc>().add(
+                          PassActionEvent.deletePass(pass: widget.model),
+                        ),
+                  ),
+                ],
+              ),
+            ),
           ],
         );
       },
     );
+  }
+
+  void changeEyeState() {
+    setState(() {
+      isEyeOpen == true ? isEyeOpen = false : isEyeOpen = true;
+    });
   }
 }

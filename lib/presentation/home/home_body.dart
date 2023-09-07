@@ -4,7 +4,7 @@ import 'package:passvera/application/homeBloc/home_bloc.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/core/widgets/my_circular_progress.dart';
 import 'package:passvera/presentation/core/widgets/my_empty_widget.dart';
-import 'package:passvera/presentation/core/widgets/my_list_container.dart';
+import 'package:passvera/presentation/home/widgets/my_list_container.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({

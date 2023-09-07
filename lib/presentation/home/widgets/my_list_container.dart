@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:passvera/domain/application_model.dart';
-import 'package:passvera/presentation/core/widgets/pass_container.dart';
+import 'package:passvera/presentation/home/widgets/pass_container.dart';
 
 class MyListContainer extends StatefulWidget {
   final List<ApplicationModel> modelsList;
@@ -16,16 +16,16 @@ class MyListContainer extends StatefulWidget {
 class _MyListContainerState extends State<MyListContainer> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      scrollDirection: Axis.vertical,
-      shrinkWrap: true,
-      itemCount: widget.modelsList.length,
-      itemBuilder: (context, index) {
-        ApplicationModel current = widget.modelsList[index];
-        return PassContainerWidget(currentModel: current);
-      },
+    return Material(
+      child: ListView.builder(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        itemCount: widget.modelsList.length,
+        itemBuilder: (context, index) {
+          ApplicationModel current = widget.modelsList[index];
+          return PassContainerWidget(currentModel: current);
+        },
+      ),
     );
   }
 }
-
-
