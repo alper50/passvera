@@ -57,7 +57,7 @@ class KeysService {
     }
   }
 
-    Future<Either<StorageFailure, Unit>> deleteSingleValue(
+  Future<Either<StorageFailure, Unit>> deleteSingleValue(
       {required String appKey}) async {
     try {
       await storage.delete(key: appKey);
@@ -67,11 +67,17 @@ class KeysService {
     }
   }
 
-   Future<Either<StorageFailure, Unit>> updateSingleValue(
-      {required ApplicationModel model}) async {
+  Future<Either<StorageFailure, Unit>> updateSingleValue(
+      {required ApplicationModel model, required String oldKey}) async {
     try {
-      await storage.write(key: model.key, value: model.value);
-      return const Right(unit);
+      final result = await storage.read(key: oldKey);
+      if (result != null) {
+        await storage.delete(key: oldKey);
+        await storage.write(key: model.key, value: model.value);
+        return const Right(unit);
+      } else {
+         return const Left(StorageFailure.emptyKey());
+      }
     } catch (e) {
       return Left(StorageFailure.unexpected(e));
     }

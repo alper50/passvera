@@ -20,19 +20,19 @@ mixin _$PassActionEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ApplicationModel pass) deletePass,
-    required TResult Function(ApplicationModel pass) updatePass,
+    required TResult Function(ApplicationModel pass, String oldKey) updatePass,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ApplicationModel pass)? deletePass,
-    TResult? Function(ApplicationModel pass)? updatePass,
+    TResult? Function(ApplicationModel pass, String oldKey)? updatePass,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ApplicationModel pass)? deletePass,
-    TResult Function(ApplicationModel pass)? updatePass,
+    TResult Function(ApplicationModel pass, String oldKey)? updatePass,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -174,7 +174,7 @@ class _$_DeletePass implements _DeletePass {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ApplicationModel pass) deletePass,
-    required TResult Function(ApplicationModel pass) updatePass,
+    required TResult Function(ApplicationModel pass, String oldKey) updatePass,
   }) {
     return deletePass(pass);
   }
@@ -183,7 +183,7 @@ class _$_DeletePass implements _DeletePass {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ApplicationModel pass)? deletePass,
-    TResult? Function(ApplicationModel pass)? updatePass,
+    TResult? Function(ApplicationModel pass, String oldKey)? updatePass,
   }) {
     return deletePass?.call(pass);
   }
@@ -192,7 +192,7 @@ class _$_DeletePass implements _DeletePass {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ApplicationModel pass)? deletePass,
-    TResult Function(ApplicationModel pass)? updatePass,
+    TResult Function(ApplicationModel pass, String oldKey)? updatePass,
     required TResult orElse(),
   }) {
     if (deletePass != null) {
@@ -253,7 +253,7 @@ abstract class _$$_UpdatePassCopyWith<$Res>
       __$$_UpdatePassCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ApplicationModel pass});
+  $Res call({ApplicationModel pass, String oldKey});
 
   @override
   $ApplicationModelCopyWith<$Res> get pass;
@@ -271,12 +271,17 @@ class __$$_UpdatePassCopyWithImpl<$Res>
   @override
   $Res call({
     Object? pass = null,
+    Object? oldKey = null,
   }) {
     return _then(_$_UpdatePass(
       pass: null == pass
           ? _value.pass
           : pass // ignore: cast_nullable_to_non_nullable
               as ApplicationModel,
+      oldKey: null == oldKey
+          ? _value.oldKey
+          : oldKey // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -284,14 +289,16 @@ class __$$_UpdatePassCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_UpdatePass implements _UpdatePass {
-  const _$_UpdatePass({required this.pass});
+  const _$_UpdatePass({required this.pass, required this.oldKey});
 
   @override
   final ApplicationModel pass;
+  @override
+  final String oldKey;
 
   @override
   String toString() {
-    return 'PassActionEvent.updatePass(pass: $pass)';
+    return 'PassActionEvent.updatePass(pass: $pass, oldKey: $oldKey)';
   }
 
   @override
@@ -299,11 +306,12 @@ class _$_UpdatePass implements _UpdatePass {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UpdatePass &&
-            (identical(other.pass, pass) || other.pass == pass));
+            (identical(other.pass, pass) || other.pass == pass) &&
+            (identical(other.oldKey, oldKey) || other.oldKey == oldKey));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pass);
+  int get hashCode => Object.hash(runtimeType, pass, oldKey);
 
   @JsonKey(ignore: true)
   @override
@@ -315,29 +323,29 @@ class _$_UpdatePass implements _UpdatePass {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ApplicationModel pass) deletePass,
-    required TResult Function(ApplicationModel pass) updatePass,
+    required TResult Function(ApplicationModel pass, String oldKey) updatePass,
   }) {
-    return updatePass(pass);
+    return updatePass(pass, oldKey);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ApplicationModel pass)? deletePass,
-    TResult? Function(ApplicationModel pass)? updatePass,
+    TResult? Function(ApplicationModel pass, String oldKey)? updatePass,
   }) {
-    return updatePass?.call(pass);
+    return updatePass?.call(pass, oldKey);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ApplicationModel pass)? deletePass,
-    TResult Function(ApplicationModel pass)? updatePass,
+    TResult Function(ApplicationModel pass, String oldKey)? updatePass,
     required TResult orElse(),
   }) {
     if (updatePass != null) {
-      return updatePass(pass);
+      return updatePass(pass, oldKey);
     }
     return orElse();
   }
@@ -375,11 +383,13 @@ class _$_UpdatePass implements _UpdatePass {
 }
 
 abstract class _UpdatePass implements PassActionEvent {
-  const factory _UpdatePass({required final ApplicationModel pass}) =
-      _$_UpdatePass;
+  const factory _UpdatePass(
+      {required final ApplicationModel pass,
+      required final String oldKey}) = _$_UpdatePass;
 
   @override
   ApplicationModel get pass;
+  String get oldKey;
   @override
   @JsonKey(ignore: true)
   _$$_UpdatePassCopyWith<_$_UpdatePass> get copyWith =>

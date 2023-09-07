@@ -4,6 +4,7 @@ import 'package:passvera/presentation/core/theme/text_styles.dart';
 void showFormDialog(
     {required BuildContext context,
     required void Function()? onPressed,
+    String? title='Lets Add New One',
     TextEditingController? controllerAppKey,
     TextEditingController? controllerAppValue}) {
   showDialog(
@@ -20,7 +21,7 @@ void showFormDialog(
           ),
         ),
         title: Text(
-          'Lets Add New One',
+          title!,
           style: MyTextStyles.headline2Bold,
         ),
         content: SingleChildScrollView(

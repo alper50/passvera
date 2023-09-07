@@ -7,6 +7,7 @@ import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/injection.dart';
 import 'package:passvera/presentation/core/route/route.gr.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
+import 'package:passvera/presentation/core/widgets/form_dialog.dart';
 import 'package:passvera/presentation/core/widgets/my_small_button.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
 
@@ -101,13 +102,31 @@ class _PassDetailBodyState extends State<PassDetailBody> {
                     style: MyTextStyles.headline2,
                   ),
                   MySmallButton(
-                    icon: Icon(
-                      Icons.edit_outlined,
-                    ),
-                    onTap: () => context.read<PassActionBloc>().add(
-                          PassActionEvent.updatePass(pass: widget.model),
-                        ),
-                  ),
+                      icon: Icon(
+                        Icons.edit_outlined,
+                      ),
+                      onTap: () {
+                        var controllerAppKey =
+                            TextEditingController(text: widget.model.key);
+                        var controllerAppValue =
+                            TextEditingController(text: widget.model.value);
+
+                        showFormDialog(
+                            title: 'What Changed :)',
+                            controllerAppKey: controllerAppKey,
+                            controllerAppValue: controllerAppValue,
+                            context: context,
+                            onPressed: () {
+                              return context.read<PassActionBloc>().add(
+                                    PassActionEvent.updatePass(
+                                      pass: ApplicationModel(
+                                        key: controllerAppKey.text,
+                                        value: controllerAppValue.text,
+                                      ), oldKey: widget.model.key,
+                                    ),
+                                  );
+                            });
+                      }),
                 ],
               ),
             ),

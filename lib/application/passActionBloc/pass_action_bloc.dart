@@ -25,9 +25,11 @@ class PassActionBloc extends Bloc<PassActionEvent, PassActionState> {
           );
         },
         updatePass: (e) async {
-          final result = await repository.updateSingleValue(model: e.pass);
+          final result = await repository.updateSingleValue(model: e.pass,oldKey: e.oldKey);
           emit(
             state.copyWith(
+              // updateFailureOrSucces: optionOf(result),
+              // deleteFailureOrSucces: none()
               deleteFailureOrSucces: optionOf(result),
             ),
           );

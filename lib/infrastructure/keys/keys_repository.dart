@@ -29,7 +29,7 @@ class KeysRepository extends IKeysRepository {
   }
   
   @override
-  Future<Either<StorageFailure, Unit>> updateSingleValue({required ApplicationModel model}) async{
-   return await _service.updateSingleValue(model: model);
+  Future<Either<StorageFailure, Unit>> updateSingleValue({required ApplicationModel model, required String oldKey}) async{
+   return await _service.updateSingleValue(model: model, oldKey: oldKey);
   }
 }
