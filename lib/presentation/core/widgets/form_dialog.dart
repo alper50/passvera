@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
+import 'package:password_strength_checker/password_strength_checker.dart';
 
 void showFormDialog(
     {required BuildContext context,
@@ -10,6 +11,7 @@ void showFormDialog(
   showDialog(
     context: context,
     builder: (BuildContext context) {
+      final passNotifier = ValueNotifier<PasswordStrength?>(null);
       return AlertDialog(
         actionsAlignment: MainAxisAlignment.center,
         backgroundColor: Colors.yellow,
@@ -38,6 +40,17 @@ void showFormDialog(
               MyTextField(
                 text: 'Password Pls..',
                 controller: controllerAppValue!,
+                onChanged: (string) {
+                  passNotifier.value = PasswordStrength.calculate(text: string);
+                },
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              PasswordStrengthChecker(
+                strength: passNotifier,
+                configuration: PasswordStrengthCheckerConfiguration(
+                    height: 30, borderWidth: 3),
               ),
             ],
           ),
@@ -98,10 +111,12 @@ class MyFormButton extends StatelessWidget {
 class MyTextField extends StatelessWidget {
   final String text;
   final TextEditingController controller;
+  final void Function(String)? onChanged;
   const MyTextField({
     super.key,
     required this.text,
     required this.controller,
+    this.onChanged,
   });
 
   @override
@@ -124,6 +139,7 @@ class MyTextField extends StatelessWidget {
         ],
       ),
       child: TextFormField(
+        onChanged: (string) => onChanged!(string),
         controller: controller,
         style: TextStyle(
           fontSize: 16.0,

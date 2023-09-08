@@ -528,14 +528,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
-  password_strength:
+  password_strength_checker:
     dependency: "direct main"
     description:
-      name: password_strength
-      sha256: "0e51e3d864e37873a1347e658147f88b66e141ee36c58e19828dc5637961e1ce"
+      name: password_strength_checker
+      sha256: "5b56c2977b1507689c9eabc307db78c42e18c66482da8076e961e02d3c0fd555"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0"
+    version: "1.2.2"
   path:
     dependency: transitive
     description:

@@ -16,7 +16,7 @@ dependencies:
   # local_auth: ^2.1.6
 
   #appSpecificUtils
-  password_strength: ^0.2.0     # password strength checks from both dictionary and bruteforce ways
+  password_strength_checker: ^1.2.2    # password strength checks from both dictionary and bruteforce ways
   flutter_secure_storage: ^8.0.0
   app_bar_with_search_switch: ^1.5.4
   #general
