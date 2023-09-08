@@ -18,6 +18,7 @@ dependencies:
   #appSpecificUtils
   password_strength: ^0.2.0     # password strength checks from both dictionary and bruteforce ways
   flutter_secure_storage: ^8.0.0
+  app_bar_with_search_switch: ^1.5.4
   #general
   flutter_bloc: ^8.1.3         # state management 
   dartz: ^0.10.1       

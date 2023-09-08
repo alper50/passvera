@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:passvera/presentation/core/theme/text_styles.dart';
 
 enum ThemeMode { system, systemLight, systemDark, light, dark }
 
@@ -9,6 +10,14 @@ class MyThemeData {
     iconTheme: IconThemeData(
       size: 40,
       color: Colors.black,
+    ),
+    appBarTheme: AppBarTheme(
+      toolbarTextStyle: MyTextStyles.headline3Bold.copyWith(color: Colors.black),
+      titleTextStyle: MyTextStyles.headline3Bold.copyWith(color: Colors.black),
+      iconTheme: IconThemeData(color: Colors.black),
+      backgroundColor: Colors.grey[50],
+      foregroundColor: Colors.grey[50],
+      elevation: 0,
     ),
     splashColor: Colors.transparent,
     highlightColor: Colors.transparent,

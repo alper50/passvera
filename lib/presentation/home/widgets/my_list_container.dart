@@ -1,3 +1,4 @@
+import 'package:app_bar_with_search_switch/app_bar_with_search_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/presentation/home/widgets/pass_container.dart';
@@ -23,7 +24,15 @@ class _MyListContainerState extends State<MyListContainer> {
         itemCount: widget.modelsList.length,
         itemBuilder: (context, index) {
           ApplicationModel current = widget.modelsList[index];
-          return PassContainerWidget(currentModel: current);
+          return AppBarOnEditListener(
+            child: PassContainerWidget(currentModel: current),
+            builder: (BuildContext context, searchText, child) {
+              return Visibility(
+                visible: current.key.contains(searchText),
+                child: child!,
+              );
+            }, 
+          );
         },
       ),
     );
