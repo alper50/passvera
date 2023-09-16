@@ -33,6 +33,7 @@ void showFormDialog(
               MyTextField(
                 text: 'App Name',
                 controller: controllerAppKey!,
+                onChanged: (_) {},
               ),
               SizedBox(
                 height: 20,
@@ -42,6 +43,28 @@ void showFormDialog(
                 controller: controllerAppValue!,
                 onChanged: (string) {
                   passNotifier.value = PasswordStrength.calculate(text: string);
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              MyFormButton(
+                title: 'Generate For Me',
+                onPressed: () {
+                  final config = PasswordGeneratorConfiguration(
+                    //TODO configleri ayrı page te topla
+                    length: 32,
+                    minUppercase: 8,
+                  );
+
+                  final passwordGenerator = PasswordGenerator.fromConfig(
+                    configuration: config,
+                  );
+
+                  final password = passwordGenerator.generate();
+                  controllerAppValue.value = TextEditingValue(text: password);
+                  passNotifier.value =
+                      PasswordStrength.calculate(text: password);
                 },
               ),
               SizedBox(
@@ -111,12 +134,12 @@ class MyFormButton extends StatelessWidget {
 class MyTextField extends StatelessWidget {
   final String text;
   final TextEditingController controller;
-  final void Function(String)? onChanged;
+  final void Function(String) onChanged;
   const MyTextField({
     super.key,
     required this.text,
     required this.controller,
-    this.onChanged,
+    required this.onChanged,
   });
 
   @override
@@ -139,7 +162,7 @@ class MyTextField extends StatelessWidget {
         ],
       ),
       child: TextFormField(
-        onChanged: (string) => onChanged!(string),
+        onChanged: (string) => onChanged(string),
         controller: controller,
         style: TextStyle(
           fontSize: 16.0,

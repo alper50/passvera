@@ -53,22 +53,21 @@ class HomeView extends StatelessWidget {
             listener: (context, state) {
               state.verifyFailureOrSucces.fold(
                 () => null,
-                (either) => either.fold(
-                  (failure) {
-                    showMySnackBar(
-                      context: context,
-                      message: failure.map(
-                        unexpected: (e) => e.toString(),
-                        insufficientPermission: (_) => 'Permission Denied',
-                        keyAlreadyUsed: (_) => 'This key already used',
-                        emptyKey: (_) => 'Parameters cannot be empty',
-                      ),
-                    );
-                  },
-                  (succes) => context
-                      .read<HomeBloc>()
-                      .add(const HomeEvent.getAllValues()),
-                ),
+                (either) => either.fold((failure) {
+                  showMySnackBar(
+                    isError: true,
+                    context: context,
+                    message: failure.map(
+                      unexpected: (e) => e.toString(),
+                      insufficientPermission: (_) => 'Permission Denied',
+                      keyAlreadyUsed: (_) => 'This key already used',
+                      emptyKey: (_) => 'Parameters cannot be empty',
+                    ),
+                  );
+                }, (succes) {
+                  Navigator.of(context).pop();
+                  context.read<HomeBloc>().add(const HomeEvent.getAllValues());
+                }),
               );
             },
           ),
@@ -125,7 +124,6 @@ class ScaffoldView extends StatelessWidget {
                       appValue: controllerAppValue.text,
                     ),
                   );
-              Navigator.of(context).pop();
             },
             controllerAppKey: controllerAppKey,
             controllerAppValue: controllerAppValue,
