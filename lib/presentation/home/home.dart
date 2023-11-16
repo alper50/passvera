@@ -41,6 +41,7 @@ class HomeView extends StatelessWidget {
                           insufficientPermission: (_) => 'Permission Denied',
                           keyAlreadyUsed: (_) => 'This key already used',
                           emptyKey: (_) => 'Parameters cannot be empty',
+                          modelNotValid: (_)=>'Model is not valid',
                         ),
                       ),
                     },
@@ -62,6 +63,7 @@ class HomeView extends StatelessWidget {
                       insufficientPermission: (_) => 'Permission Denied',
                       keyAlreadyUsed: (_) => 'This key already used',
                       emptyKey: (_) => 'Parameters cannot be empty',
+                      modelNotValid: (_)=>'Model is not valid',
                     ),
                   );
                 }, (succes) {

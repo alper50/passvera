@@ -6,5 +6,5 @@ abstract class StorageFailure with _$StorageFailure{
   const factory StorageFailure.keyAlreadyUsed()= _KeyAlreadyUsed;
   const factory StorageFailure.insufficientPermission()= _InsufficientPermission;
   const factory StorageFailure.emptyKey()= _EmptyKey;
-
+  const factory StorageFailure.modelNotValid()= _ModelNotValid;
 }

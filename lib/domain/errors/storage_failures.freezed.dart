@@ -22,6 +22,7 @@ mixin _$StorageFailure {
     required TResult Function() keyAlreadyUsed,
     required TResult Function() insufficientPermission,
     required TResult Function() emptyKey,
+    required TResult Function() modelNotValid,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$StorageFailure {
     TResult? Function()? keyAlreadyUsed,
     TResult? Function()? insufficientPermission,
     TResult? Function()? emptyKey,
+    TResult? Function()? modelNotValid,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$StorageFailure {
     TResult Function()? keyAlreadyUsed,
     TResult Function()? insufficientPermission,
     TResult Function()? emptyKey,
+    TResult Function()? modelNotValid,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +51,7 @@ mixin _$StorageFailure {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_EmptyKey value) emptyKey,
+    required TResult Function(_ModelNotValid value) modelNotValid,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +60,7 @@ mixin _$StorageFailure {
     TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_EmptyKey value)? emptyKey,
+    TResult? Function(_ModelNotValid value)? modelNotValid,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +69,7 @@ mixin _$StorageFailure {
     TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_EmptyKey value)? emptyKey,
+    TResult Function(_ModelNotValid value)? modelNotValid,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -156,6 +162,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() keyAlreadyUsed,
     required TResult Function() insufficientPermission,
     required TResult Function() emptyKey,
+    required TResult Function() modelNotValid,
   }) {
     return unexpected(e);
   }
@@ -167,6 +174,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function()? keyAlreadyUsed,
     TResult? Function()? insufficientPermission,
     TResult? Function()? emptyKey,
+    TResult? Function()? modelNotValid,
   }) {
     return unexpected?.call(e);
   }
@@ -178,6 +186,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? keyAlreadyUsed,
     TResult Function()? insufficientPermission,
     TResult Function()? emptyKey,
+    TResult Function()? modelNotValid,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -194,6 +203,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_EmptyKey value) emptyKey,
+    required TResult Function(_ModelNotValid value) modelNotValid,
   }) {
     return unexpected(this);
   }
@@ -205,6 +215,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_EmptyKey value)? emptyKey,
+    TResult? Function(_ModelNotValid value)? modelNotValid,
   }) {
     return unexpected?.call(this);
   }
@@ -216,6 +227,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_EmptyKey value)? emptyKey,
+    TResult Function(_ModelNotValid value)? modelNotValid,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -276,6 +288,7 @@ class _$_KeyAlreadyUsed implements _KeyAlreadyUsed {
     required TResult Function() keyAlreadyUsed,
     required TResult Function() insufficientPermission,
     required TResult Function() emptyKey,
+    required TResult Function() modelNotValid,
   }) {
     return keyAlreadyUsed();
   }
@@ -287,6 +300,7 @@ class _$_KeyAlreadyUsed implements _KeyAlreadyUsed {
     TResult? Function()? keyAlreadyUsed,
     TResult? Function()? insufficientPermission,
     TResult? Function()? emptyKey,
+    TResult? Function()? modelNotValid,
   }) {
     return keyAlreadyUsed?.call();
   }
@@ -298,6 +312,7 @@ class _$_KeyAlreadyUsed implements _KeyAlreadyUsed {
     TResult Function()? keyAlreadyUsed,
     TResult Function()? insufficientPermission,
     TResult Function()? emptyKey,
+    TResult Function()? modelNotValid,
     required TResult orElse(),
   }) {
     if (keyAlreadyUsed != null) {
@@ -314,6 +329,7 @@ class _$_KeyAlreadyUsed implements _KeyAlreadyUsed {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_EmptyKey value) emptyKey,
+    required TResult Function(_ModelNotValid value) modelNotValid,
   }) {
     return keyAlreadyUsed(this);
   }
@@ -325,6 +341,7 @@ class _$_KeyAlreadyUsed implements _KeyAlreadyUsed {
     TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_EmptyKey value)? emptyKey,
+    TResult? Function(_ModelNotValid value)? modelNotValid,
   }) {
     return keyAlreadyUsed?.call(this);
   }
@@ -336,6 +353,7 @@ class _$_KeyAlreadyUsed implements _KeyAlreadyUsed {
     TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_EmptyKey value)? emptyKey,
+    TResult Function(_ModelNotValid value)? modelNotValid,
     required TResult orElse(),
   }) {
     if (keyAlreadyUsed != null) {
@@ -392,6 +410,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     required TResult Function() keyAlreadyUsed,
     required TResult Function() insufficientPermission,
     required TResult Function() emptyKey,
+    required TResult Function() modelNotValid,
   }) {
     return insufficientPermission();
   }
@@ -403,6 +422,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult? Function()? keyAlreadyUsed,
     TResult? Function()? insufficientPermission,
     TResult? Function()? emptyKey,
+    TResult? Function()? modelNotValid,
   }) {
     return insufficientPermission?.call();
   }
@@ -414,6 +434,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult Function()? keyAlreadyUsed,
     TResult Function()? insufficientPermission,
     TResult Function()? emptyKey,
+    TResult Function()? modelNotValid,
     required TResult orElse(),
   }) {
     if (insufficientPermission != null) {
@@ -430,6 +451,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_EmptyKey value) emptyKey,
+    required TResult Function(_ModelNotValid value) modelNotValid,
   }) {
     return insufficientPermission(this);
   }
@@ -441,6 +463,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_EmptyKey value)? emptyKey,
+    TResult? Function(_ModelNotValid value)? modelNotValid,
   }) {
     return insufficientPermission?.call(this);
   }
@@ -452,6 +475,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_EmptyKey value)? emptyKey,
+    TResult Function(_ModelNotValid value)? modelNotValid,
     required TResult orElse(),
   }) {
     if (insufficientPermission != null) {
@@ -507,6 +531,7 @@ class _$_EmptyKey implements _EmptyKey {
     required TResult Function() keyAlreadyUsed,
     required TResult Function() insufficientPermission,
     required TResult Function() emptyKey,
+    required TResult Function() modelNotValid,
   }) {
     return emptyKey();
   }
@@ -518,6 +543,7 @@ class _$_EmptyKey implements _EmptyKey {
     TResult? Function()? keyAlreadyUsed,
     TResult? Function()? insufficientPermission,
     TResult? Function()? emptyKey,
+    TResult? Function()? modelNotValid,
   }) {
     return emptyKey?.call();
   }
@@ -529,6 +555,7 @@ class _$_EmptyKey implements _EmptyKey {
     TResult Function()? keyAlreadyUsed,
     TResult Function()? insufficientPermission,
     TResult Function()? emptyKey,
+    TResult Function()? modelNotValid,
     required TResult orElse(),
   }) {
     if (emptyKey != null) {
@@ -545,6 +572,7 @@ class _$_EmptyKey implements _EmptyKey {
     required TResult Function(_InsufficientPermission value)
         insufficientPermission,
     required TResult Function(_EmptyKey value) emptyKey,
+    required TResult Function(_ModelNotValid value) modelNotValid,
   }) {
     return emptyKey(this);
   }
@@ -556,6 +584,7 @@ class _$_EmptyKey implements _EmptyKey {
     TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_EmptyKey value)? emptyKey,
+    TResult? Function(_ModelNotValid value)? modelNotValid,
   }) {
     return emptyKey?.call(this);
   }
@@ -567,6 +596,7 @@ class _$_EmptyKey implements _EmptyKey {
     TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_EmptyKey value)? emptyKey,
+    TResult Function(_ModelNotValid value)? modelNotValid,
     required TResult orElse(),
   }) {
     if (emptyKey != null) {
@@ -578,4 +608,125 @@ class _$_EmptyKey implements _EmptyKey {
 
 abstract class _EmptyKey implements StorageFailure {
   const factory _EmptyKey() = _$_EmptyKey;
+}
+
+/// @nodoc
+abstract class _$$_ModelNotValidCopyWith<$Res> {
+  factory _$$_ModelNotValidCopyWith(
+          _$_ModelNotValid value, $Res Function(_$_ModelNotValid) then) =
+      __$$_ModelNotValidCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_ModelNotValidCopyWithImpl<$Res>
+    extends _$StorageFailureCopyWithImpl<$Res, _$_ModelNotValid>
+    implements _$$_ModelNotValidCopyWith<$Res> {
+  __$$_ModelNotValidCopyWithImpl(
+      _$_ModelNotValid _value, $Res Function(_$_ModelNotValid) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_ModelNotValid implements _ModelNotValid {
+  const _$_ModelNotValid();
+
+  @override
+  String toString() {
+    return 'StorageFailure.modelNotValid()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ModelNotValid);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(dynamic e) unexpected,
+    required TResult Function() keyAlreadyUsed,
+    required TResult Function() insufficientPermission,
+    required TResult Function() emptyKey,
+    required TResult Function() modelNotValid,
+  }) {
+    return modelNotValid();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(dynamic e)? unexpected,
+    TResult? Function()? keyAlreadyUsed,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? emptyKey,
+    TResult? Function()? modelNotValid,
+  }) {
+    return modelNotValid?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(dynamic e)? unexpected,
+    TResult Function()? keyAlreadyUsed,
+    TResult Function()? insufficientPermission,
+    TResult Function()? emptyKey,
+    TResult Function()? modelNotValid,
+    required TResult orElse(),
+  }) {
+    if (modelNotValid != null) {
+      return modelNotValid();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_EmptyKey value) emptyKey,
+    required TResult Function(_ModelNotValid value) modelNotValid,
+  }) {
+    return modelNotValid(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_EmptyKey value)? emptyKey,
+    TResult? Function(_ModelNotValid value)? modelNotValid,
+  }) {
+    return modelNotValid?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_EmptyKey value)? emptyKey,
+    TResult Function(_ModelNotValid value)? modelNotValid,
+    required TResult orElse(),
+  }) {
+    if (modelNotValid != null) {
+      return modelNotValid(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ModelNotValid implements StorageFailure {
+  const factory _ModelNotValid() = _$_ModelNotValid;
 }
