@@ -98,10 +98,10 @@ class ScaffoldView extends StatelessWidget {
             milliseconds: 150, withFade: true, percents: 1.0, child: child),
         appBarBuilder: (BuildContext context) {
           return AppBar(
-            actions: [
-              AppBarSearchButton(),
+            actions: const [
+               AppBarSearchButton(),
             ],
-            title: Text(
+            title: const Text(
               'PassVera',
             ),
           );
@@ -109,7 +109,7 @@ class ScaffoldView extends StatelessWidget {
       ),
       body: const HomeBody(),
       floatingActionButton: FloatingActionButton(
-        child: Icon(
+        child: const Icon(
           Icons.add_rounded,
           size: 50,
         ),

@@ -11,20 +11,20 @@ part 'onboard_bloc.freezed.dart';
 @Injectable()
 class OnboardBloc extends Bloc<OnboardEvent, OnboardState> {
   final IKeysRepository keysRepository;
-  OnboardBloc(this.keysRepository) : super(_Initial()) {
+  OnboardBloc(this.keysRepository) : super(const _Initial()) {
     on<OnboardEvent>((event, emit) async {
       await event.map(
         checkOnboard: (_) async {
           final result =
               await keysRepository.getSingleValue(onboardKey: 'onboard');
           result.fold(
-            (l) => emit(OnboardState.onboardNotShowed()),
-            (r) => emit(OnboardState.onboarShowed()),
+            (l) => emit(const OnboardState.onboardNotShowed()),
+            (r) => emit(const OnboardState.onboarShowed()),
           );
         },
         setOnboard: (_SetOnboard value) async {
           ApplicationModel onboardModel =
-              ApplicationModel(key: 'onboard', value: 'true');
+              const ApplicationModel(key: 'onboard', value: 'true');
           await keysRepository.encryptValue(appModel: onboardModel);
         },
       );

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 
 class MySmallButton extends StatelessWidget {
-  MySmallButton({
+  const MySmallButton({
     super.key,
     this.onTap,
     required this.icon,

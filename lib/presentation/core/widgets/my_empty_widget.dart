@@ -14,7 +14,7 @@ class MyEmptyWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Lottie.asset('assets/animation/empty.json'),
-          Text(
+          const Text(
             'Cant see any password here',
             style: MyTextStyles.headline3,
           ),

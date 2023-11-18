@@ -15,10 +15,10 @@ void showFormDialog(
       return AlertDialog(
         actionsAlignment: MainAxisAlignment.center,
         backgroundColor: Colors.yellow,
-        contentPadding: EdgeInsets.all(30),
+        contentPadding: const EdgeInsets.all(30),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
-          side: BorderSide(
+          side: const BorderSide(
             color: Colors.black,
             width: 4.0,
           ),
@@ -35,7 +35,7 @@ void showFormDialog(
                 controller: controllerAppKey!,
                 onChanged: (_) {},
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               MyTextField(
@@ -45,13 +45,13 @@ void showFormDialog(
                   passNotifier.value = PasswordStrength.calculate(text: string);
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               MyFormButton(
                 title: 'Generate For Me',
                 onPressed: () {
-                  final config = PasswordGeneratorConfiguration(
+                  const config = PasswordGeneratorConfiguration(
                     //TODO configleri ayrı page te topla
                     length: 32,
                     minUppercase: 8,
@@ -67,12 +67,12 @@ void showFormDialog(
                       PasswordStrength.calculate(text: password);
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               PasswordStrengthChecker(
                 strength: passNotifier,
-                configuration: PasswordStrengthCheckerConfiguration(
+                configuration: const PasswordStrengthCheckerConfiguration(
                     height: 30, borderWidth: 3),
               ),
             ],
@@ -105,21 +105,20 @@ class MyFormButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      child: Text(title),
       style: ElevatedButton.styleFrom(
-        primary: Colors.yellow,
-        onPrimary: Colors.black,
-        textStyle: TextStyle(
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.yellow,
+        textStyle: const TextStyle(
           fontSize: 18.0,
           fontWeight: FontWeight.bold,
         ),
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           vertical: 16.0,
           horizontal: 32.0,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
-          side: BorderSide(
+          side: const BorderSide(
             color: Colors.black,
             width: 2.0,
           ),
@@ -127,6 +126,7 @@ class MyFormButton extends StatelessWidget {
         elevation: 0.0,
       ),
       onPressed: () => onPressed(),
+      child: Text(title),
     );
   }
 }
@@ -164,21 +164,21 @@ class MyTextField extends StatelessWidget {
       child: TextFormField(
         onChanged: (string) => onChanged(string),
         controller: controller,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 16.0,
           color: Colors.black,
           decoration: TextDecoration.none,
         ),
         decoration: InputDecoration(
           labelText: text,
-          labelStyle: TextStyle(
+          labelStyle: const TextStyle(
             fontSize: 18.0,
             color: Colors.black,
           ),
-          enabledBorder: OutlineInputBorder(
+          enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide.none,
           ),
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide.none,
           ),
         ),

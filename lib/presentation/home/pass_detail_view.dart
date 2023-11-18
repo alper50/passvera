@@ -13,7 +13,7 @@ import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
 
 class PassDetailView extends StatelessWidget {
   final ApplicationModel model;
-  PassDetailView({super.key, required this.model});
+  const PassDetailView({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +29,14 @@ class PassDetailView extends StatelessWidget {
       child: BlocListener<PassActionBloc, PassActionState>(
         listener: (context, state) {
           return state.deleteFailureOrSucces.fold(
-            () => null,
+            () {},
             (either) => either.fold(
               (failure) => showMySnackBar(
                 context: context,
                 message: failure.toString(),
               ),
               (succes) {
-                AutoRouter.of(context).pushAndPopUntil(HomeView(),
+                AutoRouter.of(context).pushAndPopUntil(const HomeView(),
                     predicate: (Route<dynamic> route) {
                   return false;
                 });
@@ -51,7 +51,7 @@ class PassDetailView extends StatelessWidget {
             elevation: 0,
             automaticallyImplyLeading: false,
             leading: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios_new_rounded,
                 color: Colors.black,
               ),
@@ -98,11 +98,11 @@ class _PassDetailBodyState extends State<PassDetailBody> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'App:  ' + widget.model.key,
+                    'App:  ${widget.model.key}',
                     style: MyTextStyles.headline2,
                   ),
                   MySmallButton(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.edit_outlined,
                       ),
                       onTap: () {
@@ -147,20 +147,20 @@ class _PassDetailBodyState extends State<PassDetailBody> {
                             children: [
                               TextSpan(
                                 text: widget.model.value,
-                                style: TextStyle(color: Colors.black),
+                                style: const TextStyle(color: Colors.black),
                               ),
                             ],
                           ),
                         )
-                      : Text(
-                          'Password:  ' + '*****',
+                      : const Text(
+                          'Password:  *****',
                           style: MyTextStyles.headline2,
                         ),
                   MySmallButton(
                     icon: AnimatedSwitcher(
                         duration: const Duration(milliseconds: 300),
                         transitionBuilder: (child, anim) => RotationTransition(
-                              turns: child.key == ValueKey('icon1')
+                              turns: child.key == const ValueKey('icon1')
                                   ? Tween<double>(begin: 1, end: 0.0)
                                       .animate(anim)
                                   : Tween<double>(begin: 0.0, end: 1)
@@ -169,13 +169,13 @@ class _PassDetailBodyState extends State<PassDetailBody> {
                                   FadeTransition(opacity: anim, child: child),
                             ),
                         child: isEyeOpen
-                            ? Icon(
+                            ? const Icon(
                                 Icons.remove_red_eye_outlined,
-                                key: const ValueKey('icon1'),
+                                key: ValueKey('icon1'),
                               )
-                            : Icon(
+                            : const Icon(
                                 Icons.elderly_outlined,
-                                key: const ValueKey(
+                                key: ValueKey(
                                   'icon2',
                                 ),
                               )),
@@ -191,12 +191,12 @@ class _PassDetailBodyState extends State<PassDetailBody> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'If you want to Delete  ---->  ',
                     style: MyTextStyles.headline3Bold,
                   ),
                   MySmallButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.delete_outlined,
                       size: 45,
                     ),

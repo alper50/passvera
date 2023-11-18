@@ -29,7 +29,7 @@ SnackBar displaySnackBar(
             },
           )
         : null,
-    duration: Duration(seconds: 3),
+    duration: const Duration(seconds: 3),
     backgroundColor: Colors
         .yellow, //isError? MyColors.errorColor: MyColors.primaryColor, TODO color constants
   );

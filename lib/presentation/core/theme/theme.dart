@@ -7,14 +7,14 @@ class MyThemeData {
   MyThemeData._();
   static final ThemeData lightheme = ThemeData(
     fontFamily: "QuickSand",
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       size: 40,
       color: Colors.black,
     ),
     appBarTheme: AppBarTheme(
       toolbarTextStyle: MyTextStyles.headline3Bold.copyWith(color: Colors.black),
       titleTextStyle: MyTextStyles.headline3Bold.copyWith(color: Colors.black),
-      iconTheme: IconThemeData(color: Colors.black),
+      iconTheme: const IconThemeData(color: Colors.black),
       backgroundColor: Colors.grey[50],
       foregroundColor: Colors.grey[50],
       elevation: 0,
@@ -25,7 +25,7 @@ class MyThemeData {
     snackBarTheme: SnackBarThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
-        side: BorderSide(
+        side: const  BorderSide(
           color: Colors.black,
           width: 3.0,
         ),
@@ -38,7 +38,7 @@ class MyThemeData {
       foregroundColor: Colors.black,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12.0),
-        side: BorderSide(
+        side: const BorderSide(
           color: Colors.black,
           width: 3.0,
         ),

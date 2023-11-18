@@ -20,9 +20,9 @@ class PassContainerWidget extends StatelessWidget {
       onTap: () => Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => PassDetailView(model: currentModel))),
       child: Container(
-        margin: EdgeInsets.all(10.0),
-        padding: EdgeInsets.all(15.0),
-        constraints: BoxConstraints(
+        margin: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(15.0),
+        constraints: const BoxConstraints(
           minWidth: 100.0,
           minHeight: 80,
         ),
@@ -52,7 +52,7 @@ class PassContainerWidget extends StatelessWidget {
             Row(
               children: [
                 MySmallButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.copy_rounded,
                     size: 35,
                   ),
@@ -62,7 +62,7 @@ class PassContainerWidget extends StatelessWidget {
                     showMySnackBar(
                         isError: false,
                         context: context,
-                        message: currentModel.key + ' pasword copied');
+                        message: '${currentModel.key} pasword copied');
                   },
                 ),
                 const SizedBox(

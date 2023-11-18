@@ -4,12 +4,12 @@ class OnboardViewBody extends StatelessWidget {
   final String title;
   final String description;
 
-  OnboardViewBody({required this.title, required this.description});
+  const OnboardViewBody({super.key, required this.title, required this.description});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 50),
+      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 50),
       decoration: BoxDecoration(
         color: Colors.yellow,
         borderRadius: BorderRadius.circular(15.0),
@@ -33,19 +33,19 @@ class OnboardViewBody extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Text(
               description,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
               ),
             ),

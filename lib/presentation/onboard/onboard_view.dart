@@ -7,11 +7,13 @@ import 'package:passvera/presentation/core/widgets/my_small_button.dart';
 import 'package:passvera/presentation/onboard/onboard_view_body.dart';
 
 class OnboardView extends StatefulWidget {
+  const OnboardView({super.key});
+
   @override
-  _OnboardViewState createState() => _OnboardViewState();
+  OnboardViewState createState() => OnboardViewState();
 }
 
-class _OnboardViewState extends State<OnboardView> {
+class OnboardViewState extends State<OnboardView> {
   final PageController _pageController = PageController(initialPage: 0);
   final List<String> titles = ["Title 1", "Title 2", "Title 3"];
   final List<String> descriptions = [
@@ -47,12 +49,12 @@ class _OnboardViewState extends State<OnboardView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              SizedBox(),
+              const SizedBox(),
               buildIndicator(),
               buildButton(),
             ],
           ),
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
         ],
       ),
     );
@@ -60,17 +62,17 @@ class _OnboardViewState extends State<OnboardView> {
 
   Widget buildButton() {
     return MySmallButton(
-      icon: Icon(Icons.skip_next_outlined),
+      icon: const Icon(Icons.skip_next_outlined),
       buttonText: currentPage == 2 ? 'Lets Start' : 'Next',
       onTap: () {
         if (currentPage == 2) {
-          getIt<OnboardBloc>()..add(OnboardEvent.setOnboard());
-          AutoRouter.of(context).pushAndPopUntil(HomeView(), predicate: (_) {
+          getIt<OnboardBloc>().add(const OnboardEvent.setOnboard());
+          AutoRouter.of(context).pushAndPopUntil(const HomeView(), predicate: (_) {
             return false;
           });
         } else {
           _pageController.nextPage(
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
             curve: Curves.easeInOut,
           );
         }
@@ -93,8 +95,8 @@ class _OnboardViewState extends State<OnboardView> {
     double size = isSelected ? 25.0 : 15.0;
 
     return AnimatedContainer(
-      duration: Duration(milliseconds: 300),
-      margin: EdgeInsets.symmetric(horizontal: 5),
+      duration: const Duration(milliseconds: 300),
+      margin: const EdgeInsets.symmetric(horizontal: 5),
       height: size,
       width: size,
       decoration: BoxDecoration(

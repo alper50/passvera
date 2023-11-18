@@ -19,7 +19,7 @@ class _SplashViewState extends State<SplashView> {
     return BlocProvider(
       create: (context) =>
           getIt<OnboardBloc>()..add(const OnboardEvent.checkOnboard()),
-      child: SplashViewBody(),
+      child: const SplashViewBody(),
     );
   }
 }
@@ -39,14 +39,14 @@ class SplashViewBody extends StatelessWidget {
             AutoRouter.of(context).replaceNamed('/onboard-view');
           },
           onboarShowed: (_) {
-            Future.delayed(Duration(seconds: 3), () {
+            Future.delayed(const Duration(seconds: 3), () {
               AutoRouter.of(context).replaceNamed('/home-view');
             });
           },
         );
       },
-      child: Scaffold(
-        body: const MyCircularProgress(),
+      child: const Scaffold(
+        body: MyCircularProgress(),
       ),
     );
   }
