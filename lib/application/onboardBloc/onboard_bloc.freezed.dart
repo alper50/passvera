@@ -19,32 +19,38 @@ mixin _$OnboardEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkOnboard,
+    required TResult Function() setOnboard,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkOnboard,
+    TResult? Function()? setOnboard,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkOnboard,
+    TResult Function()? setOnboard,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_CheckOnboard value) checkOnboard,
+    required TResult Function(_SetOnboard value) setOnboard,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CheckOnboard value)? checkOnboard,
+    TResult? Function(_SetOnboard value)? setOnboard,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CheckOnboard value)? checkOnboard,
+    TResult Function(_SetOnboard value)? setOnboard,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$_CheckOnboard implements _CheckOnboard {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkOnboard,
+    required TResult Function() setOnboard,
   }) {
     return checkOnboard();
   }
@@ -115,6 +122,7 @@ class _$_CheckOnboard implements _CheckOnboard {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkOnboard,
+    TResult? Function()? setOnboard,
   }) {
     return checkOnboard?.call();
   }
@@ -123,6 +131,7 @@ class _$_CheckOnboard implements _CheckOnboard {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkOnboard,
+    TResult Function()? setOnboard,
     required TResult orElse(),
   }) {
     if (checkOnboard != null) {
@@ -135,6 +144,7 @@ class _$_CheckOnboard implements _CheckOnboard {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_CheckOnboard value) checkOnboard,
+    required TResult Function(_SetOnboard value) setOnboard,
   }) {
     return checkOnboard(this);
   }
@@ -143,6 +153,7 @@ class _$_CheckOnboard implements _CheckOnboard {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CheckOnboard value)? checkOnboard,
+    TResult? Function(_SetOnboard value)? setOnboard,
   }) {
     return checkOnboard?.call(this);
   }
@@ -151,6 +162,7 @@ class _$_CheckOnboard implements _CheckOnboard {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CheckOnboard value)? checkOnboard,
+    TResult Function(_SetOnboard value)? setOnboard,
     required TResult orElse(),
   }) {
     if (checkOnboard != null) {
@@ -162,6 +174,108 @@ class _$_CheckOnboard implements _CheckOnboard {
 
 abstract class _CheckOnboard implements OnboardEvent {
   const factory _CheckOnboard() = _$_CheckOnboard;
+}
+
+/// @nodoc
+abstract class _$$_SetOnboardCopyWith<$Res> {
+  factory _$$_SetOnboardCopyWith(
+          _$_SetOnboard value, $Res Function(_$_SetOnboard) then) =
+      __$$_SetOnboardCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SetOnboardCopyWithImpl<$Res>
+    extends _$OnboardEventCopyWithImpl<$Res, _$_SetOnboard>
+    implements _$$_SetOnboardCopyWith<$Res> {
+  __$$_SetOnboardCopyWithImpl(
+      _$_SetOnboard _value, $Res Function(_$_SetOnboard) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_SetOnboard implements _SetOnboard {
+  const _$_SetOnboard();
+
+  @override
+  String toString() {
+    return 'OnboardEvent.setOnboard()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_SetOnboard);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() checkOnboard,
+    required TResult Function() setOnboard,
+  }) {
+    return setOnboard();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? checkOnboard,
+    TResult? Function()? setOnboard,
+  }) {
+    return setOnboard?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? checkOnboard,
+    TResult Function()? setOnboard,
+    required TResult orElse(),
+  }) {
+    if (setOnboard != null) {
+      return setOnboard();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CheckOnboard value) checkOnboard,
+    required TResult Function(_SetOnboard value) setOnboard,
+  }) {
+    return setOnboard(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CheckOnboard value)? checkOnboard,
+    TResult? Function(_SetOnboard value)? setOnboard,
+  }) {
+    return setOnboard?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CheckOnboard value)? checkOnboard,
+    TResult Function(_SetOnboard value)? setOnboard,
+    required TResult orElse(),
+  }) {
+    if (setOnboard != null) {
+      return setOnboard(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetOnboard implements OnboardEvent {
+  const factory _SetOnboard() = _$_SetOnboard;
 }
 
 /// @nodoc

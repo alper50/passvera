@@ -7,4 +7,5 @@ abstract class IKeysRepository {
   Future<Either<StorageFailure, List<ApplicationModel>>> getAllValues();
   Future<Either<StorageFailure, Unit>> deleteValue({required String appKey});
   Future<Either<StorageFailure, Unit>> updateSingleValue({required ApplicationModel model, required String oldKey});
+  Future<Either<StorageFailure, Unit>> getSingleValue({required String onboardKey});
 }

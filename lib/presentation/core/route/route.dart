@@ -7,7 +7,6 @@ import 'package:passvera/presentation/splash/splash_view.dart';
 @MaterialAutoRouter(
   replaceInRouteName: 'Route,',
   routes: <AutoRoute>[
-    // AutoRoute(page: SplashView, initial: true),
     AutoRoute(page: HomeView),
     AutoRoute(page: SplashView, initial: true),
     AutoRoute(page: PassDetailView),
