@@ -122,7 +122,8 @@ class _PassDetailBodyState extends State<PassDetailBody> {
                                       pass: ApplicationModel(
                                         key: controllerAppKey.text,
                                         value: controllerAppValue.text,
-                                      ), oldKey: widget.model.key,
+                                      ),
+                                      oldKey: widget.model.key,
                                     ),
                                   );
                             });
@@ -137,9 +138,19 @@ class _PassDetailBodyState extends State<PassDetailBody> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   isEyeOpen
-                      ? Text(
-                          'Password:  ' + widget.model.value,
-                          style: MyTextStyles.headline2,
+                      ? RichText(
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          text: TextSpan(
+                            text: 'Password: ',
+                            style: MyTextStyles.headline2,
+                            children: [
+                              TextSpan(
+                                text: widget.model.value,
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ],
+                          ),
                         )
                       : Text(
                           'Password:  ' + '*****',
