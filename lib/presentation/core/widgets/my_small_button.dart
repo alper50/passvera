@@ -19,34 +19,36 @@ class MySmallButton extends StatelessWidget {
       splashColor: Colors.black,
       focusColor: Colors.black,
       child: Container(
-          decoration: BoxDecoration(
-            color: Colors.yellow,
-            borderRadius: BorderRadius.circular(3.0),
-            border: Border.all(
-              color: Colors.black,
-              width: 3.0,
-            ),
-            boxShadow: const [
-              BoxShadow(
-                color: Colors.black54,
-                offset: Offset(-3.0, 3.0),
-                blurRadius: 5.0,
-                blurStyle: BlurStyle.solid,
-              ),
-            ],
+        decoration: BoxDecoration(
+          color: Colors.yellow,
+          borderRadius: BorderRadius.circular(3.0),
+          border: Border.all(
+            color: Colors.black,
+            width: 3.0,
           ),
-          child: buttonText == null
-              ? icon
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    icon,
-                    Text(
-                      buttonText!,
-                      style: MyTextStyles.bodyLarge,
-                    )
-                  ],
-                )),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black54,
+              offset: Offset(-3.0, 3.0),
+              blurRadius: 5.0,
+              blurStyle: BlurStyle.solid,
+            ),
+          ],
+        ),
+        child: buttonText == null
+            ? icon
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  icon,
+                  Text(
+                    buttonText!,
+                    style: MyTextStyles.bodyLarge,
+                  ),
+                  const SizedBox(),
+                ],
+              ),
+      ),
     );
   }
 }

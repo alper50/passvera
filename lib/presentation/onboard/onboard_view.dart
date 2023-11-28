@@ -62,12 +62,13 @@ class OnboardViewState extends State<OnboardView> {
 
   Widget buildButton() {
     return MySmallButton(
-      icon: const Icon(Icons.skip_next_outlined),
-      buttonText: currentPage == 2 ? 'Lets Start' : 'Next',
+      icon: Icon(
+          currentPage == 2 ? Icons.start_outlined : Icons.skip_next_outlined),
       onTap: () {
         if (currentPage == 2) {
           getIt<OnboardBloc>().add(const OnboardEvent.setOnboard());
-          AutoRouter.of(context).pushAndPopUntil(const HomeView(), predicate: (_) {
+          AutoRouter.of(context).pushAndPopUntil(const HomeView(),
+              predicate: (_) {
             return false;
           });
         } else {

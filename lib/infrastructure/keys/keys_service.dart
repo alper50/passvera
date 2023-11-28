@@ -47,12 +47,12 @@ class KeysService {
       {required String key}) async {
     try {
       final result = await storage.read(key: key);
-      if (result == 'true') {
+      if (result == 'truee') {
         return const Right(unit);
       } else {
         if (result == null) {
           return const Right(unit);
-        }else{
+        } else {
           return const Left(StorageFailure.emptyKey());
         }
       }
