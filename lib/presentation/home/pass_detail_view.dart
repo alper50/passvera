@@ -138,20 +138,11 @@ class _PassDetailBodyState extends State<PassDetailBody> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   isEyeOpen
-                      ? RichText(
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          text: TextSpan(
-                            text: 'Password: ',
-                            style: MyTextStyles.headline2,
-                            children: [
-                              TextSpan(
-                                text: widget.model.value,
-                                style: const TextStyle(color: Colors.black),
-                              ),
-                            ],
-                          ),
-                        )
+                      ? Text(
+                          widget.model.value.length > 20
+                              ? '${widget.model.value.substring(0, 20)}...'
+                              : widget.model.value,
+                          style: MyTextStyles.headline2Bold)
                       : const Text(
                           'Password:  *****',
                           style: MyTextStyles.headline2,
