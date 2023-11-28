@@ -135,12 +135,13 @@ class MyTextField extends StatelessWidget {
   final String text;
   final TextEditingController controller;
   final void Function(String) onChanged;
+
   const MyTextField({
-    super.key,
+    Key? key,
     required this.text,
     required this.controller,
     required this.onChanged,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -181,8 +182,10 @@ class MyTextField extends StatelessWidget {
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide.none,
           ),
+          floatingLabelBehavior: FloatingLabelBehavior.never,
         ),
       ),
     );
   }
 }
+
