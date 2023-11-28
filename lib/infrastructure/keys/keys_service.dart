@@ -50,7 +50,11 @@ class KeysService {
       if (result == 'true') {
         return const Right(unit);
       } else {
-        return const Left(StorageFailure.emptyKey());
+        if (result == null) {
+          return const Right(unit);
+        }else{
+          return const Left(StorageFailure.emptyKey());
+        }
       }
     } catch (e) {
       return Left(StorageFailure.unexpected(e));
@@ -76,7 +80,7 @@ class KeysService {
         await storage.write(key: model.key, value: model.value);
         return const Right(unit);
       } else {
-         return const Left(StorageFailure.emptyKey());
+        return const Left(StorageFailure.emptyKey());
       }
     } catch (e) {
       return Left(StorageFailure.unexpected(e));
