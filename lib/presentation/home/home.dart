@@ -41,7 +41,7 @@ class HomeView extends StatelessWidget {
                           insufficientPermission: (_) => 'Permission Denied',
                           keyAlreadyUsed: (_) => 'This key already used',
                           emptyKey: (_) => 'Parameters cannot be empty',
-                          modelNotValid: (_)=>'Model is not valid',
+                          modelNotValid: (_) => 'Model is not valid',
                         ),
                       ),
                     },
@@ -63,7 +63,7 @@ class HomeView extends StatelessWidget {
                       insufficientPermission: (_) => 'Permission Denied',
                       keyAlreadyUsed: (_) => 'This key already used',
                       emptyKey: (_) => 'Parameters cannot be empty',
-                      modelNotValid: (_)=>'Model is not valid',
+                      modelNotValid: (_) => 'Model is not valid',
                     ),
                   );
                 }, (succes) {
@@ -99,10 +99,10 @@ class ScaffoldView extends StatelessWidget {
         appBarBuilder: (BuildContext context) {
           return AppBar(
             actions: const [
-               AppBarSearchButton(),
+              AppBarSearchButton(),
             ],
             title: const Text(
-              'PassVera',
+              'Password Manager',
             ),
           );
         },

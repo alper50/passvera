@@ -15,7 +15,7 @@ class OnboardView extends StatefulWidget {
 
 class OnboardViewState extends State<OnboardView> {
   final PageController _pageController = PageController(initialPage: 0);
-  final List<String> titles = ["Title 1", "Title 2", "Title 3"];
+  final List<String> images = ["Title 1", "Title 2", "Title 3"];
   final List<String> descriptions = [
     "Description 1",
     "Description 2",
@@ -32,7 +32,7 @@ class OnboardViewState extends State<OnboardView> {
           Expanded(
             child: PageView.builder(
               controller: _pageController,
-              itemCount: titles.length,
+              itemCount: images.length,
               onPageChanged: (index) {
                 setState(() {
                   currentPage = index;
@@ -40,7 +40,7 @@ class OnboardViewState extends State<OnboardView> {
               },
               itemBuilder: (context, index) {
                 return OnboardViewBody(
-                  title: titles[index],
+                  title: images[index],
                   description: descriptions[index],
                 );
               },
@@ -85,7 +85,7 @@ class OnboardViewState extends State<OnboardView> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(
-        titles.length,
+        descriptions.length,
         (index) => buildIndicatorDot(index),
       ),
     );

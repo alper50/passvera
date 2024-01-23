@@ -16,7 +16,7 @@ import 'package:flutter/material.dart' as _i6;
 
 import '../../../domain/application_model.dart' as _i7;
 import '../../home/home.dart' as _i1;
-import '../../home/pass_detail_view.dart' as _i3;
+import '../../home/passwordDetailView/pass_detail_view.dart' as _i3;
 import '../../onboard/onboard_view.dart' as _i4;
 import '../../splash/splash_view.dart' as _i2;
 

@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:passvera/presentation/home/home.dart';
-import 'package:passvera/presentation/home/pass_detail_view.dart';
+import 'package:passvera/presentation/home/passwordDetailView/pass_detail_view.dart';
 import 'package:passvera/presentation/onboard/onboard_view.dart';
 import 'package:passvera/presentation/splash/splash_view.dart';
 

@@ -50,19 +50,20 @@ class HomeBody extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                        flex: 1,
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.white,
-                                blurRadius: 15.0,
-                                spreadRadius: 30,
-                                blurStyle: BlurStyle.normal,
-                              ),
-                            ],
-                          ),
-                        ))
+                      flex: 1,
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.white,
+                              blurRadius: 15.0,
+                              spreadRadius: 30,
+                              blurStyle: BlurStyle.normal,
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
                   ],
                 );
               });

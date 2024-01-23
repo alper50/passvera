@@ -4,7 +4,7 @@ import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/core/widgets/my_small_button.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
-import 'package:passvera/presentation/home/pass_detail_view.dart';
+import 'package:passvera/presentation/home/passwordDetailView/pass_detail_view.dart';
 
 class PassContainerWidget extends StatelessWidget {
   const PassContainerWidget({
