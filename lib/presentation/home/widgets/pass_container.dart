@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/presentation/core/route/route.gr.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
+import 'package:passvera/presentation/core/utils/secure_clipboard.dart';
 import 'package:passvera/presentation/core/widgets/my_small_button.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
 
@@ -61,13 +61,13 @@ class PassContainerWidget extends StatelessWidget {
                 size: 35,
               ),
               onTap: () async {
-                await Clipboard.setData(
-                    ClipboardData(text: currentModel.value));
+                await SecureClipboard.copy(currentModel.value);
                 if (!context.mounted) return;
                 showMySnackBar(
                   isError: false,
                   context: context,
-                  message: '${currentModel.key} password copied',
+                  message:
+                      '${currentModel.key} password copied (clears in 30s)',
                 );
               },
             ),
