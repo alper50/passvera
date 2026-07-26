@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// Manual update: LockView + ProfileView routes added (build_runner unavailable).
+// Manual update: LockView, ProfileView, QrScanView (build_runner unavailable).
 
 // **************************************************************************
 // AutoRouteGenerator
@@ -12,6 +12,7 @@ import 'package:auto_route/auto_route.dart' as _i5;
 import 'package:flutter/material.dart' as _i6;
 
 import '../../../domain/application_model.dart' as _i7;
+import '../../home/authenticator/qr_scan_view.dart' as _i10;
 import '../../home/home.dart' as _i1;
 import '../../home/passwordDetailView/pass_detail_view.dart' as _i3;
 import '../../lock/lock_view.dart' as _i8;
@@ -65,6 +66,12 @@ class MyRouter extends _i5.RootStackRouter {
         child: const _i9.ProfileView(),
       );
     },
+    QrScanView.name: (routeData) {
+      return _i5.MaterialPageX<bool>(
+        routeData: routeData,
+        child: const _i10.QrScanView(),
+      );
+    },
   };
 
   @override
@@ -92,6 +99,10 @@ class MyRouter extends _i5.RootStackRouter {
         _i5.RouteConfig(
           ProfileView.name,
           path: '/profile-view',
+        ),
+        _i5.RouteConfig(
+          QrScanView.name,
+          path: '/qr-scan-view',
         ),
       ];
 }
@@ -188,4 +199,16 @@ class ProfileView extends _i5.PageRouteInfo<void> {
         );
 
   static const String name = 'ProfileView';
+}
+
+/// generated route for
+/// [_i10.QrScanView]
+class QrScanView extends _i5.PageRouteInfo<void> {
+  const QrScanView()
+      : super(
+          QrScanView.name,
+          path: '/qr-scan-view',
+        );
+
+  static const String name = 'QrScanView';
 }

@@ -82,7 +82,7 @@ class PassDetailView extends StatelessWidget {
         ],
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: MyColors.brand,
+            backgroundColor: Color(model.colorValue),
             elevation: 0,
             automaticallyImplyLeading: false,
             leading: IconButton(
@@ -95,7 +95,7 @@ class PassDetailView extends StatelessWidget {
               },
             ),
           ),
-          backgroundColor: MyColors.brand,
+          backgroundColor: Color(model.colorValue),
           body: Padding(
             padding: const EdgeInsets.all(20.0),
             child: PassDetailBody(model: model),

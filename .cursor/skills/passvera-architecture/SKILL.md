@@ -117,7 +117,7 @@ Screens today: Splash → Onboard | Lock | Home → PassDetail / Profile.
 - Offline-first password vault for app-name → password pairs.
 - No cloud sync, no accounts, no remote API in the default architecture.
 - Future lock features (master password / biometrics) belong in domain + application; UI only reacts to lock state. Prefer `local_auth` for biometrics when enabled.
-- Release readiness: replace `com.example.passvera`, do not ship debug signing.
+- Release readiness: application id is `com.passvera.app`; do not ship debug signing.
 
 ## How to add a feature
 

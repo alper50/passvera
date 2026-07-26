@@ -22,6 +22,9 @@ class PassDetailBody extends StatefulWidget {
 
 class _PassDetailBodyState extends State<PassDetailBody> {
   bool isEyeOpen = false;
+
+  Color get _tagColor => Color(widget.model.colorValue);
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PassActionBloc, PassActionState>(
@@ -32,62 +35,76 @@ class _PassDetailBodyState extends State<PassDetailBody> {
               flex: 1,
               child: MyCustomContainer(
                 radius: 5,
-                padding: EdgeInsets.all(5),
+                color: _tagColor,
+                padding: const EdgeInsets.all(5),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      child: Text(
-                        'App:  ${widget.model.key}',
-                        style: MyTextStyles.headline2,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'App:  ${widget.model.key}',
+                            style: MyTextStyles.headline2,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          Text(
+                            'Tag:  ${widget.model.tag}',
+                            style: MyTextStyles.bodySmallBold,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(width: 8),
                     MySmallButton(
-                        icon: const Icon(
-                          Icons.edit_outlined,
-                        ),
-                        onTap: () {
-                          var controllerAppKey =
-                              TextEditingController(text: widget.model.key);
-                          var controllerAppValue =
-                              TextEditingController(text: widget.model.value);
+                      icon: const Icon(Icons.edit_outlined),
+                      onTap: () {
+                        final controllerAppKey =
+                            TextEditingController(text: widget.model.key);
+                        final controllerAppValue =
+                            TextEditingController(text: widget.model.value);
 
-                          showFormDialog(
-                              title: 'What Changed :)',
-                              controllerAppKey: controllerAppKey,
-                              controllerAppValue: controllerAppValue,
-                              context: context,
-                              onPressed: () {
-                                return context.read<PassActionBloc>().add(
-                                      PassActionEvent.updatePass(
-                                        pass: ApplicationModel(
-                                          key: controllerAppKey.text,
-                                          value: controllerAppValue.text,
-                                        ),
-                                        oldKey: widget.model.key,
-                                      ),
-                                    );
-                              });
-                        }),
+                        showFormDialog(
+                          title: 'What Changed :)',
+                          controllerAppKey: controllerAppKey,
+                          controllerAppValue: controllerAppValue,
+                          initialTag: widget.model.tag,
+                          initialColorValue: widget.model.colorValue,
+                          context: context,
+                          onPressed: ({required tag, required colorValue}) {
+                            context.read<PassActionBloc>().add(
+                                  PassActionEvent.updatePass(
+                                    pass: ApplicationModel(
+                                      key: controllerAppKey.text,
+                                      value: controllerAppValue.text,
+                                      tag: tag,
+                                      colorValue: colorValue,
+                                    ),
+                                    oldKey: widget.model.key,
+                                  ),
+                                );
+                          },
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             Expanded(
               flex: 1,
               child: MyCustomContainer(
                 radius: 5,
-                padding: EdgeInsets.all(5),
+                color: _tagColor,
+                padding: const EdgeInsets.all(5),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
                       child: isEyeOpen
@@ -105,29 +122,24 @@ class _PassDetailBodyState extends State<PassDetailBody> {
                     const SizedBox(width: 8),
                     MySmallButton(
                       icon: AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 300),
-                          transitionBuilder: (child, anim) =>
-                              RotationTransition(
-                                turns: child.key == const ValueKey('icon1')
-                                    ? Tween<double>(begin: 1, end: 0.0)
-                                        .animate(anim)
-                                    : Tween<double>(begin: 0.0, end: 1)
-                                        .animate(anim),
-                                child:
-                                    FadeTransition(opacity: anim, child: child),
+                        duration: const Duration(milliseconds: 300),
+                        transitionBuilder: (child, anim) => RotationTransition(
+                          turns: child.key == const ValueKey('icon1')
+                              ? Tween<double>(begin: 1, end: 0.0).animate(anim)
+                              : Tween<double>(begin: 0.0, end: 1).animate(anim),
+                          child: FadeTransition(opacity: anim, child: child),
+                        ),
+                        child: isEyeOpen
+                            ? const Icon(
+                                Icons.visibility_outlined,
+                                key: ValueKey('icon1'),
+                              )
+                            : const Icon(
+                                Icons.visibility_off_outlined,
+                                key: ValueKey('icon2'),
                               ),
-                          child: isEyeOpen
-                              ? const Icon(
-                                  Icons.visibility_outlined,
-                                  key: ValueKey('icon1'),
-                                )
-                              : const Icon(
-                                  Icons.visibility_off_outlined,
-                                  key: ValueKey('icon2'),
-                                )),
-                      onTap: () {
-                        changeEyeState();
-                      },
+                      ),
+                      onTap: changeEyeState,
                     ),
                   ],
                 ),
@@ -173,7 +185,7 @@ class _PassDetailBodyState extends State<PassDetailBody> {
 
   void changeEyeState() {
     setState(() {
-      isEyeOpen == true ? isEyeOpen = false : isEyeOpen = true;
+      isEyeOpen = !isEyeOpen;
     });
   }
 }

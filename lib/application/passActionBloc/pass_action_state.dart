@@ -1,14 +1,29 @@
 part of 'pass_action_bloc.dart';
 
-@freezed
-class PassActionState with _$PassActionState {
-  const factory PassActionState({
-    required Option<Either<StorageFailure, Unit>> deleteFailureOrSucces,
-    required Option<Either<StorageFailure, Unit>> updateFailureOrSucces,
-  }) = _Initial;
+@immutable
+class PassActionState {
+  const PassActionState({
+    required this.deleteFailureOrSucces,
+    required this.updateFailureOrSucces,
+  });
+
+  final Option<Either<StorageFailure, Unit>> deleteFailureOrSucces;
+  final Option<Either<StorageFailure, Unit>> updateFailureOrSucces;
 
   factory PassActionState.initial() => PassActionState(
         deleteFailureOrSucces: none(),
         updateFailureOrSucces: none(),
       );
+
+  PassActionState copyWith({
+    Option<Either<StorageFailure, Unit>>? deleteFailureOrSucces,
+    Option<Either<StorageFailure, Unit>>? updateFailureOrSucces,
+  }) {
+    return PassActionState(
+      deleteFailureOrSucces:
+          deleteFailureOrSucces ?? this.deleteFailureOrSucces,
+      updateFailureOrSucces:
+          updateFailureOrSucces ?? this.updateFailureOrSucces,
+    );
+  }
 }

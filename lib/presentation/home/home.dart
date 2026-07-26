@@ -1,6 +1,7 @@
 import 'package:app_bar_with_search_switch/app_bar_with_search_switch.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:passvera/application/authenticatorBloc/authenticator_bloc.dart';
 import 'package:passvera/application/homeActionBloc/home_action_bloc.dart';
 import 'package:passvera/application/homeBloc/home_bloc.dart';
 import 'package:passvera/injection.dart';
@@ -8,7 +9,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passvera/presentation/core/route/route.gr.dart';
 import 'package:passvera/presentation/core/widgets/form_dialog.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
+import 'package:passvera/presentation/home/authenticator/authenticator_body.dart';
 import 'package:passvera/presentation/home/home_body.dart';
+import 'package:passvera/presentation/home/widgets/home_mode_switch.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -23,6 +26,10 @@ class HomeView extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<HomeActionBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<AuthenticatorBloc>()
+            ..add(const AuthenticatorEvent.loadAll()),
         ),
       ],
       child: MultiBlocListener(
@@ -76,67 +83,169 @@ class HomeView extends StatelessWidget {
             },
           ),
         ],
-        child: ScaffoldView(),
+        child: const ScaffoldView(),
       ),
     );
   }
 }
 
-class ScaffoldView extends StatelessWidget {
-  ScaffoldView({
-    super.key,
-  });
+class ScaffoldView extends StatefulWidget {
+  const ScaffoldView({super.key});
+
+  @override
+  State<ScaffoldView> createState() => _ScaffoldViewState();
+}
+
+class _ScaffoldViewState extends State<ScaffoldView>
+    with SingleTickerProviderStateMixin {
   final searchText = ValueNotifier<String>('');
   final isSearchMode = ValueNotifier<bool>(false);
+  late final TabController _tabController;
+  int _tabIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+    _tabController.addListener(_onTabChanged);
+  }
+
+  void _onTabChanged() {
+    if (_tabController.indexIsChanging) return;
+    final index = _tabController.index;
+    if (index == _tabIndex) return;
+    setState(() => _tabIndex = index);
+    if (index != 0 && isSearchMode.value) {
+      isSearchMode.value = false;
+    }
+  }
+
+  @override
+  void dispose() {
+    _tabController.removeListener(_onTabChanged);
+    _tabController.dispose();
+    searchText.dispose();
+    isSearchMode.dispose();
+    super.dispose();
+  }
+
+  Future<void> _onFabPressed() async {
+    if (_tabIndex == 1) {
+      final added = await context.router.push<bool>(const QrScanView());
+      if (!mounted) return;
+      if (added == true) {
+        context
+            .read<AuthenticatorBloc>()
+            .add(const AuthenticatorEvent.loadAll());
+      }
+      return;
+    }
+
+    final controllerAppKey = TextEditingController();
+    final controllerAppValue = TextEditingController();
+
+    showFormDialog(
+      context: context,
+      onPressed: ({required tag, required colorValue}) {
+        context.read<HomeActionBloc>().add(
+              HomeActionEvent.encryptValue(
+                appKey: controllerAppKey.text,
+                appValue: controllerAppValue.text,
+                tag: tag,
+                colorValue: colorValue,
+              ),
+            );
+      },
+      controllerAppKey: controllerAppKey,
+      controllerAppValue: controllerAppValue,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final onSecretsTab = _tabIndex == 0;
+
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBarWithSearchSwitch(
-        clearSearchIcon: Icons.stop,
+        clearSearchIcon: Icons.close_rounded,
         customIsSearchModeNotifier: isSearchMode,
         customTextNotifier: searchText,
         animation: (child) => AppBarAnimationSlideLeft(
-            milliseconds: 150, withFade: true, percents: 1.0, child: child),
+          milliseconds: 320,
+          withFade: true,
+          percents: 0.08,
+          switchInCurve: Curves.easeOutCubic,
+          switchOutCurve: Curves.easeInCubic,
+          background: null,
+          child: child,
+        ),
         appBarBuilder: (BuildContext context) {
           return AppBar(
+            centerTitle: false,
+            titleSpacing: 16,
+            title: const Text('Passvera'),
             actions: [
+              // Keep slot width stable so title/profile never jump on tab change.
+              AnimatedOpacity(
+                opacity: onSecretsTab ? 1 : 0,
+                duration: const Duration(milliseconds: 180),
+                curve: Curves.easeOutCubic,
+                child: IgnorePointer(
+                  ignoring: !onSecretsTab,
+                  child: IconTheme(
+                    data: IconTheme.of(context).copyWith(size: 28),
+                    child: const AppBarSearchButton(),
+                  ),
+                ),
+              ),
               IconButton(
-                icon: const Icon(Icons.person_outline_rounded, size: 32),
+                icon: const Icon(Icons.person_outline_rounded, size: 28),
                 onPressed: () => context.router.push(const ProfileView()),
               ),
-              const AppBarSearchButton(),
             ],
-            title: const Text(
-              'Pasvera',
-            ),
           );
         },
       ),
-      body: const HomeBody(),
+      body: Column(
+        children: [
+          HomeModeSwitch(controller: _tabController),
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: const [
+                HomeBody(),
+                AuthenticatorBody(),
+              ],
+            ),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(
-          Icons.add_rounded,
-          size: 50,
+        onPressed: _onFabPressed,
+        child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 280),
+          switchInCurve: Curves.easeOutCubic,
+          switchOutCurve: Curves.easeInCubic,
+          transitionBuilder: (child, animation) {
+            final curved = CurvedAnimation(
+              parent: animation,
+              curve: Curves.easeOutCubic,
+            );
+            return FadeTransition(
+              opacity: curved,
+              child: ScaleTransition(
+                scale: Tween<double>(begin: 0.72, end: 1).animate(curved),
+                child: child,
+              ),
+            );
+          },
+          child: Icon(
+            onSecretsTab ? Icons.add_rounded : Icons.qr_code_scanner_rounded,
+            key: ValueKey(onSecretsTab),
+            size: onSecretsTab ? 50 : 36,
+          ),
         ),
-        onPressed: () {
-          var controllerAppKey = TextEditingController();
-          var controllerAppValue = TextEditingController();
-
-          return showFormDialog(
-            context: context,
-            onPressed: () {
-              context.read<HomeActionBloc>().add(
-                    HomeActionEvent.encryptValue(
-                      appKey: controllerAppKey.text,
-                      appValue: controllerAppValue.text,
-                    ),
-                  );
-            },
-            controllerAppKey: controllerAppKey,
-            controllerAppValue: controllerAppValue,
-          );
-        },
       ),
     );
   }

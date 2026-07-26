@@ -32,7 +32,10 @@ class KeysService {
       if (existing != null) {
         return const Left(StorageFailure.keyAlreadyUsed());
       }
-      await storage.write(key: appModel.key, value: appModel.value);
+      await storage.write(
+        key: appModel.key,
+        value: appModel.toStorageValue(),
+      );
       return const Right(unit);
     } catch (e) {
       return Left(
@@ -46,12 +49,16 @@ class KeysService {
       final result = await storage.readAll();
       final models = <ApplicationModel>[];
       result.forEach((key, value) {
-        if (metaKeys.contains(key)) {
+        if (metaKeys.contains(key) || key.startsWith('totp:')) {
           return;
         }
-        models.add(ApplicationModel(key: key, value: value));
+        models.add(ApplicationModel.fromStorage(key: key, raw: value));
       });
-      models.sort((a, b) => a.key.toLowerCase().compareTo(b.key.toLowerCase()));
+      models.sort((a, b) {
+        final tagCmp = a.tag.toLowerCase().compareTo(b.tag.toLowerCase());
+        if (tagCmp != 0) return tagCmp;
+        return a.key.toLowerCase().compareTo(b.key.toLowerCase());
+      });
       return Right(models);
     } catch (e) {
       return Left(StorageFailure.unexpected(e));
@@ -88,7 +95,10 @@ class KeysService {
       final result = await storage.read(key: oldKey);
       if (result != null) {
         await storage.delete(key: oldKey);
-        await storage.write(key: model.key, value: model.value);
+        await storage.write(
+          key: model.key,
+          value: model.toStorageValue(),
+        );
         return const Right(unit);
       } else {
         return const Left(StorageFailure.emptyKey());

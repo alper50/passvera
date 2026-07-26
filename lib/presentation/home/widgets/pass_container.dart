@@ -18,6 +18,8 @@ class PassContainerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cardColor = Color(currentModel.colorValue);
+
     return InkWell(
       onTap: () =>
           context.router.push(PassDetailView(model: currentModel)),
@@ -29,7 +31,7 @@ class PassContainerWidget extends StatelessWidget {
           minHeight: 80,
         ),
         decoration: BoxDecoration(
-          color: MyColors.brand,
+          color: cardColor,
           borderRadius: BorderRadius.circular(15.0),
           border: Border.all(
             color: MyColors.ink,
@@ -47,11 +49,24 @@ class PassContainerWidget extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              child: Text(
-                currentModel.key,
-                style: MyTextStyles.headline2Bold,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    currentModel.key,
+                    style: MyTextStyles.headline2Bold,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    currentModel.tag,
+                    style: MyTextStyles.bodySmallBold,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
               ),
             ),
             const SizedBox(width: 12),
