@@ -67,6 +67,7 @@ One concern per BLoC. Current map:
 | `HomeActionBloc` | Create / save new entry |
 | `PassActionBloc` | Update / delete entry |
 | `OnboardBloc` | First-run flag check/set |
+| `LockBloc` | PIN status / verify / set / update / remove |
 
 Patterns:
 
@@ -103,7 +104,7 @@ presentation/
 - Shared look: yellow surface, black border, offset shadow — reuse `MyCustomContainer` / `MySmallButton` / theme; avoid new one-off card systems unless product direction changes.
 - Forms for create/edit: `showFormDialog` (or a dedicated shared form widget). Keep generator config out of random widgets when extracting (single config place).
 
-Screens today: Splash → Onboard | Home → PassDetail.
+Screens today: Splash → Onboard | Lock | Home → PassDetail / Profile.
 
 ## Bootstrap
 

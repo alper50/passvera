@@ -1,8 +1,5 @@
-// **************************************************************************
-// AutoRouteGenerator
-// **************************************************************************
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// Manual update: LockView + ProfileView routes added (build_runner unavailable).
 
 // **************************************************************************
 // AutoRouteGenerator
@@ -17,7 +14,9 @@ import 'package:flutter/material.dart' as _i6;
 import '../../../domain/application_model.dart' as _i7;
 import '../../home/home.dart' as _i1;
 import '../../home/passwordDetailView/pass_detail_view.dart' as _i3;
+import '../../lock/lock_view.dart' as _i8;
 import '../../onboard/onboard_view.dart' as _i4;
+import '../../profile/profile_view.dart' as _i9;
 import '../../splash/splash_view.dart' as _i2;
 
 class MyRouter extends _i5.RootStackRouter {
@@ -54,6 +53,18 @@ class MyRouter extends _i5.RootStackRouter {
         child: _i4.OnboardView(),
       );
     },
+    LockView.name: (routeData) {
+      return _i5.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i8.LockView(),
+      );
+    },
+    ProfileView.name: (routeData) {
+      return _i5.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i9.ProfileView(),
+      );
+    },
   };
 
   @override
@@ -73,6 +84,14 @@ class MyRouter extends _i5.RootStackRouter {
         _i5.RouteConfig(
           OnboardView.name,
           path: '/onboard-view',
+        ),
+        _i5.RouteConfig(
+          LockView.name,
+          path: '/lock-view',
+        ),
+        _i5.RouteConfig(
+          ProfileView.name,
+          path: '/profile-view',
         ),
       ];
 }
@@ -145,4 +164,28 @@ class OnboardView extends _i5.PageRouteInfo<void> {
         );
 
   static const String name = 'OnboardView';
+}
+
+/// generated route for
+/// [_i8.LockView]
+class LockView extends _i5.PageRouteInfo<void> {
+  const LockView()
+      : super(
+          LockView.name,
+          path: '/lock-view',
+        );
+
+  static const String name = 'LockView';
+}
+
+/// generated route for
+/// [_i9.ProfileView]
+class ProfileView extends _i5.PageRouteInfo<void> {
+  const ProfileView()
+      : super(
+          ProfileView.name,
+          path: '/profile-view',
+        );
+
+  static const String name = 'ProfileView';
 }

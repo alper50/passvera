@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 
 class MySmallButton extends StatelessWidget {
@@ -16,19 +17,19 @@ class MySmallButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async => onTap!(),
-      splashColor: Colors.black,
-      focusColor: Colors.black,
+      splashColor: MyColors.ink,
+      focusColor: MyColors.ink,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.yellow,
+          color: MyColors.brand,
           borderRadius: BorderRadius.circular(3.0),
           border: Border.all(
-            color: Colors.black,
+            color: MyColors.ink,
             width: 3.0,
           ),
           boxShadow: const [
             BoxShadow(
-              color: Colors.black54,
+              color: MyColors.inkSoft,
               offset: Offset(-3.0, 3.0),
               blurRadius: 5.0,
               blurStyle: BlurStyle.solid,

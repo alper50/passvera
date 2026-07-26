@@ -8,7 +8,17 @@ import 'package:passvera/domain/errors/storage_failures.dart';
 class KeysService {
   static const String onboardKey = 'onboard';
   static const String onboardCompletedValue = 'true';
-  static const Set<String> metaKeys = {onboardKey};
+  static const String pinHashKey = 'app_pin_hash';
+  static const String pinSaltKey = 'app_pin_salt';
+  static const String pinAttemptsKey = 'app_pin_attempts';
+  static const String pinLockoutUntilKey = 'app_pin_lockout_until';
+  static const Set<String> metaKeys = {
+    onboardKey,
+    pinHashKey,
+    pinSaltKey,
+    pinAttemptsKey,
+    pinLockoutUntilKey,
+  };
 
   AndroidOptions _getAndroidOptions() => const AndroidOptions(
         encryptedSharedPreferences: true,

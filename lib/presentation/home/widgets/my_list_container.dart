@@ -1,9 +1,10 @@
 import 'package:app_bar_with_search_switch/app_bar_with_search_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:passvera/domain/application_model.dart';
+import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/home/widgets/pass_container.dart';
 
-class MyListContainer extends StatefulWidget {
+class MyListContainer extends StatelessWidget {
   final List<ApplicationModel> modelsList;
   const MyListContainer({
     super.key,
@@ -11,27 +12,33 @@ class MyListContainer extends StatefulWidget {
   });
 
   @override
-  State<MyListContainer> createState() => _MyListContainerState();
-}
-
-class _MyListContainerState extends State<MyListContainer> {
-  @override
   Widget build(BuildContext context) {
     return Material(
-      child: ListView.builder(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemCount: widget.modelsList.length,
-        itemBuilder: (context, index) {
-          ApplicationModel current = widget.modelsList[index];
-          return AppBarOnEditListener(
-            child: PassContainerWidget(currentModel: current),
-            builder: (BuildContext context, searchText, child) {
-              return Visibility(
-                visible: current.key.contains(searchText),
-                child: child!,
-              );
-            }, 
+      child: AppBarOnEditListener(
+        builder: (BuildContext context, searchText, _) {
+          final query = searchText.trim().toLowerCase();
+          final filtered = query.isEmpty
+              ? modelsList
+              : modelsList
+                  .where((model) => model.key.toLowerCase().contains(query))
+                  .toList();
+
+          if (filtered.isEmpty && query.isNotEmpty) {
+            return const Center(
+              child: Text(
+                'No matches',
+                style: MyTextStyles.headline3,
+              ),
+            );
+          }
+
+          return ListView.builder(
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            itemCount: filtered.length,
+            itemBuilder: (context, index) {
+              return PassContainerWidget(currentModel: filtered[index]);
+            },
           );
         },
       ),

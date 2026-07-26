@@ -1,9 +1,11 @@
 import 'package:app_bar_with_search_switch/app_bar_with_search_switch.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:passvera/application/homeActionBloc/home_action_bloc.dart';
 import 'package:passvera/application/homeBloc/home_bloc.dart';
 import 'package:passvera/injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:passvera/presentation/core/route/route.gr.dart';
 import 'package:passvera/presentation/core/widgets/form_dialog.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
 import 'package:passvera/presentation/home/home_body.dart';
@@ -89,7 +91,7 @@ class ScaffoldView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       appBar: AppBarWithSearchSwitch(
         clearSearchIcon: Icons.stop,
         customIsSearchModeNotifier: isSearchMode,
@@ -98,11 +100,15 @@ class ScaffoldView extends StatelessWidget {
             milliseconds: 150, withFade: true, percents: 1.0, child: child),
         appBarBuilder: (BuildContext context) {
           return AppBar(
-            actions: const [
-              AppBarSearchButton(),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.person_outline_rounded, size: 32),
+                onPressed: () => context.router.push(const ProfileView()),
+              ),
+              const AppBarSearchButton(),
             ],
             title: const Text(
-              'Password Manager',
+              'Pasvera',
             ),
           );
         },

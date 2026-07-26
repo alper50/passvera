@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passvera/application/homeBloc/home_bloc.dart';
+import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/core/widgets/my_circular_progress.dart';
 import 'package:passvera/presentation/core/widgets/my_empty_widget.dart';
@@ -55,7 +56,7 @@ class HomeBody extends StatelessWidget {
                         decoration: const BoxDecoration(
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.white,
+                              color: MyColors.surfaceWhite,
                               blurRadius: 15.0,
                               spreadRadius: 30,
                               blurStyle: BlurStyle.normal,

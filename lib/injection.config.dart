@@ -1,4 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// Manual update: LockService / ILockRepository / LockBloc registrations.
 
 // **************************************************************************
 // InjectableConfigGenerator
@@ -12,14 +13,17 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import 'application/homeActionBloc/home_action_bloc.dart' as _i8;
-import 'application/homeBloc/home_bloc.dart' as _i9;
-import 'application/onboardBloc/onboard_bloc.dart' as _i6;
-import 'application/passActionBloc/pass_action_bloc.dart' as _i7;
+import 'application/homeActionBloc/home_action_bloc.dart' as _i10;
+import 'application/homeBloc/home_bloc.dart' as _i11;
+import 'application/lockBloc/lock_bloc.dart' as _i8;
+import 'application/onboardBloc/onboard_bloc.dart' as _i9;
+import 'application/passActionBloc/pass_action_bloc.dart' as _i12;
 import 'domain/i_keys_repository.dart' as _i4;
+import 'domain/i_lock_repository.dart' as _i6;
 import 'infrastructure/keys/keys_repository.dart' as _i5;
 import 'infrastructure/keys/keys_service.dart' as _i3;
-
+import 'infrastructure/lock/lock_repository.dart' as _i7;
+import 'infrastructure/lock/lock_service.dart' as _i13;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 _i1.GetIt $initGetIt(
@@ -35,11 +39,16 @@ _i1.GetIt $initGetIt(
   gh.lazySingleton<_i3.KeysService>(() => _i3.KeysService());
   gh.lazySingleton<_i4.IKeysRepository>(
       () => _i5.KeysRepository(gh<_i3.KeysService>()));
-  gh.factory<_i6.OnboardBloc>(() => _i6.OnboardBloc(gh<_i4.IKeysRepository>()));
-  gh.factory<_i7.PassActionBloc>(
-      () => _i7.PassActionBloc(gh<_i4.IKeysRepository>()));
-  gh.factory<_i8.HomeActionBloc>(
-      () => _i8.HomeActionBloc(gh<_i4.IKeysRepository>()));
-  gh.factory<_i9.HomeBloc>(() => _i9.HomeBloc(gh<_i4.IKeysRepository>()));
+  gh.lazySingleton<_i13.LockService>(
+      () => _i13.LockService(gh<_i3.KeysService>()));
+  gh.lazySingleton<_i6.ILockRepository>(
+      () => _i7.LockRepository(gh<_i13.LockService>()));
+  gh.factory<_i9.OnboardBloc>(() => _i9.OnboardBloc(gh<_i4.IKeysRepository>()));
+  gh.factory<_i12.PassActionBloc>(
+      () => _i12.PassActionBloc(gh<_i4.IKeysRepository>()));
+  gh.factory<_i10.HomeActionBloc>(
+      () => _i10.HomeActionBloc(gh<_i4.IKeysRepository>()));
+  gh.factory<_i11.HomeBloc>(() => _i11.HomeBloc(gh<_i4.IKeysRepository>()));
+  gh.factory<_i8.LockBloc>(() => _i8.LockBloc(gh<_i6.ILockRepository>()));
   return getIt;
 }

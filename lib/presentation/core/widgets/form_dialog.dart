@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:password_strength_checker/password_strength_checker.dart';
 
@@ -14,12 +15,12 @@ void showFormDialog(
       final passNotifier = ValueNotifier<PasswordStrength?>(null);
       return AlertDialog(
         actionsAlignment: MainAxisAlignment.center,
-        backgroundColor: Colors.yellow,
+        backgroundColor: MyColors.brand,
         contentPadding: const EdgeInsets.all(30),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
           side: const BorderSide(
-            color: Colors.black,
+            color: MyColors.ink,
             width: 4.0,
           ),
         ),
@@ -106,8 +107,8 @@ class MyFormButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        foregroundColor: Colors.black,
-        backgroundColor: Colors.yellow,
+        foregroundColor: MyColors.ink,
+        backgroundColor: MyColors.brand,
         textStyle: const TextStyle(
           fontSize: 18.0,
           fontWeight: FontWeight.bold,
@@ -119,7 +120,7 @@ class MyFormButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
           side: const BorderSide(
-            color: Colors.black,
+            color: MyColors.ink,
             width: 2.0,
           ),
         ),
@@ -147,15 +148,15 @@ class MyTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.yellow,
+        color: MyColors.brand,
         borderRadius: BorderRadius.circular(15.0),
         border: Border.all(
-          color: Colors.black,
+          color: MyColors.ink,
           width: 3.0,
         ),
         boxShadow: const [
           BoxShadow(
-            color: Colors.black54,
+            color: MyColors.inkSoft,
             offset: Offset(-6.0, 6.0),
             blurRadius: 4.0,
             blurStyle: BlurStyle.solid,
@@ -167,14 +168,14 @@ class MyTextField extends StatelessWidget {
         controller: controller,
         style: const TextStyle(
           fontSize: 16.0,
-          color: Colors.black,
+          color: MyColors.ink,
           decoration: TextDecoration.none,
         ),
         decoration: InputDecoration(
           labelText: text,
           labelStyle: const TextStyle(
             fontSize: 18.0,
-            color: Colors.black,
+            color: MyColors.ink,
           ),
           enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide.none,
@@ -188,4 +189,3 @@ class MyTextField extends StatelessWidget {
     );
   }
 }
-

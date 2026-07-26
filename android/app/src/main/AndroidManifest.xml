@@ -2,7 +2,7 @@
     package="com.example.passvera">
    <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
    <application
-        android:label="passvera"
+        android:label="Pasvera"
         android:name="${applicationName}"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher">

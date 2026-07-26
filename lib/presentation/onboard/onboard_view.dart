@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:passvera/application/onboardBloc/onboard_bloc.dart';
 import 'package:passvera/injection.dart';
 import 'package:passvera/presentation/core/route/route.gr.dart';
+import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/widgets/my_small_button.dart';
 import 'package:passvera/presentation/onboard/onboard_view_body.dart';
 
@@ -102,7 +103,7 @@ class OnboardViewState extends State<OnboardView> {
       width: size,
       decoration: BoxDecoration(
         shape: isSelected ? BoxShape.circle : BoxShape.rectangle,
-        color: isSelected ? Colors.yellow : Colors.grey[800],
+        color: isSelected ? MyColors.brand : MyColors.indicatorInactive,
       ),
     );
   }

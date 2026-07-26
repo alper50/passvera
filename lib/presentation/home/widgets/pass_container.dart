@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/presentation/core/route/route.gr.dart';
+import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/core/widgets/my_small_button.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
@@ -28,15 +29,15 @@ class PassContainerWidget extends StatelessWidget {
           minHeight: 80,
         ),
         decoration: BoxDecoration(
-          color: Colors.yellow,
+          color: MyColors.brand,
           borderRadius: BorderRadius.circular(15.0),
           border: Border.all(
-            color: Colors.black,
+            color: MyColors.ink,
             width: 3.0,
           ),
           boxShadow: const [
             BoxShadow(
-              color: Colors.black54,
+              color: MyColors.inkSoft,
               offset: Offset(-5.0, 7.0),
               blurRadius: 5.0,
               blurStyle: BlurStyle.solid,
@@ -44,34 +45,33 @@ class PassContainerWidget extends StatelessWidget {
           ],
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              currentModel.key,
-              style: MyTextStyles.headline2Bold,
+            Expanded(
+              child: Text(
+                currentModel.key,
+                style: MyTextStyles.headline2Bold,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
-            Row(
-              children: [
-                MySmallButton(
-                  icon: const Icon(
-                    Icons.copy_rounded,
-                    size: 35,
-                  ),
-                  onTap: () async {
-                    await Clipboard.setData(
-                        ClipboardData(text: currentModel.value));
-                    if (!context.mounted) return;
-                    showMySnackBar(
-                        isError: false,
-                        context: context,
-                        message: '${currentModel.key} password copied');
-                  },
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-              ],
+            const SizedBox(width: 12),
+            MySmallButton(
+              icon: const Icon(
+                Icons.copy_rounded,
+                size: 35,
+              ),
+              onTap: () async {
+                await Clipboard.setData(
+                    ClipboardData(text: currentModel.value));
+                if (!context.mounted) return;
+                showMySnackBar(
+                  isError: false,
+                  context: context,
+                  message: '${currentModel.key} password copied',
+                );
+              },
             ),
+            const SizedBox(width: 8),
           ],
         ),
       ),

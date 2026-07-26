@@ -1,13 +1,32 @@
 import 'package:flutter/material.dart';
 
-class MyColors{ //TODO CHANGE COLOR CONSTANTS
+/// Passvera brand palette. Prefer these over raw [Colors] in UI.
+class MyColors {
   MyColors._();
-  static Color lightBackgroundColor = const Color.fromARGB(255, 249, 247, 232);
-  static Color darkBackgroundColor = const Color.fromARGB(255, 43, 42, 39);
-  static Color primaryColor = const Color.fromARGB(255, 40, 201, 40);
-  static Color lightPrimaryColor = const Color.fromARGB(255, 159, 226, 171);
-  static Color secondaryColor = const Color.fromARGB(255, 20, 206, 184);
-  static Color lightSecondaryColor = const Color.fromARGB(255, 137, 220, 218);
-  static Color errorColor = const Color.fromARGB(255, 235, 110, 110);
-  static Color transparentColor = Colors.transparent;
+
+  /// Primary brand / card / button fill (logo yellow).
+  static const Color brand = Color(0xFFFFEB3B);
+
+  /// Primary text, icons, borders.
+  static const Color ink = Color(0xFF000000);
+
+  /// Soft shadow / secondary ink.
+  static const Color inkSoft = Color(0x8A000000);
+
+  /// Default scaffold / app bar surface.
+  static const Color surface = Color(0xFFFAFAFA);
+
+  static const Color surfaceWhite = Color(0xFFFFFFFF);
+
+  static const Color error = Color.fromARGB(255, 235, 110, 110);
+
+  static const Color indicatorInactive = Color(0xFF424242);
+
+  static const Color transparent = Colors.transparent;
+
+  // Legacy aliases used in older theme comments / snackbar.
+  static const Color primaryColor = brand;
+  static const Color lightBackgroundColor = surface;
+  static const Color errorColor = error;
+  static const Color transparentColor = transparent;
 }

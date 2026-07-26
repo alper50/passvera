@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:passvera/presentation/core/theme/colors.dart';
 
 class OnboardViewBody extends StatelessWidget {
   final String title;
@@ -12,15 +13,15 @@ class OnboardViewBody extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(left: 15, right: 15, bottom: 50, top: 70),
       decoration: BoxDecoration(
-        color: Colors.yellow,
+        color: MyColors.brand,
         borderRadius: BorderRadius.circular(15.0),
         border: Border.all(
-          color: Colors.black,
+          color: MyColors.ink,
           width: 3.0,
         ),
         boxShadow: const [
           BoxShadow(
-            color: Colors.black54,
+            color: MyColors.inkSoft,
             offset: Offset(-3.0, 3.0),
             blurRadius: 5.0,
             blurStyle: BlurStyle.solid,

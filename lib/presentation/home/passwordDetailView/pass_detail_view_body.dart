@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passvera/application/passActionBloc/pass_action_bloc.dart';
 import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
+import 'package:passvera/presentation/core/widgets/confirm_dialog.dart';
 import 'package:passvera/presentation/core/widgets/form_dialog.dart';
 import 'package:passvera/presentation/core/widgets/my_custom_container.dart';
 import 'package:passvera/presentation/core/widgets/my_small_button.dart';
@@ -36,10 +37,15 @@ class _PassDetailBodyState extends State<PassDetailBody> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'App:  ${widget.model.key}',
-                      style: MyTextStyles.headline2,
+                    Expanded(
+                      child: Text(
+                        'App:  ${widget.model.key}',
+                        style: MyTextStyles.headline2,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
+                    const SizedBox(width: 8),
                     MySmallButton(
                         icon: const Icon(
                           Icons.edit_outlined,
@@ -83,16 +89,20 @@ class _PassDetailBodyState extends State<PassDetailBody> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    isEyeOpen
-                        ? Text(
-                            widget.model.value.length > 20
-                                ? '${widget.model.value.substring(0, 20)}...'
-                                : widget.model.value,
-                            style: MyTextStyles.headline2Bold)
-                        : const Text(
-                            'Password:  *****',
-                            style: MyTextStyles.headline2,
-                          ),
+                    Expanded(
+                      child: isEyeOpen
+                          ? Text(
+                              widget.model.value,
+                              style: MyTextStyles.headline2Bold,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            )
+                          : const Text(
+                              'Password:  *****',
+                              style: MyTextStyles.headline2,
+                            ),
+                    ),
+                    const SizedBox(width: 8),
                     MySmallButton(
                       icon: AnimatedSwitcher(
                           duration: const Duration(milliseconds: 300),
@@ -108,14 +118,12 @@ class _PassDetailBodyState extends State<PassDetailBody> {
                               ),
                           child: isEyeOpen
                               ? const Icon(
-                                  Icons.remove_red_eye_outlined,
+                                  Icons.visibility_outlined,
                                   key: ValueKey('icon1'),
                                 )
                               : const Icon(
-                                  Icons.elderly_outlined,
-                                  key: ValueKey(
-                                    'icon2',
-                                  ),
+                                  Icons.visibility_off_outlined,
+                                  key: ValueKey('icon2'),
                                 )),
                       onTap: () {
                         changeEyeState();
@@ -139,9 +147,20 @@ class _PassDetailBodyState extends State<PassDetailBody> {
                       Icons.delete_outlined,
                       size: 45,
                     ),
-                    onTap: () => context.read<PassActionBloc>().add(
-                          PassActionEvent.deletePass(pass: widget.model),
-                        ),
+                    onTap: () async {
+                      final confirmed = await showConfirmDialog(
+                        context: context,
+                        title: 'Delete password?',
+                        message:
+                            'This will permanently remove "${widget.model.key}".',
+                        confirmLabel: 'Delete',
+                        cancelLabel: 'Cancel',
+                      );
+                      if (!confirmed || !context.mounted) return;
+                      context.read<PassActionBloc>().add(
+                            PassActionEvent.deletePass(pass: widget.model),
+                          );
+                    },
                   ),
                 ],
               ),

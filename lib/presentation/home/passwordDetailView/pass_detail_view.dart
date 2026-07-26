@@ -6,6 +6,7 @@ import 'package:passvera/application/passActionBloc/pass_action_bloc.dart';
 import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/injection.dart';
 import 'package:passvera/presentation/core/route/route.gr.dart';
+import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
 import 'package:passvera/presentation/home/passwordDetailView/pass_detail_view_body.dart';
 
@@ -81,20 +82,20 @@ class PassDetailView extends StatelessWidget {
         ],
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.yellow,
+            backgroundColor: MyColors.brand,
             elevation: 0,
             automaticallyImplyLeading: false,
             leading: IconButton(
               icon: const Icon(
                 Icons.arrow_back_ios_new_rounded,
-                color: Colors.black,
+                color: MyColors.ink,
               ),
               onPressed: () {
                 AutoRouter.of(context).pop();
               },
             ),
           ),
-          backgroundColor: Colors.yellow,
+          backgroundColor: MyColors.brand,
           body: Padding(
             padding: const EdgeInsets.all(20.0),
             child: PassDetailBody(model: model),

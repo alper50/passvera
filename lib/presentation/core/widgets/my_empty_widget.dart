@@ -15,7 +15,7 @@ class MyEmptyWidget extends StatelessWidget {
         children: [
           Lottie.asset('assets/animation/empty.json'),
           const Text(
-            'Cant see any password here',
+            "Can't see any password here",
             style: MyTextStyles.headline3,
           ),
         ],

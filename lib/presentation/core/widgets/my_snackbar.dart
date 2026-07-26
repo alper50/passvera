@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 
 void showMySnackBar(
@@ -18,11 +19,13 @@ SnackBar displaySnackBar(
   return SnackBar(
     behavior: SnackBarBehavior.floating,
     elevation: 0,
-    content: Text(message,
-        style: MyTextStyles.bodyLarge.copyWith(color: Colors.black)),
+    content: Text(
+      message,
+      style: MyTextStyles.bodyLarge.copyWith(color: MyColors.ink),
+    ),
     action: (actionMessage != null)
         ? SnackBarAction(
-            textColor: Colors.white,
+            textColor: MyColors.surfaceWhite,
             label: actionMessage,
             onPressed: () {
               return onClick!();
@@ -30,7 +33,6 @@ SnackBar displaySnackBar(
           )
         : null,
     duration: const Duration(seconds: 3),
-    backgroundColor: Colors
-        .yellow, //isError? MyColors.errorColor: MyColors.primaryColor, TODO color constants
+    backgroundColor: isError ? MyColors.error : MyColors.brand,
   );
 }
