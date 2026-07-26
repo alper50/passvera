@@ -24,25 +24,61 @@ class PassDetailView extends StatelessWidget {
           create: (context) => getIt<HomeBloc>(),
         ),
       ],
-      child: BlocListener<PassActionBloc, PassActionState>(
-        listener: (context, state) {
-          return state.deleteFailureOrSucces.fold(
-            () {},
-            (either) => either.fold(
-              (failure) => showMySnackBar(
-                context: context,
-                message: failure.toString(),
-              ),
-              (succes) {
-                AutoRouter.of(context).pushAndPopUntil(const HomeView(),
-                    predicate: (Route<dynamic> route) {
-                  return false;
-                });
-                showMySnackBar(context: context, message: 'Succesfuly Deleted');
-              },
-            ),
-          );
-        },
+      child: MultiBlocListener(
+        listeners: [
+          BlocListener<PassActionBloc, PassActionState>(
+            listenWhen: (previous, current) =>
+                previous.deleteFailureOrSucces != current.deleteFailureOrSucces,
+            listener: (context, state) {
+              state.deleteFailureOrSucces.fold(
+                () {},
+                (either) => either.fold(
+                  (failure) => showMySnackBar(
+                    isError: true,
+                    context: context,
+                    message: failure.toString(),
+                  ),
+                  (_) {
+                    AutoRouter.of(context).pushAndPopUntil(
+                      const HomeView(),
+                      predicate: (_) => false,
+                    );
+                    showMySnackBar(
+                      context: context,
+                      message: 'Successfully Deleted',
+                    );
+                  },
+                ),
+              );
+            },
+          ),
+          BlocListener<PassActionBloc, PassActionState>(
+            listenWhen: (previous, current) =>
+                previous.updateFailureOrSucces != current.updateFailureOrSucces,
+            listener: (context, state) {
+              state.updateFailureOrSucces.fold(
+                () {},
+                (either) => either.fold(
+                  (failure) => showMySnackBar(
+                    isError: true,
+                    context: context,
+                    message: failure.toString(),
+                  ),
+                  (_) {
+                    AutoRouter.of(context).pushAndPopUntil(
+                      const HomeView(),
+                      predicate: (_) => false,
+                    );
+                    showMySnackBar(
+                      context: context,
+                      message: 'Successfully Updated',
+                    );
+                  },
+                ),
+              );
+            },
+          ),
+        ],
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.yellow,
@@ -68,4 +104,3 @@ class PassDetailView extends StatelessWidget {
     );
   }
 }
-

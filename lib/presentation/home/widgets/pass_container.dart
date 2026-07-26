@@ -1,10 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:passvera/domain/application_model.dart';
+import 'package:passvera/presentation/core/route/route.gr.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/core/widgets/my_small_button.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
-import 'package:passvera/presentation/home/passwordDetailView/pass_detail_view.dart';
 
 class PassContainerWidget extends StatelessWidget {
   const PassContainerWidget({
@@ -17,8 +18,8 @@ class PassContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => PassDetailView(model: currentModel))),
+      onTap: () =>
+          context.router.push(PassDetailView(model: currentModel)),
       child: Container(
         margin: const EdgeInsets.all(10.0),
         padding: const EdgeInsets.all(15.0),
@@ -59,10 +60,11 @@ class PassContainerWidget extends StatelessWidget {
                   onTap: () async {
                     await Clipboard.setData(
                         ClipboardData(text: currentModel.value));
+                    if (!context.mounted) return;
                     showMySnackBar(
                         isError: false,
                         context: context,
-                        message: '${currentModel.key} pasword copied');
+                        message: '${currentModel.key} password copied');
                   },
                 ),
                 const SizedBox(

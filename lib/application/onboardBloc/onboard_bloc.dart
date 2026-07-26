@@ -15,6 +15,7 @@ class OnboardBloc extends Bloc<OnboardEvent, OnboardState> {
     on<OnboardEvent>((event, emit) async {
       await event.map(
         checkOnboard: (_) async {
+          // Right = key exists (onboard completed), Left = not completed yet
           final result =
               await keysRepository.getSingleValue(onboardKey: 'onboard');
           result.fold(
@@ -23,8 +24,8 @@ class OnboardBloc extends Bloc<OnboardEvent, OnboardState> {
           );
         },
         setOnboard: (_SetOnboard value) async {
-          ApplicationModel onboardModel =
-              const ApplicationModel(key: 'onboard', value: 'true');
+          const ApplicationModel onboardModel =
+              ApplicationModel(key: 'onboard', value: 'true');
           await keysRepository.encryptValue(appModel: onboardModel);
         },
       );

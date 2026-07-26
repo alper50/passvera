@@ -4,8 +4,9 @@ import 'package:passvera/presentation/core/theme/theme.dart';
 
 import 'presentation/core/route/route.gr.dart';
 
-void main() {
-  InitializeApp.initalize();
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await InitializeApp.initalize();
   runApp(MyApp());
 }
 

@@ -6,6 +6,10 @@ import 'package:passvera/domain/errors/storage_failures.dart';
 
 @LazySingleton()
 class KeysService {
+  static const String onboardKey = 'onboard';
+  static const String onboardCompletedValue = 'true';
+  static const Set<String> metaKeys = {onboardKey};
+
   AndroidOptions _getAndroidOptions() => const AndroidOptions(
         encryptedSharedPreferences: true,
       );
@@ -14,13 +18,12 @@ class KeysService {
   Future<Either<StorageFailure, Unit>> encryptValue(
       {required ApplicationModel appModel}) async {
     try {
-      final resultIfKeyExist = await getSingleValue(key: appModel.key);
-      if (resultIfKeyExist.isLeft()) {
+      final existing = await storage.read(key: appModel.key);
+      if (existing != null) {
         return const Left(StorageFailure.keyAlreadyUsed());
-      } else {
-        await storage.write(key: appModel.key, value: appModel.value);
-        return const Right(unit);
       }
+      await storage.write(key: appModel.key, value: appModel.value);
+      return const Right(unit);
     } catch (e) {
       return Left(
         StorageFailure.unexpected(e),
@@ -33,8 +36,10 @@ class KeysService {
       final result = await storage.readAll();
       final models = <ApplicationModel>[];
       result.forEach((key, value) {
-        ApplicationModel model = ApplicationModel(key: key, value: value);
-        models.add(model);
+        if (metaKeys.contains(key)) {
+          return;
+        }
+        models.add(ApplicationModel(key: key, value: value));
       });
       models.sort((a, b) => a.key.toLowerCase().compareTo(b.key.toLowerCase()));
       return Right(models);
@@ -43,19 +48,15 @@ class KeysService {
     }
   }
 
+  /// Right if the key exists, Left([StorageFailure.emptyKey]) if missing.
   Future<Either<StorageFailure, Unit>> getSingleValue(
       {required String key}) async {
     try {
       final result = await storage.read(key: key);
-      if (result == 'truee') {
-        return const Right(unit);
-      } else {
-        if (result == null) {
-          return const Right(unit);
-        } else {
-          return const Left(StorageFailure.emptyKey());
-        }
+      if (result == null) {
+        return const Left(StorageFailure.emptyKey());
       }
+      return const Right(unit);
     } catch (e) {
       return Left(StorageFailure.unexpected(e));
     }

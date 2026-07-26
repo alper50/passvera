@@ -5,10 +5,9 @@ import 'package:passvera/injection.dart';
 
 class InitializeApp {
   static Future<void> initalize() async {
-    // WidgetsFlutterBinding.ensureInitialized();
     disableFontHttpFetch();
     configureDependencies();
-    initFontLicence();
+    await initFontLicence();
   }
 
   static void disableFontHttpFetch() {
@@ -17,7 +16,8 @@ class InitializeApp {
 
   static Future<void> initFontLicence() async {
     LicenseRegistry.addLicense(() async* {
-      final license = await rootBundle.loadString('google_fonts/OFL.txt');
+      final license =
+          await rootBundle.loadString('assets/google_fonts/OFL.txt');
       yield LicenseEntryWithLineBreaks(['google_fonts'], license);
     });
   }
