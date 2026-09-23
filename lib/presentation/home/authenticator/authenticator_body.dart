@@ -70,6 +70,8 @@ class AuthenticatorBody extends StatelessWidget {
               children: [
                 Expanded(
                   child: ListView.builder(
+                    // Lets the last card scroll clear of the floating action button.
+                    padding: const EdgeInsets.only(bottom: 96),
                     itemCount: state.entries.length,
                     itemBuilder: (context, index) {
                       final entry = state.entries[index];
@@ -89,7 +91,7 @@ class AuthenticatorBody extends StatelessWidget {
                   decoration: const BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: MyColors.surfaceWhite,
+                        color: MyColors.surface,
                         blurRadius: 15.0,
                         spreadRadius: 20,
                         blurStyle: BlurStyle.normal,

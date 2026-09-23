@@ -14,9 +14,8 @@ Future<bool> showConfirmDialog({
     context: context,
     builder: (BuildContext dialogContext) {
       return AlertDialog(
-        actionsAlignment: MainAxisAlignment.center,
         backgroundColor: MyColors.brand,
-        contentPadding: const EdgeInsets.all(24),
+        contentPadding: const EdgeInsets.fromLTRB(24, 16, 24, 24),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
           side: const BorderSide(
@@ -25,17 +24,32 @@ Future<bool> showConfirmDialog({
           ),
         ),
         title: Text(title, style: MyTextStyles.headline2Bold),
-        content: Text(message, style: MyTextStyles.bodyLarge),
-        actions: [
-          MyFormButton(
-            title: cancelLabel,
-            onPressed: () => Navigator.of(dialogContext).pop(false),
-          ),
-          MyFormButton(
-            title: confirmLabel,
-            onPressed: () => Navigator.of(dialogContext).pop(true),
-          ),
-        ],
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(message, style: MyTextStyles.bodyLarge),
+            const SizedBox(height: 24),
+            Row(
+              children: [
+                Expanded(
+                  child: MyFormButton(
+                    title: cancelLabel,
+                    onPressed: () => Navigator.of(dialogContext).pop(false),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: MyFormButton(
+                    title: confirmLabel,
+                    isDestructive: true,
+                    onPressed: () => Navigator.of(dialogContext).pop(true),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       );
     },
   );

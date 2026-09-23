@@ -113,6 +113,12 @@ presentation/
 
 - Failure texts come from the extensions in `presentation/core/utils/failure_messages.dart`; do not re-map failures per screen.
 - Secret inputs use `MyTextField(isSecret: true)` (obscured, no suggestions / IME learning / autofill).
+- Dialogs with forms: title and action buttons pinned, only the fields scroll inside a `Flexible`, and the container clips (`Clip.antiAlias`). Never `clipBehavior: Clip.none` on scrolled dialog content.
+- Size screens by content, not `Expanded` flex ratios; long content must scroll (e.g. `SliverFillRemaining(hasScrollBody: false)` for a bottom action).
+- Text styles come from `MyTextStyles` (they carry `fontFamily`); styles handed to AppBar / button / `DefaultTextStyle` replace the inherited font.
+- Lists under the FAB get bottom padding so the last item can scroll clear of it. Our FAB uses `heroTag: null`.
+- `AppBarWithSearchSwitch`: pass every custom notifier/controller (text, hasText, submit, controller, search mode); omitted ones fall back to package-global statics.
+- Irreversible actions use `MyFormButton(isDestructive: true)`.
 
 Screens today: Splash → Onboard | Lock | Home → PassDetail / Profile / QrScan.
 

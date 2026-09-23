@@ -42,7 +42,7 @@ class HomeBody extends StatelessWidget {
                         decoration: const BoxDecoration(
                           boxShadow: [
                             BoxShadow(
-                              color: MyColors.surfaceWhite,
+                              color: MyColors.surface,
                               blurRadius: 15.0,
                               spreadRadius: 20,
                               blurStyle: BlurStyle.normal,

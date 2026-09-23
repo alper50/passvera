@@ -19,60 +19,122 @@ void showFormDialog({
   showDialog(
     context: context,
     barrierColor: MyColors.ink.withValues(alpha: 0.35),
-    builder: (BuildContext context) {
-      final passNotifier = ValueNotifier<PasswordStrength?>(null);
-      final tagController = TextEditingController(text: initialTag);
-      var selectedColor = initialColorValue;
+    builder: (BuildContext context) => _SecretFormDialog(
+      title: title!,
+      controllerAppKey: controllerAppKey!,
+      controllerAppValue: controllerAppValue!,
+      initialTag: initialTag,
+      initialColorValue: initialColorValue,
+      onPressed: onPressed,
+    ),
+  );
+}
 
-      return StatefulBuilder(
-        builder: (context, setState) {
-          return Dialog(
-            backgroundColor: MyColors.transparent,
-            elevation: 0,
-            insetPadding:
-                const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 280),
-              curve: Curves.easeOutCubic,
-              padding: const EdgeInsets.fromLTRB(20, 22, 20, 16),
-              decoration: BoxDecoration(
-                color: Color(selectedColor),
-                borderRadius: BorderRadius.circular(14),
-                border: Border.all(color: MyColors.ink, width: 4),
-                boxShadow: const [
-                  BoxShadow(
-                    color: MyColors.inkSoft,
-                    offset: Offset(-4, 6),
-                    blurRadius: 12,
-                  ),
-                ],
-              ),
+/// Create/edit form. Title and actions stay pinned; only the fields scroll,
+/// so the buttons remain reachable on small screens and with the keyboard up.
+class _SecretFormDialog extends StatefulWidget {
+  const _SecretFormDialog({
+    required this.title,
+    required this.controllerAppKey,
+    required this.controllerAppValue,
+    required this.initialTag,
+    required this.initialColorValue,
+    required this.onPressed,
+  });
+
+  final String title;
+  final TextEditingController controllerAppKey;
+  final TextEditingController controllerAppValue;
+  final String initialTag;
+  final int initialColorValue;
+  final void Function({required String tag, required int colorValue}) onPressed;
+
+  @override
+  State<_SecretFormDialog> createState() => _SecretFormDialogState();
+}
+
+class _SecretFormDialogState extends State<_SecretFormDialog> {
+  late final TextEditingController _tagController =
+      TextEditingController(text: widget.initialTag);
+  late final ValueNotifier<PasswordStrength?> _strength =
+      ValueNotifier(_strengthOf(widget.controllerAppValue.text));
+  late int _selectedColor = widget.initialColorValue;
+
+  static PasswordStrength? _strengthOf(String text) =>
+      text.isEmpty ? null : PasswordStrength.calculate(text: text);
+
+  @override
+  void dispose() {
+    _tagController.dispose();
+    _strength.dispose();
+    super.dispose();
+  }
+
+  void _generatePassword() {
+    const config = PasswordGeneratorConfiguration(
+      length: 32,
+      minUppercase: 8,
+    );
+    final password =
+        PasswordGenerator.fromConfig(configuration: config).generate();
+    widget.controllerAppValue.value = TextEditingValue(text: password);
+    _strength.value = _strengthOf(password);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      backgroundColor: MyColors.transparent,
+      elevation: 0,
+      insetPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 280),
+        curve: Curves.easeOutCubic,
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          color: Color(_selectedColor),
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: MyColors.ink, width: 4),
+          boxShadow: const [
+            BoxShadow(
+              color: MyColors.inkSoft,
+              offset: Offset(-4, 6),
+              blurRadius: 12,
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 12),
+              child: Text(widget.title, style: MyTextStyles.headline2Bold),
+            ),
+            Flexible(
               child: SingleChildScrollView(
-                clipBehavior: Clip.none,
+                padding: const EdgeInsets.fromLTRB(20, 4, 20, 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(title!, style: MyTextStyles.headline2Bold),
-                    const SizedBox(height: 18),
+                    const _SectionLabel('App'),
                     MyTextField(
-                      text: 'App Name',
-                      controller: controllerAppKey!,
+                      text: 'e.g. Gmail',
+                      controller: widget.controllerAppKey,
                       onChanged: (_) {},
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 10),
+                    const _SectionLabel('Password'),
                     MyTextField(
-                      text: 'Password Pls..',
+                      text: 'Type or generate one',
                       isSecret: true,
-                      controller: controllerAppValue!,
-                      onChanged: (string) {
-                        passNotifier.value =
-                            PasswordStrength.calculate(text: string);
-                      },
+                      controller: widget.controllerAppValue,
+                      onChanged: (value) =>
+                          _strength.value = _strengthOf(value),
                     ),
-                    const SizedBox(height: 8),
                     PasswordStrengthChecker(
-                      strength: passNotifier,
+                      strength: _strength,
                       configuration: const PasswordStrengthCheckerConfiguration(
                         height: 22,
                         borderWidth: 2,
@@ -82,155 +144,194 @@ void showFormDialog({
                     Align(
                       alignment: Alignment.centerRight,
                       child: _GeneratePasswordButton(
-                        onPressed: () {
-                          const config = PasswordGeneratorConfiguration(
-                            length: 32,
-                            minUppercase: 8,
-                          );
-                          final passwordGenerator =
-                              PasswordGenerator.fromConfig(
-                            configuration: config,
-                          );
-                          final password = passwordGenerator.generate();
-                          controllerAppValue.value =
-                              TextEditingValue(text: password);
-                          passNotifier.value =
-                              PasswordStrength.calculate(text: password);
-                        },
+                        onPressed: _generatePassword,
                       ),
                     ),
                     const SizedBox(height: 18),
-                    const Text('Tag', style: MyTextStyles.bodyLargeBold),
-                    const SizedBox(height: 8),
+                    const _SectionLabel('Tag'),
                     MyTextField(
                       text: 'e.g. Work, Social',
-                      controller: tagController,
+                      controller: _tagController,
                       onChanged: (_) => setState(() {}),
                     ),
                     const SizedBox(height: 10),
                     Wrap(
                       spacing: 8,
                       runSpacing: 8,
-                      children: TagPalette.suggestedTags.map((tag) {
-                        final selected =
-                            tagController.text.trim().toLowerCase() ==
-                                tag.toLowerCase();
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              tagController.text = tag;
-                            });
-                          },
-                          child: AnimatedContainer(
-                            duration: const Duration(milliseconds: 180),
-                            curve: Curves.easeOut,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 10,
-                              vertical: 6,
+                      children: TagPalette.suggestedTags
+                          .map(
+                            (tag) => _TagChip(
+                              label: tag,
+                              selected:
+                                  _tagController.text.trim().toLowerCase() ==
+                                      tag.toLowerCase(),
+                              onTap: () =>
+                                  setState(() => _tagController.text = tag),
                             ),
-                            decoration: BoxDecoration(
-                              color: selected
-                                  ? MyColors.ink
-                                  : MyColors.surfaceWhite
-                                      .withValues(alpha: 0.55),
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(color: MyColors.ink, width: 2),
-                            ),
-                            child: AnimatedDefaultTextStyle(
-                              duration: const Duration(milliseconds: 180),
-                              style: MyTextStyles.bodySmallBold.copyWith(
-                                color: selected
-                                    ? MyColors.surfaceWhite
-                                    : MyColors.ink,
-                              ),
-                              child: Text(tag),
-                            ),
-                          ),
-                        );
-                      }).toList(),
+                          )
+                          .toList(),
                     ),
                     const SizedBox(height: 18),
-                    const Text('Color', style: MyTextStyles.bodyLargeBold),
-                    const SizedBox(height: 10),
+                    const _SectionLabel('Color'),
                     Wrap(
                       spacing: 10,
                       runSpacing: 10,
-                      children: TagPalette.colorValues.map((colorValue) {
-                        final selected = selectedColor == colorValue;
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              selectedColor = colorValue;
-                            });
-                          },
-                          child: AnimatedScale(
-                            scale: selected ? 1.12 : 1.0,
-                            duration: const Duration(milliseconds: 180),
-                            curve: Curves.easeOutBack,
-                            child: AnimatedContainer(
-                              duration: const Duration(milliseconds: 180),
-                              curve: Curves.easeOut,
-                              width: 34,
-                              height: 34,
-                              decoration: BoxDecoration(
-                                color: Color(colorValue),
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: MyColors.ink,
-                                  width: selected ? 3.5 : 2,
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: MyColors.inkSoft.withValues(
-                                        alpha: selected ? 0.55 : 0.25),
-                                    offset: Offset(
-                                      selected ? -2.5 : -1.5,
-                                      selected ? 2.5 : 1.5,
-                                    ),
-                                    blurRadius: selected ? 5 : 3,
-                                  ),
-                                ],
-                              ),
-                              child: AnimatedOpacity(
-                                opacity: selected ? 1 : 0,
-                                duration: const Duration(milliseconds: 160),
-                                child: const Icon(Icons.check, size: 18),
-                              ),
+                      children: TagPalette.colorValues
+                          .map(
+                            (colorValue) => _ColorDot(
+                              colorValue: colorValue,
+                              selected: _selectedColor == colorValue,
+                              onTap: () =>
+                                  setState(() => _selectedColor = colorValue),
                             ),
-                          ),
-                        );
-                      }).toList(),
-                    ),
-                    const SizedBox(height: 22),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: MyFormButton(
-                            title: 'Close',
-                            onPressed: () => Navigator.of(context).pop(),
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: MyFormButton(
-                            title: 'Send',
-                            onPressed: () => onPressed(
-                              tag: tagController.text,
-                              colorValue: selectedColor,
-                            ),
-                          ),
-                        ),
-                      ],
+                          )
+                          .toList(),
                     ),
                   ],
                 ),
               ),
             ),
-          );
-        },
-      );
-    },
-  );
+            DecoratedBox(
+              decoration: const BoxDecoration(
+                border: Border(
+                  top: BorderSide(color: MyColors.ink, width: 2),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 14, 20, 16),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: MyFormButton(
+                        title: 'Close',
+                        onPressed: () => Navigator.of(context).pop(),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: MyFormButton(
+                        title: 'Save',
+                        onPressed: () => widget.onPressed(
+                          tag: _tagController.text,
+                          colorValue: _selectedColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SectionLabel extends StatelessWidget {
+  const _SectionLabel(this.text);
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Text(text, style: MyTextStyles.bodyLargeBold),
+    );
+  }
+}
+
+class _TagChip extends StatelessWidget {
+  const _TagChip({
+    required this.label,
+    required this.selected,
+    required this.onTap,
+  });
+
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 180),
+        curve: Curves.easeOut,
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+        decoration: BoxDecoration(
+          color: selected
+              ? MyColors.ink
+              : MyColors.surfaceWhite.withValues(alpha: 0.55),
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: MyColors.ink, width: 2),
+        ),
+        child: AnimatedDefaultTextStyle(
+          duration: const Duration(milliseconds: 180),
+          style: MyTextStyles.bodySmallBold.copyWith(
+            color: selected ? MyColors.surfaceWhite : MyColors.ink,
+          ),
+          child: Text(label),
+        ),
+      ),
+    );
+  }
+}
+
+class _ColorDot extends StatelessWidget {
+  const _ColorDot({
+    required this.colorValue,
+    required this.selected,
+    required this.onTap,
+  });
+
+  final int colorValue;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedScale(
+        scale: selected ? 1.12 : 1.0,
+        duration: const Duration(milliseconds: 180),
+        curve: Curves.easeOutBack,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 180),
+          curve: Curves.easeOut,
+          width: 34,
+          height: 34,
+          decoration: BoxDecoration(
+            color: Color(colorValue),
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: MyColors.ink,
+              width: selected ? 3.5 : 2,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color:
+                    MyColors.inkSoft.withValues(alpha: selected ? 0.55 : 0.25),
+                offset: Offset(
+                  selected ? -2.5 : -1.5,
+                  selected ? 2.5 : 1.5,
+                ),
+                blurRadius: selected ? 5 : 3,
+              ),
+            ],
+          ),
+          child: AnimatedOpacity(
+            opacity: selected ? 1 : 0,
+            duration: const Duration(milliseconds: 160),
+            child: const Icon(Icons.check, size: 18),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class _GeneratePasswordButton extends StatelessWidget {
@@ -274,9 +375,14 @@ class MyFormButton extends StatelessWidget {
     super.key,
     required this.title,
     required this.onPressed,
+    this.isDestructive = false,
   });
   final String title;
   final void Function() onPressed;
+
+  /// Irreversible action (delete): error fill so it is not mistaken for
+  /// the neutral choice next to it.
+  final bool isDestructive;
 
   @override
   Widget build(BuildContext context) {
@@ -286,11 +392,10 @@ class MyFormButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           foregroundColor: MyColors.ink,
-          backgroundColor: MyColors.surfaceWhite.withValues(alpha: 0.72),
-          textStyle: const TextStyle(
-            fontSize: 16.0,
-            fontWeight: FontWeight.bold,
-          ),
+          backgroundColor: isDestructive
+              ? MyColors.error
+              : MyColors.surfaceWhite.withValues(alpha: 0.72),
+          textStyle: MyTextStyles.bodyLargeBold,
           padding: EdgeInsets.zero,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),

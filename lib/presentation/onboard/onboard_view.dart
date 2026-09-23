@@ -16,13 +16,35 @@ class OnboardView extends StatefulWidget {
 
 class OnboardViewState extends State<OnboardView> {
   final PageController _pageController = PageController(initialPage: 0);
-  final List<String> images = ["Title 1", "Title 2", "Title 3"];
-  final List<String> descriptions = [
-    "Description 1",
-    "Description 2",
-    "Description 3"
+  static const _pages = [
+    (
+      icon: Icons.lock_outline_rounded,
+      title: 'Your vault, offline',
+      description: 'Passwords stay on this device in secure storage. '
+          'No account, no cloud.',
+    ),
+    (
+      icon: Icons.qr_code_scanner_rounded,
+      title: 'Codes built in',
+      description: 'Scan a QR code to keep your two-factor codes '
+          'right next to your passwords.',
+    ),
+    (
+      icon: Icons.pin_outlined,
+      title: 'Locked when you leave',
+      description: 'Set a PIN in Profile and Passvera relocks every time '
+          'the app goes to the background.',
+    ),
   ];
   int currentPage = 0;
+
+  bool get _isLastPage => currentPage == _pages.length - 1;
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,16 +55,18 @@ class OnboardViewState extends State<OnboardView> {
           Expanded(
             child: PageView.builder(
               controller: _pageController,
-              itemCount: images.length,
+              itemCount: _pages.length,
               onPageChanged: (index) {
                 setState(() {
                   currentPage = index;
                 });
               },
               itemBuilder: (context, index) {
+                final page = _pages[index];
                 return OnboardViewBody(
-                  title: images[index],
-                  description: descriptions[index],
+                  icon: page.icon,
+                  title: page.title,
+                  description: page.description,
                 );
               },
             ),
@@ -63,10 +87,9 @@ class OnboardViewState extends State<OnboardView> {
 
   Widget buildButton() {
     return MySmallButton(
-      icon: Icon(
-          currentPage == 2 ? Icons.start_outlined : Icons.skip_next_outlined),
+      icon: Icon(_isLastPage ? Icons.start_outlined : Icons.skip_next_outlined),
       onTap: () {
-        if (currentPage == 2) {
+        if (_isLastPage) {
           getIt<OnboardBloc>().add(const OnboardEvent.setOnboard());
           AutoRouter.of(context).pushAndPopUntil(const HomeView(),
               predicate: (_) {
@@ -86,24 +109,25 @@ class OnboardViewState extends State<OnboardView> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(
-        descriptions.length,
+        _pages.length,
         (index) => buildIndicatorDot(index),
       ),
     );
   }
 
   Widget buildIndicatorDot(int index) {
-    bool isSelected = index == currentPage;
-    double size = isSelected ? 25.0 : 15.0;
+    final isSelected = index == currentPage;
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
-      margin: const EdgeInsets.symmetric(horizontal: 5),
-      height: size,
-      width: size,
+      curve: Curves.easeOutCubic,
+      margin: const EdgeInsets.symmetric(horizontal: 4),
+      height: 14,
+      width: isSelected ? 32 : 14,
       decoration: BoxDecoration(
-        shape: isSelected ? BoxShape.circle : BoxShape.rectangle,
-        color: isSelected ? MyColors.brand : MyColors.indicatorInactive,
+        color: isSelected ? MyColors.brand : MyColors.surfaceWhite,
+        borderRadius: BorderRadius.circular(7),
+        border: Border.all(color: MyColors.ink, width: 2),
       ),
     );
   }

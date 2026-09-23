@@ -57,9 +57,11 @@ class _AuthenticatorTileState extends State<AuthenticatorTile> {
     });
   }
 
+  /// 6 digits as `123 456`, 8 digits as `1234 5678`.
   String get _formattedCode {
-    if (_code.length == 6) {
-      return '${_code.substring(0, 3)} ${_code.substring(3)}';
+    if (_code.length == 6 || _code.length == 8) {
+      final half = _code.length ~/ 2;
+      return '${_code.substring(0, half)} ${_code.substring(half)}';
     }
     return _code;
   }

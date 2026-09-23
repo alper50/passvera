@@ -5,11 +5,11 @@ import 'package:passvera/application/authenticatorBloc/authenticator_bloc.dart';
 import 'package:passvera/application/clipboardBloc/clipboard_bloc.dart';
 import 'package:passvera/application/homeActionBloc/home_action_bloc.dart';
 import 'package:passvera/application/homeBloc/home_bloc.dart';
-import 'package:passvera/domain/clipboard_constants.dart';
 import 'package:passvera/injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passvera/presentation/core/route/route.gr.dart';
 import 'package:passvera/presentation/core/utils/failure_messages.dart';
+import 'package:passvera/presentation/core/widgets/clipboard_snackbar_listener.dart';
 import 'package:passvera/presentation/core/widgets/form_dialog.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
 import 'package:passvera/presentation/home/authenticator/authenticator_body.dart';
@@ -76,22 +76,7 @@ class HomeView extends StatelessWidget {
               );
             },
           ),
-          BlocListener<ClipboardBloc, ClipboardState>(
-            listener: (context, state) {
-              state.copyFailureOrSuccess.fold(
-                () {},
-                (either) => showMySnackBar(
-                  isError: either.isLeft(),
-                  context: context,
-                  message: either.fold(
-                    (failure) => failure.message,
-                    (_) => 'Copied (clears in '
-                        '${kSensitiveClipboardTtl.inSeconds}s)',
-                  ),
-                ),
-              );
-            },
-          ),
+          ClipboardSnackBarListener(),
         ],
         child: const ScaffoldView(),
       ),
@@ -108,8 +93,13 @@ class ScaffoldView extends StatefulWidget {
 
 class _ScaffoldViewState extends State<ScaffoldView>
     with SingleTickerProviderStateMixin {
+  // Pass every search notifier explicitly: the package otherwise falls back
+  // to static globals, leaking the last query into a recreated HomeView.
   final searchText = ValueNotifier<String>('');
   final isSearchMode = ValueNotifier<bool>(false);
+  final _searchHasText = ValueNotifier<bool>(false);
+  final _searchSubmit = ValueNotifier<String>('');
+  final _searchController = TextEditingController();
   late final TabController _tabController;
   int _tabIndex = 0;
 
@@ -125,8 +115,12 @@ class _ScaffoldViewState extends State<ScaffoldView>
     final index = _tabController.index;
     if (index == _tabIndex) return;
     setState(() => _tabIndex = index);
-    if (index != 0 && isSearchMode.value) {
+    // Search only applies to Secrets: leaving it must also drop the query,
+    // otherwise the list comes back filtered with no visible search field.
+    if (index != 0) {
       isSearchMode.value = false;
+      _searchController.clear();
+      searchText.value = '';
     }
   }
 
@@ -136,6 +130,9 @@ class _ScaffoldViewState extends State<ScaffoldView>
     _tabController.dispose();
     searchText.dispose();
     isSearchMode.dispose();
+    _searchHasText.dispose();
+    _searchSubmit.dispose();
+    _searchController.dispose();
     super.dispose();
   }
 
@@ -181,6 +178,9 @@ class _ScaffoldViewState extends State<ScaffoldView>
         clearSearchIcon: Icons.close_rounded,
         customIsSearchModeNotifier: isSearchMode,
         customTextNotifier: searchText,
+        customHasText: _searchHasText,
+        customSubmitNotifier: _searchSubmit,
+        customTextEditingController: _searchController,
         animation: (child) => AppBarAnimationSlideLeft(
           milliseconds: 320,
           withFade: true,
@@ -232,6 +232,9 @@ class _ScaffoldViewState extends State<ScaffoldView>
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        // No hero flight needed, and the search app bar renders its own
+        // default-tagged FAB while a query is active.
+        heroTag: null,
         onPressed: _onFabPressed,
         child: AnimatedSwitcher(
           duration: const Duration(milliseconds: 280),

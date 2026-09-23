@@ -34,7 +34,8 @@ class MyListContainer extends StatelessWidget {
 
           return ListView.builder(
             scrollDirection: Axis.vertical,
-            shrinkWrap: true,
+            // Lets the last card scroll clear of the floating action button.
+            padding: const EdgeInsets.only(bottom: 96),
             itemCount: filtered.length,
             itemBuilder: (context, index) {
               return PassContainerWidget(currentModel: filtered[index]);

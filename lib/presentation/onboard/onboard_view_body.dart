@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
+import 'package:passvera/presentation/core/theme/text_styles.dart';
 
 class OnboardViewBody extends StatelessWidget {
+  final IconData icon;
   final String title;
   final String description;
 
-  const OnboardViewBody(
-      {super.key, required this.title, required this.description});
+  const OnboardViewBody({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.description,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(left: 15, right: 15, bottom: 50, top: 70),
+      padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: MyColors.brand,
         borderRadius: BorderRadius.circular(15.0),
@@ -28,31 +35,27 @@ class OnboardViewBody extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              title,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+      child: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon, size: 72, color: MyColors.ink),
+              const SizedBox(height: 24),
+              Text(
+                title,
+                style: MyTextStyles.headline2Bold,
+                textAlign: TextAlign.center,
               ),
-            ),
-          ),
-          const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              description,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 16,
+              const SizedBox(height: 12),
+              Text(
+                description,
+                style: MyTextStyles.bodyLarge,
+                textAlign: TextAlign.center,
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
