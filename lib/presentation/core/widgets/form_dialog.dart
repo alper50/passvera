@@ -63,6 +63,7 @@ void showFormDialog({
                     const SizedBox(height: 12),
                     MyTextField(
                       text: 'Password Pls..',
+                      isSecret: true,
                       controller: controllerAppValue!,
                       onChanged: (string) {
                         passNotifier.value =
@@ -133,8 +134,7 @@ void showFormDialog({
                                   : MyColors.surfaceWhite
                                       .withValues(alpha: 0.55),
                               borderRadius: BorderRadius.circular(8),
-                              border:
-                                  Border.all(color: MyColors.ink, width: 2),
+                              border: Border.all(color: MyColors.ink, width: 2),
                             ),
                             child: AnimatedDefaultTextStyle(
                               duration: const Duration(milliseconds: 180),
@@ -313,11 +313,16 @@ class MyTextField extends StatefulWidget {
   final TextEditingController controller;
   final void Function(String) onChanged;
 
+  /// Hides the value and keeps it away from keyboard learning/suggestions
+  /// and platform autofill.
+  final bool isSecret;
+
   const MyTextField({
     Key? key,
     required this.text,
     required this.controller,
     required this.onChanged,
+    this.isSecret = false,
   }) : super(key: key);
 
   @override
@@ -326,6 +331,7 @@ class MyTextField extends StatefulWidget {
 
 class _MyTextFieldState extends State<MyTextField> {
   bool _focused = false;
+  bool _revealed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -360,6 +366,13 @@ class _MyTextFieldState extends State<MyTextField> {
           child: TextFormField(
             onChanged: (string) => widget.onChanged(string),
             controller: widget.controller,
+            obscureText: widget.isSecret && !_revealed,
+            enableSuggestions: !widget.isSecret,
+            autocorrect: !widget.isSecret,
+            enableIMEPersonalizedLearning: !widget.isSecret,
+            keyboardType:
+                widget.isSecret ? TextInputType.visiblePassword : null,
+            autofillHints: widget.isSecret ? null : const <String>[],
             style: const TextStyle(
               fontSize: 16.0,
               color: MyColors.ink,
@@ -378,6 +391,18 @@ class _MyTextFieldState extends State<MyTextField> {
                 borderSide: BorderSide.none,
               ),
               floatingLabelBehavior: FloatingLabelBehavior.never,
+              suffixIcon: widget.isSecret
+                  ? IconButton(
+                      tooltip: _revealed ? 'Hide password' : 'Show password',
+                      icon: Icon(
+                        _revealed
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
+                        color: MyColors.ink,
+                      ),
+                      onPressed: () => setState(() => _revealed = !_revealed),
+                    )
+                  : null,
             ),
           ),
         ),

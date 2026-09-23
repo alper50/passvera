@@ -1,35 +1,20 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:passvera/domain/tag_palette.dart';
 
-@immutable
-class ApplicationModel {
-  const ApplicationModel({
-    required this.key,
-    required this.value,
-    this.tag = TagPalette.defaultTag,
-    this.colorValue = TagPalette.defaultColorValue,
-  });
+part 'application_model.freezed.dart';
 
-  final String key;
-  final String value;
-  final String tag;
-  final int colorValue;
+@freezed
+class ApplicationModel with _$ApplicationModel {
+  const ApplicationModel._();
 
-  ApplicationModel copyWith({
-    String? key,
-    String? value,
-    String? tag,
-    int? colorValue,
-  }) {
-    return ApplicationModel(
-      key: key ?? this.key,
-      value: value ?? this.value,
-      tag: tag ?? this.tag,
-      colorValue: colorValue ?? this.colorValue,
-    );
-  }
+  const factory ApplicationModel({
+    required String key,
+    required String value,
+    @Default(TagPalette.defaultTag) String tag,
+    @Default(TagPalette.defaultColorValue) int colorValue,
+  }) = _ApplicationModel;
 
   /// Storage payload. Legacy plain strings are treated as password-only.
   String toStorageValue() {
@@ -62,17 +47,4 @@ class ApplicationModel {
     }
     return ApplicationModel(key: key, value: raw);
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is ApplicationModel &&
-            other.key == key &&
-            other.value == value &&
-            other.tag == tag &&
-            other.colorValue == colorValue);
-  }
-
-  @override
-  int get hashCode => Object.hash(key, value, tag, colorValue);
 }

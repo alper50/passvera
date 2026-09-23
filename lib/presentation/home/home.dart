@@ -2,11 +2,14 @@ import 'package:app_bar_with_search_switch/app_bar_with_search_switch.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:passvera/application/authenticatorBloc/authenticator_bloc.dart';
+import 'package:passvera/application/clipboardBloc/clipboard_bloc.dart';
 import 'package:passvera/application/homeActionBloc/home_action_bloc.dart';
 import 'package:passvera/application/homeBloc/home_bloc.dart';
+import 'package:passvera/domain/clipboard_constants.dart';
 import 'package:passvera/injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passvera/presentation/core/route/route.gr.dart';
+import 'package:passvera/presentation/core/utils/failure_messages.dart';
 import 'package:passvera/presentation/core/widgets/form_dialog.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
 import 'package:passvera/presentation/home/authenticator/authenticator_body.dart';
@@ -31,6 +34,9 @@ class HomeView extends StatelessWidget {
           create: (context) => getIt<AuthenticatorBloc>()
             ..add(const AuthenticatorEvent.loadAll()),
         ),
+        BlocProvider(
+          create: (context) => getIt<ClipboardBloc>(),
+        ),
       ],
       child: MultiBlocListener(
         listeners: [
@@ -45,13 +51,7 @@ class HomeView extends StatelessWidget {
                       showMySnackBar(
                         isError: true,
                         context: context,
-                        message: failure.map(
-                          unexpected: (e) => e.toString(),
-                          insufficientPermission: (_) => 'Permission Denied',
-                          keyAlreadyUsed: (_) => 'This key already used',
-                          emptyKey: (_) => 'Parameters cannot be empty',
-                          modelNotValid: (_) => 'Model is not valid',
-                        ),
+                        message: failure.message,
                       ),
                     },
                   );
@@ -67,18 +67,28 @@ class HomeView extends StatelessWidget {
                   showMySnackBar(
                     isError: true,
                     context: context,
-                    message: failure.map(
-                      unexpected: (e) => e.toString(),
-                      insufficientPermission: (_) => 'Permission Denied',
-                      keyAlreadyUsed: (_) => 'This key already used',
-                      emptyKey: (_) => 'Parameters cannot be empty',
-                      modelNotValid: (_) => 'Model is not valid',
-                    ),
+                    message: failure.message,
                   );
                 }, (succes) {
                   Navigator.of(context).pop();
                   context.read<HomeBloc>().add(const HomeEvent.getAllValues());
                 }),
+              );
+            },
+          ),
+          BlocListener<ClipboardBloc, ClipboardState>(
+            listener: (context, state) {
+              state.copyFailureOrSuccess.fold(
+                () {},
+                (either) => showMySnackBar(
+                  isError: either.isLeft(),
+                  context: context,
+                  message: either.fold(
+                    (failure) => failure.message,
+                    (_) => 'Copied (clears in '
+                        '${kSensitiveClipboardTtl.inSeconds}s)',
+                  ),
+                ),
               );
             },
           ),

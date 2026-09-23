@@ -1,30 +1,20 @@
 part of 'lock_bloc.dart';
 
-@immutable
-class AppLockState {
-  const AppLockState({
-    required this.isLoading,
-    required this.isPinEnabled,
-    required this.isUnlocked,
-    required this.lockoutRemainingSeconds,
-    required this.statusFailureOrSuccess,
-    required this.verifyFailureOrSuccess,
-    required this.setFailureOrSuccess,
-    required this.updateFailureOrSuccess,
-    required this.removeFailureOrSuccess,
-  });
+@freezed
+class AppLockState with _$AppLockState {
+  const AppLockState._();
 
-  final bool isLoading;
-  final bool isPinEnabled;
-  final bool isUnlocked;
-  final int lockoutRemainingSeconds;
-  final Option<Either<LockFailure, bool>> statusFailureOrSuccess;
-  final Option<Either<LockFailure, Unit>> verifyFailureOrSuccess;
-  final Option<Either<LockFailure, Unit>> setFailureOrSuccess;
-  final Option<Either<LockFailure, Unit>> updateFailureOrSuccess;
-  final Option<Either<LockFailure, Unit>> removeFailureOrSuccess;
-
-  bool get isLockedOut => lockoutRemainingSeconds > 0;
+  const factory AppLockState({
+    required bool isLoading,
+    required bool isPinEnabled,
+    required bool isUnlocked,
+    required int lockoutRemainingSeconds,
+    required Option<Either<LockFailure, bool>> statusFailureOrSuccess,
+    required Option<Either<LockFailure, Unit>> verifyFailureOrSuccess,
+    required Option<Either<LockFailure, Unit>> setFailureOrSuccess,
+    required Option<Either<LockFailure, Unit>> updateFailureOrSuccess,
+    required Option<Either<LockFailure, Unit>> removeFailureOrSuccess,
+  }) = _AppLockState;
 
   factory AppLockState.initial() => AppLockState(
         isLoading: false,
@@ -38,32 +28,5 @@ class AppLockState {
         removeFailureOrSuccess: none(),
       );
 
-  AppLockState copyWith({
-    bool? isLoading,
-    bool? isPinEnabled,
-    bool? isUnlocked,
-    int? lockoutRemainingSeconds,
-    Option<Either<LockFailure, bool>>? statusFailureOrSuccess,
-    Option<Either<LockFailure, Unit>>? verifyFailureOrSuccess,
-    Option<Either<LockFailure, Unit>>? setFailureOrSuccess,
-    Option<Either<LockFailure, Unit>>? updateFailureOrSuccess,
-    Option<Either<LockFailure, Unit>>? removeFailureOrSuccess,
-  }) {
-    return AppLockState(
-      isLoading: isLoading ?? this.isLoading,
-      isPinEnabled: isPinEnabled ?? this.isPinEnabled,
-      isUnlocked: isUnlocked ?? this.isUnlocked,
-      lockoutRemainingSeconds:
-          lockoutRemainingSeconds ?? this.lockoutRemainingSeconds,
-      statusFailureOrSuccess:
-          statusFailureOrSuccess ?? this.statusFailureOrSuccess,
-      verifyFailureOrSuccess:
-          verifyFailureOrSuccess ?? this.verifyFailureOrSuccess,
-      setFailureOrSuccess: setFailureOrSuccess ?? this.setFailureOrSuccess,
-      updateFailureOrSuccess:
-          updateFailureOrSuccess ?? this.updateFailureOrSuccess,
-      removeFailureOrSuccess:
-          removeFailureOrSuccess ?? this.removeFailureOrSuccess,
-    );
-  }
+  bool get isLockedOut => lockoutRemainingSeconds > 0;
 }

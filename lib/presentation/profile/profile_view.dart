@@ -2,10 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passvera/application/lockBloc/lock_bloc.dart';
-import 'package:passvera/domain/errors/lock_failures.dart';
 import 'package:passvera/domain/lock_constants.dart';
 import 'package:passvera/injection.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
+import 'package:passvera/presentation/core/utils/failure_messages.dart';
 import 'package:passvera/presentation/core/widgets/my_custom_container.dart';
 import 'package:passvera/presentation/core/widgets/my_small_button.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
@@ -19,8 +19,7 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) =>
-          getIt<LockBloc>()..add(const LockEvent.checkPinStatus()),
+      create: (_) => getIt<LockBloc>()..add(const LockEvent.checkPinStatus()),
       child: const _ProfileViewBody(),
     );
   }
@@ -40,18 +39,6 @@ class _ProfileViewBodyState extends State<_ProfileViewBody> {
   String _currentPin = '';
   String? _error;
   bool _awaitingConfirm = false;
-
-  String _mapFailure(LockFailure failure) {
-    return failure.map(
-      unexpected: (e) => e.toString(),
-      wrongPin: () => 'Wrong PIN',
-      invalidPin: () => 'PIN must be $kAppPinLength digits',
-      pinAlreadySet: () => 'PIN already set',
-      pinNotSet: () => 'PIN is not set',
-      pinMismatch: () => 'PINs do not match',
-      lockedOut: (seconds) => 'Too many attempts. Try again in ${seconds}s',
-    );
-  }
 
   void _resetFlow() {
     setState(() {
@@ -161,7 +148,7 @@ class _ProfileViewBodyState extends State<_ProfileViewBody> {
               () {},
               (either) => either.fold(
                 (failure) => setState(() {
-                  _error = _mapFailure(failure);
+                  _error = failure.message;
                   _pin = '';
                   _confirmPin = '';
                   _awaitingConfirm = false;
@@ -185,7 +172,7 @@ class _ProfileViewBodyState extends State<_ProfileViewBody> {
               () {},
               (either) => either.fold(
                 (failure) => setState(() {
-                  _error = _mapFailure(failure);
+                  _error = failure.message;
                   _pin = '';
                   _confirmPin = '';
                   _awaitingConfirm = false;
@@ -211,7 +198,7 @@ class _ProfileViewBodyState extends State<_ProfileViewBody> {
               () {},
               (either) => either.fold(
                 (failure) => setState(() {
-                  _error = _mapFailure(failure);
+                  _error = failure.message;
                   _pin = '';
                 }),
                 (_) {
@@ -265,7 +252,8 @@ class _ProfileViewBodyState extends State<_ProfileViewBody> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text('App Lock', style: MyTextStyles.headline2Bold),
+                        const Text('App Lock',
+                            style: MyTextStyles.headline2Bold),
                         Text(
                           state.isPinEnabled ? 'On' : 'Off',
                           style: MyTextStyles.headline3,

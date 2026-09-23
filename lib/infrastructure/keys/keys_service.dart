@@ -89,20 +89,29 @@ class KeysService {
     }
   }
 
+  /// Writes the new entry before removing [oldKey], so a failed write never
+  /// loses the original. Renaming onto another existing key is rejected.
   Future<Either<StorageFailure, Unit>> updateSingleValue(
       {required ApplicationModel model, required String oldKey}) async {
     try {
-      final result = await storage.read(key: oldKey);
-      if (result != null) {
-        await storage.delete(key: oldKey);
-        await storage.write(
-          key: model.key,
-          value: model.toStorageValue(),
-        );
-        return const Right(unit);
-      } else {
+      final existing = await storage.read(key: oldKey);
+      if (existing == null) {
         return const Left(StorageFailure.emptyKey());
       }
+
+      final isRename = model.key != oldKey;
+      if (isRename && await storage.containsKey(key: model.key)) {
+        return const Left(StorageFailure.keyAlreadyUsed());
+      }
+
+      await storage.write(
+        key: model.key,
+        value: model.toStorageValue(),
+      );
+      if (isRename) {
+        await storage.delete(key: oldKey);
+      }
+      return const Right(unit);
     } catch (e) {
       return Left(StorageFailure.unexpected(e));
     }

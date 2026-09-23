@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:passvera/application/authenticatorBloc/authenticator_bloc.dart';
-import 'package:passvera/domain/errors/authenticator_failures.dart';
 import 'package:passvera/injection.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
+import 'package:passvera/presentation/core/utils/failure_messages.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
 
 class QrScanView extends StatelessWidget {
@@ -42,17 +42,6 @@ class _QrScanBodyState extends State<_QrScanBody> {
     super.dispose();
   }
 
-  String _failureMessage(AuthenticatorFailure failure) {
-    return failure.map(
-      unexpected: (e) => e.toString(),
-      invalidQr: () => 'Invalid authenticator QR',
-      unsupportedType: () => 'Only TOTP QR codes are supported',
-      keyAlreadyUsed: () => 'This account is already added',
-      emptySecret: () => 'QR has no secret',
-      permissionDenied: () => 'Camera permission denied',
-    );
-  }
-
   Future<void> _onDetect(BarcodeCapture capture) async {
     if (_handled) return;
     final raw = capture.barcodes
@@ -86,7 +75,7 @@ class _QrScanBodyState extends State<_QrScanBody> {
               showMySnackBar(
                 isError: true,
                 context: context,
-                message: _failureMessage(failure),
+                message: failure.message,
               );
               _handled = false;
               _controller.start();

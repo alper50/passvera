@@ -1,23 +1,12 @@
 part of 'home_action_bloc.dart';
 
-@immutable
-class HomeActionState {
-  const HomeActionState({
-    required this.verifyFailureOrSucces,
-  });
-
-  final Option<Either<StorageFailure, Unit>> verifyFailureOrSucces;
+@freezed
+class HomeActionState with _$HomeActionState {
+  const factory HomeActionState({
+    required Option<Either<StorageFailure, Unit>> verifyFailureOrSucces,
+  }) = _HomeActionState;
 
   factory HomeActionState.initial() => HomeActionState(
         verifyFailureOrSucces: none(),
       );
-
-  HomeActionState copyWith({
-    Option<Either<StorageFailure, Unit>>? verifyFailureOrSucces,
-  }) {
-    return HomeActionState(
-      verifyFailureOrSucces:
-          verifyFailureOrSucces ?? this.verifyFailureOrSucces,
-    );
-  }
 }

@@ -1,5 +1,8 @@
+// **************************************************************************
+// AutoRouteGenerator
+// **************************************************************************
+
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// Manual update: LockView, ProfileView, QrScanView (build_runner unavailable).
 
 // **************************************************************************
 // AutoRouteGenerator
@@ -8,39 +11,39 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i5;
-import 'package:flutter/material.dart' as _i6;
+import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:flutter/material.dart' as _i9;
 
-import '../../../domain/application_model.dart' as _i7;
-import '../../home/authenticator/qr_scan_view.dart' as _i10;
+import '../../../domain/application_model.dart' as _i10;
+import '../../home/authenticator/qr_scan_view.dart' as _i7;
 import '../../home/home.dart' as _i1;
 import '../../home/passwordDetailView/pass_detail_view.dart' as _i3;
-import '../../lock/lock_view.dart' as _i8;
+import '../../lock/lock_view.dart' as _i5;
 import '../../onboard/onboard_view.dart' as _i4;
-import '../../profile/profile_view.dart' as _i9;
+import '../../profile/profile_view.dart' as _i6;
 import '../../splash/splash_view.dart' as _i2;
 
-class MyRouter extends _i5.RootStackRouter {
-  MyRouter([_i6.GlobalKey<_i6.NavigatorState>? navigatorKey])
+class MyRouter extends _i8.RootStackRouter {
+  MyRouter([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i5.PageFactory> pagesMap = {
+  final Map<String, _i8.PageFactory> pagesMap = {
     HomeView.name: (routeData) {
-      return _i5.MaterialPageX<dynamic>(
+      return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i1.HomeView(),
       );
     },
     SplashView.name: (routeData) {
-      return _i5.MaterialPageX<dynamic>(
+      return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.SplashView(),
       );
     },
     PassDetailView.name: (routeData) {
       final args = routeData.argsAs<PassDetailViewArgs>();
-      return _i5.MaterialPageX<dynamic>(
+      return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
         child: _i3.PassDetailView(
           key: args.key,
@@ -49,58 +52,58 @@ class MyRouter extends _i5.RootStackRouter {
       );
     },
     OnboardView.name: (routeData) {
-      return _i5.MaterialPageX<dynamic>(
+      return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i4.OnboardView(),
+        child: const _i4.OnboardView(),
       );
     },
     LockView.name: (routeData) {
-      return _i5.MaterialPageX<dynamic>(
+      return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i8.LockView(),
+        child: const _i5.LockView(),
       );
     },
     ProfileView.name: (routeData) {
-      return _i5.MaterialPageX<dynamic>(
+      return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i9.ProfileView(),
+        child: const _i6.ProfileView(),
       );
     },
     QrScanView.name: (routeData) {
-      return _i5.MaterialPageX<bool>(
+      return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i10.QrScanView(),
+        child: const _i7.QrScanView(),
       );
     },
   };
 
   @override
-  List<_i5.RouteConfig> get routes => [
-        _i5.RouteConfig(
+  List<_i8.RouteConfig> get routes => [
+        _i8.RouteConfig(
           HomeView.name,
           path: '/home-view',
         ),
-        _i5.RouteConfig(
+        _i8.RouteConfig(
           SplashView.name,
           path: '/',
         ),
-        _i5.RouteConfig(
+        _i8.RouteConfig(
           PassDetailView.name,
           path: '/pass-detail-view',
         ),
-        _i5.RouteConfig(
+        _i8.RouteConfig(
           OnboardView.name,
           path: '/onboard-view',
         ),
-        _i5.RouteConfig(
+        _i8.RouteConfig(
           LockView.name,
           path: '/lock-view',
         ),
-        _i5.RouteConfig(
+        _i8.RouteConfig(
           ProfileView.name,
           path: '/profile-view',
         ),
-        _i5.RouteConfig(
+        _i8.RouteConfig(
           QrScanView.name,
           path: '/qr-scan-view',
         ),
@@ -109,7 +112,7 @@ class MyRouter extends _i5.RootStackRouter {
 
 /// generated route for
 /// [_i1.HomeView]
-class HomeView extends _i5.PageRouteInfo<void> {
+class HomeView extends _i8.PageRouteInfo<void> {
   const HomeView()
       : super(
           HomeView.name,
@@ -121,7 +124,7 @@ class HomeView extends _i5.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.SplashView]
-class SplashView extends _i5.PageRouteInfo<void> {
+class SplashView extends _i8.PageRouteInfo<void> {
   const SplashView()
       : super(
           SplashView.name,
@@ -133,10 +136,10 @@ class SplashView extends _i5.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.PassDetailView]
-class PassDetailView extends _i5.PageRouteInfo<PassDetailViewArgs> {
+class PassDetailView extends _i8.PageRouteInfo<PassDetailViewArgs> {
   PassDetailView({
-    _i6.Key? key,
-    required _i7.ApplicationModel model,
+    _i9.Key? key,
+    required _i10.ApplicationModel model,
   }) : super(
           PassDetailView.name,
           path: '/pass-detail-view',
@@ -155,9 +158,9 @@ class PassDetailViewArgs {
     required this.model,
   });
 
-  final _i6.Key? key;
+  final _i9.Key? key;
 
-  final _i7.ApplicationModel model;
+  final _i10.ApplicationModel model;
 
   @override
   String toString() {
@@ -167,7 +170,7 @@ class PassDetailViewArgs {
 
 /// generated route for
 /// [_i4.OnboardView]
-class OnboardView extends _i5.PageRouteInfo<void> {
+class OnboardView extends _i8.PageRouteInfo<void> {
   const OnboardView()
       : super(
           OnboardView.name,
@@ -178,8 +181,8 @@ class OnboardView extends _i5.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i8.LockView]
-class LockView extends _i5.PageRouteInfo<void> {
+/// [_i5.LockView]
+class LockView extends _i8.PageRouteInfo<void> {
   const LockView()
       : super(
           LockView.name,
@@ -190,8 +193,8 @@ class LockView extends _i5.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i9.ProfileView]
-class ProfileView extends _i5.PageRouteInfo<void> {
+/// [_i6.ProfileView]
+class ProfileView extends _i8.PageRouteInfo<void> {
   const ProfileView()
       : super(
           ProfileView.name,
@@ -202,8 +205,8 @@ class ProfileView extends _i5.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i10.QrScanView]
-class QrScanView extends _i5.PageRouteInfo<void> {
+/// [_i7.QrScanView]
+class QrScanView extends _i8.PageRouteInfo<void> {
   const QrScanView()
       : super(
           QrScanView.name,

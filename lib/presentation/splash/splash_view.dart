@@ -40,27 +40,25 @@ class SplashViewBody extends StatelessWidget {
                 AutoRouter.of(context).replace(const OnboardView());
               },
               onboarShowed: (_) {
-                context
-                    .read<LockBloc>()
-                    .add(const LockEvent.checkPinStatus());
+                context.read<LockBloc>().add(const LockEvent.checkPinStatus());
               },
             );
           },
         ),
         BlocListener<LockBloc, AppLockState>(
           listenWhen: (previous, current) =>
-              previous.isLoading && !current.isLoading,
+              previous.statusFailureOrSuccess != current.statusFailureOrSuccess,
           listener: (context, state) {
             final router = AutoRouter.of(context);
             state.statusFailureOrSuccess.fold(
-              () {
-                if (state.isPinEnabled) {
-                  router.replace(const LockView());
-                } else {
-                  router.replace(const HomeView());
-                }
-              },
-              (_) => router.replace(const HomeView()),
+              () {},
+              (either) => either.fold(
+                // Fail closed: LockView retries and resolves the real state.
+                (_) => router.replace(const LockView()),
+                (isPinSet) => router.replace(
+                  isPinSet ? const LockView() : const HomeView(),
+                ),
+              ),
             );
           },
         ),

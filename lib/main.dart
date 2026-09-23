@@ -1,9 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:passvera/domain/i_lock_repository.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:passvera/application/sessionBloc/session_bloc.dart';
 import 'package:passvera/initialization.dart';
 import 'package:passvera/injection.dart';
 import 'package:passvera/presentation/core/route/route.gr.dart';
 import 'package:passvera/presentation/core/theme/theme.dart';
+import 'package:passvera/presentation/core/widgets/privacy_cover.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,17 +14,34 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => getIt<SessionBloc>(),
+      child: const _AppView(),
+    );
+  }
 }
 
-class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
+class _AppView extends StatefulWidget {
+  const _AppView();
+
+  @override
+  State<_AppView> createState() => _AppViewState();
+}
+
+class _AppViewState extends State<_AppView> with WidgetsBindingObserver {
   final _appRouter = MyRouter();
-  bool _wasPaused = false;
-  bool _isRelocking = false;
+
+  /// Screens that already gate access; relocking there is pointless.
+  static const _unlockedFreeRoutes = {
+    LockView.name,
+    SplashView.name,
+    OnboardView.name,
+  };
 
   @override
   void initState() {
@@ -37,52 +57,60 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.paused) {
-      _wasPaused = true;
-      return;
-    }
-
-    if (state == AppLifecycleState.resumed && _wasPaused) {
-      _wasPaused = false;
-      _relockIfNeeded();
+    final session = context.read<SessionBloc>();
+    switch (state) {
+      case AppLifecycleState.resumed:
+        session.add(const SessionEvent.resumed());
+      case AppLifecycleState.inactive:
+        // iOS snapshots the app switcher right after inactive. Android relies
+        // on FLAG_SECURE, and covering there would flicker on every shade pull.
+        if (defaultTargetPlatform == TargetPlatform.iOS) {
+          session.add(const SessionEvent.obscured());
+        }
+      case AppLifecycleState.hidden:
+      case AppLifecycleState.paused:
+        session.add(const SessionEvent.backgrounded());
+      case AppLifecycleState.detached:
+        break;
     }
   }
 
-  Future<void> _relockIfNeeded() async {
-    if (_isRelocking) return;
-    _isRelocking = true;
-    try {
-      final currentName = _appRouter.current.name;
-      const skipRoutes = {
-        LockView.name,
-        SplashView.name,
-        OnboardView.name,
-      };
-      if (skipRoutes.contains(currentName)) {
-        return;
-      }
-
-      final result = await getIt<ILockRepository>().isPinSet();
-      final shouldLock = result.fold((_) => false, (isSet) => isSet);
-      if (!shouldLock) return;
-
-      await _appRouter.pushAndPopUntil(
-        const LockView(),
-        predicate: (_) => false,
-      );
-    } finally {
-      _isRelocking = false;
-    }
+  void _showLock() {
+    if (_unlockedFreeRoutes.contains(_appRouter.current.name)) return;
+    _appRouter.pushAndPopUntil(
+      const LockView(),
+      predicate: (_) => false,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      theme: MyThemeData.lightheme,
-      debugShowCheckedModeBanner: false,
-      routeInformationParser: _appRouter.defaultRouteParser(),
-      routerDelegate: _appRouter.delegate(),
-      builder: (context, child) => child!,
+    return BlocListener<SessionBloc, SessionState>(
+      listenWhen: (previous, current) =>
+          !previous.shouldLock && current.shouldLock,
+      listener: (context, state) {
+        _showLock();
+        context.read<SessionBloc>().add(const SessionEvent.lockHandled());
+      },
+      child: MaterialApp.router(
+        theme: MyThemeData.lightheme,
+        debugShowCheckedModeBanner: false,
+        routeInformationParser: _appRouter.defaultRouteParser(),
+        routerDelegate: _appRouter.delegate(),
+        builder: (context, child) => Stack(
+          fit: StackFit.expand,
+          children: [
+            child!,
+            BlocBuilder<SessionBloc, SessionState>(
+              buildWhen: (previous, current) =>
+                  previous.isObscured != current.isObscured,
+              builder: (context, state) => state.isObscured
+                  ? const Positioned.fill(child: PrivacyCover())
+                  : const SizedBox.shrink(),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

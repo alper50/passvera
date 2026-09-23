@@ -1,6 +1,8 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'authenticator_entry.freezed.dart';
 
 /// Supported HMAC algorithms for TOTP (RFC 6238).
 enum TotpAlgorithm {
@@ -32,26 +34,20 @@ enum TotpAlgorithm {
   }
 }
 
-@immutable
-class AuthenticatorEntry {
-  const AuthenticatorEntry({
-    required this.id,
-    required this.issuer,
-    required this.account,
-    required this.secret,
-    this.digits = 6,
-    this.period = 30,
-    this.algorithm = TotpAlgorithm.sha1,
-  });
+@freezed
+class AuthenticatorEntry with _$AuthenticatorEntry {
+  const AuthenticatorEntry._();
 
-  /// Storage key including `totp:` prefix.
-  final String id;
-  final String issuer;
-  final String account;
-  final String secret;
-  final int digits;
-  final int period;
-  final TotpAlgorithm algorithm;
+  const factory AuthenticatorEntry({
+    /// Storage key including `totp:` prefix.
+    required String id,
+    required String issuer,
+    required String account,
+    required String secret,
+    @Default(6) int digits,
+    @Default(30) int period,
+    @Default(TotpAlgorithm.sha1) TotpAlgorithm algorithm,
+  }) = _AuthenticatorEntry;
 
   String get displayTitle {
     if (issuer.isNotEmpty) return issuer;
@@ -90,41 +86,4 @@ class AuthenticatorEntry {
       algorithm: TotpAlgorithm.fromString(decoded['algorithm'] as String?),
     );
   }
-
-  AuthenticatorEntry copyWith({
-    String? id,
-    String? issuer,
-    String? account,
-    String? secret,
-    int? digits,
-    int? period,
-    TotpAlgorithm? algorithm,
-  }) {
-    return AuthenticatorEntry(
-      id: id ?? this.id,
-      issuer: issuer ?? this.issuer,
-      account: account ?? this.account,
-      secret: secret ?? this.secret,
-      digits: digits ?? this.digits,
-      period: period ?? this.period,
-      algorithm: algorithm ?? this.algorithm,
-    );
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other is AuthenticatorEntry &&
-            other.id == id &&
-            other.issuer == issuer &&
-            other.account == account &&
-            other.secret == secret &&
-            other.digits == digits &&
-            other.period == period &&
-            other.algorithm == algorithm);
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(id, issuer, account, secret, digits, period, algorithm);
 }

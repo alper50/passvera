@@ -4,11 +4,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passvera/application/lockBloc/lock_bloc.dart';
-import 'package:passvera/domain/errors/lock_failures.dart';
 import 'package:passvera/domain/lock_constants.dart';
 import 'package:passvera/injection.dart';
 import 'package:passvera/presentation/core/route/route.gr.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
+import 'package:passvera/presentation/core/utils/failure_messages.dart';
+import 'package:passvera/presentation/core/widgets/my_small_button.dart';
 import 'package:passvera/presentation/core/widgets/pin_pad.dart';
 
 class LockView extends StatelessWidget {
@@ -17,8 +18,7 @@ class LockView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) =>
-          getIt<LockBloc>()..add(const LockEvent.checkPinStatus()),
+      create: (_) => getIt<LockBloc>()..add(const LockEvent.checkPinStatus()),
       child: const _LockViewBody(),
     );
   }
@@ -65,22 +65,28 @@ class _LockViewBodyState extends State<_LockViewBody> {
     }
   }
 
-  String _mapFailure(LockFailure failure) {
-    return failure.map(
-      unexpected: (e) => e.toString(),
-      wrongPin: () => 'Wrong PIN',
-      invalidPin: () => 'PIN must be $kAppPinLength digits',
-      pinAlreadySet: () => 'PIN already set',
-      pinNotSet: () => 'PIN is not set',
-      pinMismatch: () => 'PINs do not match',
-      lockedOut: (seconds) => 'Too many attempts. Try again in ${seconds}s',
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return MultiBlocListener(
       listeners: [
+        BlocListener<LockBloc, AppLockState>(
+          listenWhen: (previous, current) =>
+              previous.statusFailureOrSuccess != current.statusFailureOrSuccess,
+          listener: (context, state) {
+            state.statusFailureOrSuccess.fold(
+              () {},
+              (either) => either.fold(
+                (_) {},
+                (isPinSet) {
+                  // Nothing to unlock: storage was readable and has no PIN.
+                  if (!isPinSet) {
+                    AutoRouter.of(context).replace(const HomeView());
+                  }
+                },
+              ),
+            );
+          },
+        ),
         BlocListener<LockBloc, AppLockState>(
           listenWhen: (previous, current) =>
               previous.verifyFailureOrSuccess != current.verifyFailureOrSuccess,
@@ -91,7 +97,7 @@ class _LockViewBodyState extends State<_LockViewBody> {
                 (failure) {
                   setState(() {
                     _pin = '';
-                    _error = _mapFailure(failure);
+                    _error = failure.message;
                   });
                   if (state.isLockedOut) {
                     _startLockoutTicker();
@@ -133,14 +139,41 @@ class _LockViewBodyState extends State<_LockViewBody> {
         body: SafeArea(
           child: BlocBuilder<LockBloc, AppLockState>(
             builder: (context, state) {
+              // Fail closed: while the PIN state is unknown, stay locked.
+              final statusFailed = state.statusFailureOrSuccess.fold(
+                () => false,
+                (either) => either.isLeft(),
+              );
               return Padding(
                 padding: const EdgeInsets.all(24),
-                child: PinPad(
-                  pin: _pin,
-                  title: 'Unlock Passvera',
-                  errorText: _error,
-                  enabled: !state.isLoading && !state.isLockedOut,
-                  onChanged: _onPinChanged,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    PinPad(
+                      pin: _pin,
+                      title: 'Unlock Passvera',
+                      errorText:
+                          statusFailed ? 'Could not read lock status' : _error,
+                      enabled: !state.isLoading &&
+                          !state.isLockedOut &&
+                          !statusFailed,
+                      onChanged: _onPinChanged,
+                    ),
+                    if (statusFailed) ...[
+                      const SizedBox(height: 24),
+                      SizedBox(
+                        width: 160,
+                        height: 48,
+                        child: MySmallButton(
+                          icon: const Icon(Icons.refresh_rounded),
+                          buttonText: 'Retry',
+                          onTap: () => context
+                              .read<LockBloc>()
+                              .add(const LockEvent.checkPinStatus()),
+                        ),
+                      ),
+                    ],
+                  ],
                 ),
               );
             },

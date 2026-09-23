@@ -1,14 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:passvera/application/clipboardBloc/clipboard_bloc.dart';
 import 'package:passvera/domain/authenticator_entry.dart';
 import 'package:passvera/domain/totp_generator.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
-import 'package:passvera/presentation/core/utils/secure_clipboard.dart';
 import 'package:passvera/presentation/core/widgets/confirm_dialog.dart';
 import 'package:passvera/presentation/core/widgets/my_small_button.dart';
-import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
 
 class AuthenticatorTile extends StatefulWidget {
   const AuthenticatorTile({
@@ -154,15 +154,9 @@ class _AuthenticatorTileState extends State<AuthenticatorTile> {
               const SizedBox(width: 12),
               MySmallButton(
                 icon: const Icon(Icons.copy_rounded, size: 35),
-                onTap: () async {
-                  await SecureClipboard.copy(_code);
-                  if (!context.mounted) return;
-                  showMySnackBar(
-                    isError: false,
-                    context: context,
-                    message: 'Code copied (clears in 30s)',
-                  );
-                },
+                onTap: () => context.read<ClipboardBloc>().add(
+                      ClipboardEvent.copySensitive(text: _code),
+                    ),
               ),
             ],
           ),

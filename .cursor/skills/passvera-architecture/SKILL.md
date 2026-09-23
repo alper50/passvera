@@ -68,6 +68,9 @@ One concern per BLoC. Current map:
 | `PassActionBloc` | Update / delete entry |
 | `OnboardBloc` | First-run flag check/set |
 | `LockBloc` | PIN status / verify / set / update / remove |
+| `AuthenticatorBloc` | TOTP entries: load / add from QR / delete |
+| `ClipboardBloc` | Copy secrets with auto-expiry (`kSensitiveClipboardTtl`) |
+| `SessionBloc` | App-root lifecycle: privacy cover + relock on background |
 
 Patterns:
 
@@ -76,8 +79,11 @@ Patterns:
 - Put validation in the BLoC (empty fields, etc.) before hitting the repository.
 - Map each operation to its own state field (`updateFailureOrSuccess` ≠ `deleteFailureOrSuccess`).
 - Prefer `none()` / clear Option fields after a UI listener consumes a one-shot result when extending state.
+- Freezed states use value equality and BLoC drops an emit equal to the current state: emit the result field as `none()` before the new result, or a repeated identical result (same failure twice) never reaches listeners.
+- Never hand-write freezed look-alikes (manual `map`/`==`/`copyWith`); annotate with `@freezed` and run build_runner.
 
 After codegen changes: run `dart run build_runner build --delete-conflicting-outputs`.
+Dart 3.10+ needs `build_runner >=2.4.13` with `frontend_server_client 4.x` (older versions look for the removed `frontend_server.dart.snapshot`). Generated files are excluded from analysis in `analysis_options.yaml`; do not hand-edit them.
 
 ## Infrastructure rules
 
@@ -86,7 +92,8 @@ After codegen changes: run `dart run build_runner build --delete-conflicting-out
 - Android: keep `encryptedSharedPreferences: true`.
 - Boolean / flag reads and writes must use the **same** literal (e.g. both `'true'` — never mismatch like `true` vs `truee`).
 - Duplicate-key checks: Left = failure (`keyAlreadyUsed`), Right = success. Do not invert Either meaning.
-- Update = delete old key + write new key atomically in one method; return dedicated Either for update.
+- Update = one method: write the new key first, delete the old key only on rename (a failed write must never lose the original). Renaming onto another existing key returns `keyAlreadyUsed`. Return a dedicated Either for update.
+- Platform APIs (method channels) live in infrastructure behind a domain interface, e.g. `ClipboardService` on `com.passvera.app/clipboard` (native side: `MainActivity.kt`, `AppDelegate.swift`).
 
 ## Presentation rules
 
@@ -104,7 +111,16 @@ presentation/
 - Shared look: yellow surface, black border, offset shadow — reuse `MyCustomContainer` / `MySmallButton` / theme; avoid new one-off card systems unless product direction changes.
 - Forms for create/edit: `showFormDialog` (or a dedicated shared form widget). Keep generator config out of random widgets when extracting (single config place).
 
-Screens today: Splash → Onboard | Lock | Home → PassDetail / Profile.
+- Failure texts come from the extensions in `presentation/core/utils/failure_messages.dart`; do not re-map failures per screen.
+- Secret inputs use `MyTextField(isSecret: true)` (obscured, no suggestions / IME learning / autofill).
+
+Screens today: Splash → Onboard | Lock | Home → PassDetail / Profile / QrScan.
+
+## Lock & privacy
+
+- Fail closed: if the PIN state cannot be read, route to `LockView` (it offers retry); never fall through to Home.
+- `MyApp` forwards lifecycle to `SessionBloc`; the relock decision is made on background, the UI stays covered (`PrivacyCover`) until it is emitted. Presentation never calls lock repositories directly.
+- Android keeps `FLAG_SECURE` on (`MainActivity`); iOS relies on the cover shown on `inactive`.
 
 ## Bootstrap
 

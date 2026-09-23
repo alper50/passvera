@@ -40,7 +40,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   auto_route_generator: ^5.0.2
   injectable_generator: ^2.1.5
-  build_runner: ^2.4.4
+  build_runner: ^2.4.13
   freezed: ^2.3.4               #code generator for data-classes/unions/pattern-matching/cloning
 
 # Dart 3.10 removed UnmodifiableUint8ListView from dart:typed_data.

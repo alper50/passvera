@@ -7,6 +7,7 @@ import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/injection.dart';
 import 'package:passvera/presentation/core/route/route.gr.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
+import 'package:passvera/presentation/core/utils/failure_messages.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
 import 'package:passvera/presentation/home/passwordDetailView/pass_detail_view_body.dart';
 
@@ -37,7 +38,7 @@ class PassDetailView extends StatelessWidget {
                   (failure) => showMySnackBar(
                     isError: true,
                     context: context,
-                    message: failure.toString(),
+                    message: failure.message,
                   ),
                   (_) {
                     AutoRouter.of(context).pushAndPopUntil(
@@ -63,7 +64,7 @@ class PassDetailView extends StatelessWidget {
                   (failure) => showMySnackBar(
                     isError: true,
                     context: context,
-                    message: failure.toString(),
+                    message: failure.message,
                   ),
                   (_) {
                     AutoRouter.of(context).pushAndPopUntil(

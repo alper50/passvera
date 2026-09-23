@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passvera/application/authenticatorBloc/authenticator_bloc.dart';
-import 'package:passvera/domain/errors/authenticator_failures.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
+import 'package:passvera/presentation/core/utils/failure_messages.dart';
 import 'package:passvera/presentation/core/widgets/my_circular_progress.dart';
 import 'package:passvera/presentation/core/widgets/my_empty_widget.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
@@ -10,17 +10,6 @@ import 'package:passvera/presentation/home/authenticator/authenticator_tile.dart
 
 class AuthenticatorBody extends StatelessWidget {
   const AuthenticatorBody({super.key});
-
-  String _failureMessage(AuthenticatorFailure failure) {
-    return failure.map(
-      unexpected: (e) => e.toString(),
-      invalidQr: () => 'Invalid QR code',
-      unsupportedType: () => 'Only TOTP codes are supported',
-      keyAlreadyUsed: () => 'This account is already added',
-      emptySecret: () => 'QR has no secret',
-      permissionDenied: () => 'Camera permission denied',
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +25,7 @@ class AuthenticatorBody extends StatelessWidget {
                 (failure) => showMySnackBar(
                   isError: true,
                   context: context,
-                  message: _failureMessage(failure),
+                  message: failure.message,
                 ),
                 (_) => showMySnackBar(
                   isError: false,
@@ -57,7 +46,7 @@ class AuthenticatorBody extends StatelessWidget {
                 (failure) => showMySnackBar(
                   isError: true,
                   context: context,
-                  message: _failureMessage(failure),
+                  message: failure.message,
                 ),
                 (_) {},
               ),
