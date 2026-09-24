@@ -1,7 +1,7 @@
 part of 'clipboard_bloc.dart';
 
 @freezed
-class ClipboardState with _$ClipboardState {
+abstract class ClipboardState with _$ClipboardState {
   const factory ClipboardState({
     required Option<Either<ClipboardFailure, Unit>> copyFailureOrSuccess,
   }) = _ClipboardState;

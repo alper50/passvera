@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'lock_failures.freezed.dart';
 
 @freezed
-class LockFailure with _$LockFailure {
+sealed class LockFailure with _$LockFailure {
   const factory LockFailure.unexpected(dynamic e) = _Unexpected;
   const factory LockFailure.wrongPin() = _WrongPin;
   const factory LockFailure.invalidPin() = _InvalidPin;

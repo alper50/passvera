@@ -1,7 +1,7 @@
 part of 'authenticator_bloc.dart';
 
 @freezed
-class AuthenticatorState with _$AuthenticatorState {
+abstract class AuthenticatorState with _$AuthenticatorState {
   const factory AuthenticatorState({
     required bool isLoading,
     required List<AuthenticatorEntry> entries,

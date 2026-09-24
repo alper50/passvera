@@ -1,7 +1,7 @@
 part of 'authenticator_import_bloc.dart';
 
 @freezed
-class AuthenticatorImportEvent with _$AuthenticatorImportEvent {
+sealed class AuthenticatorImportEvent with _$AuthenticatorImportEvent {
   /// Loads the ids already in the vault so duplicates can be marked.
   const factory AuthenticatorImportEvent.started() = _Started;
 

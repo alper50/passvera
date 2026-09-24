@@ -1,7 +1,7 @@
 part of 'lock_bloc.dart';
 
 @freezed
-class LockEvent with _$LockEvent {
+sealed class LockEvent with _$LockEvent {
   const factory LockEvent.checkPinStatus() = _CheckPinStatus;
   const factory LockEvent.refreshLockout() = _RefreshLockout;
   const factory LockEvent.verifyPin({required String pin}) = _VerifyPin;

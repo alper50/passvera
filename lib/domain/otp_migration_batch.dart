@@ -6,7 +6,7 @@ part 'otp_migration_batch.freezed.dart';
 /// One QR code of a Google Authenticator export. Large exports are split
 /// into [batchSize] codes that share the same [batchId].
 @freezed
-class OtpMigrationBatch with _$OtpMigrationBatch {
+abstract class OtpMigrationBatch with _$OtpMigrationBatch {
   const factory OtpMigrationBatch({
     /// Importable TOTP accounts, ids already in storage-key form.
     required List<AuthenticatorEntry> entries,

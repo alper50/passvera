@@ -35,7 +35,7 @@ enum TotpAlgorithm {
 }
 
 @freezed
-class AuthenticatorEntry with _$AuthenticatorEntry {
+abstract class AuthenticatorEntry with _$AuthenticatorEntry {
   const AuthenticatorEntry._();
 
   const factory AuthenticatorEntry({

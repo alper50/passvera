@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'authenticator_failures.freezed.dart';
 
 @freezed
-class AuthenticatorFailure with _$AuthenticatorFailure {
+sealed class AuthenticatorFailure with _$AuthenticatorFailure {
   const factory AuthenticatorFailure.unexpected(dynamic e) = _Unexpected;
   const factory AuthenticatorFailure.invalidQr() = _InvalidQr;
   const factory AuthenticatorFailure.unsupportedType() = _UnsupportedType;

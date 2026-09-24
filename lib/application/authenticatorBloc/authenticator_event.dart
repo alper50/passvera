@@ -1,7 +1,7 @@
 part of 'authenticator_bloc.dart';
 
 @freezed
-class AuthenticatorEvent with _$AuthenticatorEvent {
+sealed class AuthenticatorEvent with _$AuthenticatorEvent {
   const factory AuthenticatorEvent.loadAll() = _LoadAll;
   const factory AuthenticatorEvent.addFromUri({required String uri}) =
       _AddFromUri;
