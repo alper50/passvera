@@ -20,8 +20,14 @@ class KeysService {
     pinLockoutUntilKey,
   };
 
+  /// flutter_secure_storage 10 moves data written by v9 (Jetpack
+  /// EncryptedSharedPreferences) to its own ciphers on first access, key by
+  /// key, falling back to the old store if that fails. `resetOnError`
+  /// defaults to true since v10 and would permanently wipe the vault on any
+  /// read error, so it stays off.
   AndroidOptions _getAndroidOptions() => const AndroidOptions(
-        encryptedSharedPreferences: true,
+        resetOnError: false,
+        migrateOnAlgorithmChange: true,
       );
   late final storage = FlutterSecureStorage(aOptions: _getAndroidOptions());
 

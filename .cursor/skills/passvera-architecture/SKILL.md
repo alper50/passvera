@@ -90,7 +90,7 @@ Dart 3.10+ needs `build_runner >=2.4.13` with `frontend_server_client 4.x` (olde
 
 - `KeysService`: low-level secure storage I/O.
 - `KeysRepository`: implements `IKeysRepository`, delegates to service, no UI logic.
-- Android: keep `encryptedSharedPreferences: true`.
+- Android storage options: `resetOnError: false` always (the plugin default is true since v10 and wipes the vault on any read error). Before changing the storage plugin or its options, rehearse on an emulator with `tool/rehearsal/` (seed with the old build, install the new build over it, verify).
 - Boolean / flag reads and writes must use the **same** literal (e.g. both `'true'` — never mismatch like `true` vs `truee`).
 - Duplicate-key checks: Left = failure (`keyAlreadyUsed`), Right = success. Do not invert Either meaning.
 - Update = one method: write the new key first, delete the old key only on rename (a failed write must never lose the original). Renaming onto another existing key returns `keyAlreadyUsed`. Return a dedicated Either for update.
