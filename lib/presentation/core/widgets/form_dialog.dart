@@ -390,12 +390,12 @@ class MyTextField extends StatefulWidget {
   final bool isSecret;
 
   const MyTextField({
-    Key? key,
+    super.key,
     required this.text,
     required this.controller,
     required this.onChanged,
     this.isSecret = false,
-  }) : super(key: key);
+  });
 
   @override
   State<MyTextField> createState() => _MyTextFieldState();

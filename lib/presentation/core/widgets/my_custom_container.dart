@@ -8,12 +8,12 @@ class MyCustomContainer extends StatelessWidget {
   final Color? color;
 
   const MyCustomContainer({
-    Key? key,
+    super.key,
     this.padding,
     this.child,
     this.radius = 15,
     this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
