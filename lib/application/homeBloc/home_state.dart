@@ -22,7 +22,14 @@ part of 'home_bloc.dart';
 class HomeState with _$HomeState {
   const factory HomeState.initial() = _Initial;
   const factory HomeState.valuesLoading() = _LoadingFarmOverviews;
-  const factory HomeState.loadSucces({required List<ApplicationModel> values}) = _LoadSucces;
+  /// [values] is the list to show (tag filter applied); [allValues] keeps the
+  /// full list so the filter can change without reloading storage.
+  const factory HomeState.loadSucces({
+    required List<ApplicationModel> values,
+    required List<ApplicationModel> allValues,
+    required List<String> tags,
+    String? selectedTag,
+  }) = _LoadSucces;
   const factory HomeState.loadSuccesEmpty() = _LoadSuccesEmpty;
   const factory HomeState.loadFailed({required Option<StorageFailure> storageFailureOrSuccessOption}) = _LoadFailed;
 }

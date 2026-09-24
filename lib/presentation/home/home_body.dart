@@ -5,6 +5,7 @@ import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/widgets/my_circular_progress.dart';
 import 'package:passvera/presentation/core/widgets/my_empty_widget.dart';
 import 'package:passvera/presentation/home/widgets/my_list_container.dart';
+import 'package:passvera/presentation/home/widgets/tag_filter_bar.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({
@@ -30,6 +31,12 @@ class HomeBody extends StatelessWidget {
               loadSucces: (succesState) {
                 return Column(
                   children: [
+                    // One tag means nothing to filter by.
+                    if (succesState.tags.length > 1)
+                      TagFilterBar(
+                        tags: succesState.tags,
+                        selectedTag: succesState.selectedTag,
+                      ),
                     Expanded(
                       child: MyListContainer(
                         modelsList: succesState.values,

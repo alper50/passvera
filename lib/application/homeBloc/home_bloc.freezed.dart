@@ -19,32 +19,38 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllValues,
+    required TResult Function(String? tag) tagSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllValues,
+    TResult? Function(String? tag)? tagSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllValues,
+    TResult Function(String? tag)? tagSelected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetKeys value) getAllValues,
+    required TResult Function(_TagSelected value) tagSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetKeys value)? getAllValues,
+    TResult? Function(_TagSelected value)? tagSelected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetKeys value)? getAllValues,
+    TResult Function(_TagSelected value)? tagSelected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -105,6 +111,7 @@ class _$_GetKeys implements _GetKeys {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllValues,
+    required TResult Function(String? tag) tagSelected,
   }) {
     return getAllValues();
   }
@@ -113,6 +120,7 @@ class _$_GetKeys implements _GetKeys {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllValues,
+    TResult? Function(String? tag)? tagSelected,
   }) {
     return getAllValues?.call();
   }
@@ -121,6 +129,7 @@ class _$_GetKeys implements _GetKeys {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllValues,
+    TResult Function(String? tag)? tagSelected,
     required TResult orElse(),
   }) {
     if (getAllValues != null) {
@@ -133,6 +142,7 @@ class _$_GetKeys implements _GetKeys {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetKeys value) getAllValues,
+    required TResult Function(_TagSelected value) tagSelected,
   }) {
     return getAllValues(this);
   }
@@ -141,6 +151,7 @@ class _$_GetKeys implements _GetKeys {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetKeys value)? getAllValues,
+    TResult? Function(_TagSelected value)? tagSelected,
   }) {
     return getAllValues?.call(this);
   }
@@ -149,6 +160,7 @@ class _$_GetKeys implements _GetKeys {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetKeys value)? getAllValues,
+    TResult Function(_TagSelected value)? tagSelected,
     required TResult orElse(),
   }) {
     if (getAllValues != null) {
@@ -163,12 +175,150 @@ abstract class _GetKeys implements HomeEvent {
 }
 
 /// @nodoc
+abstract class _$$_TagSelectedCopyWith<$Res> {
+  factory _$$_TagSelectedCopyWith(
+          _$_TagSelected value, $Res Function(_$_TagSelected) then) =
+      __$$_TagSelectedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? tag});
+}
+
+/// @nodoc
+class __$$_TagSelectedCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$_TagSelected>
+    implements _$$_TagSelectedCopyWith<$Res> {
+  __$$_TagSelectedCopyWithImpl(
+      _$_TagSelected _value, $Res Function(_$_TagSelected) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tag = freezed,
+  }) {
+    return _then(_$_TagSelected(
+      freezed == tag
+          ? _value.tag
+          : tag // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_TagSelected implements _TagSelected {
+  const _$_TagSelected(this.tag);
+
+  @override
+  final String? tag;
+
+  @override
+  String toString() {
+    return 'HomeEvent.tagSelected(tag: $tag)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TagSelected &&
+            (identical(other.tag, tag) || other.tag == tag));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, tag);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TagSelectedCopyWith<_$_TagSelected> get copyWith =>
+      __$$_TagSelectedCopyWithImpl<_$_TagSelected>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAllValues,
+    required TResult Function(String? tag) tagSelected,
+  }) {
+    return tagSelected(tag);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAllValues,
+    TResult? Function(String? tag)? tagSelected,
+  }) {
+    return tagSelected?.call(tag);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAllValues,
+    TResult Function(String? tag)? tagSelected,
+    required TResult orElse(),
+  }) {
+    if (tagSelected != null) {
+      return tagSelected(tag);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetKeys value) getAllValues,
+    required TResult Function(_TagSelected value) tagSelected,
+  }) {
+    return tagSelected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetKeys value)? getAllValues,
+    TResult? Function(_TagSelected value)? tagSelected,
+  }) {
+    return tagSelected?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetKeys value)? getAllValues,
+    TResult Function(_TagSelected value)? tagSelected,
+    required TResult orElse(),
+  }) {
+    if (tagSelected != null) {
+      return tagSelected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TagSelected implements HomeEvent {
+  const factory _TagSelected(final String? tag) = _$_TagSelected;
+
+  String? get tag;
+  @JsonKey(ignore: true)
+  _$$_TagSelectedCopyWith<_$_TagSelected> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$HomeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() valuesLoading,
-    required TResult Function(List<ApplicationModel> values) loadSucces,
+    required TResult Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)
+        loadSucces,
     required TResult Function() loadSuccesEmpty,
     required TResult Function(
             Option<StorageFailure> storageFailureOrSuccessOption)
@@ -179,7 +329,12 @@ mixin _$HomeState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? valuesLoading,
-    TResult? Function(List<ApplicationModel> values)? loadSucces,
+    TResult? Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)?
+        loadSucces,
     TResult? Function()? loadSuccesEmpty,
     TResult? Function(Option<StorageFailure> storageFailureOrSuccessOption)?
         loadFailed,
@@ -189,7 +344,12 @@ mixin _$HomeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? valuesLoading,
-    TResult Function(List<ApplicationModel> values)? loadSucces,
+    TResult Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)?
+        loadSucces,
     TResult Function()? loadSuccesEmpty,
     TResult Function(Option<StorageFailure> storageFailureOrSuccessOption)?
         loadFailed,
@@ -282,7 +442,12 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() valuesLoading,
-    required TResult Function(List<ApplicationModel> values) loadSucces,
+    required TResult Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)
+        loadSucces,
     required TResult Function() loadSuccesEmpty,
     required TResult Function(
             Option<StorageFailure> storageFailureOrSuccessOption)
@@ -296,7 +461,12 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? valuesLoading,
-    TResult? Function(List<ApplicationModel> values)? loadSucces,
+    TResult? Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)?
+        loadSucces,
     TResult? Function()? loadSuccesEmpty,
     TResult? Function(Option<StorageFailure> storageFailureOrSuccessOption)?
         loadFailed,
@@ -309,7 +479,12 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? valuesLoading,
-    TResult Function(List<ApplicationModel> values)? loadSucces,
+    TResult Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)?
+        loadSucces,
     TResult Function()? loadSuccesEmpty,
     TResult Function(Option<StorageFailure> storageFailureOrSuccessOption)?
         loadFailed,
@@ -406,7 +581,12 @@ class _$_LoadingFarmOverviews implements _LoadingFarmOverviews {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() valuesLoading,
-    required TResult Function(List<ApplicationModel> values) loadSucces,
+    required TResult Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)
+        loadSucces,
     required TResult Function() loadSuccesEmpty,
     required TResult Function(
             Option<StorageFailure> storageFailureOrSuccessOption)
@@ -420,7 +600,12 @@ class _$_LoadingFarmOverviews implements _LoadingFarmOverviews {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? valuesLoading,
-    TResult? Function(List<ApplicationModel> values)? loadSucces,
+    TResult? Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)?
+        loadSucces,
     TResult? Function()? loadSuccesEmpty,
     TResult? Function(Option<StorageFailure> storageFailureOrSuccessOption)?
         loadFailed,
@@ -433,7 +618,12 @@ class _$_LoadingFarmOverviews implements _LoadingFarmOverviews {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? valuesLoading,
-    TResult Function(List<ApplicationModel> values)? loadSucces,
+    TResult Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)?
+        loadSucces,
     TResult Function()? loadSuccesEmpty,
     TResult Function(Option<StorageFailure> storageFailureOrSuccessOption)?
         loadFailed,
@@ -496,7 +686,11 @@ abstract class _$$_LoadSuccesCopyWith<$Res> {
           _$_LoadSucces value, $Res Function(_$_LoadSucces) then) =
       __$$_LoadSuccesCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<ApplicationModel> values});
+  $Res call(
+      {List<ApplicationModel> values,
+      List<ApplicationModel> allValues,
+      List<String> tags,
+      String? selectedTag});
 }
 
 /// @nodoc
@@ -511,12 +705,27 @@ class __$$_LoadSuccesCopyWithImpl<$Res>
   @override
   $Res call({
     Object? values = null,
+    Object? allValues = null,
+    Object? tags = null,
+    Object? selectedTag = freezed,
   }) {
     return _then(_$_LoadSucces(
       values: null == values
           ? _value._values
           : values // ignore: cast_nullable_to_non_nullable
               as List<ApplicationModel>,
+      allValues: null == allValues
+          ? _value._allValues
+          : allValues // ignore: cast_nullable_to_non_nullable
+              as List<ApplicationModel>,
+      tags: null == tags
+          ? _value._tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      selectedTag: freezed == selectedTag
+          ? _value.selectedTag
+          : selectedTag // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -524,8 +733,14 @@ class __$$_LoadSuccesCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoadSucces implements _LoadSucces {
-  const _$_LoadSucces({required final List<ApplicationModel> values})
-      : _values = values;
+  const _$_LoadSucces(
+      {required final List<ApplicationModel> values,
+      required final List<ApplicationModel> allValues,
+      required final List<String> tags,
+      this.selectedTag})
+      : _values = values,
+        _allValues = allValues,
+        _tags = tags;
 
   final List<ApplicationModel> _values;
   @override
@@ -535,9 +750,28 @@ class _$_LoadSucces implements _LoadSucces {
     return EqualUnmodifiableListView(_values);
   }
 
+  final List<ApplicationModel> _allValues;
+  @override
+  List<ApplicationModel> get allValues {
+    if (_allValues is EqualUnmodifiableListView) return _allValues;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_allValues);
+  }
+
+  final List<String> _tags;
+  @override
+  List<String> get tags {
+    if (_tags is EqualUnmodifiableListView) return _tags;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tags);
+  }
+
+  @override
+  final String? selectedTag;
+
   @override
   String toString() {
-    return 'HomeState.loadSucces(values: $values)';
+    return 'HomeState.loadSucces(values: $values, allValues: $allValues, tags: $tags, selectedTag: $selectedTag)';
   }
 
   @override
@@ -545,12 +779,21 @@ class _$_LoadSucces implements _LoadSucces {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoadSucces &&
-            const DeepCollectionEquality().equals(other._values, _values));
+            const DeepCollectionEquality().equals(other._values, _values) &&
+            const DeepCollectionEquality()
+                .equals(other._allValues, _allValues) &&
+            const DeepCollectionEquality().equals(other._tags, _tags) &&
+            (identical(other.selectedTag, selectedTag) ||
+                other.selectedTag == selectedTag));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_values));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_values),
+      const DeepCollectionEquality().hash(_allValues),
+      const DeepCollectionEquality().hash(_tags),
+      selectedTag);
 
   @JsonKey(ignore: true)
   @override
@@ -563,13 +806,18 @@ class _$_LoadSucces implements _LoadSucces {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() valuesLoading,
-    required TResult Function(List<ApplicationModel> values) loadSucces,
+    required TResult Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)
+        loadSucces,
     required TResult Function() loadSuccesEmpty,
     required TResult Function(
             Option<StorageFailure> storageFailureOrSuccessOption)
         loadFailed,
   }) {
-    return loadSucces(values);
+    return loadSucces(values, allValues, tags, selectedTag);
   }
 
   @override
@@ -577,12 +825,17 @@ class _$_LoadSucces implements _LoadSucces {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? valuesLoading,
-    TResult? Function(List<ApplicationModel> values)? loadSucces,
+    TResult? Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)?
+        loadSucces,
     TResult? Function()? loadSuccesEmpty,
     TResult? Function(Option<StorageFailure> storageFailureOrSuccessOption)?
         loadFailed,
   }) {
-    return loadSucces?.call(values);
+    return loadSucces?.call(values, allValues, tags, selectedTag);
   }
 
   @override
@@ -590,14 +843,19 @@ class _$_LoadSucces implements _LoadSucces {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? valuesLoading,
-    TResult Function(List<ApplicationModel> values)? loadSucces,
+    TResult Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)?
+        loadSucces,
     TResult Function()? loadSuccesEmpty,
     TResult Function(Option<StorageFailure> storageFailureOrSuccessOption)?
         loadFailed,
     required TResult orElse(),
   }) {
     if (loadSucces != null) {
-      return loadSucces(values);
+      return loadSucces(values, allValues, tags, selectedTag);
     }
     return orElse();
   }
@@ -644,10 +902,16 @@ class _$_LoadSucces implements _LoadSucces {
 }
 
 abstract class _LoadSucces implements HomeState {
-  const factory _LoadSucces({required final List<ApplicationModel> values}) =
-      _$_LoadSucces;
+  const factory _LoadSucces(
+      {required final List<ApplicationModel> values,
+      required final List<ApplicationModel> allValues,
+      required final List<String> tags,
+      final String? selectedTag}) = _$_LoadSucces;
 
   List<ApplicationModel> get values;
+  List<ApplicationModel> get allValues;
+  List<String> get tags;
+  String? get selectedTag;
   @JsonKey(ignore: true)
   _$$_LoadSuccesCopyWith<_$_LoadSucces> get copyWith =>
       throw _privateConstructorUsedError;
@@ -693,7 +957,12 @@ class _$_LoadSuccesEmpty implements _LoadSuccesEmpty {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() valuesLoading,
-    required TResult Function(List<ApplicationModel> values) loadSucces,
+    required TResult Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)
+        loadSucces,
     required TResult Function() loadSuccesEmpty,
     required TResult Function(
             Option<StorageFailure> storageFailureOrSuccessOption)
@@ -707,7 +976,12 @@ class _$_LoadSuccesEmpty implements _LoadSuccesEmpty {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? valuesLoading,
-    TResult? Function(List<ApplicationModel> values)? loadSucces,
+    TResult? Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)?
+        loadSucces,
     TResult? Function()? loadSuccesEmpty,
     TResult? Function(Option<StorageFailure> storageFailureOrSuccessOption)?
         loadFailed,
@@ -720,7 +994,12 @@ class _$_LoadSuccesEmpty implements _LoadSuccesEmpty {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? valuesLoading,
-    TResult Function(List<ApplicationModel> values)? loadSucces,
+    TResult Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)?
+        loadSucces,
     TResult Function()? loadSuccesEmpty,
     TResult Function(Option<StorageFailure> storageFailureOrSuccessOption)?
         loadFailed,
@@ -846,7 +1125,12 @@ class _$_LoadFailed implements _LoadFailed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() valuesLoading,
-    required TResult Function(List<ApplicationModel> values) loadSucces,
+    required TResult Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)
+        loadSucces,
     required TResult Function() loadSuccesEmpty,
     required TResult Function(
             Option<StorageFailure> storageFailureOrSuccessOption)
@@ -860,7 +1144,12 @@ class _$_LoadFailed implements _LoadFailed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? valuesLoading,
-    TResult? Function(List<ApplicationModel> values)? loadSucces,
+    TResult? Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)?
+        loadSucces,
     TResult? Function()? loadSuccesEmpty,
     TResult? Function(Option<StorageFailure> storageFailureOrSuccessOption)?
         loadFailed,
@@ -873,7 +1162,12 @@ class _$_LoadFailed implements _LoadFailed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? valuesLoading,
-    TResult Function(List<ApplicationModel> values)? loadSucces,
+    TResult Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)?
+        loadSucces,
     TResult Function()? loadSuccesEmpty,
     TResult Function(Option<StorageFailure> storageFailureOrSuccessOption)?
         loadFailed,

@@ -8,4 +8,9 @@ abstract class IAuthenticatorRepository {
   Future<Either<AuthenticatorFailure, Unit>> addFromOtpAuthUri(String uri);
 
   Future<Either<AuthenticatorFailure, Unit>> delete({required String id});
+
+  /// Saves [entries], skipping ids that already exist. Right = number added.
+  Future<Either<AuthenticatorFailure, int>> addEntries(
+    List<AuthenticatorEntry> entries,
+  );
 }

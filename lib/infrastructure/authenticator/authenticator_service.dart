@@ -14,7 +14,8 @@ class AuthenticatorService {
 
   FlutterSecureStorage get _storage => _keysService.storage;
 
-  Future<Either<AuthenticatorFailure, List<AuthenticatorEntry>>> getAll() async {
+  Future<Either<AuthenticatorFailure, List<AuthenticatorEntry>>>
+      getAll() async {
     try {
       final result = await _storage.readAll();
       final entries = <AuthenticatorEntry>[];
@@ -60,6 +61,23 @@ class AuthenticatorService {
         }
       },
     );
+  }
+
+  Future<Either<AuthenticatorFailure, int>> addEntries(
+    List<AuthenticatorEntry> entries,
+  ) async {
+    try {
+      var added = 0;
+      for (final entry in entries) {
+        if (!entry.id.startsWith(OtpAuthParser.storagePrefix)) continue;
+        if (await _storage.containsKey(key: entry.id)) continue;
+        await _storage.write(key: entry.id, value: entry.toStorageValue());
+        added++;
+      }
+      return Right(added);
+    } catch (e) {
+      return Left(AuthenticatorFailure.unexpected(e));
+    }
   }
 
   Future<Either<AuthenticatorFailure, Unit>> delete({

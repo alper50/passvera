@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:passvera/presentation/home/authenticator/authenticator_import_view.dart';
 import 'package:passvera/presentation/home/authenticator/qr_scan_view.dart';
 import 'package:passvera/presentation/home/home.dart';
 import 'package:passvera/presentation/home/passwordDetailView/pass_detail_view.dart';
@@ -17,6 +18,7 @@ import 'package:passvera/presentation/splash/splash_view.dart';
     AutoRoute(page: LockView),
     AutoRoute(page: ProfileView),
     AutoRoute(page: QrScanView),
+    AutoRoute(page: AuthenticatorImportView),
   ],
 )
 class $MyRouter {}

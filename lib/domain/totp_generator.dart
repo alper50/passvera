@@ -22,7 +22,8 @@ class TotpGenerator {
     if (key.isEmpty) return ''.padLeft(entry.digits, '0');
 
     final counterBytes = ByteData(8)..setUint64(0, counter, Endian.big);
-    final hmacBytes = _hmac(entry.algorithm, key, counterBytes.buffer.asUint8List());
+    final hmacBytes =
+        _hmac(entry.algorithm, key, counterBytes.buffer.asUint8List());
     final offset = hmacBytes.last & 0x0f;
     final binary = ((hmacBytes[offset] & 0x7f) << 24) |
         ((hmacBytes[offset + 1] & 0xff) << 16) |
@@ -68,6 +69,26 @@ class TotpGenerator {
       case TotpAlgorithm.sha512:
         return sha512;
     }
+  }
+
+  /// RFC 4648 Base32 without padding (the form authenticator secrets use).
+  static String encodeBase32(List<int> bytes) {
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+    final out = StringBuffer();
+    var buffer = 0;
+    var bitsLeft = 0;
+    for (final byte in bytes) {
+      buffer = (buffer << 8) | (byte & 0xff);
+      bitsLeft += 8;
+      while (bitsLeft >= 5) {
+        out.write(alphabet[(buffer >> (bitsLeft - 5)) & 0x1f]);
+        bitsLeft -= 5;
+      }
+    }
+    if (bitsLeft > 0) {
+      out.write(alphabet[(buffer << (5 - bitsLeft)) & 0x1f]);
+    }
+    return out.toString();
   }
 
   /// RFC 4648 Base32 (ignores spaces and padding).

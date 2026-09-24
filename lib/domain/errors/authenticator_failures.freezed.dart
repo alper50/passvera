@@ -24,6 +24,7 @@ mixin _$AuthenticatorFailure {
     required TResult Function() keyAlreadyUsed,
     required TResult Function() emptySecret,
     required TResult Function() permissionDenied,
+    required TResult Function() mismatchedBatch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$AuthenticatorFailure {
     TResult? Function()? keyAlreadyUsed,
     TResult? Function()? emptySecret,
     TResult? Function()? permissionDenied,
+    TResult? Function()? mismatchedBatch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$AuthenticatorFailure {
     TResult Function()? keyAlreadyUsed,
     TResult Function()? emptySecret,
     TResult Function()? permissionDenied,
+    TResult Function()? mismatchedBatch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +58,7 @@ mixin _$AuthenticatorFailure {
     required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
     required TResult Function(_EmptySecret value) emptySecret,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_MismatchedBatch value) mismatchedBatch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +69,7 @@ mixin _$AuthenticatorFailure {
     TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult? Function(_EmptySecret value)? emptySecret,
     TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_MismatchedBatch value)? mismatchedBatch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +80,7 @@ mixin _$AuthenticatorFailure {
     TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult Function(_EmptySecret value)? emptySecret,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_MismatchedBatch value)? mismatchedBatch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -170,6 +176,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function() keyAlreadyUsed,
     required TResult Function() emptySecret,
     required TResult Function() permissionDenied,
+    required TResult Function() mismatchedBatch,
   }) {
     return unexpected(e);
   }
@@ -183,6 +190,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function()? keyAlreadyUsed,
     TResult? Function()? emptySecret,
     TResult? Function()? permissionDenied,
+    TResult? Function()? mismatchedBatch,
   }) {
     return unexpected?.call(e);
   }
@@ -196,6 +204,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function()? keyAlreadyUsed,
     TResult Function()? emptySecret,
     TResult Function()? permissionDenied,
+    TResult Function()? mismatchedBatch,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -213,6 +222,7 @@ class _$_Unexpected implements _Unexpected {
     required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
     required TResult Function(_EmptySecret value) emptySecret,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_MismatchedBatch value) mismatchedBatch,
   }) {
     return unexpected(this);
   }
@@ -226,6 +236,7 @@ class _$_Unexpected implements _Unexpected {
     TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult? Function(_EmptySecret value)? emptySecret,
     TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_MismatchedBatch value)? mismatchedBatch,
   }) {
     return unexpected?.call(this);
   }
@@ -239,6 +250,7 @@ class _$_Unexpected implements _Unexpected {
     TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult Function(_EmptySecret value)? emptySecret,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_MismatchedBatch value)? mismatchedBatch,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -301,6 +313,7 @@ class _$_InvalidQr implements _InvalidQr {
     required TResult Function() keyAlreadyUsed,
     required TResult Function() emptySecret,
     required TResult Function() permissionDenied,
+    required TResult Function() mismatchedBatch,
   }) {
     return invalidQr();
   }
@@ -314,6 +327,7 @@ class _$_InvalidQr implements _InvalidQr {
     TResult? Function()? keyAlreadyUsed,
     TResult? Function()? emptySecret,
     TResult? Function()? permissionDenied,
+    TResult? Function()? mismatchedBatch,
   }) {
     return invalidQr?.call();
   }
@@ -327,6 +341,7 @@ class _$_InvalidQr implements _InvalidQr {
     TResult Function()? keyAlreadyUsed,
     TResult Function()? emptySecret,
     TResult Function()? permissionDenied,
+    TResult Function()? mismatchedBatch,
     required TResult orElse(),
   }) {
     if (invalidQr != null) {
@@ -344,6 +359,7 @@ class _$_InvalidQr implements _InvalidQr {
     required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
     required TResult Function(_EmptySecret value) emptySecret,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_MismatchedBatch value) mismatchedBatch,
   }) {
     return invalidQr(this);
   }
@@ -357,6 +373,7 @@ class _$_InvalidQr implements _InvalidQr {
     TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult? Function(_EmptySecret value)? emptySecret,
     TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_MismatchedBatch value)? mismatchedBatch,
   }) {
     return invalidQr?.call(this);
   }
@@ -370,6 +387,7 @@ class _$_InvalidQr implements _InvalidQr {
     TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult Function(_EmptySecret value)? emptySecret,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_MismatchedBatch value)? mismatchedBatch,
     required TResult orElse(),
   }) {
     if (invalidQr != null) {
@@ -427,6 +445,7 @@ class _$_UnsupportedType implements _UnsupportedType {
     required TResult Function() keyAlreadyUsed,
     required TResult Function() emptySecret,
     required TResult Function() permissionDenied,
+    required TResult Function() mismatchedBatch,
   }) {
     return unsupportedType();
   }
@@ -440,6 +459,7 @@ class _$_UnsupportedType implements _UnsupportedType {
     TResult? Function()? keyAlreadyUsed,
     TResult? Function()? emptySecret,
     TResult? Function()? permissionDenied,
+    TResult? Function()? mismatchedBatch,
   }) {
     return unsupportedType?.call();
   }
@@ -453,6 +473,7 @@ class _$_UnsupportedType implements _UnsupportedType {
     TResult Function()? keyAlreadyUsed,
     TResult Function()? emptySecret,
     TResult Function()? permissionDenied,
+    TResult Function()? mismatchedBatch,
     required TResult orElse(),
   }) {
     if (unsupportedType != null) {
@@ -470,6 +491,7 @@ class _$_UnsupportedType implements _UnsupportedType {
     required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
     required TResult Function(_EmptySecret value) emptySecret,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_MismatchedBatch value) mismatchedBatch,
   }) {
     return unsupportedType(this);
   }
@@ -483,6 +505,7 @@ class _$_UnsupportedType implements _UnsupportedType {
     TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult? Function(_EmptySecret value)? emptySecret,
     TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_MismatchedBatch value)? mismatchedBatch,
   }) {
     return unsupportedType?.call(this);
   }
@@ -496,6 +519,7 @@ class _$_UnsupportedType implements _UnsupportedType {
     TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult Function(_EmptySecret value)? emptySecret,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_MismatchedBatch value)? mismatchedBatch,
     required TResult orElse(),
   }) {
     if (unsupportedType != null) {
@@ -553,6 +577,7 @@ class _$_KeyAlreadyUsed implements _KeyAlreadyUsed {
     required TResult Function() keyAlreadyUsed,
     required TResult Function() emptySecret,
     required TResult Function() permissionDenied,
+    required TResult Function() mismatchedBatch,
   }) {
     return keyAlreadyUsed();
   }
@@ -566,6 +591,7 @@ class _$_KeyAlreadyUsed implements _KeyAlreadyUsed {
     TResult? Function()? keyAlreadyUsed,
     TResult? Function()? emptySecret,
     TResult? Function()? permissionDenied,
+    TResult? Function()? mismatchedBatch,
   }) {
     return keyAlreadyUsed?.call();
   }
@@ -579,6 +605,7 @@ class _$_KeyAlreadyUsed implements _KeyAlreadyUsed {
     TResult Function()? keyAlreadyUsed,
     TResult Function()? emptySecret,
     TResult Function()? permissionDenied,
+    TResult Function()? mismatchedBatch,
     required TResult orElse(),
   }) {
     if (keyAlreadyUsed != null) {
@@ -596,6 +623,7 @@ class _$_KeyAlreadyUsed implements _KeyAlreadyUsed {
     required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
     required TResult Function(_EmptySecret value) emptySecret,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_MismatchedBatch value) mismatchedBatch,
   }) {
     return keyAlreadyUsed(this);
   }
@@ -609,6 +637,7 @@ class _$_KeyAlreadyUsed implements _KeyAlreadyUsed {
     TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult? Function(_EmptySecret value)? emptySecret,
     TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_MismatchedBatch value)? mismatchedBatch,
   }) {
     return keyAlreadyUsed?.call(this);
   }
@@ -622,6 +651,7 @@ class _$_KeyAlreadyUsed implements _KeyAlreadyUsed {
     TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult Function(_EmptySecret value)? emptySecret,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_MismatchedBatch value)? mismatchedBatch,
     required TResult orElse(),
   }) {
     if (keyAlreadyUsed != null) {
@@ -679,6 +709,7 @@ class _$_EmptySecret implements _EmptySecret {
     required TResult Function() keyAlreadyUsed,
     required TResult Function() emptySecret,
     required TResult Function() permissionDenied,
+    required TResult Function() mismatchedBatch,
   }) {
     return emptySecret();
   }
@@ -692,6 +723,7 @@ class _$_EmptySecret implements _EmptySecret {
     TResult? Function()? keyAlreadyUsed,
     TResult? Function()? emptySecret,
     TResult? Function()? permissionDenied,
+    TResult? Function()? mismatchedBatch,
   }) {
     return emptySecret?.call();
   }
@@ -705,6 +737,7 @@ class _$_EmptySecret implements _EmptySecret {
     TResult Function()? keyAlreadyUsed,
     TResult Function()? emptySecret,
     TResult Function()? permissionDenied,
+    TResult Function()? mismatchedBatch,
     required TResult orElse(),
   }) {
     if (emptySecret != null) {
@@ -722,6 +755,7 @@ class _$_EmptySecret implements _EmptySecret {
     required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
     required TResult Function(_EmptySecret value) emptySecret,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_MismatchedBatch value) mismatchedBatch,
   }) {
     return emptySecret(this);
   }
@@ -735,6 +769,7 @@ class _$_EmptySecret implements _EmptySecret {
     TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult? Function(_EmptySecret value)? emptySecret,
     TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_MismatchedBatch value)? mismatchedBatch,
   }) {
     return emptySecret?.call(this);
   }
@@ -748,6 +783,7 @@ class _$_EmptySecret implements _EmptySecret {
     TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult Function(_EmptySecret value)? emptySecret,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_MismatchedBatch value)? mismatchedBatch,
     required TResult orElse(),
   }) {
     if (emptySecret != null) {
@@ -805,6 +841,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     required TResult Function() keyAlreadyUsed,
     required TResult Function() emptySecret,
     required TResult Function() permissionDenied,
+    required TResult Function() mismatchedBatch,
   }) {
     return permissionDenied();
   }
@@ -818,6 +855,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult? Function()? keyAlreadyUsed,
     TResult? Function()? emptySecret,
     TResult? Function()? permissionDenied,
+    TResult? Function()? mismatchedBatch,
   }) {
     return permissionDenied?.call();
   }
@@ -831,6 +869,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult Function()? keyAlreadyUsed,
     TResult Function()? emptySecret,
     TResult Function()? permissionDenied,
+    TResult Function()? mismatchedBatch,
     required TResult orElse(),
   }) {
     if (permissionDenied != null) {
@@ -848,6 +887,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
     required TResult Function(_EmptySecret value) emptySecret,
     required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_MismatchedBatch value) mismatchedBatch,
   }) {
     return permissionDenied(this);
   }
@@ -861,6 +901,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult? Function(_EmptySecret value)? emptySecret,
     TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_MismatchedBatch value)? mismatchedBatch,
   }) {
     return permissionDenied?.call(this);
   }
@@ -874,6 +915,7 @@ class _$_PermissionDenied implements _PermissionDenied {
     TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
     TResult Function(_EmptySecret value)? emptySecret,
     TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_MismatchedBatch value)? mismatchedBatch,
     required TResult orElse(),
   }) {
     if (permissionDenied != null) {
@@ -885,4 +927,136 @@ class _$_PermissionDenied implements _PermissionDenied {
 
 abstract class _PermissionDenied implements AuthenticatorFailure {
   const factory _PermissionDenied() = _$_PermissionDenied;
+}
+
+/// @nodoc
+abstract class _$$_MismatchedBatchCopyWith<$Res> {
+  factory _$$_MismatchedBatchCopyWith(
+          _$_MismatchedBatch value, $Res Function(_$_MismatchedBatch) then) =
+      __$$_MismatchedBatchCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_MismatchedBatchCopyWithImpl<$Res>
+    extends _$AuthenticatorFailureCopyWithImpl<$Res, _$_MismatchedBatch>
+    implements _$$_MismatchedBatchCopyWith<$Res> {
+  __$$_MismatchedBatchCopyWithImpl(
+      _$_MismatchedBatch _value, $Res Function(_$_MismatchedBatch) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_MismatchedBatch implements _MismatchedBatch {
+  const _$_MismatchedBatch();
+
+  @override
+  String toString() {
+    return 'AuthenticatorFailure.mismatchedBatch()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_MismatchedBatch);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(dynamic e) unexpected,
+    required TResult Function() invalidQr,
+    required TResult Function() unsupportedType,
+    required TResult Function() keyAlreadyUsed,
+    required TResult Function() emptySecret,
+    required TResult Function() permissionDenied,
+    required TResult Function() mismatchedBatch,
+  }) {
+    return mismatchedBatch();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(dynamic e)? unexpected,
+    TResult? Function()? invalidQr,
+    TResult? Function()? unsupportedType,
+    TResult? Function()? keyAlreadyUsed,
+    TResult? Function()? emptySecret,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? mismatchedBatch,
+  }) {
+    return mismatchedBatch?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(dynamic e)? unexpected,
+    TResult Function()? invalidQr,
+    TResult Function()? unsupportedType,
+    TResult Function()? keyAlreadyUsed,
+    TResult Function()? emptySecret,
+    TResult Function()? permissionDenied,
+    TResult Function()? mismatchedBatch,
+    required TResult orElse(),
+  }) {
+    if (mismatchedBatch != null) {
+      return mismatchedBatch();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_InvalidQr value) invalidQr,
+    required TResult Function(_UnsupportedType value) unsupportedType,
+    required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
+    required TResult Function(_EmptySecret value) emptySecret,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_MismatchedBatch value) mismatchedBatch,
+  }) {
+    return mismatchedBatch(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_InvalidQr value)? invalidQr,
+    TResult? Function(_UnsupportedType value)? unsupportedType,
+    TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
+    TResult? Function(_EmptySecret value)? emptySecret,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_MismatchedBatch value)? mismatchedBatch,
+  }) {
+    return mismatchedBatch?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_InvalidQr value)? invalidQr,
+    TResult Function(_UnsupportedType value)? unsupportedType,
+    TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
+    TResult Function(_EmptySecret value)? emptySecret,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_MismatchedBatch value)? mismatchedBatch,
+    required TResult orElse(),
+  }) {
+    if (mismatchedBatch != null) {
+      return mismatchedBatch(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _MismatchedBatch implements AuthenticatorFailure {
+  const factory _MismatchedBatch() = _$_MismatchedBatch;
 }

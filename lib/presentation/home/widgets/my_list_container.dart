@@ -20,7 +20,11 @@ class MyListContainer extends StatelessWidget {
           final filtered = query.isEmpty
               ? modelsList
               : modelsList
-                  .where((model) => model.key.toLowerCase().contains(query))
+                  .where(
+                    (model) =>
+                        model.key.toLowerCase().contains(query) ||
+                        model.tag.toLowerCase().contains(query),
+                  )
                   .toList();
 
           if (filtered.isEmpty && query.isNotEmpty) {

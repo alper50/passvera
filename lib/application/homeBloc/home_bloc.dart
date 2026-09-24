@@ -18,6 +18,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       (event, emit) async {
         await event.map(
           getAllValues: (_) async {
+            final previousTag = state.maybeMap(
+              loadSucces: (s) => s.selectedTag,
+              orElse: () => null,
+            );
             emit(const HomeState.valuesLoading());
 
             final result = await _keysRepository.getAllValues();
@@ -28,11 +32,41 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
                 (succes) {
               succes.isEmpty
                   ? emit(const HomeState.loadSuccesEmpty())
-                  : emit(HomeState.loadSucces(values: succes));
+                  : emit(_withTagFilter(succes, previousTag));
             });
+          },
+          tagSelected: (e) async {
+            state.maybeMap(
+              loadSucces: (s) {
+                final next = _sameTag(e.tag, s.selectedTag) ? null : e.tag;
+                emit(_withTagFilter(s.allValues, next));
+              },
+              orElse: () {},
+            );
           },
         );
       },
     );
   }
+
+  /// Distinct tags (case-insensitive, in list order) and the entries matching
+  /// [tag]. A tag that no longer exists falls back to showing everything.
+  static HomeState _withTagFilter(List<ApplicationModel> all, String? tag) {
+    final tags = <String>[];
+    for (final model in all) {
+      if (!tags.any((t) => _sameTag(t, model.tag))) tags.add(model.tag);
+    }
+    final selected = tags.where((t) => _sameTag(t, tag)).firstOrNull;
+    return HomeState.loadSucces(
+      allValues: all,
+      tags: tags,
+      selectedTag: selected,
+      values: selected == null
+          ? all
+          : all.where((m) => _sameTag(m.tag, selected)).toList(),
+    );
+  }
+
+  static bool _sameTag(String? a, String? b) =>
+      a != null && b != null && a.toLowerCase() == b.toLowerCase();
 }

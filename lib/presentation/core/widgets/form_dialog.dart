@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:passvera/domain/tag_palette.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
+import 'package:passvera/presentation/core/widgets/my_tag_chip.dart';
 import 'package:password_strength_checker/password_strength_checker.dart';
 
 void showFormDialog({
@@ -160,7 +161,7 @@ class _SecretFormDialogState extends State<_SecretFormDialog> {
                       runSpacing: 8,
                       children: TagPalette.suggestedTags
                           .map(
-                            (tag) => _TagChip(
+                            (tag) => MyTagChip(
                               label: tag,
                               selected:
                                   _tagController.text.trim().toLowerCase() ==
@@ -238,44 +239,6 @@ class _SectionLabel extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: Text(text, style: MyTextStyles.bodyLargeBold),
-    );
-  }
-}
-
-class _TagChip extends StatelessWidget {
-  const _TagChip({
-    required this.label,
-    required this.selected,
-    required this.onTap,
-  });
-
-  final String label;
-  final bool selected;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 180),
-        curve: Curves.easeOut,
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-        decoration: BoxDecoration(
-          color: selected
-              ? MyColors.ink
-              : MyColors.surfaceWhite.withValues(alpha: 0.55),
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: MyColors.ink, width: 2),
-        ),
-        child: AnimatedDefaultTextStyle(
-          duration: const Duration(milliseconds: 180),
-          style: MyTextStyles.bodySmallBold.copyWith(
-            color: selected ? MyColors.surfaceWhite : MyColors.ink,
-          ),
-          child: Text(label),
-        ),
-      ),
     );
   }
 }
@@ -378,7 +341,9 @@ class MyFormButton extends StatelessWidget {
     this.isDestructive = false,
   });
   final String title;
-  final void Function() onPressed;
+
+  /// `null` disables the button.
+  final void Function()? onPressed;
 
   /// Irreversible action (delete): error fill so it is not mistaken for
   /// the neutral choice next to it.
@@ -392,6 +357,8 @@ class MyFormButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           foregroundColor: MyColors.ink,
+          disabledForegroundColor: MyColors.ink.withValues(alpha: 0.4),
+          disabledBackgroundColor: MyColors.surfaceWhite.withValues(alpha: 0.4),
           backgroundColor: isDestructive
               ? MyColors.error
               : MyColors.surfaceWhite.withValues(alpha: 0.72),
@@ -406,7 +373,7 @@ class MyFormButton extends StatelessWidget {
           ),
           elevation: 0.0,
         ),
-        onPressed: () => onPressed(),
+        onPressed: onPressed,
         child: Text(title),
       ),
     );

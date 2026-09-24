@@ -13,9 +13,11 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
 import 'application/authenticatorBloc/authenticator_bloc.dart' as _i20;
+import 'application/authenticatorImportBloc/authenticator_import_bloc.dart'
+    as _i21;
 import 'application/clipboardBloc/clipboard_bloc.dart' as _i9;
-import 'application/homeActionBloc/home_action_bloc.dart' as _i21;
-import 'application/homeBloc/home_bloc.dart' as _i22;
+import 'application/homeActionBloc/home_action_bloc.dart' as _i22;
+import 'application/homeBloc/home_bloc.dart' as _i23;
 import 'application/lockBloc/lock_bloc.dart' as _i16;
 import 'application/onboardBloc/onboard_bloc.dart' as _i17;
 import 'application/passActionBloc/pass_action_bloc.dart' as _i18;
@@ -71,8 +73,10 @@ _i1.GetIt $initGetIt(
       () => _i19.SessionBloc(gh<_i14.ILockRepository>()));
   gh.factory<_i20.AuthenticatorBloc>(
       () => _i20.AuthenticatorBloc(gh<_i10.IAuthenticatorRepository>()));
-  gh.factory<_i21.HomeActionBloc>(
-      () => _i21.HomeActionBloc(gh<_i12.IKeysRepository>()));
-  gh.factory<_i22.HomeBloc>(() => _i22.HomeBloc(gh<_i12.IKeysRepository>()));
+  gh.factory<_i21.AuthenticatorImportBloc>(
+      () => _i21.AuthenticatorImportBloc(gh<_i10.IAuthenticatorRepository>()));
+  gh.factory<_i22.HomeActionBloc>(
+      () => _i22.HomeActionBloc(gh<_i12.IKeysRepository>()));
+  gh.factory<_i23.HomeBloc>(() => _i23.HomeBloc(gh<_i12.IKeysRepository>()));
   return getIt;
 }

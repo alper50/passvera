@@ -35,6 +35,8 @@ extension AuthenticatorFailureMessage on AuthenticatorFailure {
         keyAlreadyUsed: () => 'This account is already added',
         emptySecret: () => 'QR has no secret',
         permissionDenied: () => 'Camera permission denied',
+        mismatchedBatch: () =>
+            'This QR belongs to a different Google Authenticator export',
       );
 }
 

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:passvera/application/authenticatorBloc/authenticator_bloc.dart';
+import 'package:passvera/domain/otp_migration_parser.dart';
 import 'package:passvera/injection.dart';
+import 'package:passvera/presentation/core/route/route.gr.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/core/utils/failure_messages.dart';
@@ -49,7 +51,9 @@ class _QrScanBodyState extends State<_QrScanBody> {
         .whereType<String>()
         .map((v) => v.trim())
         .firstWhere(
-          (v) => v.toLowerCase().startsWith('otpauth://'),
+          (v) =>
+              v.toLowerCase().startsWith('otpauth://') ||
+              OtpMigrationParser.isMigrationUri(v),
           orElse: () => '',
         );
     if (raw.isEmpty) return;
@@ -57,9 +61,29 @@ class _QrScanBodyState extends State<_QrScanBody> {
     _handled = true;
     await _controller.stop();
     if (!mounted) return;
+
+    if (OtpMigrationParser.isMigrationUri(raw)) {
+      await _openImport(raw);
+      return;
+    }
     context
         .read<AuthenticatorBloc>()
         .add(AuthenticatorEvent.addFromUri(uri: raw));
+  }
+
+  /// Google Authenticator export: preview/import screen, then back to Home
+  /// if anything was imported, otherwise keep scanning.
+  Future<void> _openImport(String raw) async {
+    final imported = await context.router.push<bool>(
+      AuthenticatorImportView(initialQr: raw),
+    );
+    if (!mounted) return;
+    if (imported == true) {
+      context.router.pop(true);
+      return;
+    }
+    _handled = false;
+    await _controller.start();
   }
 
   @override
@@ -140,7 +164,7 @@ class _QrScanBodyState extends State<_QrScanBody> {
               child: Padding(
                 padding: EdgeInsets.fromLTRB(24, 0, 24, 48),
                 child: Text(
-                  'Point at an otpauth TOTP QR code',
+                  'Scan a 2FA QR code or a Google Authenticator export',
                   style: MyTextStyles.bodyLarge,
                   textAlign: TextAlign.center,
                 ),

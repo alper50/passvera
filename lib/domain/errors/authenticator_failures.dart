@@ -10,4 +10,8 @@ class AuthenticatorFailure with _$AuthenticatorFailure {
   const factory AuthenticatorFailure.keyAlreadyUsed() = _KeyAlreadyUsed;
   const factory AuthenticatorFailure.emptySecret() = _EmptySecret;
   const factory AuthenticatorFailure.permissionDenied() = _PermissionDenied;
+
+  /// A Google Authenticator export QR from a different export than the ones
+  /// already scanned.
+  const factory AuthenticatorFailure.mismatchedBatch() = _MismatchedBatch;
 }

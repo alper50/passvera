@@ -63,12 +63,13 @@ One concern per BLoC. Current map:
 
 | BLoC | Responsibility |
 |------|----------------|
-| `HomeBloc` | Load password list |
+| `HomeBloc` | Load password list + single-select tag filter |
 | `HomeActionBloc` | Create / save new entry |
 | `PassActionBloc` | Update / delete entry |
 | `OnboardBloc` | First-run flag check/set |
 | `LockBloc` | PIN status / verify / set / update / remove |
 | `AuthenticatorBloc` | TOTP entries: load / add from QR / delete |
+| `AuthenticatorImportBloc` | Google Authenticator export: collect batches, select, import |
 | `ClipboardBloc` | Copy secrets with auto-expiry (`kSensitiveClipboardTtl`) |
 | `SessionBloc` | App-root lifecycle: privacy cover + relock on background |
 
@@ -119,8 +120,9 @@ presentation/
 - Lists under the FAB get bottom padding so the last item can scroll clear of it. Our FAB uses `heroTag: null`.
 - `AppBarWithSearchSwitch`: pass every custom notifier/controller (text, hasText, submit, controller, search mode); omitted ones fall back to package-global statics.
 - Irreversible actions use `MyFormButton(isDestructive: true)`.
+- Parsing of external formats (otpauth, otpauth-migration) is pure Dart in `domain/`; no third-party parsers for secrets. `Uri.queryParameters` form-decodes `+` → space: read base64 query values from `uri.query` with `Uri.decodeComponent`.
 
-Screens today: Splash → Onboard | Lock | Home → PassDetail / Profile / QrScan.
+Screens today: Splash → Onboard | Lock | Home → PassDetail / Profile / QrScan → AuthenticatorImport.
 
 ## Lock & privacy
 

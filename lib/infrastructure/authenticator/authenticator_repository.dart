@@ -22,6 +22,13 @@ class AuthenticatorRepository implements IAuthenticatorRepository {
   }
 
   @override
+  Future<Either<AuthenticatorFailure, int>> addEntries(
+    List<AuthenticatorEntry> entries,
+  ) {
+    return _service.addEntries(entries);
+  }
+
+  @override
   Future<Either<AuthenticatorFailure, Unit>> delete({required String id}) {
     return _service.delete(id: id);
   }
