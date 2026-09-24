@@ -17,10 +17,9 @@ dependencies:
   # local_auth: ^2.1.6
 
   #appSpecificUtils
-  password_strength_checker: ^1.2.2    # password strength checks from both dictionary and bruteforce ways
+  password_strength_checker: ^1.3.2    # password strength checks from both dictionary and bruteforce ways
   flutter_secure_storage: ^9.2.4
-  localstorage: ^4.0.1+4
-  app_bar_with_search_switch: ^1.5.4
+  app_bar_with_search_switch: ^1.8.6
   #general
   flutter_bloc: ^8.1.3         # state management 
   dartz: ^0.10.1       
@@ -28,11 +27,10 @@ dependencies:
   freezed_annotation: ^2.2.0
   injectable: ^2.1.1
   get_it: ^7.6.0                #service locator
-  cupertino_icons: ^1.0.2
-  google_fonts: ^6.2.1
+  cupertino_icons: ^1.0.9
   lottie: ^3.1.3
-  crypto: ^3.0.3
-  mobile_scanner: ^7.0.0
+  crypto: ^3.0.7
+  mobile_scanner: ^7.4.2
 
 
 dev_dependencies:
