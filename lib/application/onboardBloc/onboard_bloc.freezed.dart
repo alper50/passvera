@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,660 +9,511 @@ part of 'onboard_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$OnboardEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() checkOnboard,
-    required TResult Function() setOnboard,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? checkOnboard,
-    TResult? Function()? setOnboard,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? checkOnboard,
-    TResult Function()? setOnboard,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_CheckOnboard value) checkOnboard,
-    required TResult Function(_SetOnboard value) setOnboard,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CheckOnboard value)? checkOnboard,
-    TResult? Function(_SetOnboard value)? setOnboard,
-  }) =>
-      throw _privateConstructorUsedError;
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is OnboardEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'OnboardEvent()';
+  }
+}
+
+/// @nodoc
+class $OnboardEventCopyWith<$Res> {
+  $OnboardEventCopyWith(OnboardEvent _, $Res Function(OnboardEvent) __);
+}
+
+/// Adds pattern-matching-related methods to [OnboardEvent].
+extension OnboardEventPatterns on OnboardEvent {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CheckOnboard value)? checkOnboard,
     TResult Function(_SetOnboard value)? setOnboard,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _CheckOnboard() when checkOnboard != null:
+        return checkOnboard(_that);
+      case _SetOnboard() when setOnboard != null:
+        return setOnboard(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CheckOnboard value) checkOnboard,
+    required TResult Function(_SetOnboard value) setOnboard,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _CheckOnboard():
+        return checkOnboard(_that);
+      case _SetOnboard():
+        return setOnboard(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CheckOnboard value)? checkOnboard,
+    TResult? Function(_SetOnboard value)? setOnboard,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _CheckOnboard() when checkOnboard != null:
+        return checkOnboard(_that);
+      case _SetOnboard() when setOnboard != null:
+        return setOnboard(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? checkOnboard,
+    TResult Function()? setOnboard,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _CheckOnboard() when checkOnboard != null:
+        return checkOnboard();
+      case _SetOnboard() when setOnboard != null:
+        return setOnboard();
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() checkOnboard,
+    required TResult Function() setOnboard,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _CheckOnboard():
+        return checkOnboard();
+      case _SetOnboard():
+        return setOnboard();
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? checkOnboard,
+    TResult? Function()? setOnboard,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _CheckOnboard() when checkOnboard != null:
+        return checkOnboard();
+      case _SetOnboard() when setOnboard != null:
+        return setOnboard();
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
-abstract class $OnboardEventCopyWith<$Res> {
-  factory $OnboardEventCopyWith(
-          OnboardEvent value, $Res Function(OnboardEvent) then) =
-      _$OnboardEventCopyWithImpl<$Res, OnboardEvent>;
-}
 
-/// @nodoc
-class _$OnboardEventCopyWithImpl<$Res, $Val extends OnboardEvent>
-    implements $OnboardEventCopyWith<$Res> {
-  _$OnboardEventCopyWithImpl(this._value, this._then);
+class _CheckOnboard implements OnboardEvent {
+  const _CheckOnboard();
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _CheckOnboard);
+  }
 
-/// @nodoc
-abstract class _$$_CheckOnboardCopyWith<$Res> {
-  factory _$$_CheckOnboardCopyWith(
-          _$_CheckOnboard value, $Res Function(_$_CheckOnboard) then) =
-      __$$_CheckOnboardCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_CheckOnboardCopyWithImpl<$Res>
-    extends _$OnboardEventCopyWithImpl<$Res, _$_CheckOnboard>
-    implements _$$_CheckOnboardCopyWith<$Res> {
-  __$$_CheckOnboardCopyWithImpl(
-      _$_CheckOnboard _value, $Res Function(_$_CheckOnboard) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_CheckOnboard implements _CheckOnboard {
-  const _$_CheckOnboard();
+  @override
+  int get hashCode => runtimeType.hashCode;
 
   @override
   String toString() {
     return 'OnboardEvent.checkOnboard()';
   }
+}
+
+/// @nodoc
+
+class _SetOnboard implements OnboardEvent {
+  const _SetOnboard();
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_CheckOnboard);
+        (other.runtimeType == runtimeType && other is _SetOnboard);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() checkOnboard,
-    required TResult Function() setOnboard,
-  }) {
-    return checkOnboard();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? checkOnboard,
-    TResult? Function()? setOnboard,
-  }) {
-    return checkOnboard?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? checkOnboard,
-    TResult Function()? setOnboard,
-    required TResult orElse(),
-  }) {
-    if (checkOnboard != null) {
-      return checkOnboard();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_CheckOnboard value) checkOnboard,
-    required TResult Function(_SetOnboard value) setOnboard,
-  }) {
-    return checkOnboard(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CheckOnboard value)? checkOnboard,
-    TResult? Function(_SetOnboard value)? setOnboard,
-  }) {
-    return checkOnboard?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CheckOnboard value)? checkOnboard,
-    TResult Function(_SetOnboard value)? setOnboard,
-    required TResult orElse(),
-  }) {
-    if (checkOnboard != null) {
-      return checkOnboard(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _CheckOnboard implements OnboardEvent {
-  const factory _CheckOnboard() = _$_CheckOnboard;
-}
-
-/// @nodoc
-abstract class _$$_SetOnboardCopyWith<$Res> {
-  factory _$$_SetOnboardCopyWith(
-          _$_SetOnboard value, $Res Function(_$_SetOnboard) then) =
-      __$$_SetOnboardCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_SetOnboardCopyWithImpl<$Res>
-    extends _$OnboardEventCopyWithImpl<$Res, _$_SetOnboard>
-    implements _$$_SetOnboardCopyWith<$Res> {
-  __$$_SetOnboardCopyWithImpl(
-      _$_SetOnboard _value, $Res Function(_$_SetOnboard) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_SetOnboard implements _SetOnboard {
-  const _$_SetOnboard();
 
   @override
   String toString() {
     return 'OnboardEvent.setOnboard()';
   }
+}
 
+/// @nodoc
+mixin _$OnboardState {
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SetOnboard);
+        (other.runtimeType == runtimeType && other is OnboardState);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() checkOnboard,
-    required TResult Function() setOnboard,
-  }) {
-    return setOnboard();
+  String toString() {
+    return 'OnboardState()';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? checkOnboard,
-    TResult? Function()? setOnboard,
-  }) {
-    return setOnboard?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? checkOnboard,
-    TResult Function()? setOnboard,
-    required TResult orElse(),
-  }) {
-    if (setOnboard != null) {
-      return setOnboard();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_CheckOnboard value) checkOnboard,
-    required TResult Function(_SetOnboard value) setOnboard,
-  }) {
-    return setOnboard(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CheckOnboard value)? checkOnboard,
-    TResult? Function(_SetOnboard value)? setOnboard,
-  }) {
-    return setOnboard?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CheckOnboard value)? checkOnboard,
-    TResult Function(_SetOnboard value)? setOnboard,
-    required TResult orElse(),
-  }) {
-    if (setOnboard != null) {
-      return setOnboard(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SetOnboard implements OnboardEvent {
-  const factory _SetOnboard() = _$_SetOnboard;
 }
 
 /// @nodoc
-mixin _$OnboardState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() onboardNotShowed,
-    required TResult Function() onboarShowed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? onboardNotShowed,
-    TResult? Function()? onboarShowed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onboardNotShowed,
-    TResult Function()? onboarShowed,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_OnboardNotShowed value) onboardNotShowed,
-    required TResult Function(_OnboarShowed value) onboarShowed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_OnboardNotShowed value)? onboardNotShowed,
-    TResult? Function(_OnboarShowed value)? onboarShowed,
-  }) =>
-      throw _privateConstructorUsedError;
+class $OnboardStateCopyWith<$Res> {
+  $OnboardStateCopyWith(OnboardState _, $Res Function(OnboardState) __);
+}
+
+/// Adds pattern-matching-related methods to [OnboardState].
+extension OnboardStatePatterns on OnboardState {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_OnboardNotShowed value)? onboardNotShowed,
     TResult Function(_OnboarShowed value)? onboarShowed,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial(_that);
+      case _OnboardNotShowed() when onboardNotShowed != null:
+        return onboardNotShowed(_that);
+      case _OnboarShowed() when onboarShowed != null:
+        return onboarShowed(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OnboardNotShowed value) onboardNotShowed,
+    required TResult Function(_OnboarShowed value) onboarShowed,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial():
+        return initial(_that);
+      case _OnboardNotShowed():
+        return onboardNotShowed(_that);
+      case _OnboarShowed():
+        return onboarShowed(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_OnboardNotShowed value)? onboardNotShowed,
+    TResult? Function(_OnboarShowed value)? onboarShowed,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial(_that);
+      case _OnboardNotShowed() when onboardNotShowed != null:
+        return onboardNotShowed(_that);
+      case _OnboarShowed() when onboarShowed != null:
+        return onboarShowed(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onboardNotShowed,
+    TResult Function()? onboarShowed,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial();
+      case _OnboardNotShowed() when onboardNotShowed != null:
+        return onboardNotShowed();
+      case _OnboarShowed() when onboarShowed != null:
+        return onboarShowed();
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() onboardNotShowed,
+    required TResult Function() onboarShowed,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial():
+        return initial();
+      case _OnboardNotShowed():
+        return onboardNotShowed();
+      case _OnboarShowed():
+        return onboarShowed();
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? onboardNotShowed,
+    TResult? Function()? onboarShowed,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial();
+      case _OnboardNotShowed() when onboardNotShowed != null:
+        return onboardNotShowed();
+      case _OnboarShowed() when onboarShowed != null:
+        return onboarShowed();
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
-abstract class $OnboardStateCopyWith<$Res> {
-  factory $OnboardStateCopyWith(
-          OnboardState value, $Res Function(OnboardState) then) =
-      _$OnboardStateCopyWithImpl<$Res, OnboardState>;
-}
 
-/// @nodoc
-class _$OnboardStateCopyWithImpl<$Res, $Val extends OnboardState>
-    implements $OnboardStateCopyWith<$Res> {
-  _$OnboardStateCopyWithImpl(this._value, this._then);
+class _Initial implements OnboardState {
+  const _Initial();
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
+  }
 
-/// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$OnboardStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_Initial implements _Initial {
-  const _$_Initial();
+  @override
+  int get hashCode => runtimeType.hashCode;
 
   @override
   String toString() {
     return 'OnboardState.initial()';
   }
+}
+
+/// @nodoc
+
+class _OnboardNotShowed implements OnboardState {
+  const _OnboardNotShowed();
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _OnboardNotShowed);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() onboardNotShowed,
-    required TResult Function() onboarShowed,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? onboardNotShowed,
-    TResult? Function()? onboarShowed,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onboardNotShowed,
-    TResult Function()? onboarShowed,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_OnboardNotShowed value) onboardNotShowed,
-    required TResult Function(_OnboarShowed value) onboarShowed,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_OnboardNotShowed value)? onboardNotShowed,
-    TResult? Function(_OnboarShowed value)? onboarShowed,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnboardNotShowed value)? onboardNotShowed,
-    TResult Function(_OnboarShowed value)? onboarShowed,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements OnboardState {
-  const factory _Initial() = _$_Initial;
-}
-
-/// @nodoc
-abstract class _$$_OnboardNotShowedCopyWith<$Res> {
-  factory _$$_OnboardNotShowedCopyWith(
-          _$_OnboardNotShowed value, $Res Function(_$_OnboardNotShowed) then) =
-      __$$_OnboardNotShowedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_OnboardNotShowedCopyWithImpl<$Res>
-    extends _$OnboardStateCopyWithImpl<$Res, _$_OnboardNotShowed>
-    implements _$$_OnboardNotShowedCopyWith<$Res> {
-  __$$_OnboardNotShowedCopyWithImpl(
-      _$_OnboardNotShowed _value, $Res Function(_$_OnboardNotShowed) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_OnboardNotShowed implements _OnboardNotShowed {
-  const _$_OnboardNotShowed();
 
   @override
   String toString() {
     return 'OnboardState.onboardNotShowed()';
   }
+}
+
+/// @nodoc
+
+class _OnboarShowed implements OnboardState {
+  const _OnboarShowed();
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OnboardNotShowed);
+        (other.runtimeType == runtimeType && other is _OnboarShowed);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() onboardNotShowed,
-    required TResult Function() onboarShowed,
-  }) {
-    return onboardNotShowed();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? onboardNotShowed,
-    TResult? Function()? onboarShowed,
-  }) {
-    return onboardNotShowed?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onboardNotShowed,
-    TResult Function()? onboarShowed,
-    required TResult orElse(),
-  }) {
-    if (onboardNotShowed != null) {
-      return onboardNotShowed();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_OnboardNotShowed value) onboardNotShowed,
-    required TResult Function(_OnboarShowed value) onboarShowed,
-  }) {
-    return onboardNotShowed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_OnboardNotShowed value)? onboardNotShowed,
-    TResult? Function(_OnboarShowed value)? onboarShowed,
-  }) {
-    return onboardNotShowed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnboardNotShowed value)? onboardNotShowed,
-    TResult Function(_OnboarShowed value)? onboarShowed,
-    required TResult orElse(),
-  }) {
-    if (onboardNotShowed != null) {
-      return onboardNotShowed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _OnboardNotShowed implements OnboardState {
-  const factory _OnboardNotShowed() = _$_OnboardNotShowed;
-}
-
-/// @nodoc
-abstract class _$$_OnboarShowedCopyWith<$Res> {
-  factory _$$_OnboarShowedCopyWith(
-          _$_OnboarShowed value, $Res Function(_$_OnboarShowed) then) =
-      __$$_OnboarShowedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_OnboarShowedCopyWithImpl<$Res>
-    extends _$OnboardStateCopyWithImpl<$Res, _$_OnboarShowed>
-    implements _$$_OnboarShowedCopyWith<$Res> {
-  __$$_OnboarShowedCopyWithImpl(
-      _$_OnboarShowed _value, $Res Function(_$_OnboarShowed) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_OnboarShowed implements _OnboarShowed {
-  const _$_OnboarShowed();
 
   @override
   String toString() {
     return 'OnboardState.onboarShowed()';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OnboarShowed);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() onboardNotShowed,
-    required TResult Function() onboarShowed,
-  }) {
-    return onboarShowed();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? onboardNotShowed,
-    TResult? Function()? onboarShowed,
-  }) {
-    return onboarShowed?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onboardNotShowed,
-    TResult Function()? onboarShowed,
-    required TResult orElse(),
-  }) {
-    if (onboarShowed != null) {
-      return onboarShowed();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_OnboardNotShowed value) onboardNotShowed,
-    required TResult Function(_OnboarShowed value) onboarShowed,
-  }) {
-    return onboarShowed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_OnboardNotShowed value)? onboardNotShowed,
-    TResult? Function(_OnboarShowed value)? onboarShowed,
-  }) {
-    return onboarShowed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnboardNotShowed value)? onboardNotShowed,
-    TResult Function(_OnboarShowed value)? onboarShowed,
-    required TResult orElse(),
-  }) {
-    if (onboarShowed != null) {
-      return onboarShowed(this);
-    }
-    return orElse();
-  }
 }
 
-abstract class _OnboarShowed implements OnboardState {
-  const factory _OnboarShowed() = _$_OnboarShowed;
-}
+// dart format on

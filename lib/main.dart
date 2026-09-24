@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passvera/application/sessionBloc/session_bloc.dart';
 import 'package:passvera/initialization.dart';
 import 'package:passvera/injection.dart';
-import 'package:passvera/presentation/core/route/route.gr.dart';
+import 'package:passvera/presentation/core/route/route.dart';
 import 'package:passvera/presentation/core/theme/theme.dart';
 import 'package:passvera/presentation/core/widgets/privacy_cover.dart';
 
@@ -38,9 +38,9 @@ class _AppViewState extends State<_AppView> with WidgetsBindingObserver {
 
   /// Screens that already gate access; relocking there is pointless.
   static const _unlockedFreeRoutes = {
-    LockView.name,
-    SplashView.name,
-    OnboardView.name,
+    LockRoute.name,
+    SplashRoute.name,
+    OnboardRoute.name,
   };
 
   @override
@@ -78,7 +78,7 @@ class _AppViewState extends State<_AppView> with WidgetsBindingObserver {
   void _showLock() {
     if (_unlockedFreeRoutes.contains(_appRouter.current.name)) return;
     _appRouter.pushAndPopUntil(
-      const LockView(),
+      const LockRoute(),
       predicate: (_) => false,
     );
   }
@@ -95,8 +95,7 @@ class _AppViewState extends State<_AppView> with WidgetsBindingObserver {
       child: MaterialApp.router(
         theme: MyThemeData.lightheme,
         debugShowCheckedModeBanner: false,
-        routeInformationParser: _appRouter.defaultRouteParser(),
-        routerDelegate: _appRouter.delegate(),
+        routerConfig: _appRouter.config(),
         builder: (context, child) => Stack(
           fit: StackFit.expand,
           children: [

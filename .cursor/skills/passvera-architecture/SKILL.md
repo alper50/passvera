@@ -83,8 +83,10 @@ Patterns:
 - Freezed states use value equality and BLoC drops an emit equal to the current state: emit the result field as `none()` before the new result, or a repeated identical result (same failure twice) never reaches listeners.
 - Never hand-write freezed look-alikes (manual `map`/`==`/`copyWith`); annotate with `@freezed` and run build_runner.
 
-After codegen changes: run `dart run build_runner build --delete-conflicting-outputs`.
-Dart 3.10+ needs `build_runner >=2.4.13` with `frontend_server_client 4.x` (older versions look for the removed `frontend_server.dart.snapshot`). Generated files are excluded from analysis in `analysis_options.yaml`; do not hand-edit them.
+After codegen changes: run `dart run build_runner build` (build_runner ≥2.15 removed `--delete-conflicting-outputs`; conflicts are handled automatically). Generated files are excluded from analysis in `analysis_options.yaml`; do not hand-edit them.
+
+- Every `@freezed` class is `sealed` (unions: several factory constructors) or `abstract` (single constructor). freezed 3 does not compile plain `class X with _$X` that has fields. `map`/`when` are still generated (as extensions).
+- `flutter analyze` does not compile dependencies: after bumping a package also run `flutter test` / a build. auto_route is capped `<11.2` because 11.2 needs a newer Flutter than the project's; lift the cap with the Flutter upgrade.
 
 ## Infrastructure rules
 
@@ -109,6 +111,7 @@ presentation/
 - Provide BLoCs via `BlocProvider` / `MultiBlocProvider` + `getIt<T>()`.
 - Side effects (snackbar, navigation, dialog close) in `BlocListener` / `MultiBlocListener`, not in `builder`.
 - Navigate with **auto_route only** (`AutoRouter`, `context.router`, generated routes). Do not mix `Navigator.push(MaterialPageRoute)` with AutoRoute for the same flow.
+- Screens are `*View` widgets annotated `@RoutePage()` and listed in `MyRouter.routes` (`lib/presentation/core/route/route.dart`, part `route.gr.dart`). Navigate with the generated `*Route` classes (`HomeView` → `HomeRoute`, `PassDetailRoute(model: …)`), import `route.dart`.
 - Shared look: yellow surface, black border, offset shadow — reuse `MyCustomContainer` / `MySmallButton` / theme; avoid new one-off card systems unless product direction changes.
 - Forms for create/edit: `showFormDialog` (or a dedicated shared form widget). Keep generator config out of random widgets when extracting (single config place).
 

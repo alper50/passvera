@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,310 +9,313 @@ part of 'clipboard_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$ClipboardEvent {
-  String get text => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String text) copySensitive,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text)? copySensitive,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text)? copySensitive,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_CopySensitive value) copySensitive,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CopySensitive value)? copySensitive,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CopySensitive value)? copySensitive,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  String get text;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ClipboardEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $ClipboardEventCopyWith<ClipboardEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ClipboardEventCopyWith<$Res> {
-  factory $ClipboardEventCopyWith(
-          ClipboardEvent value, $Res Function(ClipboardEvent) then) =
-      _$ClipboardEventCopyWithImpl<$Res, ClipboardEvent>;
-  @useResult
-  $Res call({String text});
-}
-
-/// @nodoc
-class _$ClipboardEventCopyWithImpl<$Res, $Val extends ClipboardEvent>
-    implements $ClipboardEventCopyWith<$Res> {
-  _$ClipboardEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? text = null,
-  }) {
-    return _then(_value.copyWith(
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_CopySensitiveCopyWith<$Res>
-    implements $ClipboardEventCopyWith<$Res> {
-  factory _$$_CopySensitiveCopyWith(
-          _$_CopySensitive value, $Res Function(_$_CopySensitive) then) =
-      __$$_CopySensitiveCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String text});
-}
-
-/// @nodoc
-class __$$_CopySensitiveCopyWithImpl<$Res>
-    extends _$ClipboardEventCopyWithImpl<$Res, _$_CopySensitive>
-    implements _$$_CopySensitiveCopyWith<$Res> {
-  __$$_CopySensitiveCopyWithImpl(
-      _$_CopySensitive _value, $Res Function(_$_CopySensitive) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? text = null,
-  }) {
-    return _then(_$_CopySensitive(
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_CopySensitive implements _CopySensitive {
-  const _$_CopySensitive({required this.text});
+      _$ClipboardEventCopyWithImpl<ClipboardEvent>(
+          this as ClipboardEvent, _$identity);
 
   @override
-  final String text;
-
-  @override
-  String toString() {
-    return 'ClipboardEvent.copySensitive(text: $text)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CopySensitive &&
+            other is ClipboardEvent &&
             (identical(other.text, text) || other.text == text));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, text);
 
-  @JsonKey(ignore: true)
   @override
+  String toString() {
+    return 'ClipboardEvent(text: $text)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $ClipboardEventCopyWith<$Res> {
+  factory $ClipboardEventCopyWith(
+          ClipboardEvent value, $Res Function(ClipboardEvent) _then) =
+      _$ClipboardEventCopyWithImpl;
+  @useResult
+  $Res call({String text});
+}
+
+/// @nodoc
+class _$ClipboardEventCopyWithImpl<$Res>
+    implements $ClipboardEventCopyWith<$Res> {
+  _$ClipboardEventCopyWithImpl(this._self, this._then);
+
+  final ClipboardEvent _self;
+  final $Res Function(ClipboardEvent) _then;
+
+  /// Create a copy of ClipboardEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  _$$_CopySensitiveCopyWith<_$_CopySensitive> get copyWith =>
-      __$$_CopySensitiveCopyWithImpl<_$_CopySensitive>(this, _$identity);
-
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String text) copySensitive,
+  $Res call({
+    Object? text = null,
   }) {
-    return copySensitive(text);
+    return _then(_self.copyWith(
+      text: null == text
+          ? _self.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text)? copySensitive,
-  }) {
-    return copySensitive?.call(text);
-  }
+/// Adds pattern-matching-related methods to [ClipboardEvent].
+extension ClipboardEventPatterns on ClipboardEvent {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text)? copySensitive,
-    required TResult orElse(),
-  }) {
-    if (copySensitive != null) {
-      return copySensitive(text);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_CopySensitive value) copySensitive,
-  }) {
-    return copySensitive(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_CopySensitive value)? copySensitive,
-  }) {
-    return copySensitive?.call(this);
-  }
-
-  @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CopySensitive value)? copySensitive,
     required TResult orElse(),
   }) {
-    if (copySensitive != null) {
-      return copySensitive(this);
+    final _that = this;
+    switch (_that) {
+      case _CopySensitive() when copySensitive != null:
+        return copySensitive(_that);
+      case _:
+        return orElse();
     }
-    return orElse();
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CopySensitive value) copySensitive,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _CopySensitive():
+        return copySensitive(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CopySensitive value)? copySensitive,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _CopySensitive() when copySensitive != null:
+        return copySensitive(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String text)? copySensitive,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _CopySensitive() when copySensitive != null:
+        return copySensitive(_that.text);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String text) copySensitive,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _CopySensitive():
+        return copySensitive(_that.text);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String text)? copySensitive,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _CopySensitive() when copySensitive != null:
+        return copySensitive(_that.text);
+      case _:
+        return null;
+    }
   }
 }
 
-abstract class _CopySensitive implements ClipboardEvent {
-  const factory _CopySensitive({required final String text}) = _$_CopySensitive;
+/// @nodoc
+
+class _CopySensitive implements ClipboardEvent {
+  const _CopySensitive({required this.text});
 
   @override
-  String get text;
+  final String text;
+
+  /// Create a copy of ClipboardEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_CopySensitiveCopyWith<_$_CopySensitive> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$ClipboardState {
-  Option<Either<ClipboardFailure, Unit>> get copyFailureOrSuccess =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ClipboardStateCopyWith<ClipboardState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ClipboardStateCopyWith<$Res> {
-  factory $ClipboardStateCopyWith(
-          ClipboardState value, $Res Function(ClipboardState) then) =
-      _$ClipboardStateCopyWithImpl<$Res, ClipboardState>;
-  @useResult
-  $Res call({Option<Either<ClipboardFailure, Unit>> copyFailureOrSuccess});
-}
-
-/// @nodoc
-class _$ClipboardStateCopyWithImpl<$Res, $Val extends ClipboardState>
-    implements $ClipboardStateCopyWith<$Res> {
-  _$ClipboardStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  _$CopySensitiveCopyWith<_CopySensitive> get copyWith =>
+      __$CopySensitiveCopyWithImpl<_CopySensitive>(this, _$identity);
+
   @override
-  $Res call({
-    Object? copyFailureOrSuccess = null,
-  }) {
-    return _then(_value.copyWith(
-      copyFailureOrSuccess: null == copyFailureOrSuccess
-          ? _value.copyFailureOrSuccess
-          : copyFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ClipboardFailure, Unit>>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _CopySensitive &&
+            (identical(other.text, text) || other.text == text));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, text);
+
+  @override
+  String toString() {
+    return 'ClipboardEvent.copySensitive(text: $text)';
   }
 }
 
 /// @nodoc
-abstract class _$$_ClipboardStateCopyWith<$Res>
-    implements $ClipboardStateCopyWith<$Res> {
-  factory _$$_ClipboardStateCopyWith(
-          _$_ClipboardState value, $Res Function(_$_ClipboardState) then) =
-      __$$_ClipboardStateCopyWithImpl<$Res>;
+abstract mixin class _$CopySensitiveCopyWith<$Res>
+    implements $ClipboardEventCopyWith<$Res> {
+  factory _$CopySensitiveCopyWith(
+          _CopySensitive value, $Res Function(_CopySensitive) _then) =
+      __$CopySensitiveCopyWithImpl;
   @override
   @useResult
-  $Res call({Option<Either<ClipboardFailure, Unit>> copyFailureOrSuccess});
+  $Res call({String text});
 }
 
 /// @nodoc
-class __$$_ClipboardStateCopyWithImpl<$Res>
-    extends _$ClipboardStateCopyWithImpl<$Res, _$_ClipboardState>
-    implements _$$_ClipboardStateCopyWith<$Res> {
-  __$$_ClipboardStateCopyWithImpl(
-      _$_ClipboardState _value, $Res Function(_$_ClipboardState) _then)
-      : super(_value, _then);
+class __$CopySensitiveCopyWithImpl<$Res>
+    implements _$CopySensitiveCopyWith<$Res> {
+  __$CopySensitiveCopyWithImpl(this._self, this._then);
 
-  @pragma('vm:prefer-inline')
+  final _CopySensitive _self;
+  final $Res Function(_CopySensitive) _then;
+
+  /// Create a copy of ClipboardEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
-    Object? copyFailureOrSuccess = null,
+    Object? text = null,
   }) {
-    return _then(_$_ClipboardState(
-      copyFailureOrSuccess: null == copyFailureOrSuccess
-          ? _value.copyFailureOrSuccess
-          : copyFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ClipboardFailure, Unit>>,
+    return _then(_CopySensitive(
+      text: null == text
+          ? _self.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+mixin _$ClipboardState {
+  Option<Either<ClipboardFailure, Unit>> get copyFailureOrSuccess;
 
-class _$_ClipboardState implements _ClipboardState {
-  const _$_ClipboardState({required this.copyFailureOrSuccess});
+  /// Create a copy of ClipboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $ClipboardStateCopyWith<ClipboardState> get copyWith =>
+      _$ClipboardStateCopyWithImpl<ClipboardState>(
+          this as ClipboardState, _$identity);
 
   @override
-  final Option<Either<ClipboardFailure, Unit>> copyFailureOrSuccess;
-
-  @override
-  String toString() {
-    return 'ClipboardState(copyFailureOrSuccess: $copyFailureOrSuccess)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClipboardState &&
+            other is ClipboardState &&
             (identical(other.copyFailureOrSuccess, copyFailureOrSuccess) ||
                 other.copyFailureOrSuccess == copyFailureOrSuccess));
   }
@@ -320,22 +323,275 @@ class _$_ClipboardState implements _ClipboardState {
   @override
   int get hashCode => Object.hash(runtimeType, copyFailureOrSuccess);
 
-  @JsonKey(ignore: true)
+  @override
+  String toString() {
+    return 'ClipboardState(copyFailureOrSuccess: $copyFailureOrSuccess)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $ClipboardStateCopyWith<$Res> {
+  factory $ClipboardStateCopyWith(
+          ClipboardState value, $Res Function(ClipboardState) _then) =
+      _$ClipboardStateCopyWithImpl;
+  @useResult
+  $Res call({Option<Either<ClipboardFailure, Unit>> copyFailureOrSuccess});
+}
+
+/// @nodoc
+class _$ClipboardStateCopyWithImpl<$Res>
+    implements $ClipboardStateCopyWith<$Res> {
+  _$ClipboardStateCopyWithImpl(this._self, this._then);
+
+  final ClipboardState _self;
+  final $Res Function(ClipboardState) _then;
+
+  /// Create a copy of ClipboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? copyFailureOrSuccess = null,
+  }) {
+    return _then(_self.copyWith(
+      copyFailureOrSuccess: null == copyFailureOrSuccess
+          ? _self.copyFailureOrSuccess
+          : copyFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ClipboardFailure, Unit>>,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [ClipboardState].
+extension ClipboardStatePatterns on ClipboardState {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ClipboardState value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ClipboardState() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ClipboardState value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ClipboardState():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ClipboardState value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ClipboardState() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            Option<Either<ClipboardFailure, Unit>> copyFailureOrSuccess)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ClipboardState() when $default != null:
+        return $default(_that.copyFailureOrSuccess);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            Option<Either<ClipboardFailure, Unit>> copyFailureOrSuccess)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ClipboardState():
+        return $default(_that.copyFailureOrSuccess);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            Option<Either<ClipboardFailure, Unit>> copyFailureOrSuccess)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ClipboardState() when $default != null:
+        return $default(_that.copyFailureOrSuccess);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+
+class _ClipboardState implements ClipboardState {
+  const _ClipboardState({required this.copyFailureOrSuccess});
+
+  @override
+  final Option<Either<ClipboardFailure, Unit>> copyFailureOrSuccess;
+
+  /// Create a copy of ClipboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ClipboardStateCopyWith<_ClipboardState> get copyWith =>
+      __$ClipboardStateCopyWithImpl<_ClipboardState>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ClipboardState &&
+            (identical(other.copyFailureOrSuccess, copyFailureOrSuccess) ||
+                other.copyFailureOrSuccess == copyFailureOrSuccess));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, copyFailureOrSuccess);
+
+  @override
+  String toString() {
+    return 'ClipboardState(copyFailureOrSuccess: $copyFailureOrSuccess)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$ClipboardStateCopyWith<$Res>
+    implements $ClipboardStateCopyWith<$Res> {
+  factory _$ClipboardStateCopyWith(
+          _ClipboardState value, $Res Function(_ClipboardState) _then) =
+      __$ClipboardStateCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Option<Either<ClipboardFailure, Unit>> copyFailureOrSuccess});
+}
+
+/// @nodoc
+class __$ClipboardStateCopyWithImpl<$Res>
+    implements _$ClipboardStateCopyWith<$Res> {
+  __$ClipboardStateCopyWithImpl(this._self, this._then);
+
+  final _ClipboardState _self;
+  final $Res Function(_ClipboardState) _then;
+
+  /// Create a copy of ClipboardState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClipboardStateCopyWith<_$_ClipboardState> get copyWith =>
-      __$$_ClipboardStateCopyWithImpl<_$_ClipboardState>(this, _$identity);
+  $Res call({
+    Object? copyFailureOrSuccess = null,
+  }) {
+    return _then(_ClipboardState(
+      copyFailureOrSuccess: null == copyFailureOrSuccess
+          ? _self.copyFailureOrSuccess
+          : copyFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ClipboardFailure, Unit>>,
+    ));
+  }
 }
 
-abstract class _ClipboardState implements ClipboardState {
-  const factory _ClipboardState(
-      {required final Option<Either<ClipboardFailure, Unit>>
-          copyFailureOrSuccess}) = _$_ClipboardState;
-
-  @override
-  Option<Either<ClipboardFailure, Unit>> get copyFailureOrSuccess;
-  @override
-  @JsonKey(ignore: true)
-  _$$_ClipboardStateCopyWith<_$_ClipboardState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

@@ -1,82 +1,81 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 // **************************************************************************
 // InjectableConfigGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_lambdas
-// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: type=lint
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:get_it/get_it.dart' as _i1;
-import 'package:injectable/injectable.dart' as _i2;
 
-import 'application/authenticatorBloc/authenticator_bloc.dart' as _i20;
+import 'package:get_it/get_it.dart' as _i174;
+import 'package:injectable/injectable.dart' as _i526;
+
+import 'application/authenticatorBloc/authenticator_bloc.dart' as _i836;
 import 'application/authenticatorImportBloc/authenticator_import_bloc.dart'
-    as _i21;
-import 'application/clipboardBloc/clipboard_bloc.dart' as _i9;
-import 'application/homeActionBloc/home_action_bloc.dart' as _i22;
-import 'application/homeBloc/home_bloc.dart' as _i23;
-import 'application/lockBloc/lock_bloc.dart' as _i16;
-import 'application/onboardBloc/onboard_bloc.dart' as _i17;
-import 'application/passActionBloc/pass_action_bloc.dart' as _i18;
-import 'application/sessionBloc/session_bloc.dart' as _i19;
-import 'domain/i_authenticator_repository.dart' as _i10;
-import 'domain/i_clipboard_repository.dart' as _i4;
-import 'domain/i_keys_repository.dart' as _i12;
-import 'domain/i_lock_repository.dart' as _i14;
-import 'infrastructure/authenticator/authenticator_repository.dart' as _i11;
-import 'infrastructure/authenticator/authenticator_service.dart' as _i8;
-import 'infrastructure/clipboard/clipboard_repository.dart' as _i5;
-import 'infrastructure/clipboard/clipboard_service.dart' as _i3;
-import 'infrastructure/keys/keys_repository.dart' as _i13;
-import 'infrastructure/keys/keys_service.dart' as _i6;
-import 'infrastructure/lock/lock_repository.dart' as _i15;
-import 'infrastructure/lock/lock_service.dart' as _i7;
+    as _i380;
+import 'application/clipboardBloc/clipboard_bloc.dart' as _i1011;
+import 'application/homeActionBloc/home_action_bloc.dart' as _i380;
+import 'application/homeBloc/home_bloc.dart' as _i866;
+import 'application/lockBloc/lock_bloc.dart' as _i280;
+import 'application/onboardBloc/onboard_bloc.dart' as _i190;
+import 'application/passActionBloc/pass_action_bloc.dart' as _i311;
+import 'application/sessionBloc/session_bloc.dart' as _i931;
+import 'domain/i_authenticator_repository.dart' as _i882;
+import 'domain/i_clipboard_repository.dart' as _i625;
+import 'domain/i_keys_repository.dart' as _i284;
+import 'domain/i_lock_repository.dart' as _i760;
+import 'infrastructure/authenticator/authenticator_repository.dart' as _i523;
+import 'infrastructure/authenticator/authenticator_service.dart' as _i64;
+import 'infrastructure/clipboard/clipboard_repository.dart' as _i759;
+import 'infrastructure/clipboard/clipboard_service.dart' as _i580;
+import 'infrastructure/keys/keys_repository.dart' as _i760;
+import 'infrastructure/keys/keys_service.dart' as _i1;
+import 'infrastructure/lock/lock_repository.dart' as _i701;
+import 'infrastructure/lock/lock_service.dart' as _i214;
 
-// ignore_for_file: unnecessary_lambdas
-// ignore_for_file: lines_longer_than_80_chars
 // initializes the registration of main-scope dependencies inside of GetIt
-_i1.GetIt $initGetIt(
-  _i1.GetIt getIt, {
+_i174.GetIt $initGetIt(
+  _i174.GetIt getIt, {
   String? environment,
-  _i2.EnvironmentFilter? environmentFilter,
+  _i526.EnvironmentFilter? environmentFilter,
 }) {
-  final gh = _i2.GetItHelper(
+  final gh = _i526.GetItHelper(
     getIt,
     environment,
     environmentFilter,
   );
-  gh.lazySingleton<_i3.ClipboardService>(() => _i3.ClipboardService());
-  gh.lazySingleton<_i4.IClipboardRepository>(
-      () => _i5.ClipboardRepository(gh<_i3.ClipboardService>()));
-  gh.lazySingleton<_i6.KeysService>(() => _i6.KeysService());
-  gh.lazySingleton<_i7.LockService>(
-      () => _i7.LockService(gh<_i6.KeysService>()));
-  gh.lazySingleton<_i8.AuthenticatorService>(
-      () => _i8.AuthenticatorService(gh<_i6.KeysService>()));
-  gh.factory<_i9.ClipboardBloc>(
-      () => _i9.ClipboardBloc(gh<_i4.IClipboardRepository>()));
-  gh.lazySingleton<_i10.IAuthenticatorRepository>(
-      () => _i11.AuthenticatorRepository(gh<_i8.AuthenticatorService>()));
-  gh.lazySingleton<_i12.IKeysRepository>(
-      () => _i13.KeysRepository(gh<_i6.KeysService>()));
-  gh.lazySingleton<_i14.ILockRepository>(
-      () => _i15.LockRepository(gh<_i7.LockService>()));
-  gh.factory<_i16.LockBloc>(() => _i16.LockBloc(gh<_i14.ILockRepository>()));
-  gh.factory<_i17.OnboardBloc>(
-      () => _i17.OnboardBloc(gh<_i12.IKeysRepository>()));
-  gh.factory<_i18.PassActionBloc>(
-      () => _i18.PassActionBloc(gh<_i12.IKeysRepository>()));
-  gh.factory<_i19.SessionBloc>(
-      () => _i19.SessionBloc(gh<_i14.ILockRepository>()));
-  gh.factory<_i20.AuthenticatorBloc>(
-      () => _i20.AuthenticatorBloc(gh<_i10.IAuthenticatorRepository>()));
-  gh.factory<_i21.AuthenticatorImportBloc>(
-      () => _i21.AuthenticatorImportBloc(gh<_i10.IAuthenticatorRepository>()));
-  gh.factory<_i22.HomeActionBloc>(
-      () => _i22.HomeActionBloc(gh<_i12.IKeysRepository>()));
-  gh.factory<_i23.HomeBloc>(() => _i23.HomeBloc(gh<_i12.IKeysRepository>()));
+  gh.lazySingleton<_i580.ClipboardService>(() => _i580.ClipboardService());
+  gh.lazySingleton<_i1.KeysService>(() => _i1.KeysService());
+  gh.lazySingleton<_i64.AuthenticatorService>(
+      () => _i64.AuthenticatorService(gh<_i1.KeysService>()));
+  gh.lazySingleton<_i214.LockService>(
+      () => _i214.LockService(gh<_i1.KeysService>()));
+  gh.lazySingleton<_i760.ILockRepository>(
+      () => _i701.LockRepository(gh<_i214.LockService>()));
+  gh.lazySingleton<_i284.IKeysRepository>(
+      () => _i760.KeysRepository(gh<_i1.KeysService>()));
+  gh.factory<_i311.PassActionBloc>(
+      () => _i311.PassActionBloc(gh<_i284.IKeysRepository>()));
+  gh.lazySingleton<_i882.IAuthenticatorRepository>(
+      () => _i523.AuthenticatorRepository(gh<_i64.AuthenticatorService>()));
+  gh.factory<_i190.OnboardBloc>(
+      () => _i190.OnboardBloc(gh<_i284.IKeysRepository>()));
+  gh.factory<_i836.AuthenticatorBloc>(
+      () => _i836.AuthenticatorBloc(gh<_i882.IAuthenticatorRepository>()));
+  gh.factory<_i380.AuthenticatorImportBloc>(() =>
+      _i380.AuthenticatorImportBloc(gh<_i882.IAuthenticatorRepository>()));
+  gh.lazySingleton<_i625.IClipboardRepository>(
+      () => _i759.ClipboardRepository(gh<_i580.ClipboardService>()));
+  gh.factory<_i380.HomeActionBloc>(
+      () => _i380.HomeActionBloc(gh<_i284.IKeysRepository>()));
+  gh.factory<_i866.HomeBloc>(() => _i866.HomeBloc(gh<_i284.IKeysRepository>()));
+  gh.factory<_i1011.ClipboardBloc>(
+      () => _i1011.ClipboardBloc(gh<_i625.IClipboardRepository>()));
+  gh.factory<_i280.LockBloc>(() => _i280.LockBloc(gh<_i760.ILockRepository>()));
+  gh.factory<_i931.SessionBloc>(
+      () => _i931.SessionBloc(gh<_i760.ILockRepository>()));
   return getIt;
 }

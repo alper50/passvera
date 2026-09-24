@@ -13,6 +13,7 @@ import 'package:passvera/presentation/core/widgets/pin_pad.dart';
 
 enum _PinFlow { none, set, changeCurrent, changeNew, remove }
 
+@RoutePage()
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
 

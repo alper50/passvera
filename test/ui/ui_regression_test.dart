@@ -14,7 +14,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/injection.dart';
 import 'package:passvera/main.dart';
-import 'package:passvera/presentation/core/route/route.gr.dart' as routes;
+import 'package:passvera/presentation/core/route/route.dart';
 
 import '../domain/migration_payload_builder.dart';
 
@@ -253,7 +253,7 @@ void main() {
       batchId: 5,
     ));
     AutoRouter.of(s.tester.element(find.byType(Scaffold).first))
-        .push(routes.AuthenticatorImportView(initialQr: qr));
+        .push(AuthenticatorImportRoute(initialQr: qr));
     await s.settle(15);
     expect(find.text('Already in Passvera'), findsOneWidget);
     await s.golden('18_import_preview');

@@ -4,9 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passvera/application/lockBloc/lock_bloc.dart';
 import 'package:passvera/application/onboardBloc/onboard_bloc.dart';
 import 'package:passvera/injection.dart';
-import 'package:passvera/presentation/core/route/route.gr.dart';
+import 'package:passvera/presentation/core/route/route.dart';
 import 'package:passvera/presentation/core/widgets/my_circular_progress.dart';
 
+@RoutePage()
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
 
@@ -37,7 +38,7 @@ class SplashViewBody extends StatelessWidget {
             state.map(
               initial: (_) {},
               onboardNotShowed: (_) {
-                AutoRouter.of(context).replace(const OnboardView());
+                AutoRouter.of(context).replace(const OnboardRoute());
               },
               onboarShowed: (_) {
                 context.read<LockBloc>().add(const LockEvent.checkPinStatus());
@@ -54,9 +55,9 @@ class SplashViewBody extends StatelessWidget {
               () {},
               (either) => either.fold(
                 // Fail closed: LockView retries and resolves the real state.
-                (_) => router.replace(const LockView()),
+                (_) => router.replace(const LockRoute()),
                 (isPinSet) => router.replace(
-                  isPinSet ? const LockView() : const HomeView(),
+                  isPinSet ? const LockRoute() : const HomeRoute(),
                 ),
               ),
             );

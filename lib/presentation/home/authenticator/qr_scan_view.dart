@@ -5,12 +5,13 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:passvera/application/authenticatorBloc/authenticator_bloc.dart';
 import 'package:passvera/domain/otp_migration_parser.dart';
 import 'package:passvera/injection.dart';
-import 'package:passvera/presentation/core/route/route.gr.dart';
+import 'package:passvera/presentation/core/route/route.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/core/utils/failure_messages.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
 
+@RoutePage()
 class QrScanView extends StatelessWidget {
   const QrScanView({super.key});
 
@@ -75,7 +76,7 @@ class _QrScanBodyState extends State<_QrScanBody> {
   /// if anything was imported, otherwise keep scanning.
   Future<void> _openImport(String raw) async {
     final imported = await context.router.push<bool>(
-      AuthenticatorImportView(initialQr: raw),
+      AuthenticatorImportRoute(initialQr: raw),
     );
     if (!mounted) return;
     if (imported == true) {
