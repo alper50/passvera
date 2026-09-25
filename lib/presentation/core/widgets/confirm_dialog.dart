@@ -9,6 +9,9 @@ Future<bool> showConfirmDialog({
   required String message,
   String confirmLabel = 'Delete',
   String cancelLabel = 'Cancel',
+
+  /// Red confirm button; turn off for non-destructive choices.
+  bool isDestructive = true,
 }) async {
   final result = await showDialog<bool>(
     context: context,
@@ -42,7 +45,7 @@ Future<bool> showConfirmDialog({
                 Expanded(
                   child: MyFormButton(
                     title: confirmLabel,
-                    isDestructive: true,
+                    isDestructive: isDestructive,
                     onPressed: () => Navigator.of(dialogContext).pop(true),
                   ),
                 ),

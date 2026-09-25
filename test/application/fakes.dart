@@ -166,6 +166,17 @@ class FakeBackupRepository implements IBackupRepository {
     return backupNow();
   }
 
+  String? changedToAccount;
+
+  @override
+  Future<Either<BackupFailure, Unit>> changeAccount({
+    required String accountEmail,
+  }) async {
+    changedToAccount = accountEmail;
+    _status = _status.copyWith(accountEmail: accountEmail);
+    return const Right(unit);
+  }
+
   @override
   Future<Either<BackupFailure, RecoveryKey>> readRecoveryKey() async =>
       storedKey == null

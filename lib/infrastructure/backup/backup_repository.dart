@@ -30,6 +30,12 @@ class BackupRepository implements IBackupRepository {
       _service.enable(key: key, accountEmail: accountEmail);
 
   @override
+  Future<Either<BackupFailure, Unit>> changeAccount({
+    required String accountEmail,
+  }) =>
+      _service.changeAccount(accountEmail: accountEmail);
+
+  @override
   Future<Either<BackupFailure, Unit>> backupNow() => _service.backupNow();
 
   @override

@@ -48,6 +48,10 @@ class BackupSettingsBloc
           revealHidden: (_) async => emit(state.copyWith(revealedKey: null)),
           testRequested: (e) => _test(e.words, emit),
           disableRequested: (e) => _disable(e.deleteRemote, emit),
+          reconnectRequested: (_) => _reconnect(emit),
+          accountChangeConfirmed: (_) => _changeAccount(emit),
+          accountChangeCancelled: (_) async =>
+              emit(state.copyWith(pendingAccount: null)),
         );
       },
       // One action at a time; the UI disables buttons while busy.
@@ -201,6 +205,39 @@ class BackupSettingsBloc
         revealedKey: null,
         notice: result.isRight() ? some(BackupSettingsNotice.disabled) : none(),
         failure: result.fold(some, (_) => none()),
+      ),
+    );
+  }
+
+  Future<void> _reconnect(Emitter<BackupSettingsState> emit) async {
+    emit(state.copyWith(isBusy: true));
+    final connected = await _backup.connectAccount();
+    connected.fold(
+      (f) => emit(state.copyWith(isBusy: false, failure: some(f))),
+      (account) => emit(
+        account == state.status?.accountEmail
+            ? state.copyWith(
+                isBusy: false,
+                notice: some(BackupSettingsNotice.reconnected),
+              )
+            : state.copyWith(isBusy: false, pendingAccount: account),
+      ),
+    );
+  }
+
+  Future<void> _changeAccount(Emitter<BackupSettingsState> emit) async {
+    final account = state.pendingAccount;
+    if (account == null) return;
+    emit(state.copyWith(isBusy: true, pendingAccount: null));
+    final changed = await _backup.changeAccount(accountEmail: account);
+    await _refresh(emit);
+    emit(
+      state.copyWith(
+        isBusy: false,
+        notice: changed.isRight()
+            ? some(BackupSettingsNotice.accountChanged)
+            : none(),
+        failure: changed.fold(some, (_) => none()),
       ),
     );
   }

@@ -29,6 +29,14 @@ sealed class BackupSettingsEvent with _$BackupSettingsEvent {
   const factory BackupSettingsEvent.testRequested(List<String> words) =
       _TestRequested;
 
+  /// Re-pick the Google account: same account renews access, another one
+  /// asks for confirmation ([BackupSettingsState.pendingAccount]).
+  const factory BackupSettingsEvent.reconnectRequested() = _ReconnectRequested;
+  const factory BackupSettingsEvent.accountChangeConfirmed() =
+      _AccountChangeConfirmed;
+  const factory BackupSettingsEvent.accountChangeCancelled() =
+      _AccountChangeCancelled;
+
   const factory BackupSettingsEvent.disableRequested({
     required bool deleteRemote,
   }) = _DisableRequested;

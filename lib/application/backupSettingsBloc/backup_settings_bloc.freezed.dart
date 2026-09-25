@@ -60,6 +60,9 @@ extension BackupSettingsEventPatterns on BackupSettingsEvent {
     TResult Function(_RevealRequested value)? revealRequested,
     TResult Function(_RevealHidden value)? revealHidden,
     TResult Function(_TestRequested value)? testRequested,
+    TResult Function(_ReconnectRequested value)? reconnectRequested,
+    TResult Function(_AccountChangeConfirmed value)? accountChangeConfirmed,
+    TResult Function(_AccountChangeCancelled value)? accountChangeCancelled,
     TResult Function(_DisableRequested value)? disableRequested,
     required TResult orElse(),
   }) {
@@ -83,6 +86,12 @@ extension BackupSettingsEventPatterns on BackupSettingsEvent {
         return revealHidden(_that);
       case _TestRequested() when testRequested != null:
         return testRequested(_that);
+      case _ReconnectRequested() when reconnectRequested != null:
+        return reconnectRequested(_that);
+      case _AccountChangeConfirmed() when accountChangeConfirmed != null:
+        return accountChangeConfirmed(_that);
+      case _AccountChangeCancelled() when accountChangeCancelled != null:
+        return accountChangeCancelled(_that);
       case _DisableRequested() when disableRequested != null:
         return disableRequested(_that);
       case _:
@@ -115,6 +124,11 @@ extension BackupSettingsEventPatterns on BackupSettingsEvent {
     required TResult Function(_RevealRequested value) revealRequested,
     required TResult Function(_RevealHidden value) revealHidden,
     required TResult Function(_TestRequested value) testRequested,
+    required TResult Function(_ReconnectRequested value) reconnectRequested,
+    required TResult Function(_AccountChangeConfirmed value)
+        accountChangeConfirmed,
+    required TResult Function(_AccountChangeCancelled value)
+        accountChangeCancelled,
     required TResult Function(_DisableRequested value) disableRequested,
   }) {
     final _that = this;
@@ -137,6 +151,12 @@ extension BackupSettingsEventPatterns on BackupSettingsEvent {
         return revealHidden(_that);
       case _TestRequested():
         return testRequested(_that);
+      case _ReconnectRequested():
+        return reconnectRequested(_that);
+      case _AccountChangeConfirmed():
+        return accountChangeConfirmed(_that);
+      case _AccountChangeCancelled():
+        return accountChangeCancelled(_that);
       case _DisableRequested():
         return disableRequested(_that);
     }
@@ -165,6 +185,9 @@ extension BackupSettingsEventPatterns on BackupSettingsEvent {
     TResult? Function(_RevealRequested value)? revealRequested,
     TResult? Function(_RevealHidden value)? revealHidden,
     TResult? Function(_TestRequested value)? testRequested,
+    TResult? Function(_ReconnectRequested value)? reconnectRequested,
+    TResult? Function(_AccountChangeConfirmed value)? accountChangeConfirmed,
+    TResult? Function(_AccountChangeCancelled value)? accountChangeCancelled,
     TResult? Function(_DisableRequested value)? disableRequested,
   }) {
     final _that = this;
@@ -187,6 +210,12 @@ extension BackupSettingsEventPatterns on BackupSettingsEvent {
         return revealHidden(_that);
       case _TestRequested() when testRequested != null:
         return testRequested(_that);
+      case _ReconnectRequested() when reconnectRequested != null:
+        return reconnectRequested(_that);
+      case _AccountChangeConfirmed() when accountChangeConfirmed != null:
+        return accountChangeConfirmed(_that);
+      case _AccountChangeCancelled() when accountChangeCancelled != null:
+        return accountChangeCancelled(_that);
       case _DisableRequested() when disableRequested != null:
         return disableRequested(_that);
       case _:
@@ -217,6 +246,9 @@ extension BackupSettingsEventPatterns on BackupSettingsEvent {
     TResult Function(String? pin)? revealRequested,
     TResult Function()? revealHidden,
     TResult Function(List<String> words)? testRequested,
+    TResult Function()? reconnectRequested,
+    TResult Function()? accountChangeConfirmed,
+    TResult Function()? accountChangeCancelled,
     TResult Function(bool deleteRemote)? disableRequested,
     required TResult orElse(),
   }) {
@@ -240,6 +272,12 @@ extension BackupSettingsEventPatterns on BackupSettingsEvent {
         return revealHidden();
       case _TestRequested() when testRequested != null:
         return testRequested(_that.words);
+      case _ReconnectRequested() when reconnectRequested != null:
+        return reconnectRequested();
+      case _AccountChangeConfirmed() when accountChangeConfirmed != null:
+        return accountChangeConfirmed();
+      case _AccountChangeCancelled() when accountChangeCancelled != null:
+        return accountChangeCancelled();
       case _DisableRequested() when disableRequested != null:
         return disableRequested(_that.deleteRemote);
       case _:
@@ -271,6 +309,9 @@ extension BackupSettingsEventPatterns on BackupSettingsEvent {
     required TResult Function(String? pin) revealRequested,
     required TResult Function() revealHidden,
     required TResult Function(List<String> words) testRequested,
+    required TResult Function() reconnectRequested,
+    required TResult Function() accountChangeConfirmed,
+    required TResult Function() accountChangeCancelled,
     required TResult Function(bool deleteRemote) disableRequested,
   }) {
     final _that = this;
@@ -293,6 +334,12 @@ extension BackupSettingsEventPatterns on BackupSettingsEvent {
         return revealHidden();
       case _TestRequested():
         return testRequested(_that.words);
+      case _ReconnectRequested():
+        return reconnectRequested();
+      case _AccountChangeConfirmed():
+        return accountChangeConfirmed();
+      case _AccountChangeCancelled():
+        return accountChangeCancelled();
       case _DisableRequested():
         return disableRequested(_that.deleteRemote);
     }
@@ -321,6 +368,9 @@ extension BackupSettingsEventPatterns on BackupSettingsEvent {
     TResult? Function(String? pin)? revealRequested,
     TResult? Function()? revealHidden,
     TResult? Function(List<String> words)? testRequested,
+    TResult? Function()? reconnectRequested,
+    TResult? Function()? accountChangeConfirmed,
+    TResult? Function()? accountChangeCancelled,
     TResult? Function(bool deleteRemote)? disableRequested,
   }) {
     final _that = this;
@@ -343,6 +393,12 @@ extension BackupSettingsEventPatterns on BackupSettingsEvent {
         return revealHidden();
       case _TestRequested() when testRequested != null:
         return testRequested(_that.words);
+      case _ReconnectRequested() when reconnectRequested != null:
+        return reconnectRequested();
+      case _AccountChangeConfirmed() when accountChangeConfirmed != null:
+        return accountChangeConfirmed();
+      case _AccountChangeCancelled() when accountChangeCancelled != null:
+        return accountChangeCancelled();
       case _DisableRequested() when disableRequested != null:
         return disableRequested(_that.deleteRemote);
       case _:
@@ -678,6 +734,66 @@ class __$TestRequestedCopyWithImpl<$Res>
 
 /// @nodoc
 
+class _ReconnectRequested implements BackupSettingsEvent {
+  const _ReconnectRequested();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _ReconnectRequested);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'BackupSettingsEvent.reconnectRequested()';
+  }
+}
+
+/// @nodoc
+
+class _AccountChangeConfirmed implements BackupSettingsEvent {
+  const _AccountChangeConfirmed();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _AccountChangeConfirmed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'BackupSettingsEvent.accountChangeConfirmed()';
+  }
+}
+
+/// @nodoc
+
+class _AccountChangeCancelled implements BackupSettingsEvent {
+  const _AccountChangeCancelled();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _AccountChangeCancelled);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'BackupSettingsEvent.accountChangeCancelled()';
+  }
+}
+
+/// @nodoc
+
 class _DisableRequested implements BackupSettingsEvent {
   const _DisableRequested({required this.deleteRemote});
 
@@ -759,6 +875,9 @@ mixin _$BackupSettingsState {
 
   /// The stored key, shown after a PIN check.
   RecoveryKey? get revealedKey;
+
+  /// A different account picked while reconnecting, awaiting confirmation.
+  String? get pendingAccount;
   Option<BackupFailure> get failure;
   Option<LockFailure> get lockFailure;
   Option<BackupSettingsNotice> get notice;
@@ -790,6 +909,8 @@ mixin _$BackupSettingsState {
                 .equals(other.confirmPositions, confirmPositions) &&
             (identical(other.revealedKey, revealedKey) ||
                 other.revealedKey == revealedKey) &&
+            (identical(other.pendingAccount, pendingAccount) ||
+                other.pendingAccount == pendingAccount) &&
             (identical(other.failure, failure) || other.failure == failure) &&
             (identical(other.lockFailure, lockFailure) ||
                 other.lockFailure == lockFailure) &&
@@ -807,13 +928,14 @@ mixin _$BackupSettingsState {
       pendingKey,
       const DeepCollectionEquality().hash(confirmPositions),
       revealedKey,
+      pendingAccount,
       failure,
       lockFailure,
       notice);
 
   @override
   String toString() {
-    return 'BackupSettingsState(status: $status, isPinSet: $isPinSet, isBusy: $isBusy, setupStep: $setupStep, setupAccount: $setupAccount, pendingKey: $pendingKey, confirmPositions: $confirmPositions, revealedKey: $revealedKey, failure: $failure, lockFailure: $lockFailure, notice: $notice)';
+    return 'BackupSettingsState(status: $status, isPinSet: $isPinSet, isBusy: $isBusy, setupStep: $setupStep, setupAccount: $setupAccount, pendingKey: $pendingKey, confirmPositions: $confirmPositions, revealedKey: $revealedKey, pendingAccount: $pendingAccount, failure: $failure, lockFailure: $lockFailure, notice: $notice)';
   }
 }
 
@@ -832,6 +954,7 @@ abstract mixin class $BackupSettingsStateCopyWith<$Res> {
       RecoveryKey? pendingKey,
       List<int> confirmPositions,
       RecoveryKey? revealedKey,
+      String? pendingAccount,
       Option<BackupFailure> failure,
       Option<LockFailure> lockFailure,
       Option<BackupSettingsNotice> notice});
@@ -862,6 +985,7 @@ class _$BackupSettingsStateCopyWithImpl<$Res>
     Object? pendingKey = freezed,
     Object? confirmPositions = null,
     Object? revealedKey = freezed,
+    Object? pendingAccount = freezed,
     Object? failure = null,
     Object? lockFailure = null,
     Object? notice = null,
@@ -899,6 +1023,10 @@ class _$BackupSettingsStateCopyWithImpl<$Res>
           ? _self.revealedKey
           : revealedKey // ignore: cast_nullable_to_non_nullable
               as RecoveryKey?,
+      pendingAccount: freezed == pendingAccount
+          ? _self.pendingAccount
+          : pendingAccount // ignore: cast_nullable_to_non_nullable
+              as String?,
       failure: null == failure
           ? _self.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -1059,6 +1187,7 @@ extension BackupSettingsStatePatterns on BackupSettingsState {
             RecoveryKey? pendingKey,
             List<int> confirmPositions,
             RecoveryKey? revealedKey,
+            String? pendingAccount,
             Option<BackupFailure> failure,
             Option<LockFailure> lockFailure,
             Option<BackupSettingsNotice> notice)?
@@ -1077,6 +1206,7 @@ extension BackupSettingsStatePatterns on BackupSettingsState {
             _that.pendingKey,
             _that.confirmPositions,
             _that.revealedKey,
+            _that.pendingAccount,
             _that.failure,
             _that.lockFailure,
             _that.notice);
@@ -1109,6 +1239,7 @@ extension BackupSettingsStatePatterns on BackupSettingsState {
             RecoveryKey? pendingKey,
             List<int> confirmPositions,
             RecoveryKey? revealedKey,
+            String? pendingAccount,
             Option<BackupFailure> failure,
             Option<LockFailure> lockFailure,
             Option<BackupSettingsNotice> notice)
@@ -1126,6 +1257,7 @@ extension BackupSettingsStatePatterns on BackupSettingsState {
             _that.pendingKey,
             _that.confirmPositions,
             _that.revealedKey,
+            _that.pendingAccount,
             _that.failure,
             _that.lockFailure,
             _that.notice);
@@ -1157,6 +1289,7 @@ extension BackupSettingsStatePatterns on BackupSettingsState {
             RecoveryKey? pendingKey,
             List<int> confirmPositions,
             RecoveryKey? revealedKey,
+            String? pendingAccount,
             Option<BackupFailure> failure,
             Option<LockFailure> lockFailure,
             Option<BackupSettingsNotice> notice)?
@@ -1174,6 +1307,7 @@ extension BackupSettingsStatePatterns on BackupSettingsState {
             _that.pendingKey,
             _that.confirmPositions,
             _that.revealedKey,
+            _that.pendingAccount,
             _that.failure,
             _that.lockFailure,
             _that.notice);
@@ -1195,6 +1329,7 @@ class _BackupSettingsState implements BackupSettingsState {
       this.pendingKey,
       required final List<int> confirmPositions,
       this.revealedKey,
+      this.pendingAccount,
       required this.failure,
       required this.lockFailure,
       required this.notice})
@@ -1232,6 +1367,10 @@ class _BackupSettingsState implements BackupSettingsState {
   /// The stored key, shown after a PIN check.
   @override
   final RecoveryKey? revealedKey;
+
+  /// A different account picked while reconnecting, awaiting confirmation.
+  @override
+  final String? pendingAccount;
   @override
   final Option<BackupFailure> failure;
   @override
@@ -1267,6 +1406,8 @@ class _BackupSettingsState implements BackupSettingsState {
                 .equals(other._confirmPositions, _confirmPositions) &&
             (identical(other.revealedKey, revealedKey) ||
                 other.revealedKey == revealedKey) &&
+            (identical(other.pendingAccount, pendingAccount) ||
+                other.pendingAccount == pendingAccount) &&
             (identical(other.failure, failure) || other.failure == failure) &&
             (identical(other.lockFailure, lockFailure) ||
                 other.lockFailure == lockFailure) &&
@@ -1284,13 +1425,14 @@ class _BackupSettingsState implements BackupSettingsState {
       pendingKey,
       const DeepCollectionEquality().hash(_confirmPositions),
       revealedKey,
+      pendingAccount,
       failure,
       lockFailure,
       notice);
 
   @override
   String toString() {
-    return 'BackupSettingsState(status: $status, isPinSet: $isPinSet, isBusy: $isBusy, setupStep: $setupStep, setupAccount: $setupAccount, pendingKey: $pendingKey, confirmPositions: $confirmPositions, revealedKey: $revealedKey, failure: $failure, lockFailure: $lockFailure, notice: $notice)';
+    return 'BackupSettingsState(status: $status, isPinSet: $isPinSet, isBusy: $isBusy, setupStep: $setupStep, setupAccount: $setupAccount, pendingKey: $pendingKey, confirmPositions: $confirmPositions, revealedKey: $revealedKey, pendingAccount: $pendingAccount, failure: $failure, lockFailure: $lockFailure, notice: $notice)';
   }
 }
 
@@ -1311,6 +1453,7 @@ abstract mixin class _$BackupSettingsStateCopyWith<$Res>
       RecoveryKey? pendingKey,
       List<int> confirmPositions,
       RecoveryKey? revealedKey,
+      String? pendingAccount,
       Option<BackupFailure> failure,
       Option<LockFailure> lockFailure,
       Option<BackupSettingsNotice> notice});
@@ -1344,6 +1487,7 @@ class __$BackupSettingsStateCopyWithImpl<$Res>
     Object? pendingKey = freezed,
     Object? confirmPositions = null,
     Object? revealedKey = freezed,
+    Object? pendingAccount = freezed,
     Object? failure = null,
     Object? lockFailure = null,
     Object? notice = null,
@@ -1381,6 +1525,10 @@ class __$BackupSettingsStateCopyWithImpl<$Res>
           ? _self.revealedKey
           : revealedKey // ignore: cast_nullable_to_non_nullable
               as RecoveryKey?,
+      pendingAccount: freezed == pendingAccount
+          ? _self.pendingAccount
+          : pendingAccount // ignore: cast_nullable_to_non_nullable
+              as String?,
       failure: null == failure
           ? _self.failure
           : failure // ignore: cast_nullable_to_non_nullable

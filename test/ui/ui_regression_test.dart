@@ -8,6 +8,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -334,6 +335,10 @@ void main() {
       expect(find.text('Last backup 5 min ago'), findsOneWidget);
       await s.tap(find.byIcon(Icons.cloud_outlined));
       await s.golden('23_backup_status');
+      backup.connectResult = const Right('new@example.com');
+      await s.tap(find.text('Reconnect or change account'));
+      await s.golden('27_backup_switch_account');
+      await s.tap(find.text('Cancel'));
     },
   );
 

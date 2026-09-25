@@ -19,6 +19,12 @@ abstract class IBackupRepository {
     required String accountEmail,
   });
 
+  /// Points automatic backup at [accountEmail] (after [connectAccount]),
+  /// keeping the same recovery key; the next upload goes there.
+  Future<Either<BackupFailure, Unit>> changeAccount({
+    required String accountEmail,
+  });
+
   /// Uploads the current vault if backup is enabled (no UI).
   Future<Either<BackupFailure, Unit>> backupNow();
 

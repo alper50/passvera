@@ -74,6 +74,25 @@ class _BackupBodyState extends State<_BackupBody> {
     }
   }
 
+  Future<void> _confirmAccountChange(String newAccount) async {
+    final current = _bloc.state.status?.accountEmail ?? 'the old account';
+    final confirmed = await showConfirmDialog(
+      context: context,
+      title: 'Switch backup account?',
+      message: 'Future backups go to $newAccount with the same recovery key. '
+          'Backups already in $current stay there, still encrypted. To remove '
+          'them, open Google Drive > Settings > Manage apps in that account.',
+      confirmLabel: 'Switch',
+      isDestructive: false,
+    );
+    if (!mounted) return;
+    _bloc.add(
+      confirmed
+          ? const BackupSettingsEvent.accountChangeConfirmed()
+          : const BackupSettingsEvent.accountChangeCancelled(),
+    );
+  }
+
   Future<void> _turnOff() async {
     final off = await showConfirmDialog(
       context: context,
@@ -123,6 +142,12 @@ class _BackupBodyState extends State<_BackupBody> {
               );
             },
           ),
+        ),
+        BlocListener<BackupSettingsBloc, BackupSettingsState>(
+          listenWhen: (p, c) =>
+              p.pendingAccount != c.pendingAccount && c.pendingAccount != null,
+          listener: (context, state) =>
+              _confirmAccountChange(state.pendingAccount!),
         ),
         BlocListener<BackupSettingsBloc, BackupSettingsState>(
           listenWhen: (p, c) => p.notice != c.notice,
@@ -175,6 +200,17 @@ class _BackupBodyState extends State<_BackupBody> {
       case BackupSettingsNotice.disabled:
         sync.add(const BackupSyncEvent.statusRefreshRequested());
         showMySnackBar(context: context, message: 'Backup turned off');
+      case BackupSettingsNotice.reconnected:
+        // Uploads always run through the sync bloc; this also clears the
+        // "access expired" state it is showing.
+        sync.add(const BackupSyncEvent.syncRequested());
+        showMySnackBar(context: context, message: 'Google account reconnected');
+      case BackupSettingsNotice.accountChanged:
+        sync.add(const BackupSyncEvent.syncRequested());
+        showMySnackBar(
+          context: context,
+          message: 'Backups now go to ${_bloc.state.status?.accountEmail}',
+        );
     }
   }
 
@@ -231,6 +267,8 @@ class _BackupBodyState extends State<_BackupBody> {
         return _Status(
           accountEmail: status.accountEmail ?? '',
           busy: state.isBusy,
+          onReconnect: () =>
+              _bloc.add(const BackupSettingsEvent.reconnectRequested()),
           onShowKey: () => _open(_Panel.revealKey),
           onTestKey: () => _open(_Panel.testKey),
           onTurnOff: _turnOff,
@@ -434,6 +472,7 @@ class _Status extends StatelessWidget {
   const _Status({
     required this.accountEmail,
     required this.busy,
+    required this.onReconnect,
     required this.onShowKey,
     required this.onTestKey,
     required this.onTurnOff,
@@ -441,6 +480,7 @@ class _Status extends StatelessWidget {
 
   final String accountEmail;
   final bool busy;
+  final VoidCallback onReconnect;
   final VoidCallback onShowKey;
   final VoidCallback onTestKey;
   final VoidCallback onTurnOff;
@@ -472,6 +512,11 @@ class _Status extends StatelessWidget {
                     .read<BackupSyncBloc>()
                     .add(const BackupSyncEvent.syncRequested()),
           ),
+        ),
+        const SizedBox(height: 12),
+        MyFormButton(
+          title: busy ? 'Connecting…' : 'Reconnect or change account',
+          onPressed: busy ? null : onReconnect,
         ),
         const SizedBox(height: 12),
         MyFormButton(title: 'Show recovery key', onPressed: onShowKey),

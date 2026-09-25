@@ -112,4 +112,45 @@ void main() {
     await send(BackupSettingsEvent.testRequested(key.words));
     expect(bloc.state.notice, some(BackupSettingsNotice.testPassed));
   });
+
+  group('reconnect', () {
+    setUp(() async {
+      await backup.enable(
+        key: RecoveryKey.generate(Random(4)),
+        accountEmail: 'me@example.com',
+      );
+      await send(const BackupSettingsEvent.loaded());
+    });
+
+    test('same account renews access without a prompt', () async {
+      await send(const BackupSettingsEvent.reconnectRequested());
+
+      expect(bloc.state.notice, some(BackupSettingsNotice.reconnected));
+      expect(bloc.state.pendingAccount, isNull);
+      expect(backup.changedToAccount, isNull);
+    });
+
+    test('another account asks first, then switches', () async {
+      backup.connectResult = const Right('new@example.com');
+      await send(const BackupSettingsEvent.reconnectRequested());
+      expect(bloc.state.pendingAccount, 'new@example.com');
+      expect(backup.changedToAccount, isNull, reason: 'not before consent');
+
+      await send(const BackupSettingsEvent.accountChangeConfirmed());
+      expect(backup.changedToAccount, 'new@example.com');
+      expect(bloc.state.status!.accountEmail, 'new@example.com');
+      expect(bloc.state.notice, some(BackupSettingsNotice.accountChanged));
+      expect(bloc.state.pendingAccount, isNull);
+    });
+
+    test('cancelling keeps the old account', () async {
+      backup.connectResult = const Right('new@example.com');
+      await send(const BackupSettingsEvent.reconnectRequested());
+      await send(const BackupSettingsEvent.accountChangeCancelled());
+
+      expect(backup.changedToAccount, isNull);
+      expect(bloc.state.pendingAccount, isNull);
+      expect(bloc.state.status!.accountEmail, 'me@example.com');
+    });
+  });
 }

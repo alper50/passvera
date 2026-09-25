@@ -11,6 +11,12 @@ enum BackupSettingsNotice {
   confirmationMismatch,
   testPassed,
   disabled,
+
+  /// Same account picked again: access renewed, upload can resume.
+  reconnected,
+
+  /// Backups now go to [BackupSettingsState.status]'s new account.
+  accountChanged,
 }
 
 @freezed
@@ -32,6 +38,9 @@ abstract class BackupSettingsState with _$BackupSettingsState {
 
     /// The stored key, shown after a PIN check.
     RecoveryKey? revealedKey,
+
+    /// A different account picked while reconnecting, awaiting confirmation.
+    String? pendingAccount,
     required Option<BackupFailure> failure,
     required Option<LockFailure> lockFailure,
     required Option<BackupSettingsNotice> notice,

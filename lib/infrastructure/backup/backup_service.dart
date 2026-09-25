@@ -74,6 +74,21 @@ class BackupService {
     return backupNow();
   }
 
+  /// Backups already in the previous account stay there (encrypted with
+  /// the same key): after switching, this app can no longer reach them.
+  Future<Either<BackupFailure, Unit>> changeAccount({
+    required String accountEmail,
+  }) =>
+      _guard(() async {
+        if (!await _storage.containsKey(key: StorageKeys.backupRecoveryKey)) {
+          return const Left(BackupFailure.notEnabled());
+        }
+        await _storage.write(
+            key: StorageKeys.backupAccount, value: accountEmail);
+        await _writePendingToken();
+        return const Right(unit);
+      });
+
   Future<Either<BackupFailure, Unit>> backupNow() => _guard(() async {
         final key = await _storedKey();
         final account = await _storage.read(key: StorageKeys.backupAccount);

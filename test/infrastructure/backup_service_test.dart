@@ -141,6 +141,26 @@ void main() {
     );
   });
 
+  test('changing account keeps the key and marks a pending upload', () async {
+    await service.enable(key: key, accountEmail: _account);
+    expect(
+      await service.changeAccount(accountEmail: 'new@example.com'),
+      const Right<BackupFailure, Unit>(unit),
+    );
+
+    final status = (await service.status()).getOrElse(() => throw 'x');
+    expect(status.accountEmail, 'new@example.com');
+    expect(status.hasPendingChanges, isTrue);
+    expect((await service.readRecoveryKey()).getOrElse(() => throw 'x'), key);
+  });
+
+  test('changing account needs backup to be on', () async {
+    expect(
+      await service.changeAccount(accountEmail: 'new@example.com'),
+      const Left<BackupFailure, Unit>(BackupFailure.notEnabled()),
+    );
+  });
+
   test('backupNow without enabling reports notEnabled', () async {
     expect(
       await service.backupNow(),
