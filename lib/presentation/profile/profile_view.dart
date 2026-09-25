@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passvera/application/lockBloc/lock_bloc.dart';
 import 'package:passvera/domain/lock_constants.dart';
 import 'package:passvera/injection.dart';
+import 'package:passvera/presentation/backup/backup_view.dart';
+import 'package:passvera/presentation/core/route/route.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/core/utils/failure_messages.dart';
 import 'package:passvera/presentation/core/widgets/my_custom_container.dart';
@@ -13,6 +15,7 @@ import 'package:passvera/presentation/core/widgets/pin_pad.dart';
 
 enum _PinFlow { none, set, changeCurrent, changeNew, remove }
 
+@RoutePage()
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
 
@@ -281,6 +284,8 @@ class _ProfileViewBodyState extends State<_ProfileViewBody> {
                       onTap: () => _startFlow(_PinFlow.remove),
                     ),
                   ],
+                  const SizedBox(height: 32),
+                  const _BackupEntry(),
                 ],
               ),
             );
@@ -313,6 +318,37 @@ class _ProfileAction extends StatelessWidget {
           MySmallButton(
             icon: Icon(icon, size: 32),
             onTap: onTap,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Drive backup status with a way into the backup screen.
+class _BackupEntry extends StatelessWidget {
+  const _BackupEntry();
+
+  @override
+  Widget build(BuildContext context) {
+    return MyCustomContainer(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      child: Row(
+        children: [
+          const Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Google Drive backup', style: MyTextStyles.headline3Bold),
+                SizedBox(height: 2),
+                BackupSyncStatusText(style: MyTextStyles.bodySmall),
+              ],
+            ),
+          ),
+          const SizedBox(width: 8),
+          MySmallButton(
+            icon: const Icon(Icons.cloud_outlined, size: 32),
+            onTap: () => context.router.push(const BackupRoute()),
           ),
         ],
       ),

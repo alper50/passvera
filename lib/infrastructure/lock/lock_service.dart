@@ -8,6 +8,7 @@ import 'package:injectable/injectable.dart';
 import 'package:passvera/domain/errors/lock_failures.dart';
 import 'package:passvera/domain/lock_constants.dart';
 import 'package:passvera/infrastructure/keys/keys_service.dart';
+import 'package:passvera/infrastructure/keys/storage_keys.dart';
 
 @LazySingleton()
 class LockService {
@@ -22,8 +23,7 @@ class LockService {
 
   Future<Either<LockFailure, bool>> isPinSet() async {
     try {
-      final stored =
-          await _keysService.storage.read(key: KeysService.pinHashKey);
+      final stored = await _keysService.storage.read(key: StorageKeys.pinHash);
       return Right(stored != null && stored.isNotEmpty);
     } catch (e) {
       return Left(LockFailure.unexpected(e));
@@ -51,13 +51,13 @@ class LockService {
       }
 
       final storedHash =
-          await _keysService.storage.read(key: KeysService.pinHashKey);
+          await _keysService.storage.read(key: StorageKeys.pinHash);
       if (storedHash == null || storedHash.isEmpty) {
         return const Left(LockFailure.pinNotSet());
       }
 
       final storedSalt =
-          await _keysService.storage.read(key: KeysService.pinSaltKey);
+          await _keysService.storage.read(key: StorageKeys.pinSalt);
 
       if (storedSalt != null && storedSalt.isNotEmpty) {
         if (storedHash != _hashPin(pin, storedSalt)) {
@@ -86,7 +86,7 @@ class LockService {
       }
 
       final existing =
-          await _keysService.storage.read(key: KeysService.pinHashKey);
+          await _keysService.storage.read(key: StorageKeys.pinHash);
       if (existing != null && existing.isNotEmpty) {
         return const Left(LockFailure.pinAlreadySet());
       }
@@ -131,8 +131,8 @@ class LockService {
         return verifyResult;
       }
 
-      await _keysService.storage.delete(key: KeysService.pinHashKey);
-      await _keysService.storage.delete(key: KeysService.pinSaltKey);
+      await _keysService.storage.delete(key: StorageKeys.pinHash);
+      await _keysService.storage.delete(key: StorageKeys.pinSalt);
       await _clearAttempts();
       return const Right(unit);
     } catch (e) {
@@ -143,11 +143,11 @@ class LockService {
   Future<void> _persistPinCredentials({required String pin}) async {
     final salt = _generateSalt();
     await _keysService.storage.write(
-      key: KeysService.pinSaltKey,
+      key: StorageKeys.pinSalt,
       value: salt,
     );
     await _keysService.storage.write(
-      key: KeysService.pinHashKey,
+      key: StorageKeys.pinHash,
       value: _hashPin(pin, salt),
     );
   }
@@ -164,7 +164,7 @@ class LockService {
     final current = await _readAttempts();
     final next = current + 1;
     await _keysService.storage.write(
-      key: KeysService.pinAttemptsKey,
+      key: StorageKeys.pinAttempts,
       value: next.toString(),
     );
 
@@ -174,11 +174,11 @@ class LockService {
           .millisecondsSinceEpoch
           .toString();
       await _keysService.storage.write(
-        key: KeysService.pinLockoutUntilKey,
+        key: StorageKeys.pinLockoutUntil,
         value: until,
       );
       await _keysService.storage.write(
-        key: KeysService.pinAttemptsKey,
+        key: StorageKeys.pinAttempts,
         value: '0',
       );
       return const LockFailure.lockedOut(remainingSeconds: kPinLockoutSeconds);
@@ -188,19 +188,18 @@ class LockService {
   }
 
   Future<void> _clearAttempts() async {
-    await _keysService.storage.delete(key: KeysService.pinAttemptsKey);
-    await _keysService.storage.delete(key: KeysService.pinLockoutUntilKey);
+    await _keysService.storage.delete(key: StorageKeys.pinAttempts);
+    await _keysService.storage.delete(key: StorageKeys.pinLockoutUntil);
   }
 
   Future<int> _readAttempts() async {
-    final raw =
-        await _keysService.storage.read(key: KeysService.pinAttemptsKey);
+    final raw = await _keysService.storage.read(key: StorageKeys.pinAttempts);
     return int.tryParse(raw ?? '') ?? 0;
   }
 
   Future<int> _remainingLockoutSeconds() async {
     final raw =
-        await _keysService.storage.read(key: KeysService.pinLockoutUntilKey);
+        await _keysService.storage.read(key: StorageKeys.pinLockoutUntil);
     final untilMs = int.tryParse(raw ?? '');
     if (untilMs == null) {
       return 0;
@@ -209,7 +208,7 @@ class LockService {
         .difference(DateTime.now())
         .inSeconds;
     if (remaining <= 0) {
-      await _keysService.storage.delete(key: KeysService.pinLockoutUntilKey);
+      await _keysService.storage.delete(key: StorageKeys.pinLockoutUntil);
       return 0;
     }
     return remaining;

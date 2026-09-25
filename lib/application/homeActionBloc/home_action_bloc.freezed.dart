@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,128 +9,66 @@ part of 'home_action_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$HomeActionEvent {
-  String get appKey => throw _privateConstructorUsedError;
-  String get appValue => throw _privateConstructorUsedError;
-  String get tag => throw _privateConstructorUsedError;
-  int get colorValue => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String appKey, String appValue, String tag, int colorValue)
-        encryptValue,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String appKey, String appValue, String tag, int colorValue)?
-        encryptValue,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String appKey, String appValue, String tag, int colorValue)?
-        encryptValue,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_EncryptValue value) encryptValue,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_EncryptValue value)? encryptValue,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_EncryptValue value)? encryptValue,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  String get appKey;
+  String get appValue;
+  String get tag;
+  int get colorValue;
 
-  @JsonKey(ignore: true)
-  $HomeActionEventCopyWith<HomeActionEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $HomeActionEventCopyWith<$Res> {
-  factory $HomeActionEventCopyWith(
-          HomeActionEvent value, $Res Function(HomeActionEvent) then) =
-      _$HomeActionEventCopyWithImpl<$Res, HomeActionEvent>;
-  @useResult
-  $Res call({String appKey, String appValue, String tag, int colorValue});
-}
-
-/// @nodoc
-class _$HomeActionEventCopyWithImpl<$Res, $Val extends HomeActionEvent>
-    implements $HomeActionEventCopyWith<$Res> {
-  _$HomeActionEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of HomeActionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $HomeActionEventCopyWith<HomeActionEvent> get copyWith =>
+      _$HomeActionEventCopyWithImpl<HomeActionEvent>(
+          this as HomeActionEvent, _$identity);
+
   @override
-  $Res call({
-    Object? appKey = null,
-    Object? appValue = null,
-    Object? tag = null,
-    Object? colorValue = null,
-  }) {
-    return _then(_value.copyWith(
-      appKey: null == appKey
-          ? _value.appKey
-          : appKey // ignore: cast_nullable_to_non_nullable
-              as String,
-      appValue: null == appValue
-          ? _value.appValue
-          : appValue // ignore: cast_nullable_to_non_nullable
-              as String,
-      tag: null == tag
-          ? _value.tag
-          : tag // ignore: cast_nullable_to_non_nullable
-              as String,
-      colorValue: null == colorValue
-          ? _value.colorValue
-          : colorValue // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is HomeActionEvent &&
+            (identical(other.appKey, appKey) || other.appKey == appKey) &&
+            (identical(other.appValue, appValue) ||
+                other.appValue == appValue) &&
+            (identical(other.tag, tag) || other.tag == tag) &&
+            (identical(other.colorValue, colorValue) ||
+                other.colorValue == colorValue));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, appKey, appValue, tag, colorValue);
+
+  @override
+  String toString() {
+    return 'HomeActionEvent(appKey: $appKey, appValue: $appValue, tag: $tag, colorValue: $colorValue)';
   }
 }
 
 /// @nodoc
-abstract class _$$_EncryptValueCopyWith<$Res>
-    implements $HomeActionEventCopyWith<$Res> {
-  factory _$$_EncryptValueCopyWith(
-          _$_EncryptValue value, $Res Function(_$_EncryptValue) then) =
-      __$$_EncryptValueCopyWithImpl<$Res>;
-  @override
+abstract mixin class $HomeActionEventCopyWith<$Res> {
+  factory $HomeActionEventCopyWith(
+          HomeActionEvent value, $Res Function(HomeActionEvent) _then) =
+      _$HomeActionEventCopyWithImpl;
   @useResult
   $Res call({String appKey, String appValue, String tag, int colorValue});
 }
 
 /// @nodoc
-class __$$_EncryptValueCopyWithImpl<$Res>
-    extends _$HomeActionEventCopyWithImpl<$Res, _$_EncryptValue>
-    implements _$$_EncryptValueCopyWith<$Res> {
-  __$$_EncryptValueCopyWithImpl(
-      _$_EncryptValue _value, $Res Function(_$_EncryptValue) _then)
-      : super(_value, _then);
+class _$HomeActionEventCopyWithImpl<$Res>
+    implements $HomeActionEventCopyWith<$Res> {
+  _$HomeActionEventCopyWithImpl(this._self, this._then);
 
+  final HomeActionEvent _self;
+  final $Res Function(HomeActionEvent) _then;
+
+  /// Create a copy of HomeActionEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -139,31 +77,197 @@ class __$$_EncryptValueCopyWithImpl<$Res>
     Object? tag = null,
     Object? colorValue = null,
   }) {
-    return _then(_$_EncryptValue(
+    return _then(_self.copyWith(
       appKey: null == appKey
-          ? _value.appKey
+          ? _self.appKey
           : appKey // ignore: cast_nullable_to_non_nullable
               as String,
       appValue: null == appValue
-          ? _value.appValue
+          ? _self.appValue
           : appValue // ignore: cast_nullable_to_non_nullable
               as String,
       tag: null == tag
-          ? _value.tag
+          ? _self.tag
           : tag // ignore: cast_nullable_to_non_nullable
               as String,
       colorValue: null == colorValue
-          ? _value.colorValue
+          ? _self.colorValue
           : colorValue // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [HomeActionEvent].
+extension HomeActionEventPatterns on HomeActionEvent {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EncryptValue value)? encryptValue,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _EncryptValue() when encryptValue != null:
+        return encryptValue(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EncryptValue value) encryptValue,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _EncryptValue():
+        return encryptValue(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EncryptValue value)? encryptValue,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _EncryptValue() when encryptValue != null:
+        return encryptValue(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String appKey, String appValue, String tag, int colorValue)?
+        encryptValue,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _EncryptValue() when encryptValue != null:
+        return encryptValue(
+            _that.appKey, _that.appValue, _that.tag, _that.colorValue);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String appKey, String appValue, String tag, int colorValue)
+        encryptValue,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _EncryptValue():
+        return encryptValue(
+            _that.appKey, _that.appValue, _that.tag, _that.colorValue);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String appKey, String appValue, String tag, int colorValue)?
+        encryptValue,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _EncryptValue() when encryptValue != null:
+        return encryptValue(
+            _that.appKey, _that.appValue, _that.tag, _that.colorValue);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 
-class _$_EncryptValue implements _EncryptValue {
-  const _$_EncryptValue(
+class _EncryptValue implements HomeActionEvent {
+  const _EncryptValue(
       {required this.appKey,
       required this.appValue,
       required this.tag,
@@ -178,16 +282,19 @@ class _$_EncryptValue implements _EncryptValue {
   @override
   final int colorValue;
 
+  /// Create a copy of HomeActionEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'HomeActionEvent.encryptValue(appKey: $appKey, appValue: $appValue, tag: $tag, colorValue: $colorValue)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$EncryptValueCopyWith<_EncryptValue> get copyWith =>
+      __$EncryptValueCopyWithImpl<_EncryptValue>(this, _$identity);
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EncryptValue &&
+            other is _EncryptValue &&
             (identical(other.appKey, appKey) || other.appKey == appKey) &&
             (identical(other.appValue, appValue) ||
                 other.appValue == appValue) &&
@@ -200,190 +307,79 @@ class _$_EncryptValue implements _EncryptValue {
   int get hashCode =>
       Object.hash(runtimeType, appKey, appValue, tag, colorValue);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$_EncryptValueCopyWith<_$_EncryptValue> get copyWith =>
-      __$$_EncryptValueCopyWithImpl<_$_EncryptValue>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String appKey, String appValue, String tag, int colorValue)
-        encryptValue,
-  }) {
-    return encryptValue(appKey, appValue, tag, colorValue);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String appKey, String appValue, String tag, int colorValue)?
-        encryptValue,
-  }) {
-    return encryptValue?.call(appKey, appValue, tag, colorValue);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String appKey, String appValue, String tag, int colorValue)?
-        encryptValue,
-    required TResult orElse(),
-  }) {
-    if (encryptValue != null) {
-      return encryptValue(appKey, appValue, tag, colorValue);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_EncryptValue value) encryptValue,
-  }) {
-    return encryptValue(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_EncryptValue value)? encryptValue,
-  }) {
-    return encryptValue?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_EncryptValue value)? encryptValue,
-    required TResult orElse(),
-  }) {
-    if (encryptValue != null) {
-      return encryptValue(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _EncryptValue implements HomeActionEvent {
-  const factory _EncryptValue(
-      {required final String appKey,
-      required final String appValue,
-      required final String tag,
-      required final int colorValue}) = _$_EncryptValue;
-
-  @override
-  String get appKey;
-  @override
-  String get appValue;
-  @override
-  String get tag;
-  @override
-  int get colorValue;
-  @override
-  @JsonKey(ignore: true)
-  _$$_EncryptValueCopyWith<_$_EncryptValue> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$HomeActionState {
-  Option<Either<StorageFailure, Unit>> get verifyFailureOrSucces =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $HomeActionStateCopyWith<HomeActionState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $HomeActionStateCopyWith<$Res> {
-  factory $HomeActionStateCopyWith(
-          HomeActionState value, $Res Function(HomeActionState) then) =
-      _$HomeActionStateCopyWithImpl<$Res, HomeActionState>;
-  @useResult
-  $Res call({Option<Either<StorageFailure, Unit>> verifyFailureOrSucces});
-}
-
-/// @nodoc
-class _$HomeActionStateCopyWithImpl<$Res, $Val extends HomeActionState>
-    implements $HomeActionStateCopyWith<$Res> {
-  _$HomeActionStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? verifyFailureOrSucces = null,
-  }) {
-    return _then(_value.copyWith(
-      verifyFailureOrSucces: null == verifyFailureOrSucces
-          ? _value.verifyFailureOrSucces
-          : verifyFailureOrSucces // ignore: cast_nullable_to_non_nullable
-              as Option<Either<StorageFailure, Unit>>,
-    ) as $Val);
+  String toString() {
+    return 'HomeActionEvent.encryptValue(appKey: $appKey, appValue: $appValue, tag: $tag, colorValue: $colorValue)';
   }
 }
 
 /// @nodoc
-abstract class _$$_HomeActionStateCopyWith<$Res>
-    implements $HomeActionStateCopyWith<$Res> {
-  factory _$$_HomeActionStateCopyWith(
-          _$_HomeActionState value, $Res Function(_$_HomeActionState) then) =
-      __$$_HomeActionStateCopyWithImpl<$Res>;
+abstract mixin class _$EncryptValueCopyWith<$Res>
+    implements $HomeActionEventCopyWith<$Res> {
+  factory _$EncryptValueCopyWith(
+          _EncryptValue value, $Res Function(_EncryptValue) _then) =
+      __$EncryptValueCopyWithImpl;
   @override
   @useResult
-  $Res call({Option<Either<StorageFailure, Unit>> verifyFailureOrSucces});
+  $Res call({String appKey, String appValue, String tag, int colorValue});
 }
 
 /// @nodoc
-class __$$_HomeActionStateCopyWithImpl<$Res>
-    extends _$HomeActionStateCopyWithImpl<$Res, _$_HomeActionState>
-    implements _$$_HomeActionStateCopyWith<$Res> {
-  __$$_HomeActionStateCopyWithImpl(
-      _$_HomeActionState _value, $Res Function(_$_HomeActionState) _then)
-      : super(_value, _then);
+class __$EncryptValueCopyWithImpl<$Res>
+    implements _$EncryptValueCopyWith<$Res> {
+  __$EncryptValueCopyWithImpl(this._self, this._then);
 
-  @pragma('vm:prefer-inline')
+  final _EncryptValue _self;
+  final $Res Function(_EncryptValue) _then;
+
+  /// Create a copy of HomeActionEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
-    Object? verifyFailureOrSucces = null,
+    Object? appKey = null,
+    Object? appValue = null,
+    Object? tag = null,
+    Object? colorValue = null,
   }) {
-    return _then(_$_HomeActionState(
-      verifyFailureOrSucces: null == verifyFailureOrSucces
-          ? _value.verifyFailureOrSucces
-          : verifyFailureOrSucces // ignore: cast_nullable_to_non_nullable
-              as Option<Either<StorageFailure, Unit>>,
+    return _then(_EncryptValue(
+      appKey: null == appKey
+          ? _self.appKey
+          : appKey // ignore: cast_nullable_to_non_nullable
+              as String,
+      appValue: null == appValue
+          ? _self.appValue
+          : appValue // ignore: cast_nullable_to_non_nullable
+              as String,
+      tag: null == tag
+          ? _self.tag
+          : tag // ignore: cast_nullable_to_non_nullable
+              as String,
+      colorValue: null == colorValue
+          ? _self.colorValue
+          : colorValue // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
+mixin _$HomeActionState {
+  Option<Either<StorageFailure, Unit>> get verifyFailureOrSucces;
 
-class _$_HomeActionState implements _HomeActionState {
-  const _$_HomeActionState({required this.verifyFailureOrSucces});
+  /// Create a copy of HomeActionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $HomeActionStateCopyWith<HomeActionState> get copyWith =>
+      _$HomeActionStateCopyWithImpl<HomeActionState>(
+          this as HomeActionState, _$identity);
 
   @override
-  final Option<Either<StorageFailure, Unit>> verifyFailureOrSucces;
-
-  @override
-  String toString() {
-    return 'HomeActionState(verifyFailureOrSucces: $verifyFailureOrSucces)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HomeActionState &&
+            other is HomeActionState &&
             (identical(other.verifyFailureOrSucces, verifyFailureOrSucces) ||
                 other.verifyFailureOrSucces == verifyFailureOrSucces));
   }
@@ -391,22 +387,274 @@ class _$_HomeActionState implements _HomeActionState {
   @override
   int get hashCode => Object.hash(runtimeType, verifyFailureOrSucces);
 
-  @JsonKey(ignore: true)
+  @override
+  String toString() {
+    return 'HomeActionState(verifyFailureOrSucces: $verifyFailureOrSucces)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $HomeActionStateCopyWith<$Res> {
+  factory $HomeActionStateCopyWith(
+          HomeActionState value, $Res Function(HomeActionState) _then) =
+      _$HomeActionStateCopyWithImpl;
+  @useResult
+  $Res call({Option<Either<StorageFailure, Unit>> verifyFailureOrSucces});
+}
+
+/// @nodoc
+class _$HomeActionStateCopyWithImpl<$Res>
+    implements $HomeActionStateCopyWith<$Res> {
+  _$HomeActionStateCopyWithImpl(this._self, this._then);
+
+  final HomeActionState _self;
+  final $Res Function(HomeActionState) _then;
+
+  /// Create a copy of HomeActionState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? verifyFailureOrSucces = null,
+  }) {
+    return _then(_self.copyWith(
+      verifyFailureOrSucces: null == verifyFailureOrSucces
+          ? _self.verifyFailureOrSucces
+          : verifyFailureOrSucces // ignore: cast_nullable_to_non_nullable
+              as Option<Either<StorageFailure, Unit>>,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [HomeActionState].
+extension HomeActionStatePatterns on HomeActionState {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_HomeActionState value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _HomeActionState() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_HomeActionState value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _HomeActionState():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_HomeActionState value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _HomeActionState() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            Option<Either<StorageFailure, Unit>> verifyFailureOrSucces)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _HomeActionState() when $default != null:
+        return $default(_that.verifyFailureOrSucces);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(Option<Either<StorageFailure, Unit>> verifyFailureOrSucces)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _HomeActionState():
+        return $default(_that.verifyFailureOrSucces);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            Option<Either<StorageFailure, Unit>> verifyFailureOrSucces)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _HomeActionState() when $default != null:
+        return $default(_that.verifyFailureOrSucces);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+
+class _HomeActionState implements HomeActionState {
+  const _HomeActionState({required this.verifyFailureOrSucces});
+
+  @override
+  final Option<Either<StorageFailure, Unit>> verifyFailureOrSucces;
+
+  /// Create a copy of HomeActionState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$HomeActionStateCopyWith<_HomeActionState> get copyWith =>
+      __$HomeActionStateCopyWithImpl<_HomeActionState>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _HomeActionState &&
+            (identical(other.verifyFailureOrSucces, verifyFailureOrSucces) ||
+                other.verifyFailureOrSucces == verifyFailureOrSucces));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, verifyFailureOrSucces);
+
+  @override
+  String toString() {
+    return 'HomeActionState(verifyFailureOrSucces: $verifyFailureOrSucces)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$HomeActionStateCopyWith<$Res>
+    implements $HomeActionStateCopyWith<$Res> {
+  factory _$HomeActionStateCopyWith(
+          _HomeActionState value, $Res Function(_HomeActionState) _then) =
+      __$HomeActionStateCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Option<Either<StorageFailure, Unit>> verifyFailureOrSucces});
+}
+
+/// @nodoc
+class __$HomeActionStateCopyWithImpl<$Res>
+    implements _$HomeActionStateCopyWith<$Res> {
+  __$HomeActionStateCopyWithImpl(this._self, this._then);
+
+  final _HomeActionState _self;
+  final $Res Function(_HomeActionState) _then;
+
+  /// Create a copy of HomeActionState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$_HomeActionStateCopyWith<_$_HomeActionState> get copyWith =>
-      __$$_HomeActionStateCopyWithImpl<_$_HomeActionState>(this, _$identity);
+  $Res call({
+    Object? verifyFailureOrSucces = null,
+  }) {
+    return _then(_HomeActionState(
+      verifyFailureOrSucces: null == verifyFailureOrSucces
+          ? _self.verifyFailureOrSucces
+          : verifyFailureOrSucces // ignore: cast_nullable_to_non_nullable
+              as Option<Either<StorageFailure, Unit>>,
+    ));
+  }
 }
 
-abstract class _HomeActionState implements HomeActionState {
-  const factory _HomeActionState(
-      {required final Option<Either<StorageFailure, Unit>>
-          verifyFailureOrSucces}) = _$_HomeActionState;
-
-  @override
-  Option<Either<StorageFailure, Unit>> get verifyFailureOrSucces;
-  @override
-  @JsonKey(ignore: true)
-  _$$_HomeActionStateCopyWith<_$_HomeActionState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

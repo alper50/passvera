@@ -19,7 +19,7 @@ part of 'home_bloc.dart';
 //       );
 // }
 @freezed
-class HomeState with _$HomeState {
+sealed class HomeState with _$HomeState {
   const factory HomeState.initial() = _Initial;
   const factory HomeState.valuesLoading() = _LoadingFarmOverviews;
   /// [values] is the list to show (tag filter applied); [allValues] keeps the

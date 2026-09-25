@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,60 +9,45 @@ part of 'storage_failures.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$StorageFailure {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(dynamic e) unexpected,
-    required TResult Function() keyAlreadyUsed,
-    required TResult Function() insufficientPermission,
-    required TResult Function() emptyKey,
-    required TResult Function() modelNotValid,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(dynamic e)? unexpected,
-    TResult? Function()? keyAlreadyUsed,
-    TResult? Function()? insufficientPermission,
-    TResult? Function()? emptyKey,
-    TResult? Function()? modelNotValid,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(dynamic e)? unexpected,
-    TResult Function()? keyAlreadyUsed,
-    TResult Function()? insufficientPermission,
-    TResult Function()? emptyKey,
-    TResult Function()? modelNotValid,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Unexpected value) unexpected,
-    required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
-    required TResult Function(_InsufficientPermission value)
-        insufficientPermission,
-    required TResult Function(_EmptyKey value) emptyKey,
-    required TResult Function(_ModelNotValid value) modelNotValid,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Unexpected value)? unexpected,
-    TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
-    TResult? Function(_InsufficientPermission value)? insufficientPermission,
-    TResult? Function(_EmptyKey value)? emptyKey,
-    TResult? Function(_ModelNotValid value)? modelNotValid,
-  }) =>
-      throw _privateConstructorUsedError;
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is StorageFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'StorageFailure()';
+  }
+}
+
+/// @nodoc
+class $StorageFailureCopyWith<$Res> {
+  $StorageFailureCopyWith(StorageFailure _, $Res Function(StorageFailure) __);
+}
+
+/// Adds pattern-matching-related methods to [StorageFailure].
+extension StorageFailurePatterns on StorageFailure {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unexpected value)? unexpected,
@@ -71,53 +56,268 @@ mixin _$StorageFailure {
     TResult Function(_EmptyKey value)? emptyKey,
     TResult Function(_ModelNotValid value)? modelNotValid,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Unexpected() when unexpected != null:
+        return unexpected(_that);
+      case _KeyAlreadyUsed() when keyAlreadyUsed != null:
+        return keyAlreadyUsed(_that);
+      case _InsufficientPermission() when insufficientPermission != null:
+        return insufficientPermission(_that);
+      case _EmptyKey() when emptyKey != null:
+        return emptyKey(_that);
+      case _ModelNotValid() when modelNotValid != null:
+        return modelNotValid(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_EmptyKey value) emptyKey,
+    required TResult Function(_ModelNotValid value) modelNotValid,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Unexpected():
+        return unexpected(_that);
+      case _KeyAlreadyUsed():
+        return keyAlreadyUsed(_that);
+      case _InsufficientPermission():
+        return insufficientPermission(_that);
+      case _EmptyKey():
+        return emptyKey(_that);
+      case _ModelNotValid():
+        return modelNotValid(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_EmptyKey value)? emptyKey,
+    TResult? Function(_ModelNotValid value)? modelNotValid,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Unexpected() when unexpected != null:
+        return unexpected(_that);
+      case _KeyAlreadyUsed() when keyAlreadyUsed != null:
+        return keyAlreadyUsed(_that);
+      case _InsufficientPermission() when insufficientPermission != null:
+        return insufficientPermission(_that);
+      case _EmptyKey() when emptyKey != null:
+        return emptyKey(_that);
+      case _ModelNotValid() when modelNotValid != null:
+        return modelNotValid(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(dynamic e)? unexpected,
+    TResult Function()? keyAlreadyUsed,
+    TResult Function()? insufficientPermission,
+    TResult Function()? emptyKey,
+    TResult Function()? modelNotValid,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Unexpected() when unexpected != null:
+        return unexpected(_that.e);
+      case _KeyAlreadyUsed() when keyAlreadyUsed != null:
+        return keyAlreadyUsed();
+      case _InsufficientPermission() when insufficientPermission != null:
+        return insufficientPermission();
+      case _EmptyKey() when emptyKey != null:
+        return emptyKey();
+      case _ModelNotValid() when modelNotValid != null:
+        return modelNotValid();
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(dynamic e) unexpected,
+    required TResult Function() keyAlreadyUsed,
+    required TResult Function() insufficientPermission,
+    required TResult Function() emptyKey,
+    required TResult Function() modelNotValid,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Unexpected():
+        return unexpected(_that.e);
+      case _KeyAlreadyUsed():
+        return keyAlreadyUsed();
+      case _InsufficientPermission():
+        return insufficientPermission();
+      case _EmptyKey():
+        return emptyKey();
+      case _ModelNotValid():
+        return modelNotValid();
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(dynamic e)? unexpected,
+    TResult? Function()? keyAlreadyUsed,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? emptyKey,
+    TResult? Function()? modelNotValid,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Unexpected() when unexpected != null:
+        return unexpected(_that.e);
+      case _KeyAlreadyUsed() when keyAlreadyUsed != null:
+        return keyAlreadyUsed();
+      case _InsufficientPermission() when insufficientPermission != null:
+        return insufficientPermission();
+      case _EmptyKey() when emptyKey != null:
+        return emptyKey();
+      case _ModelNotValid() when modelNotValid != null:
+        return modelNotValid();
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
-abstract class $StorageFailureCopyWith<$Res> {
-  factory $StorageFailureCopyWith(
-          StorageFailure value, $Res Function(StorageFailure) then) =
-      _$StorageFailureCopyWithImpl<$Res, StorageFailure>;
+
+class _Unexpected implements StorageFailure {
+  const _Unexpected(this.e);
+
+  final dynamic e;
+
+  /// Create a copy of StorageFailure
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$UnexpectedCopyWith<_Unexpected> get copyWith =>
+      __$UnexpectedCopyWithImpl<_Unexpected>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Unexpected &&
+            const DeepCollectionEquality().equals(other.e, e));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(e));
+
+  @override
+  String toString() {
+    return 'StorageFailure.unexpected(e: $e)';
+  }
 }
 
 /// @nodoc
-class _$StorageFailureCopyWithImpl<$Res, $Val extends StorageFailure>
+abstract mixin class _$UnexpectedCopyWith<$Res>
     implements $StorageFailureCopyWith<$Res> {
-  _$StorageFailureCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_UnexpectedCopyWith<$Res> {
-  factory _$$_UnexpectedCopyWith(
-          _$_Unexpected value, $Res Function(_$_Unexpected) then) =
-      __$$_UnexpectedCopyWithImpl<$Res>;
+  factory _$UnexpectedCopyWith(
+          _Unexpected value, $Res Function(_Unexpected) _then) =
+      __$UnexpectedCopyWithImpl;
   @useResult
   $Res call({dynamic e});
 }
 
 /// @nodoc
-class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$StorageFailureCopyWithImpl<$Res, _$_Unexpected>
-    implements _$$_UnexpectedCopyWith<$Res> {
-  __$$_UnexpectedCopyWithImpl(
-      _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
-      : super(_value, _then);
+class __$UnexpectedCopyWithImpl<$Res> implements _$UnexpectedCopyWith<$Res> {
+  __$UnexpectedCopyWithImpl(this._self, this._then);
 
+  final _Unexpected _self;
+  final $Res Function(_Unexpected) _then;
+
+  /// Create a copy of StorageFailure
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? e = freezed,
   }) {
-    return _then(_$_Unexpected(
+    return _then(_Unexpected(
       freezed == e
-          ? _value.e
+          ? _self.e
           : e // ignore: cast_nullable_to_non_nullable
               as dynamic,
     ));
@@ -126,607 +326,82 @@ class __$$_UnexpectedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Unexpected implements _Unexpected {
-  const _$_Unexpected(this.e);
+class _KeyAlreadyUsed implements StorageFailure {
+  const _KeyAlreadyUsed();
 
   @override
-  final dynamic e;
-
-  @override
-  String toString() {
-    return 'StorageFailure.unexpected(e: $e)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Unexpected &&
-            const DeepCollectionEquality().equals(other.e, e));
+        (other.runtimeType == runtimeType && other is _KeyAlreadyUsed);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(e));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_UnexpectedCopyWith<_$_Unexpected> get copyWith =>
-      __$$_UnexpectedCopyWithImpl<_$_Unexpected>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(dynamic e) unexpected,
-    required TResult Function() keyAlreadyUsed,
-    required TResult Function() insufficientPermission,
-    required TResult Function() emptyKey,
-    required TResult Function() modelNotValid,
-  }) {
-    return unexpected(e);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(dynamic e)? unexpected,
-    TResult? Function()? keyAlreadyUsed,
-    TResult? Function()? insufficientPermission,
-    TResult? Function()? emptyKey,
-    TResult? Function()? modelNotValid,
-  }) {
-    return unexpected?.call(e);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(dynamic e)? unexpected,
-    TResult Function()? keyAlreadyUsed,
-    TResult Function()? insufficientPermission,
-    TResult Function()? emptyKey,
-    TResult Function()? modelNotValid,
-    required TResult orElse(),
-  }) {
-    if (unexpected != null) {
-      return unexpected(e);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Unexpected value) unexpected,
-    required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
-    required TResult Function(_InsufficientPermission value)
-        insufficientPermission,
-    required TResult Function(_EmptyKey value) emptyKey,
-    required TResult Function(_ModelNotValid value) modelNotValid,
-  }) {
-    return unexpected(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Unexpected value)? unexpected,
-    TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
-    TResult? Function(_InsufficientPermission value)? insufficientPermission,
-    TResult? Function(_EmptyKey value)? emptyKey,
-    TResult? Function(_ModelNotValid value)? modelNotValid,
-  }) {
-    return unexpected?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
-    TResult Function(_InsufficientPermission value)? insufficientPermission,
-    TResult Function(_EmptyKey value)? emptyKey,
-    TResult Function(_ModelNotValid value)? modelNotValid,
-    required TResult orElse(),
-  }) {
-    if (unexpected != null) {
-      return unexpected(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Unexpected implements StorageFailure {
-  const factory _Unexpected(final dynamic e) = _$_Unexpected;
-
-  dynamic get e;
-  @JsonKey(ignore: true)
-  _$$_UnexpectedCopyWith<_$_Unexpected> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_KeyAlreadyUsedCopyWith<$Res> {
-  factory _$$_KeyAlreadyUsedCopyWith(
-          _$_KeyAlreadyUsed value, $Res Function(_$_KeyAlreadyUsed) then) =
-      __$$_KeyAlreadyUsedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_KeyAlreadyUsedCopyWithImpl<$Res>
-    extends _$StorageFailureCopyWithImpl<$Res, _$_KeyAlreadyUsed>
-    implements _$$_KeyAlreadyUsedCopyWith<$Res> {
-  __$$_KeyAlreadyUsedCopyWithImpl(
-      _$_KeyAlreadyUsed _value, $Res Function(_$_KeyAlreadyUsed) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_KeyAlreadyUsed implements _KeyAlreadyUsed {
-  const _$_KeyAlreadyUsed();
+  int get hashCode => runtimeType.hashCode;
 
   @override
   String toString() {
     return 'StorageFailure.keyAlreadyUsed()';
   }
+}
+
+/// @nodoc
+
+class _InsufficientPermission implements StorageFailure {
+  const _InsufficientPermission();
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_KeyAlreadyUsed);
+        (other.runtimeType == runtimeType && other is _InsufficientPermission);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(dynamic e) unexpected,
-    required TResult Function() keyAlreadyUsed,
-    required TResult Function() insufficientPermission,
-    required TResult Function() emptyKey,
-    required TResult Function() modelNotValid,
-  }) {
-    return keyAlreadyUsed();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(dynamic e)? unexpected,
-    TResult? Function()? keyAlreadyUsed,
-    TResult? Function()? insufficientPermission,
-    TResult? Function()? emptyKey,
-    TResult? Function()? modelNotValid,
-  }) {
-    return keyAlreadyUsed?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(dynamic e)? unexpected,
-    TResult Function()? keyAlreadyUsed,
-    TResult Function()? insufficientPermission,
-    TResult Function()? emptyKey,
-    TResult Function()? modelNotValid,
-    required TResult orElse(),
-  }) {
-    if (keyAlreadyUsed != null) {
-      return keyAlreadyUsed();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Unexpected value) unexpected,
-    required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
-    required TResult Function(_InsufficientPermission value)
-        insufficientPermission,
-    required TResult Function(_EmptyKey value) emptyKey,
-    required TResult Function(_ModelNotValid value) modelNotValid,
-  }) {
-    return keyAlreadyUsed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Unexpected value)? unexpected,
-    TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
-    TResult? Function(_InsufficientPermission value)? insufficientPermission,
-    TResult? Function(_EmptyKey value)? emptyKey,
-    TResult? Function(_ModelNotValid value)? modelNotValid,
-  }) {
-    return keyAlreadyUsed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
-    TResult Function(_InsufficientPermission value)? insufficientPermission,
-    TResult Function(_EmptyKey value)? emptyKey,
-    TResult Function(_ModelNotValid value)? modelNotValid,
-    required TResult orElse(),
-  }) {
-    if (keyAlreadyUsed != null) {
-      return keyAlreadyUsed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _KeyAlreadyUsed implements StorageFailure {
-  const factory _KeyAlreadyUsed() = _$_KeyAlreadyUsed;
-}
-
-/// @nodoc
-abstract class _$$_InsufficientPermissionCopyWith<$Res> {
-  factory _$$_InsufficientPermissionCopyWith(_$_InsufficientPermission value,
-          $Res Function(_$_InsufficientPermission) then) =
-      __$$_InsufficientPermissionCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_InsufficientPermissionCopyWithImpl<$Res>
-    extends _$StorageFailureCopyWithImpl<$Res, _$_InsufficientPermission>
-    implements _$$_InsufficientPermissionCopyWith<$Res> {
-  __$$_InsufficientPermissionCopyWithImpl(_$_InsufficientPermission _value,
-      $Res Function(_$_InsufficientPermission) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_InsufficientPermission implements _InsufficientPermission {
-  const _$_InsufficientPermission();
 
   @override
   String toString() {
     return 'StorageFailure.insufficientPermission()';
   }
+}
+
+/// @nodoc
+
+class _EmptyKey implements StorageFailure {
+  const _EmptyKey();
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_InsufficientPermission);
+        (other.runtimeType == runtimeType && other is _EmptyKey);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(dynamic e) unexpected,
-    required TResult Function() keyAlreadyUsed,
-    required TResult Function() insufficientPermission,
-    required TResult Function() emptyKey,
-    required TResult Function() modelNotValid,
-  }) {
-    return insufficientPermission();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(dynamic e)? unexpected,
-    TResult? Function()? keyAlreadyUsed,
-    TResult? Function()? insufficientPermission,
-    TResult? Function()? emptyKey,
-    TResult? Function()? modelNotValid,
-  }) {
-    return insufficientPermission?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(dynamic e)? unexpected,
-    TResult Function()? keyAlreadyUsed,
-    TResult Function()? insufficientPermission,
-    TResult Function()? emptyKey,
-    TResult Function()? modelNotValid,
-    required TResult orElse(),
-  }) {
-    if (insufficientPermission != null) {
-      return insufficientPermission();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Unexpected value) unexpected,
-    required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
-    required TResult Function(_InsufficientPermission value)
-        insufficientPermission,
-    required TResult Function(_EmptyKey value) emptyKey,
-    required TResult Function(_ModelNotValid value) modelNotValid,
-  }) {
-    return insufficientPermission(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Unexpected value)? unexpected,
-    TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
-    TResult? Function(_InsufficientPermission value)? insufficientPermission,
-    TResult? Function(_EmptyKey value)? emptyKey,
-    TResult? Function(_ModelNotValid value)? modelNotValid,
-  }) {
-    return insufficientPermission?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
-    TResult Function(_InsufficientPermission value)? insufficientPermission,
-    TResult Function(_EmptyKey value)? emptyKey,
-    TResult Function(_ModelNotValid value)? modelNotValid,
-    required TResult orElse(),
-  }) {
-    if (insufficientPermission != null) {
-      return insufficientPermission(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _InsufficientPermission implements StorageFailure {
-  const factory _InsufficientPermission() = _$_InsufficientPermission;
-}
-
-/// @nodoc
-abstract class _$$_EmptyKeyCopyWith<$Res> {
-  factory _$$_EmptyKeyCopyWith(
-          _$_EmptyKey value, $Res Function(_$_EmptyKey) then) =
-      __$$_EmptyKeyCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_EmptyKeyCopyWithImpl<$Res>
-    extends _$StorageFailureCopyWithImpl<$Res, _$_EmptyKey>
-    implements _$$_EmptyKeyCopyWith<$Res> {
-  __$$_EmptyKeyCopyWithImpl(
-      _$_EmptyKey _value, $Res Function(_$_EmptyKey) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_EmptyKey implements _EmptyKey {
-  const _$_EmptyKey();
 
   @override
   String toString() {
     return 'StorageFailure.emptyKey()';
   }
+}
+
+/// @nodoc
+
+class _ModelNotValid implements StorageFailure {
+  const _ModelNotValid();
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_EmptyKey);
+        (other.runtimeType == runtimeType && other is _ModelNotValid);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(dynamic e) unexpected,
-    required TResult Function() keyAlreadyUsed,
-    required TResult Function() insufficientPermission,
-    required TResult Function() emptyKey,
-    required TResult Function() modelNotValid,
-  }) {
-    return emptyKey();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(dynamic e)? unexpected,
-    TResult? Function()? keyAlreadyUsed,
-    TResult? Function()? insufficientPermission,
-    TResult? Function()? emptyKey,
-    TResult? Function()? modelNotValid,
-  }) {
-    return emptyKey?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(dynamic e)? unexpected,
-    TResult Function()? keyAlreadyUsed,
-    TResult Function()? insufficientPermission,
-    TResult Function()? emptyKey,
-    TResult Function()? modelNotValid,
-    required TResult orElse(),
-  }) {
-    if (emptyKey != null) {
-      return emptyKey();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Unexpected value) unexpected,
-    required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
-    required TResult Function(_InsufficientPermission value)
-        insufficientPermission,
-    required TResult Function(_EmptyKey value) emptyKey,
-    required TResult Function(_ModelNotValid value) modelNotValid,
-  }) {
-    return emptyKey(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Unexpected value)? unexpected,
-    TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
-    TResult? Function(_InsufficientPermission value)? insufficientPermission,
-    TResult? Function(_EmptyKey value)? emptyKey,
-    TResult? Function(_ModelNotValid value)? modelNotValid,
-  }) {
-    return emptyKey?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
-    TResult Function(_InsufficientPermission value)? insufficientPermission,
-    TResult Function(_EmptyKey value)? emptyKey,
-    TResult Function(_ModelNotValid value)? modelNotValid,
-    required TResult orElse(),
-  }) {
-    if (emptyKey != null) {
-      return emptyKey(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _EmptyKey implements StorageFailure {
-  const factory _EmptyKey() = _$_EmptyKey;
-}
-
-/// @nodoc
-abstract class _$$_ModelNotValidCopyWith<$Res> {
-  factory _$$_ModelNotValidCopyWith(
-          _$_ModelNotValid value, $Res Function(_$_ModelNotValid) then) =
-      __$$_ModelNotValidCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_ModelNotValidCopyWithImpl<$Res>
-    extends _$StorageFailureCopyWithImpl<$Res, _$_ModelNotValid>
-    implements _$$_ModelNotValidCopyWith<$Res> {
-  __$$_ModelNotValidCopyWithImpl(
-      _$_ModelNotValid _value, $Res Function(_$_ModelNotValid) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_ModelNotValid implements _ModelNotValid {
-  const _$_ModelNotValid();
 
   @override
   String toString() {
     return 'StorageFailure.modelNotValid()';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ModelNotValid);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(dynamic e) unexpected,
-    required TResult Function() keyAlreadyUsed,
-    required TResult Function() insufficientPermission,
-    required TResult Function() emptyKey,
-    required TResult Function() modelNotValid,
-  }) {
-    return modelNotValid();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(dynamic e)? unexpected,
-    TResult? Function()? keyAlreadyUsed,
-    TResult? Function()? insufficientPermission,
-    TResult? Function()? emptyKey,
-    TResult? Function()? modelNotValid,
-  }) {
-    return modelNotValid?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(dynamic e)? unexpected,
-    TResult Function()? keyAlreadyUsed,
-    TResult Function()? insufficientPermission,
-    TResult Function()? emptyKey,
-    TResult Function()? modelNotValid,
-    required TResult orElse(),
-  }) {
-    if (modelNotValid != null) {
-      return modelNotValid();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Unexpected value) unexpected,
-    required TResult Function(_KeyAlreadyUsed value) keyAlreadyUsed,
-    required TResult Function(_InsufficientPermission value)
-        insufficientPermission,
-    required TResult Function(_EmptyKey value) emptyKey,
-    required TResult Function(_ModelNotValid value) modelNotValid,
-  }) {
-    return modelNotValid(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Unexpected value)? unexpected,
-    TResult? Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
-    TResult? Function(_InsufficientPermission value)? insufficientPermission,
-    TResult? Function(_EmptyKey value)? emptyKey,
-    TResult? Function(_ModelNotValid value)? modelNotValid,
-  }) {
-    return modelNotValid?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Unexpected value)? unexpected,
-    TResult Function(_KeyAlreadyUsed value)? keyAlreadyUsed,
-    TResult Function(_InsufficientPermission value)? insufficientPermission,
-    TResult Function(_EmptyKey value)? emptyKey,
-    TResult Function(_ModelNotValid value)? modelNotValid,
-    required TResult orElse(),
-  }) {
-    if (modelNotValid != null) {
-      return modelNotValid(this);
-    }
-    return orElse();
-  }
 }
 
-abstract class _ModelNotValid implements StorageFailure {
-  const factory _ModelNotValid() = _$_ModelNotValid;
-}
+// dart format on

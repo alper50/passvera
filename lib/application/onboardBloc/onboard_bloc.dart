@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/domain/i_keys_repository.dart';
 
 part 'onboard_event.dart';
@@ -15,18 +14,21 @@ class OnboardBloc extends Bloc<OnboardEvent, OnboardState> {
     on<OnboardEvent>((event, emit) async {
       await event.map(
         checkOnboard: (_) async {
-          // Right = key exists (onboard completed), Left = not completed yet
-          final result =
-              await keysRepository.getSingleValue(onboardKey: 'onboard');
+          final result = await keysRepository.isOnboardCompleted();
           result.fold(
-            (l) => emit(const OnboardState.onboardNotShowed()),
-            (r) => emit(const OnboardState.onboarShowed()),
+            // Unreadable storage must not route to onboarding: that flow
+            // ends on Home and would skip the lock. The lock gate handles
+            // storage errors (fail closed).
+            (_) => emit(const OnboardState.onboarShowed()),
+            (completed) => emit(
+              completed
+                  ? const OnboardState.onboarShowed()
+                  : const OnboardState.onboardNotShowed(),
+            ),
           );
         },
-        setOnboard: (_SetOnboard value) async {
-          const ApplicationModel onboardModel =
-              ApplicationModel(key: 'onboard', value: 'true');
-          await keysRepository.encryptValue(appModel: onboardModel);
+        setOnboard: (_) async {
+          await keysRepository.completeOnboard();
         },
       );
     });

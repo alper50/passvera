@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,248 +9,375 @@ part of 'pass_action_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PassActionEvent {
-  ApplicationModel get pass => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(ApplicationModel pass) deletePass,
-    required TResult Function(ApplicationModel pass, String oldKey) updatePass,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ApplicationModel pass)? deletePass,
-    TResult? Function(ApplicationModel pass, String oldKey)? updatePass,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ApplicationModel pass)? deletePass,
-    TResult Function(ApplicationModel pass, String oldKey)? updatePass,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_DeletePass value) deletePass,
-    required TResult Function(_UpdatePass value) updatePass,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_DeletePass value)? deletePass,
-    TResult? Function(_UpdatePass value)? updatePass,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_DeletePass value)? deletePass,
-    TResult Function(_UpdatePass value)? updatePass,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  ApplicationModel get pass;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PassActionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $PassActionEventCopyWith<PassActionEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PassActionEventCopyWith<$Res> {
-  factory $PassActionEventCopyWith(
-          PassActionEvent value, $Res Function(PassActionEvent) then) =
-      _$PassActionEventCopyWithImpl<$Res, PassActionEvent>;
-  @useResult
-  $Res call({ApplicationModel pass});
-
-  $ApplicationModelCopyWith<$Res> get pass;
-}
-
-/// @nodoc
-class _$PassActionEventCopyWithImpl<$Res, $Val extends PassActionEvent>
-    implements $PassActionEventCopyWith<$Res> {
-  _$PassActionEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? pass = null,
-  }) {
-    return _then(_value.copyWith(
-      pass: null == pass
-          ? _value.pass
-          : pass // ignore: cast_nullable_to_non_nullable
-              as ApplicationModel,
-    ) as $Val);
-  }
+      _$PassActionEventCopyWithImpl<PassActionEvent>(
+          this as PassActionEvent, _$identity);
 
   @override
-  @pragma('vm:prefer-inline')
-  $ApplicationModelCopyWith<$Res> get pass {
-    return $ApplicationModelCopyWith<$Res>(_value.pass, (value) {
-      return _then(_value.copyWith(pass: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$_DeletePassCopyWith<$Res>
-    implements $PassActionEventCopyWith<$Res> {
-  factory _$$_DeletePassCopyWith(
-          _$_DeletePass value, $Res Function(_$_DeletePass) then) =
-      __$$_DeletePassCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({ApplicationModel pass});
-
-  @override
-  $ApplicationModelCopyWith<$Res> get pass;
-}
-
-/// @nodoc
-class __$$_DeletePassCopyWithImpl<$Res>
-    extends _$PassActionEventCopyWithImpl<$Res, _$_DeletePass>
-    implements _$$_DeletePassCopyWith<$Res> {
-  __$$_DeletePassCopyWithImpl(
-      _$_DeletePass _value, $Res Function(_$_DeletePass) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? pass = null,
-  }) {
-    return _then(_$_DeletePass(
-      pass: null == pass
-          ? _value.pass
-          : pass // ignore: cast_nullable_to_non_nullable
-              as ApplicationModel,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_DeletePass implements _DeletePass {
-  const _$_DeletePass({required this.pass});
-
-  @override
-  final ApplicationModel pass;
-
-  @override
-  String toString() {
-    return 'PassActionEvent.deletePass(pass: $pass)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DeletePass &&
+            other is PassActionEvent &&
             (identical(other.pass, pass) || other.pass == pass));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, pass);
 
-  @JsonKey(ignore: true)
+  @override
+  String toString() {
+    return 'PassActionEvent(pass: $pass)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $PassActionEventCopyWith<$Res> {
+  factory $PassActionEventCopyWith(
+          PassActionEvent value, $Res Function(PassActionEvent) _then) =
+      _$PassActionEventCopyWithImpl;
+  @useResult
+  $Res call({ApplicationModel pass});
+
+  $ApplicationModelCopyWith<$Res> get pass;
+}
+
+/// @nodoc
+class _$PassActionEventCopyWithImpl<$Res>
+    implements $PassActionEventCopyWith<$Res> {
+  _$PassActionEventCopyWithImpl(this._self, this._then);
+
+  final PassActionEvent _self;
+  final $Res Function(PassActionEvent) _then;
+
+  /// Create a copy of PassActionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pass = null,
+  }) {
+    return _then(_self.copyWith(
+      pass: null == pass
+          ? _self.pass
+          : pass // ignore: cast_nullable_to_non_nullable
+              as ApplicationModel,
+    ));
+  }
+
+  /// Create a copy of PassActionEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$_DeletePassCopyWith<_$_DeletePass> get copyWith =>
-      __$$_DeletePassCopyWithImpl<_$_DeletePass>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(ApplicationModel pass) deletePass,
-    required TResult Function(ApplicationModel pass, String oldKey) updatePass,
-  }) {
-    return deletePass(pass);
+  $ApplicationModelCopyWith<$Res> get pass {
+    return $ApplicationModelCopyWith<$Res>(_self.pass, (value) {
+      return _then(_self.copyWith(pass: value));
+    });
   }
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ApplicationModel pass)? deletePass,
-    TResult? Function(ApplicationModel pass, String oldKey)? updatePass,
-  }) {
-    return deletePass?.call(pass);
-  }
+/// Adds pattern-matching-related methods to [PassActionEvent].
+extension PassActionEventPatterns on PassActionEvent {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ApplicationModel pass)? deletePass,
-    TResult Function(ApplicationModel pass, String oldKey)? updatePass,
-    required TResult orElse(),
-  }) {
-    if (deletePass != null) {
-      return deletePass(pass);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_DeletePass value) deletePass,
-    required TResult Function(_UpdatePass value) updatePass,
-  }) {
-    return deletePass(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_DeletePass value)? deletePass,
-    TResult? Function(_UpdatePass value)? updatePass,
-  }) {
-    return deletePass?.call(this);
-  }
-
-  @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_DeletePass value)? deletePass,
     TResult Function(_UpdatePass value)? updatePass,
     required TResult orElse(),
   }) {
-    if (deletePass != null) {
-      return deletePass(this);
+    final _that = this;
+    switch (_that) {
+      case _DeletePass() when deletePass != null:
+        return deletePass(_that);
+      case _UpdatePass() when updatePass != null:
+        return updatePass(_that);
+      case _:
+        return orElse();
     }
-    return orElse();
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_DeletePass value) deletePass,
+    required TResult Function(_UpdatePass value) updatePass,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _DeletePass():
+        return deletePass(_that);
+      case _UpdatePass():
+        return updatePass(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_DeletePass value)? deletePass,
+    TResult? Function(_UpdatePass value)? updatePass,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _DeletePass() when deletePass != null:
+        return deletePass(_that);
+      case _UpdatePass() when updatePass != null:
+        return updatePass(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ApplicationModel pass)? deletePass,
+    TResult Function(ApplicationModel pass, String oldKey)? updatePass,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _DeletePass() when deletePass != null:
+        return deletePass(_that.pass);
+      case _UpdatePass() when updatePass != null:
+        return updatePass(_that.pass, _that.oldKey);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ApplicationModel pass) deletePass,
+    required TResult Function(ApplicationModel pass, String oldKey) updatePass,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _DeletePass():
+        return deletePass(_that.pass);
+      case _UpdatePass():
+        return updatePass(_that.pass, _that.oldKey);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ApplicationModel pass)? deletePass,
+    TResult? Function(ApplicationModel pass, String oldKey)? updatePass,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _DeletePass() when deletePass != null:
+        return deletePass(_that.pass);
+      case _UpdatePass() when updatePass != null:
+        return updatePass(_that.pass, _that.oldKey);
+      case _:
+        return null;
+    }
   }
 }
 
-abstract class _DeletePass implements PassActionEvent {
-  const factory _DeletePass({required final ApplicationModel pass}) =
-      _$_DeletePass;
+/// @nodoc
+
+class _DeletePass implements PassActionEvent {
+  const _DeletePass({required this.pass});
 
   @override
-  ApplicationModel get pass;
+  final ApplicationModel pass;
+
+  /// Create a copy of PassActionEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_DeletePassCopyWith<_$_DeletePass> get copyWith =>
-      throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$DeletePassCopyWith<_DeletePass> get copyWith =>
+      __$DeletePassCopyWithImpl<_DeletePass>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _DeletePass &&
+            (identical(other.pass, pass) || other.pass == pass));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, pass);
+
+  @override
+  String toString() {
+    return 'PassActionEvent.deletePass(pass: $pass)';
+  }
 }
 
 /// @nodoc
-abstract class _$$_UpdatePassCopyWith<$Res>
+abstract mixin class _$DeletePassCopyWith<$Res>
     implements $PassActionEventCopyWith<$Res> {
-  factory _$$_UpdatePassCopyWith(
-          _$_UpdatePass value, $Res Function(_$_UpdatePass) then) =
-      __$$_UpdatePassCopyWithImpl<$Res>;
+  factory _$DeletePassCopyWith(
+          _DeletePass value, $Res Function(_DeletePass) _then) =
+      __$DeletePassCopyWithImpl;
+  @override
+  @useResult
+  $Res call({ApplicationModel pass});
+
+  @override
+  $ApplicationModelCopyWith<$Res> get pass;
+}
+
+/// @nodoc
+class __$DeletePassCopyWithImpl<$Res> implements _$DeletePassCopyWith<$Res> {
+  __$DeletePassCopyWithImpl(this._self, this._then);
+
+  final _DeletePass _self;
+  final $Res Function(_DeletePass) _then;
+
+  /// Create a copy of PassActionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? pass = null,
+  }) {
+    return _then(_DeletePass(
+      pass: null == pass
+          ? _self.pass
+          : pass // ignore: cast_nullable_to_non_nullable
+              as ApplicationModel,
+    ));
+  }
+
+  /// Create a copy of PassActionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ApplicationModelCopyWith<$Res> get pass {
+    return $ApplicationModelCopyWith<$Res>(_self.pass, (value) {
+      return _then(_self.copyWith(pass: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _UpdatePass implements PassActionEvent {
+  const _UpdatePass({required this.pass, required this.oldKey});
+
+  @override
+  final ApplicationModel pass;
+  final String oldKey;
+
+  /// Create a copy of PassActionEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$UpdatePassCopyWith<_UpdatePass> get copyWith =>
+      __$UpdatePassCopyWithImpl<_UpdatePass>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _UpdatePass &&
+            (identical(other.pass, pass) || other.pass == pass) &&
+            (identical(other.oldKey, oldKey) || other.oldKey == oldKey));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, pass, oldKey);
+
+  @override
+  String toString() {
+    return 'PassActionEvent.updatePass(pass: $pass, oldKey: $oldKey)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$UpdatePassCopyWith<$Res>
+    implements $PassActionEventCopyWith<$Res> {
+  factory _$UpdatePassCopyWith(
+          _UpdatePass value, $Res Function(_UpdatePass) _then) =
+      __$UpdatePassCopyWithImpl;
   @override
   @useResult
   $Res call({ApplicationModel pass, String oldKey});
@@ -260,256 +387,61 @@ abstract class _$$_UpdatePassCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UpdatePassCopyWithImpl<$Res>
-    extends _$PassActionEventCopyWithImpl<$Res, _$_UpdatePass>
-    implements _$$_UpdatePassCopyWith<$Res> {
-  __$$_UpdatePassCopyWithImpl(
-      _$_UpdatePass _value, $Res Function(_$_UpdatePass) _then)
-      : super(_value, _then);
+class __$UpdatePassCopyWithImpl<$Res> implements _$UpdatePassCopyWith<$Res> {
+  __$UpdatePassCopyWithImpl(this._self, this._then);
 
-  @pragma('vm:prefer-inline')
+  final _UpdatePass _self;
+  final $Res Function(_UpdatePass) _then;
+
+  /// Create a copy of PassActionEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
     Object? pass = null,
     Object? oldKey = null,
   }) {
-    return _then(_$_UpdatePass(
+    return _then(_UpdatePass(
       pass: null == pass
-          ? _value.pass
+          ? _self.pass
           : pass // ignore: cast_nullable_to_non_nullable
               as ApplicationModel,
       oldKey: null == oldKey
-          ? _value.oldKey
+          ? _self.oldKey
           : oldKey // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
-}
 
-/// @nodoc
-
-class _$_UpdatePass implements _UpdatePass {
-  const _$_UpdatePass({required this.pass, required this.oldKey});
-
-  @override
-  final ApplicationModel pass;
-  @override
-  final String oldKey;
-
-  @override
-  String toString() {
-    return 'PassActionEvent.updatePass(pass: $pass, oldKey: $oldKey)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_UpdatePass &&
-            (identical(other.pass, pass) || other.pass == pass) &&
-            (identical(other.oldKey, oldKey) || other.oldKey == oldKey));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, pass, oldKey);
-
-  @JsonKey(ignore: true)
+  /// Create a copy of PassActionEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdatePassCopyWith<_$_UpdatePass> get copyWith =>
-      __$$_UpdatePassCopyWithImpl<_$_UpdatePass>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(ApplicationModel pass) deletePass,
-    required TResult Function(ApplicationModel pass, String oldKey) updatePass,
-  }) {
-    return updatePass(pass, oldKey);
+  $ApplicationModelCopyWith<$Res> get pass {
+    return $ApplicationModelCopyWith<$Res>(_self.pass, (value) {
+      return _then(_self.copyWith(pass: value));
+    });
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ApplicationModel pass)? deletePass,
-    TResult? Function(ApplicationModel pass, String oldKey)? updatePass,
-  }) {
-    return updatePass?.call(pass, oldKey);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ApplicationModel pass)? deletePass,
-    TResult Function(ApplicationModel pass, String oldKey)? updatePass,
-    required TResult orElse(),
-  }) {
-    if (updatePass != null) {
-      return updatePass(pass, oldKey);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_DeletePass value) deletePass,
-    required TResult Function(_UpdatePass value) updatePass,
-  }) {
-    return updatePass(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_DeletePass value)? deletePass,
-    TResult? Function(_UpdatePass value)? updatePass,
-  }) {
-    return updatePass?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_DeletePass value)? deletePass,
-    TResult Function(_UpdatePass value)? updatePass,
-    required TResult orElse(),
-  }) {
-    if (updatePass != null) {
-      return updatePass(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UpdatePass implements PassActionEvent {
-  const factory _UpdatePass(
-      {required final ApplicationModel pass,
-      required final String oldKey}) = _$_UpdatePass;
-
-  @override
-  ApplicationModel get pass;
-  String get oldKey;
-  @override
-  @JsonKey(ignore: true)
-  _$$_UpdatePassCopyWith<_$_UpdatePass> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$PassActionState {
-  Option<Either<StorageFailure, Unit>> get deleteFailureOrSucces =>
-      throw _privateConstructorUsedError;
-  Option<Either<StorageFailure, Unit>> get updateFailureOrSucces =>
-      throw _privateConstructorUsedError;
+  Option<Either<StorageFailure, Unit>> get deleteFailureOrSucces;
+  Option<Either<StorageFailure, Unit>> get updateFailureOrSucces;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PassActionState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $PassActionStateCopyWith<PassActionState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PassActionStateCopyWith<$Res> {
-  factory $PassActionStateCopyWith(
-          PassActionState value, $Res Function(PassActionState) then) =
-      _$PassActionStateCopyWithImpl<$Res, PassActionState>;
-  @useResult
-  $Res call(
-      {Option<Either<StorageFailure, Unit>> deleteFailureOrSucces,
-      Option<Either<StorageFailure, Unit>> updateFailureOrSucces});
-}
-
-/// @nodoc
-class _$PassActionStateCopyWithImpl<$Res, $Val extends PassActionState>
-    implements $PassActionStateCopyWith<$Res> {
-  _$PassActionStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? deleteFailureOrSucces = null,
-    Object? updateFailureOrSucces = null,
-  }) {
-    return _then(_value.copyWith(
-      deleteFailureOrSucces: null == deleteFailureOrSucces
-          ? _value.deleteFailureOrSucces
-          : deleteFailureOrSucces // ignore: cast_nullable_to_non_nullable
-              as Option<Either<StorageFailure, Unit>>,
-      updateFailureOrSucces: null == updateFailureOrSucces
-          ? _value.updateFailureOrSucces
-          : updateFailureOrSucces // ignore: cast_nullable_to_non_nullable
-              as Option<Either<StorageFailure, Unit>>,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_PassActionStateCopyWith<$Res>
-    implements $PassActionStateCopyWith<$Res> {
-  factory _$$_PassActionStateCopyWith(
-          _$_PassActionState value, $Res Function(_$_PassActionState) then) =
-      __$$_PassActionStateCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {Option<Either<StorageFailure, Unit>> deleteFailureOrSucces,
-      Option<Either<StorageFailure, Unit>> updateFailureOrSucces});
-}
-
-/// @nodoc
-class __$$_PassActionStateCopyWithImpl<$Res>
-    extends _$PassActionStateCopyWithImpl<$Res, _$_PassActionState>
-    implements _$$_PassActionStateCopyWith<$Res> {
-  __$$_PassActionStateCopyWithImpl(
-      _$_PassActionState _value, $Res Function(_$_PassActionState) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? deleteFailureOrSucces = null,
-    Object? updateFailureOrSucces = null,
-  }) {
-    return _then(_$_PassActionState(
-      deleteFailureOrSucces: null == deleteFailureOrSucces
-          ? _value.deleteFailureOrSucces
-          : deleteFailureOrSucces // ignore: cast_nullable_to_non_nullable
-              as Option<Either<StorageFailure, Unit>>,
-      updateFailureOrSucces: null == updateFailureOrSucces
-          ? _value.updateFailureOrSucces
-          : updateFailureOrSucces // ignore: cast_nullable_to_non_nullable
-              as Option<Either<StorageFailure, Unit>>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_PassActionState implements _PassActionState {
-  const _$_PassActionState(
-      {required this.deleteFailureOrSucces,
-      required this.updateFailureOrSucces});
+      _$PassActionStateCopyWithImpl<PassActionState>(
+          this as PassActionState, _$identity);
 
   @override
-  final Option<Either<StorageFailure, Unit>> deleteFailureOrSucces;
-  @override
-  final Option<Either<StorageFailure, Unit>> updateFailureOrSucces;
-
-  @override
-  String toString() {
-    return 'PassActionState(deleteFailureOrSucces: $deleteFailureOrSucces, updateFailureOrSucces: $updateFailureOrSucces)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PassActionState &&
+            other is PassActionState &&
             (identical(other.deleteFailureOrSucces, deleteFailureOrSucces) ||
                 other.deleteFailureOrSucces == deleteFailureOrSucces) &&
             (identical(other.updateFailureOrSucces, updateFailureOrSucces) ||
@@ -520,26 +452,300 @@ class _$_PassActionState implements _PassActionState {
   int get hashCode =>
       Object.hash(runtimeType, deleteFailureOrSucces, updateFailureOrSucces);
 
-  @JsonKey(ignore: true)
+  @override
+  String toString() {
+    return 'PassActionState(deleteFailureOrSucces: $deleteFailureOrSucces, updateFailureOrSucces: $updateFailureOrSucces)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $PassActionStateCopyWith<$Res> {
+  factory $PassActionStateCopyWith(
+          PassActionState value, $Res Function(PassActionState) _then) =
+      _$PassActionStateCopyWithImpl;
+  @useResult
+  $Res call(
+      {Option<Either<StorageFailure, Unit>> deleteFailureOrSucces,
+      Option<Either<StorageFailure, Unit>> updateFailureOrSucces});
+}
+
+/// @nodoc
+class _$PassActionStateCopyWithImpl<$Res>
+    implements $PassActionStateCopyWith<$Res> {
+  _$PassActionStateCopyWithImpl(this._self, this._then);
+
+  final PassActionState _self;
+  final $Res Function(PassActionState) _then;
+
+  /// Create a copy of PassActionState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? deleteFailureOrSucces = null,
+    Object? updateFailureOrSucces = null,
+  }) {
+    return _then(_self.copyWith(
+      deleteFailureOrSucces: null == deleteFailureOrSucces
+          ? _self.deleteFailureOrSucces
+          : deleteFailureOrSucces // ignore: cast_nullable_to_non_nullable
+              as Option<Either<StorageFailure, Unit>>,
+      updateFailureOrSucces: null == updateFailureOrSucces
+          ? _self.updateFailureOrSucces
+          : updateFailureOrSucces // ignore: cast_nullable_to_non_nullable
+              as Option<Either<StorageFailure, Unit>>,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [PassActionState].
+extension PassActionStatePatterns on PassActionState {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PassActionState value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PassActionState() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PassActionState value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PassActionState():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PassActionState value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PassActionState() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(Option<Either<StorageFailure, Unit>> deleteFailureOrSucces,
+            Option<Either<StorageFailure, Unit>> updateFailureOrSucces)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PassActionState() when $default != null:
+        return $default(
+            _that.deleteFailureOrSucces, _that.updateFailureOrSucces);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(Option<Either<StorageFailure, Unit>> deleteFailureOrSucces,
+            Option<Either<StorageFailure, Unit>> updateFailureOrSucces)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PassActionState():
+        return $default(
+            _that.deleteFailureOrSucces, _that.updateFailureOrSucces);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            Option<Either<StorageFailure, Unit>> deleteFailureOrSucces,
+            Option<Either<StorageFailure, Unit>> updateFailureOrSucces)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PassActionState() when $default != null:
+        return $default(
+            _that.deleteFailureOrSucces, _that.updateFailureOrSucces);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+
+class _PassActionState implements PassActionState {
+  const _PassActionState(
+      {required this.deleteFailureOrSucces,
+      required this.updateFailureOrSucces});
+
+  @override
+  final Option<Either<StorageFailure, Unit>> deleteFailureOrSucces;
+  @override
+  final Option<Either<StorageFailure, Unit>> updateFailureOrSucces;
+
+  /// Create a copy of PassActionState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PassActionStateCopyWith<_PassActionState> get copyWith =>
+      __$PassActionStateCopyWithImpl<_PassActionState>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _PassActionState &&
+            (identical(other.deleteFailureOrSucces, deleteFailureOrSucces) ||
+                other.deleteFailureOrSucces == deleteFailureOrSucces) &&
+            (identical(other.updateFailureOrSucces, updateFailureOrSucces) ||
+                other.updateFailureOrSucces == updateFailureOrSucces));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, deleteFailureOrSucces, updateFailureOrSucces);
+
+  @override
+  String toString() {
+    return 'PassActionState(deleteFailureOrSucces: $deleteFailureOrSucces, updateFailureOrSucces: $updateFailureOrSucces)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$PassActionStateCopyWith<$Res>
+    implements $PassActionStateCopyWith<$Res> {
+  factory _$PassActionStateCopyWith(
+          _PassActionState value, $Res Function(_PassActionState) _then) =
+      __$PassActionStateCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {Option<Either<StorageFailure, Unit>> deleteFailureOrSucces,
+      Option<Either<StorageFailure, Unit>> updateFailureOrSucces});
+}
+
+/// @nodoc
+class __$PassActionStateCopyWithImpl<$Res>
+    implements _$PassActionStateCopyWith<$Res> {
+  __$PassActionStateCopyWithImpl(this._self, this._then);
+
+  final _PassActionState _self;
+  final $Res Function(_PassActionState) _then;
+
+  /// Create a copy of PassActionState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$_PassActionStateCopyWith<_$_PassActionState> get copyWith =>
-      __$$_PassActionStateCopyWithImpl<_$_PassActionState>(this, _$identity);
+  $Res call({
+    Object? deleteFailureOrSucces = null,
+    Object? updateFailureOrSucces = null,
+  }) {
+    return _then(_PassActionState(
+      deleteFailureOrSucces: null == deleteFailureOrSucces
+          ? _self.deleteFailureOrSucces
+          : deleteFailureOrSucces // ignore: cast_nullable_to_non_nullable
+              as Option<Either<StorageFailure, Unit>>,
+      updateFailureOrSucces: null == updateFailureOrSucces
+          ? _self.updateFailureOrSucces
+          : updateFailureOrSucces // ignore: cast_nullable_to_non_nullable
+              as Option<Either<StorageFailure, Unit>>,
+    ));
+  }
 }
 
-abstract class _PassActionState implements PassActionState {
-  const factory _PassActionState(
-      {required final Option<Either<StorageFailure, Unit>>
-          deleteFailureOrSucces,
-      required final Option<Either<StorageFailure, Unit>>
-          updateFailureOrSucces}) = _$_PassActionState;
-
-  @override
-  Option<Either<StorageFailure, Unit>> get deleteFailureOrSucces;
-  @override
-  Option<Either<StorageFailure, Unit>> get updateFailureOrSucces;
-  @override
-  @JsonKey(ignore: true)
-  _$$_PassActionStateCopyWith<_$_PassActionState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

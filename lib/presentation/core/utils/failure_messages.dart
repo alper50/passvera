@@ -1,4 +1,5 @@
 import 'package:passvera/domain/errors/authenticator_failures.dart';
+import 'package:passvera/domain/errors/backup_failures.dart';
 import 'package:passvera/domain/errors/clipboard_failures.dart';
 import 'package:passvera/domain/errors/lock_failures.dart';
 import 'package:passvera/domain/errors/storage_failures.dart';
@@ -43,5 +44,24 @@ extension AuthenticatorFailureMessage on AuthenticatorFailure {
 extension ClipboardFailureMessage on ClipboardFailure {
   String get message => when(
         unexpected: (_) => 'Could not copy to clipboard',
+      );
+}
+
+extension BackupFailureMessage on BackupFailure {
+  String get message => when(
+        unexpected: (_) => 'Something went wrong with the backup',
+        notConfigured: () => 'Google Drive backup is not set up in this build',
+        cancelled: () => 'Google sign-in was cancelled',
+        authorizationRequired: () =>
+            'Google Drive access expired. Connect your account again',
+        network: () => 'No connection to Google Drive',
+        invalidRecoveryKey: () =>
+            'Those 12 words are not a valid recovery key. Check for typos',
+        wrongRecoveryKey: () => 'This recovery key does not match the backup',
+        corruptedBackup: () => 'The backup file is damaged',
+        unsupportedVersion: () =>
+            'This backup was made by a newer Passvera. Update the app',
+        noBackups: () => 'No backups found in this Google account',
+        notEnabled: () => 'Backup is turned off',
       );
 }

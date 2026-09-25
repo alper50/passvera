@@ -14,6 +14,7 @@ import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
 
 /// Preview of a Google Authenticator export: scan every QR of the export,
 /// pick accounts, import. Pops with `true` when something was imported.
+@RoutePage()
 class AuthenticatorImportView extends StatelessWidget {
   const AuthenticatorImportView({super.key, required this.initialQr});
 

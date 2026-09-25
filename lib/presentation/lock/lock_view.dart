@@ -6,12 +6,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passvera/application/lockBloc/lock_bloc.dart';
 import 'package:passvera/domain/lock_constants.dart';
 import 'package:passvera/injection.dart';
-import 'package:passvera/presentation/core/route/route.gr.dart';
+import 'package:passvera/presentation/core/route/route.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/utils/failure_messages.dart';
 import 'package:passvera/presentation/core/widgets/my_small_button.dart';
 import 'package:passvera/presentation/core/widgets/pin_pad.dart';
 
+@RoutePage()
 class LockView extends StatelessWidget {
   const LockView({super.key});
 
@@ -80,7 +81,7 @@ class _LockViewBodyState extends State<_LockViewBody> {
                 (isPinSet) {
                   // Nothing to unlock: storage was readable and has no PIN.
                   if (!isPinSet) {
-                    AutoRouter.of(context).replace(const HomeView());
+                    AutoRouter.of(context).replace(const HomeRoute());
                   }
                 },
               ),
@@ -106,7 +107,7 @@ class _LockViewBodyState extends State<_LockViewBody> {
                 (_) {
                   _stopLockoutTicker();
                   AutoRouter.of(context).pushAndPopUntil(
-                    const HomeView(),
+                    const HomeRoute(),
                     predicate: (_) => false,
                   );
                 },

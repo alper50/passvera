@@ -5,13 +5,14 @@ import 'package:passvera/application/clipboardBloc/clipboard_bloc.dart';
 import 'package:passvera/application/passActionBloc/pass_action_bloc.dart';
 import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/injection.dart';
-import 'package:passvera/presentation/core/route/route.gr.dart';
+import 'package:passvera/presentation/core/route/route.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/utils/failure_messages.dart';
 import 'package:passvera/presentation/core/widgets/clipboard_snackbar_listener.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
 import 'package:passvera/presentation/home/passwordDetailView/pass_detail_view_body.dart';
 
+@RoutePage()
 class PassDetailView extends StatelessWidget {
   final ApplicationModel model;
   const PassDetailView({super.key, required this.model});
@@ -44,7 +45,7 @@ class PassDetailView extends StatelessWidget {
                   ),
                   (_) {
                     AutoRouter.of(context).pushAndPopUntil(
-                      const HomeView(),
+                      const HomeRoute(),
                       predicate: (_) => false,
                     );
                     showMySnackBar(
@@ -70,7 +71,7 @@ class PassDetailView extends StatelessWidget {
                   ),
                   (_) {
                     AutoRouter.of(context).pushAndPopUntil(
-                      const HomeView(),
+                      const HomeRoute(),
                       predicate: (_) => false,
                     );
                     showMySnackBar(

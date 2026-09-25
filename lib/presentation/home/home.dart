@@ -7,7 +7,7 @@ import 'package:passvera/application/homeActionBloc/home_action_bloc.dart';
 import 'package:passvera/application/homeBloc/home_bloc.dart';
 import 'package:passvera/injection.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:passvera/presentation/core/route/route.gr.dart';
+import 'package:passvera/presentation/core/route/route.dart';
 import 'package:passvera/presentation/core/utils/failure_messages.dart';
 import 'package:passvera/presentation/core/widgets/clipboard_snackbar_listener.dart';
 import 'package:passvera/presentation/core/widgets/form_dialog.dart';
@@ -16,6 +16,7 @@ import 'package:passvera/presentation/home/authenticator/authenticator_body.dart
 import 'package:passvera/presentation/home/home_body.dart';
 import 'package:passvera/presentation/home/widgets/home_mode_switch.dart';
 
+@RoutePage()
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
@@ -138,7 +139,7 @@ class _ScaffoldViewState extends State<ScaffoldView>
 
   Future<void> _onFabPressed() async {
     if (_tabIndex == 1) {
-      final added = await context.router.push<bool>(const QrScanView());
+      final added = await context.router.push<bool>(const QrScanRoute());
       if (!mounted) return;
       if (added == true) {
         context
@@ -211,7 +212,7 @@ class _ScaffoldViewState extends State<ScaffoldView>
               ),
               IconButton(
                 icon: const Icon(Icons.person_outline_rounded, size: 28),
-                onPressed: () => context.router.push(const ProfileView()),
+                onPressed: () => context.router.push(const ProfileRoute()),
               ),
             ],
           );

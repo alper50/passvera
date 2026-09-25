@@ -1,7 +1,7 @@
 part of 'authenticator_import_bloc.dart';
 
 @freezed
-class AuthenticatorImportState with _$AuthenticatorImportState {
+abstract class AuthenticatorImportState with _$AuthenticatorImportState {
   const AuthenticatorImportState._();
 
   const factory AuthenticatorImportState({

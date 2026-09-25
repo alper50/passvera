@@ -1,7 +1,8 @@
 PODS:
   - Flutter (1.0.0)
-  - flutter_secure_storage (6.0.0):
+  - flutter_secure_storage_darwin (10.0.0):
     - Flutter
+    - FlutterMacOS
   - mobile_scanner (7.0.0):
     - Flutter
     - FlutterMacOS
@@ -11,15 +12,15 @@ PODS:
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - flutter_secure_storage (from `.symlinks/plugins/flutter_secure_storage/ios`)
+  - flutter_secure_storage_darwin (from `.symlinks/plugins/flutter_secure_storage_darwin/darwin`)
   - mobile_scanner (from `.symlinks/plugins/mobile_scanner/darwin`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
-  flutter_secure_storage:
-    :path: ".symlinks/plugins/flutter_secure_storage/ios"
+  flutter_secure_storage_darwin:
+    :path: ".symlinks/plugins/flutter_secure_storage_darwin/darwin"
   mobile_scanner:
     :path: ".symlinks/plugins/mobile_scanner/darwin"
   path_provider_foundation:
@@ -27,9 +28,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
-  flutter_secure_storage: 1ed9476fba7e7a782b22888f956cce43e2c62f13
+  flutter_secure_storage_darwin: acdb3f316ed05a3e68f856e0353b133eec373a23
   mobile_scanner: 9157936403f5a0644ca3779a38ff8404c5434a93
-  path_provider_foundation: 0f28622a447f952060798e710afcae6800d1dfa0
+  path_provider_foundation: bb55f6dbba17d0dccd6737fe6f7f34fbd0376880
 
 PODFILE CHECKSUM: a57f30d18f102dd3ce366b1d62a55ecbef2158e5
 

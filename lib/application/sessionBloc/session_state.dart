@@ -1,7 +1,7 @@
 part of 'session_bloc.dart';
 
 @freezed
-class SessionState with _$SessionState {
+abstract class SessionState with _$SessionState {
   const factory SessionState({
     /// Vault content must be covered (app switcher snapshot, resume).
     required bool isObscured,

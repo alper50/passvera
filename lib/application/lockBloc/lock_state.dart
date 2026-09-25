@@ -1,7 +1,7 @@
 part of 'lock_bloc.dart';
 
 @freezed
-class AppLockState with _$AppLockState {
+abstract class AppLockState with _$AppLockState {
   const AppLockState._();
 
   const factory AppLockState({

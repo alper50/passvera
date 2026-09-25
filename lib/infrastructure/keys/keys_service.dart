@@ -3,39 +3,32 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/domain/errors/storage_failures.dart';
+import 'package:passvera/infrastructure/keys/storage_keys.dart';
 
+/// Password entries and app metadata in secure storage (schema 2 layout, see
+/// [StorageKeys]). [ApplicationModel.key] is the bare entry name; the storage
+/// key adds the `pw:` namespace.
 @LazySingleton()
 class KeysService {
-  static const String onboardKey = 'onboard';
-  static const String onboardCompletedValue = 'true';
-  static const String pinHashKey = 'app_pin_hash';
-  static const String pinSaltKey = 'app_pin_salt';
-  static const String pinAttemptsKey = 'app_pin_attempts';
-  static const String pinLockoutUntilKey = 'app_pin_lockout_until';
-  static const Set<String> metaKeys = {
-    onboardKey,
-    pinHashKey,
-    pinSaltKey,
-    pinAttemptsKey,
-    pinLockoutUntilKey,
-  };
-
+  /// flutter_secure_storage 10 moves data written by v9 (Jetpack
+  /// EncryptedSharedPreferences) to its own ciphers on first access, key by
+  /// key, falling back to the old store if that fails. `resetOnError`
+  /// defaults to true since v10 and would permanently wipe the vault on any
+  /// read error, so it stays off.
   AndroidOptions _getAndroidOptions() => const AndroidOptions(
-        encryptedSharedPreferences: true,
+        resetOnError: false,
+        migrateOnAlgorithmChange: true,
       );
   late final storage = FlutterSecureStorage(aOptions: _getAndroidOptions());
 
   Future<Either<StorageFailure, Unit>> encryptValue(
       {required ApplicationModel appModel}) async {
     try {
-      final existing = await storage.read(key: appModel.key);
-      if (existing != null) {
+      final key = StorageKeys.password(appModel.key);
+      if (await storage.containsKey(key: key)) {
         return const Left(StorageFailure.keyAlreadyUsed());
       }
-      await storage.write(
-        key: appModel.key,
-        value: appModel.toStorageValue(),
-      );
+      await storage.write(key: key, value: appModel.toStorageValue());
       return const Right(unit);
     } catch (e) {
       return Left(
@@ -49,10 +42,13 @@ class KeysService {
       final result = await storage.readAll();
       final models = <ApplicationModel>[];
       result.forEach((key, value) {
-        if (metaKeys.contains(key) || key.startsWith('totp:')) {
-          return;
-        }
-        models.add(ApplicationModel.fromStorage(key: key, raw: value));
+        if (!key.startsWith(StorageKeys.passwordPrefix)) return;
+        models.add(
+          ApplicationModel.fromStorage(
+            key: key.substring(StorageKeys.passwordPrefix.length),
+            raw: value,
+          ),
+        );
       });
       models.sort((a, b) {
         final tagCmp = a.tag.toLowerCase().compareTo(b.tag.toLowerCase());
@@ -65,14 +61,20 @@ class KeysService {
     }
   }
 
-  /// Right if the key exists, Left([StorageFailure.emptyKey]) if missing.
-  Future<Either<StorageFailure, Unit>> getSingleValue(
-      {required String key}) async {
+  Future<Either<StorageFailure, bool>> isOnboardCompleted() async {
     try {
-      final result = await storage.read(key: key);
-      if (result == null) {
-        return const Left(StorageFailure.emptyKey());
-      }
+      return Right(await storage.containsKey(key: StorageKeys.onboard));
+    } catch (e) {
+      return Left(StorageFailure.unexpected(e));
+    }
+  }
+
+  Future<Either<StorageFailure, Unit>> completeOnboard() async {
+    try {
+      await storage.write(
+        key: StorageKeys.onboard,
+        value: StorageKeys.onboardCompletedValue,
+      );
       return const Right(unit);
     } catch (e) {
       return Left(StorageFailure.unexpected(e));
@@ -82,7 +84,7 @@ class KeysService {
   Future<Either<StorageFailure, Unit>> deleteSingleValue(
       {required String appKey}) async {
     try {
-      await storage.delete(key: appKey);
+      await storage.delete(key: StorageKeys.password(appKey));
       return const Right(unit);
     } catch (e) {
       return Left(StorageFailure.unexpected(e));
@@ -94,22 +96,20 @@ class KeysService {
   Future<Either<StorageFailure, Unit>> updateSingleValue(
       {required ApplicationModel model, required String oldKey}) async {
     try {
-      final existing = await storage.read(key: oldKey);
-      if (existing == null) {
+      final oldStorageKey = StorageKeys.password(oldKey);
+      final newStorageKey = StorageKeys.password(model.key);
+      if (!await storage.containsKey(key: oldStorageKey)) {
         return const Left(StorageFailure.emptyKey());
       }
 
       final isRename = model.key != oldKey;
-      if (isRename && await storage.containsKey(key: model.key)) {
+      if (isRename && await storage.containsKey(key: newStorageKey)) {
         return const Left(StorageFailure.keyAlreadyUsed());
       }
 
-      await storage.write(
-        key: model.key,
-        value: model.toStorageValue(),
-      );
+      await storage.write(key: newStorageKey, value: model.toStorageValue());
       if (isRename) {
-        await storage.delete(key: oldKey);
+        await storage.delete(key: oldStorageKey);
       }
       return const Right(unit);
     } catch (e) {

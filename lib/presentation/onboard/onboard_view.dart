@@ -2,11 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:passvera/application/onboardBloc/onboard_bloc.dart';
 import 'package:passvera/injection.dart';
-import 'package:passvera/presentation/core/route/route.gr.dart';
+import 'package:passvera/presentation/core/route/route.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
+import 'package:passvera/presentation/core/widgets/form_dialog.dart';
 import 'package:passvera/presentation/core/widgets/my_small_button.dart';
 import 'package:passvera/presentation/onboard/onboard_view_body.dart';
 
+@RoutePage()
 class OnboardView extends StatefulWidget {
   const OnboardView({super.key});
 
@@ -21,7 +23,7 @@ class OnboardViewState extends State<OnboardView> {
       icon: Icons.lock_outline_rounded,
       title: 'Your vault, offline',
       description: 'Passwords stay on this device in secure storage. '
-          'No account, no cloud.',
+          'Google Drive backup is optional and end-to-end encrypted.',
     ),
     (
       icon: Icons.qr_code_scanner_rounded,
@@ -79,7 +81,20 @@ class OnboardViewState extends State<OnboardView> {
               buildButton(),
             ],
           ),
-          const SizedBox(height: 50),
+          // Reinstalled or new phone: bring the vault back from Drive.
+          SizedBox(
+            height: 82,
+            child: _isLastPage
+                ? Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 18, 24, 16),
+                    child: MyFormButton(
+                      title: 'Restore from Google Drive',
+                      onPressed: () =>
+                          AutoRouter.of(context).push(const RestoreRoute()),
+                    ),
+                  )
+                : null,
+          ),
         ],
       ),
     );
@@ -91,7 +106,7 @@ class OnboardViewState extends State<OnboardView> {
       onTap: () {
         if (_isLastPage) {
           getIt<OnboardBloc>().add(const OnboardEvent.setOnboard());
-          AutoRouter.of(context).pushAndPopUntil(const HomeView(),
+          AutoRouter.of(context).pushAndPopUntil(const HomeRoute(),
               predicate: (_) {
             return false;
           });

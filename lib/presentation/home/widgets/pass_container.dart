@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passvera/application/clipboardBloc/clipboard_bloc.dart';
 import 'package:passvera/domain/application_model.dart';
-import 'package:passvera/presentation/core/route/route.gr.dart';
+import 'package:passvera/presentation/core/route/route.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/core/widgets/my_small_button.dart';
@@ -21,7 +21,7 @@ class PassContainerWidget extends StatelessWidget {
     final cardColor = Color(currentModel.colorValue);
 
     return InkWell(
-      onTap: () => context.router.push(PassDetailView(model: currentModel)),
+      onTap: () => context.router.push(PassDetailRoute(model: currentModel)),
       child: Container(
         margin: const EdgeInsets.all(10.0),
         padding: const EdgeInsets.all(15.0),

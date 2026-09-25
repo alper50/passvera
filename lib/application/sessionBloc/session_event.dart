@@ -1,7 +1,7 @@
 part of 'session_bloc.dart';
 
 @freezed
-class SessionEvent with _$SessionEvent {
+sealed class SessionEvent with _$SessionEvent {
   /// App is still visible but not interactive (e.g. iOS app switcher).
   const factory SessionEvent.obscured() = _Obscured;
 

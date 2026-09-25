@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,196 +9,279 @@ part of 'home_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$HomeEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getAllValues,
-    required TResult Function(String? tag) tagSelected,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getAllValues,
-    TResult? Function(String? tag)? tagSelected,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllValues,
-    TResult Function(String? tag)? tagSelected,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetKeys value) getAllValues,
-    required TResult Function(_TagSelected value) tagSelected,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetKeys value)? getAllValues,
-    TResult? Function(_TagSelected value)? tagSelected,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetKeys value)? getAllValues,
-    TResult Function(_TagSelected value)? tagSelected,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $HomeEventCopyWith<$Res> {
-  factory $HomeEventCopyWith(HomeEvent value, $Res Function(HomeEvent) then) =
-      _$HomeEventCopyWithImpl<$Res, HomeEvent>;
-}
-
-/// @nodoc
-class _$HomeEventCopyWithImpl<$Res, $Val extends HomeEvent>
-    implements $HomeEventCopyWith<$Res> {
-  _$HomeEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_GetKeysCopyWith<$Res> {
-  factory _$$_GetKeysCopyWith(
-          _$_GetKeys value, $Res Function(_$_GetKeys) then) =
-      __$$_GetKeysCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_GetKeysCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res, _$_GetKeys>
-    implements _$$_GetKeysCopyWith<$Res> {
-  __$$_GetKeysCopyWithImpl(_$_GetKeys _value, $Res Function(_$_GetKeys) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_GetKeys implements _GetKeys {
-  const _$_GetKeys();
-
   @override
-  String toString() {
-    return 'HomeEvent.getAllValues()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_GetKeys);
+        (other.runtimeType == runtimeType && other is HomeEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getAllValues,
-    required TResult Function(String? tag) tagSelected,
-  }) {
-    return getAllValues();
+  String toString() {
+    return 'HomeEvent()';
   }
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getAllValues,
-    TResult? Function(String? tag)? tagSelected,
-  }) {
-    return getAllValues?.call();
-  }
+/// @nodoc
+class $HomeEventCopyWith<$Res> {
+  $HomeEventCopyWith(HomeEvent _, $Res Function(HomeEvent) __);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllValues,
-    TResult Function(String? tag)? tagSelected,
-    required TResult orElse(),
-  }) {
-    if (getAllValues != null) {
-      return getAllValues();
-    }
-    return orElse();
-  }
+/// Adds pattern-matching-related methods to [HomeEvent].
+extension HomeEventPatterns on HomeEvent {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetKeys value) getAllValues,
-    required TResult Function(_TagSelected value) tagSelected,
-  }) {
-    return getAllValues(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetKeys value)? getAllValues,
-    TResult? Function(_TagSelected value)? tagSelected,
-  }) {
-    return getAllValues?.call(this);
-  }
-
-  @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetKeys value)? getAllValues,
     TResult Function(_TagSelected value)? tagSelected,
     required TResult orElse(),
   }) {
-    if (getAllValues != null) {
-      return getAllValues(this);
+    final _that = this;
+    switch (_that) {
+      case _GetKeys() when getAllValues != null:
+        return getAllValues(_that);
+      case _TagSelected() when tagSelected != null:
+        return tagSelected(_that);
+      case _:
+        return orElse();
     }
-    return orElse();
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetKeys value) getAllValues,
+    required TResult Function(_TagSelected value) tagSelected,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _GetKeys():
+        return getAllValues(_that);
+      case _TagSelected():
+        return tagSelected(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetKeys value)? getAllValues,
+    TResult? Function(_TagSelected value)? tagSelected,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _GetKeys() when getAllValues != null:
+        return getAllValues(_that);
+      case _TagSelected() when tagSelected != null:
+        return tagSelected(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAllValues,
+    TResult Function(String? tag)? tagSelected,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _GetKeys() when getAllValues != null:
+        return getAllValues();
+      case _TagSelected() when tagSelected != null:
+        return tagSelected(_that.tag);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAllValues,
+    required TResult Function(String? tag) tagSelected,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _GetKeys():
+        return getAllValues();
+      case _TagSelected():
+        return tagSelected(_that.tag);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAllValues,
+    TResult? Function(String? tag)? tagSelected,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _GetKeys() when getAllValues != null:
+        return getAllValues();
+      case _TagSelected() when tagSelected != null:
+        return tagSelected(_that.tag);
+      case _:
+        return null;
+    }
   }
 }
 
-abstract class _GetKeys implements HomeEvent {
-  const factory _GetKeys() = _$_GetKeys;
+/// @nodoc
+
+class _GetKeys implements HomeEvent {
+  const _GetKeys();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _GetKeys);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'HomeEvent.getAllValues()';
+  }
 }
 
 /// @nodoc
-abstract class _$$_TagSelectedCopyWith<$Res> {
-  factory _$$_TagSelectedCopyWith(
-          _$_TagSelected value, $Res Function(_$_TagSelected) then) =
-      __$$_TagSelectedCopyWithImpl<$Res>;
+
+class _TagSelected implements HomeEvent {
+  const _TagSelected(this.tag);
+
+  final String? tag;
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$TagSelectedCopyWith<_TagSelected> get copyWith =>
+      __$TagSelectedCopyWithImpl<_TagSelected>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _TagSelected &&
+            (identical(other.tag, tag) || other.tag == tag));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, tag);
+
+  @override
+  String toString() {
+    return 'HomeEvent.tagSelected(tag: $tag)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$TagSelectedCopyWith<$Res>
+    implements $HomeEventCopyWith<$Res> {
+  factory _$TagSelectedCopyWith(
+          _TagSelected value, $Res Function(_TagSelected) _then) =
+      __$TagSelectedCopyWithImpl;
   @useResult
   $Res call({String? tag});
 }
 
 /// @nodoc
-class __$$_TagSelectedCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res, _$_TagSelected>
-    implements _$$_TagSelectedCopyWith<$Res> {
-  __$$_TagSelectedCopyWithImpl(
-      _$_TagSelected _value, $Res Function(_$_TagSelected) _then)
-      : super(_value, _then);
+class __$TagSelectedCopyWithImpl<$Res> implements _$TagSelectedCopyWith<$Res> {
+  __$TagSelectedCopyWithImpl(this._self, this._then);
 
+  final _TagSelected _self;
+  final $Res Function(_TagSelected) _then;
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? tag = freezed,
   }) {
-    return _then(_$_TagSelected(
+    return _then(_TagSelected(
       freezed == tag
-          ? _value.tag
+          ? _self.tag
           : tag // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
@@ -206,140 +289,152 @@ class __$$_TagSelectedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-class _$_TagSelected implements _TagSelected {
-  const _$_TagSelected(this.tag);
+mixin _$HomeState {
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is HomeState);
+  }
 
   @override
-  final String? tag;
+  int get hashCode => runtimeType.hashCode;
 
   @override
   String toString() {
-    return 'HomeEvent.tagSelected(tag: $tag)';
+    return 'HomeState()';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_TagSelected &&
-            (identical(other.tag, tag) || other.tag == tag));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, tag);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_TagSelectedCopyWith<_$_TagSelected> get copyWith =>
-      __$$_TagSelectedCopyWithImpl<_$_TagSelected>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getAllValues,
-    required TResult Function(String? tag) tagSelected,
-  }) {
-    return tagSelected(tag);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getAllValues,
-    TResult? Function(String? tag)? tagSelected,
-  }) {
-    return tagSelected?.call(tag);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllValues,
-    TResult Function(String? tag)? tagSelected,
-    required TResult orElse(),
-  }) {
-    if (tagSelected != null) {
-      return tagSelected(tag);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetKeys value) getAllValues,
-    required TResult Function(_TagSelected value) tagSelected,
-  }) {
-    return tagSelected(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetKeys value)? getAllValues,
-    TResult? Function(_TagSelected value)? tagSelected,
-  }) {
-    return tagSelected?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetKeys value)? getAllValues,
-    TResult Function(_TagSelected value)? tagSelected,
-    required TResult orElse(),
-  }) {
-    if (tagSelected != null) {
-      return tagSelected(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _TagSelected implements HomeEvent {
-  const factory _TagSelected(final String? tag) = _$_TagSelected;
-
-  String? get tag;
-  @JsonKey(ignore: true)
-  _$$_TagSelectedCopyWith<_$_TagSelected> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$HomeState {
+class $HomeStateCopyWith<$Res> {
+  $HomeStateCopyWith(HomeState _, $Res Function(HomeState) __);
+}
+
+/// Adds pattern-matching-related methods to [HomeState].
+extension HomeStatePatterns on HomeState {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() valuesLoading,
-    required TResult Function(
-            List<ApplicationModel> values,
-            List<ApplicationModel> allValues,
-            List<String> tags,
-            String? selectedTag)
-        loadSucces,
-    required TResult Function() loadSuccesEmpty,
-    required TResult Function(
-            Option<StorageFailure> storageFailureOrSuccessOption)
-        loadFailed,
-  }) =>
-      throw _privateConstructorUsedError;
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadingFarmOverviews value)? valuesLoading,
+    TResult Function(_LoadSucces value)? loadSucces,
+    TResult Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
+    TResult Function(_LoadFailed value)? loadFailed,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial(_that);
+      case _LoadingFarmOverviews() when valuesLoading != null:
+        return valuesLoading(_that);
+      case _LoadSucces() when loadSucces != null:
+        return loadSucces(_that);
+      case _LoadSuccesEmpty() when loadSuccesEmpty != null:
+        return loadSuccesEmpty(_that);
+      case _LoadFailed() when loadFailed != null:
+        return loadFailed(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? valuesLoading,
-    TResult? Function(
-            List<ApplicationModel> values,
-            List<ApplicationModel> allValues,
-            List<String> tags,
-            String? selectedTag)?
-        loadSucces,
-    TResult? Function()? loadSuccesEmpty,
-    TResult? Function(Option<StorageFailure> storageFailureOrSuccessOption)?
-        loadFailed,
-  }) =>
-      throw _privateConstructorUsedError;
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadingFarmOverviews value) valuesLoading,
+    required TResult Function(_LoadSucces value) loadSucces,
+    required TResult Function(_LoadSuccesEmpty value) loadSuccesEmpty,
+    required TResult Function(_LoadFailed value) loadFailed,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial():
+        return initial(_that);
+      case _LoadingFarmOverviews():
+        return valuesLoading(_that);
+      case _LoadSucces():
+        return loadSucces(_that);
+      case _LoadSuccesEmpty():
+        return loadSuccesEmpty(_that);
+      case _LoadFailed():
+        return loadFailed(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadingFarmOverviews value)? valuesLoading,
+    TResult? Function(_LoadSucces value)? loadSucces,
+    TResult? Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
+    TResult? Function(_LoadFailed value)? loadFailed,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial(_that);
+      case _LoadingFarmOverviews() when valuesLoading != null:
+        return valuesLoading(_that);
+      case _LoadSucces() when loadSucces != null:
+        return loadSucces(_that);
+      case _LoadSuccesEmpty() when loadSuccesEmpty != null:
+        return loadSuccesEmpty(_that);
+      case _LoadFailed() when loadFailed != null:
+        return loadFailed(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
@@ -354,386 +449,158 @@ mixin _$HomeState {
     TResult Function(Option<StorageFailure> storageFailureOrSuccessOption)?
         loadFailed,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial();
+      case _LoadingFarmOverviews() when valuesLoading != null:
+        return valuesLoading();
+      case _LoadSucces() when loadSucces != null:
+        return loadSucces(
+            _that.values, _that.allValues, _that.tags, _that.selectedTag);
+      case _LoadSuccesEmpty() when loadSuccesEmpty != null:
+        return loadSuccesEmpty();
+      case _LoadFailed() when loadFailed != null:
+        return loadFailed(_that.storageFailureOrSuccessOption);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadingFarmOverviews value) valuesLoading,
-    required TResult Function(_LoadSucces value) loadSucces,
-    required TResult Function(_LoadSuccesEmpty value) loadSuccesEmpty,
-    required TResult Function(_LoadFailed value) loadFailed,
-  }) =>
-      throw _privateConstructorUsedError;
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() valuesLoading,
+    required TResult Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)
+        loadSucces,
+    required TResult Function() loadSuccesEmpty,
+    required TResult Function(
+            Option<StorageFailure> storageFailureOrSuccessOption)
+        loadFailed,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial():
+        return initial();
+      case _LoadingFarmOverviews():
+        return valuesLoading();
+      case _LoadSucces():
+        return loadSucces(
+            _that.values, _that.allValues, _that.tags, _that.selectedTag);
+      case _LoadSuccesEmpty():
+        return loadSuccesEmpty();
+      case _LoadFailed():
+        return loadFailed(_that.storageFailureOrSuccessOption);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadingFarmOverviews value)? valuesLoading,
-    TResult? Function(_LoadSucces value)? loadSucces,
-    TResult? Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
-    TResult? Function(_LoadFailed value)? loadFailed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadingFarmOverviews value)? valuesLoading,
-    TResult Function(_LoadSucces value)? loadSucces,
-    TResult Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
-    TResult Function(_LoadFailed value)? loadFailed,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $HomeStateCopyWith<$Res> {
-  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
-      _$HomeStateCopyWithImpl<$Res, HomeState>;
-}
-
-/// @nodoc
-class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
-    implements $HomeStateCopyWith<$Res> {
-  _$HomeStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, _then);
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? valuesLoading,
+    TResult? Function(
+            List<ApplicationModel> values,
+            List<ApplicationModel> allValues,
+            List<String> tags,
+            String? selectedTag)?
+        loadSucces,
+    TResult? Function()? loadSuccesEmpty,
+    TResult? Function(Option<StorageFailure> storageFailureOrSuccessOption)?
+        loadFailed,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initial() when initial != null:
+        return initial();
+      case _LoadingFarmOverviews() when valuesLoading != null:
+        return valuesLoading();
+      case _LoadSucces() when loadSucces != null:
+        return loadSucces(
+            _that.values, _that.allValues, _that.tags, _that.selectedTag);
+      case _LoadSuccesEmpty() when loadSuccesEmpty != null:
+        return loadSuccesEmpty();
+      case _LoadFailed() when loadFailed != null:
+        return loadFailed(_that.storageFailureOrSuccessOption);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _Initial implements HomeState {
+  const _Initial();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 
   @override
   String toString() {
     return 'HomeState.initial()';
   }
+}
+
+/// @nodoc
+
+class _LoadingFarmOverviews implements HomeState {
+  const _LoadingFarmOverviews();
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _LoadingFarmOverviews);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() valuesLoading,
-    required TResult Function(
-            List<ApplicationModel> values,
-            List<ApplicationModel> allValues,
-            List<String> tags,
-            String? selectedTag)
-        loadSucces,
-    required TResult Function() loadSuccesEmpty,
-    required TResult Function(
-            Option<StorageFailure> storageFailureOrSuccessOption)
-        loadFailed,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? valuesLoading,
-    TResult? Function(
-            List<ApplicationModel> values,
-            List<ApplicationModel> allValues,
-            List<String> tags,
-            String? selectedTag)?
-        loadSucces,
-    TResult? Function()? loadSuccesEmpty,
-    TResult? Function(Option<StorageFailure> storageFailureOrSuccessOption)?
-        loadFailed,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? valuesLoading,
-    TResult Function(
-            List<ApplicationModel> values,
-            List<ApplicationModel> allValues,
-            List<String> tags,
-            String? selectedTag)?
-        loadSucces,
-    TResult Function()? loadSuccesEmpty,
-    TResult Function(Option<StorageFailure> storageFailureOrSuccessOption)?
-        loadFailed,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadingFarmOverviews value) valuesLoading,
-    required TResult Function(_LoadSucces value) loadSucces,
-    required TResult Function(_LoadSuccesEmpty value) loadSuccesEmpty,
-    required TResult Function(_LoadFailed value) loadFailed,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadingFarmOverviews value)? valuesLoading,
-    TResult? Function(_LoadSucces value)? loadSucces,
-    TResult? Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
-    TResult? Function(_LoadFailed value)? loadFailed,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadingFarmOverviews value)? valuesLoading,
-    TResult Function(_LoadSucces value)? loadSucces,
-    TResult Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
-    TResult Function(_LoadFailed value)? loadFailed,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements HomeState {
-  const factory _Initial() = _$_Initial;
-}
-
-/// @nodoc
-abstract class _$$_LoadingFarmOverviewsCopyWith<$Res> {
-  factory _$$_LoadingFarmOverviewsCopyWith(_$_LoadingFarmOverviews value,
-          $Res Function(_$_LoadingFarmOverviews) then) =
-      __$$_LoadingFarmOverviewsCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_LoadingFarmOverviewsCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_LoadingFarmOverviews>
-    implements _$$_LoadingFarmOverviewsCopyWith<$Res> {
-  __$$_LoadingFarmOverviewsCopyWithImpl(_$_LoadingFarmOverviews _value,
-      $Res Function(_$_LoadingFarmOverviews) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_LoadingFarmOverviews implements _LoadingFarmOverviews {
-  const _$_LoadingFarmOverviews();
 
   @override
   String toString() {
     return 'HomeState.valuesLoading()';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadingFarmOverviews);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() valuesLoading,
-    required TResult Function(
-            List<ApplicationModel> values,
-            List<ApplicationModel> allValues,
-            List<String> tags,
-            String? selectedTag)
-        loadSucces,
-    required TResult Function() loadSuccesEmpty,
-    required TResult Function(
-            Option<StorageFailure> storageFailureOrSuccessOption)
-        loadFailed,
-  }) {
-    return valuesLoading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? valuesLoading,
-    TResult? Function(
-            List<ApplicationModel> values,
-            List<ApplicationModel> allValues,
-            List<String> tags,
-            String? selectedTag)?
-        loadSucces,
-    TResult? Function()? loadSuccesEmpty,
-    TResult? Function(Option<StorageFailure> storageFailureOrSuccessOption)?
-        loadFailed,
-  }) {
-    return valuesLoading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? valuesLoading,
-    TResult Function(
-            List<ApplicationModel> values,
-            List<ApplicationModel> allValues,
-            List<String> tags,
-            String? selectedTag)?
-        loadSucces,
-    TResult Function()? loadSuccesEmpty,
-    TResult Function(Option<StorageFailure> storageFailureOrSuccessOption)?
-        loadFailed,
-    required TResult orElse(),
-  }) {
-    if (valuesLoading != null) {
-      return valuesLoading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadingFarmOverviews value) valuesLoading,
-    required TResult Function(_LoadSucces value) loadSucces,
-    required TResult Function(_LoadSuccesEmpty value) loadSuccesEmpty,
-    required TResult Function(_LoadFailed value) loadFailed,
-  }) {
-    return valuesLoading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadingFarmOverviews value)? valuesLoading,
-    TResult? Function(_LoadSucces value)? loadSucces,
-    TResult? Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
-    TResult? Function(_LoadFailed value)? loadFailed,
-  }) {
-    return valuesLoading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadingFarmOverviews value)? valuesLoading,
-    TResult Function(_LoadSucces value)? loadSucces,
-    TResult Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
-    TResult Function(_LoadFailed value)? loadFailed,
-    required TResult orElse(),
-  }) {
-    if (valuesLoading != null) {
-      return valuesLoading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LoadingFarmOverviews implements HomeState {
-  const factory _LoadingFarmOverviews() = _$_LoadingFarmOverviews;
-}
-
-/// @nodoc
-abstract class _$$_LoadSuccesCopyWith<$Res> {
-  factory _$$_LoadSuccesCopyWith(
-          _$_LoadSucces value, $Res Function(_$_LoadSucces) then) =
-      __$$_LoadSuccesCopyWithImpl<$Res>;
-  @useResult
-  $Res call(
-      {List<ApplicationModel> values,
-      List<ApplicationModel> allValues,
-      List<String> tags,
-      String? selectedTag});
-}
-
-/// @nodoc
-class __$$_LoadSuccesCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_LoadSucces>
-    implements _$$_LoadSuccesCopyWith<$Res> {
-  __$$_LoadSuccesCopyWithImpl(
-      _$_LoadSucces _value, $Res Function(_$_LoadSucces) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? values = null,
-    Object? allValues = null,
-    Object? tags = null,
-    Object? selectedTag = freezed,
-  }) {
-    return _then(_$_LoadSucces(
-      values: null == values
-          ? _value._values
-          : values // ignore: cast_nullable_to_non_nullable
-              as List<ApplicationModel>,
-      allValues: null == allValues
-          ? _value._allValues
-          : allValues // ignore: cast_nullable_to_non_nullable
-              as List<ApplicationModel>,
-      tags: null == tags
-          ? _value._tags
-          : tags // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      selectedTag: freezed == selectedTag
-          ? _value.selectedTag
-          : selectedTag // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$_LoadSucces implements _LoadSucces {
-  const _$_LoadSucces(
+class _LoadSucces implements HomeState {
+  const _LoadSucces(
       {required final List<ApplicationModel> values,
       required final List<ApplicationModel> allValues,
       required final List<String> tags,
@@ -743,7 +610,6 @@ class _$_LoadSucces implements _LoadSucces {
         _tags = tags;
 
   final List<ApplicationModel> _values;
-  @override
   List<ApplicationModel> get values {
     if (_values is EqualUnmodifiableListView) return _values;
     // ignore: implicit_dynamic_type
@@ -751,7 +617,6 @@ class _$_LoadSucces implements _LoadSucces {
   }
 
   final List<ApplicationModel> _allValues;
-  @override
   List<ApplicationModel> get allValues {
     if (_allValues is EqualUnmodifiableListView) return _allValues;
     // ignore: implicit_dynamic_type
@@ -759,26 +624,26 @@ class _$_LoadSucces implements _LoadSucces {
   }
 
   final List<String> _tags;
-  @override
   List<String> get tags {
     if (_tags is EqualUnmodifiableListView) return _tags;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tags);
   }
 
-  @override
   final String? selectedTag;
 
-  @override
-  String toString() {
-    return 'HomeState.loadSucces(values: $values, allValues: $allValues, tags: $tags, selectedTag: $selectedTag)';
-  }
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$LoadSuccesCopyWith<_LoadSucces> get copyWith =>
+      __$LoadSuccesCopyWithImpl<_LoadSucces>(this, _$identity);
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadSucces &&
+            other is _LoadSucces &&
             const DeepCollectionEquality().equals(other._values, _values) &&
             const DeepCollectionEquality()
                 .equals(other._allValues, _allValues) &&
@@ -795,316 +660,102 @@ class _$_LoadSucces implements _LoadSucces {
       const DeepCollectionEquality().hash(_tags),
       selectedTag);
 
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_LoadSuccesCopyWith<_$_LoadSucces> get copyWith =>
-      __$$_LoadSuccesCopyWithImpl<_$_LoadSucces>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() valuesLoading,
-    required TResult Function(
-            List<ApplicationModel> values,
-            List<ApplicationModel> allValues,
-            List<String> tags,
-            String? selectedTag)
-        loadSucces,
-    required TResult Function() loadSuccesEmpty,
-    required TResult Function(
-            Option<StorageFailure> storageFailureOrSuccessOption)
-        loadFailed,
-  }) {
-    return loadSucces(values, allValues, tags, selectedTag);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? valuesLoading,
-    TResult? Function(
-            List<ApplicationModel> values,
-            List<ApplicationModel> allValues,
-            List<String> tags,
-            String? selectedTag)?
-        loadSucces,
-    TResult? Function()? loadSuccesEmpty,
-    TResult? Function(Option<StorageFailure> storageFailureOrSuccessOption)?
-        loadFailed,
-  }) {
-    return loadSucces?.call(values, allValues, tags, selectedTag);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? valuesLoading,
-    TResult Function(
-            List<ApplicationModel> values,
-            List<ApplicationModel> allValues,
-            List<String> tags,
-            String? selectedTag)?
-        loadSucces,
-    TResult Function()? loadSuccesEmpty,
-    TResult Function(Option<StorageFailure> storageFailureOrSuccessOption)?
-        loadFailed,
-    required TResult orElse(),
-  }) {
-    if (loadSucces != null) {
-      return loadSucces(values, allValues, tags, selectedTag);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadingFarmOverviews value) valuesLoading,
-    required TResult Function(_LoadSucces value) loadSucces,
-    required TResult Function(_LoadSuccesEmpty value) loadSuccesEmpty,
-    required TResult Function(_LoadFailed value) loadFailed,
-  }) {
-    return loadSucces(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadingFarmOverviews value)? valuesLoading,
-    TResult? Function(_LoadSucces value)? loadSucces,
-    TResult? Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
-    TResult? Function(_LoadFailed value)? loadFailed,
-  }) {
-    return loadSucces?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadingFarmOverviews value)? valuesLoading,
-    TResult Function(_LoadSucces value)? loadSucces,
-    TResult Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
-    TResult Function(_LoadFailed value)? loadFailed,
-    required TResult orElse(),
-  }) {
-    if (loadSucces != null) {
-      return loadSucces(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LoadSucces implements HomeState {
-  const factory _LoadSucces(
-      {required final List<ApplicationModel> values,
-      required final List<ApplicationModel> allValues,
-      required final List<String> tags,
-      final String? selectedTag}) = _$_LoadSucces;
-
-  List<ApplicationModel> get values;
-  List<ApplicationModel> get allValues;
-  List<String> get tags;
-  String? get selectedTag;
-  @JsonKey(ignore: true)
-  _$$_LoadSuccesCopyWith<_$_LoadSucces> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_LoadSuccesEmptyCopyWith<$Res> {
-  factory _$$_LoadSuccesEmptyCopyWith(
-          _$_LoadSuccesEmpty value, $Res Function(_$_LoadSuccesEmpty) then) =
-      __$$_LoadSuccesEmptyCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_LoadSuccesEmptyCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_LoadSuccesEmpty>
-    implements _$$_LoadSuccesEmptyCopyWith<$Res> {
-  __$$_LoadSuccesEmptyCopyWithImpl(
-      _$_LoadSuccesEmpty _value, $Res Function(_$_LoadSuccesEmpty) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_LoadSuccesEmpty implements _LoadSuccesEmpty {
-  const _$_LoadSuccesEmpty();
-
   @override
   String toString() {
-    return 'HomeState.loadSuccesEmpty()';
+    return 'HomeState.loadSucces(values: $values, allValues: $allValues, tags: $tags, selectedTag: $selectedTag)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadSuccesEmpty);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() valuesLoading,
-    required TResult Function(
-            List<ApplicationModel> values,
-            List<ApplicationModel> allValues,
-            List<String> tags,
-            String? selectedTag)
-        loadSucces,
-    required TResult Function() loadSuccesEmpty,
-    required TResult Function(
-            Option<StorageFailure> storageFailureOrSuccessOption)
-        loadFailed,
-  }) {
-    return loadSuccesEmpty();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? valuesLoading,
-    TResult? Function(
-            List<ApplicationModel> values,
-            List<ApplicationModel> allValues,
-            List<String> tags,
-            String? selectedTag)?
-        loadSucces,
-    TResult? Function()? loadSuccesEmpty,
-    TResult? Function(Option<StorageFailure> storageFailureOrSuccessOption)?
-        loadFailed,
-  }) {
-    return loadSuccesEmpty?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? valuesLoading,
-    TResult Function(
-            List<ApplicationModel> values,
-            List<ApplicationModel> allValues,
-            List<String> tags,
-            String? selectedTag)?
-        loadSucces,
-    TResult Function()? loadSuccesEmpty,
-    TResult Function(Option<StorageFailure> storageFailureOrSuccessOption)?
-        loadFailed,
-    required TResult orElse(),
-  }) {
-    if (loadSuccesEmpty != null) {
-      return loadSuccesEmpty();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadingFarmOverviews value) valuesLoading,
-    required TResult Function(_LoadSucces value) loadSucces,
-    required TResult Function(_LoadSuccesEmpty value) loadSuccesEmpty,
-    required TResult Function(_LoadFailed value) loadFailed,
-  }) {
-    return loadSuccesEmpty(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadingFarmOverviews value)? valuesLoading,
-    TResult? Function(_LoadSucces value)? loadSucces,
-    TResult? Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
-    TResult? Function(_LoadFailed value)? loadFailed,
-  }) {
-    return loadSuccesEmpty?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadingFarmOverviews value)? valuesLoading,
-    TResult Function(_LoadSucces value)? loadSucces,
-    TResult Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
-    TResult Function(_LoadFailed value)? loadFailed,
-    required TResult orElse(),
-  }) {
-    if (loadSuccesEmpty != null) {
-      return loadSuccesEmpty(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LoadSuccesEmpty implements HomeState {
-  const factory _LoadSuccesEmpty() = _$_LoadSuccesEmpty;
 }
 
 /// @nodoc
-abstract class _$$_LoadFailedCopyWith<$Res> {
-  factory _$$_LoadFailedCopyWith(
-          _$_LoadFailed value, $Res Function(_$_LoadFailed) then) =
-      __$$_LoadFailedCopyWithImpl<$Res>;
+abstract mixin class _$LoadSuccesCopyWith<$Res>
+    implements $HomeStateCopyWith<$Res> {
+  factory _$LoadSuccesCopyWith(
+          _LoadSucces value, $Res Function(_LoadSucces) _then) =
+      __$LoadSuccesCopyWithImpl;
   @useResult
-  $Res call({Option<StorageFailure> storageFailureOrSuccessOption});
+  $Res call(
+      {List<ApplicationModel> values,
+      List<ApplicationModel> allValues,
+      List<String> tags,
+      String? selectedTag});
 }
 
 /// @nodoc
-class __$$_LoadFailedCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$_LoadFailed>
-    implements _$$_LoadFailedCopyWith<$Res> {
-  __$$_LoadFailedCopyWithImpl(
-      _$_LoadFailed _value, $Res Function(_$_LoadFailed) _then)
-      : super(_value, _then);
+class __$LoadSuccesCopyWithImpl<$Res> implements _$LoadSuccesCopyWith<$Res> {
+  __$LoadSuccesCopyWithImpl(this._self, this._then);
 
+  final _LoadSucces _self;
+  final $Res Function(_LoadSucces) _then;
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
-    Object? storageFailureOrSuccessOption = null,
+    Object? values = null,
+    Object? allValues = null,
+    Object? tags = null,
+    Object? selectedTag = freezed,
   }) {
-    return _then(_$_LoadFailed(
-      storageFailureOrSuccessOption: null == storageFailureOrSuccessOption
-          ? _value.storageFailureOrSuccessOption
-          : storageFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<StorageFailure>,
+    return _then(_LoadSucces(
+      values: null == values
+          ? _self._values
+          : values // ignore: cast_nullable_to_non_nullable
+              as List<ApplicationModel>,
+      allValues: null == allValues
+          ? _self._allValues
+          : allValues // ignore: cast_nullable_to_non_nullable
+              as List<ApplicationModel>,
+      tags: null == tags
+          ? _self._tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      selectedTag: freezed == selectedTag
+          ? _self.selectedTag
+          : selectedTag // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_LoadFailed implements _LoadFailed {
-  const _$_LoadFailed({required this.storageFailureOrSuccessOption});
+class _LoadSuccesEmpty implements HomeState {
+  const _LoadSuccesEmpty();
 
   @override
-  final Option<StorageFailure> storageFailureOrSuccessOption;
-
-  @override
-  String toString() {
-    return 'HomeState.loadFailed(storageFailureOrSuccessOption: $storageFailureOrSuccessOption)';
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _LoadSuccesEmpty);
   }
 
   @override
-  bool operator ==(dynamic other) {
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'HomeState.loadSuccesEmpty()';
+  }
+}
+
+/// @nodoc
+
+class _LoadFailed implements HomeState {
+  const _LoadFailed({required this.storageFailureOrSuccessOption});
+
+  final Option<StorageFailure> storageFailureOrSuccessOption;
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$LoadFailedCopyWith<_LoadFailed> get copyWith =>
+      __$LoadFailedCopyWithImpl<_LoadFailed>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadFailed &&
+            other is _LoadFailed &&
             (identical(other.storageFailureOrSuccessOption,
                     storageFailureOrSuccessOption) ||
                 other.storageFailureOrSuccessOption ==
@@ -1114,119 +765,42 @@ class _$_LoadFailed implements _LoadFailed {
   @override
   int get hashCode => Object.hash(runtimeType, storageFailureOrSuccessOption);
 
-  @JsonKey(ignore: true)
   @override
+  String toString() {
+    return 'HomeState.loadFailed(storageFailureOrSuccessOption: $storageFailureOrSuccessOption)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$LoadFailedCopyWith<$Res>
+    implements $HomeStateCopyWith<$Res> {
+  factory _$LoadFailedCopyWith(
+          _LoadFailed value, $Res Function(_LoadFailed) _then) =
+      __$LoadFailedCopyWithImpl;
+  @useResult
+  $Res call({Option<StorageFailure> storageFailureOrSuccessOption});
+}
+
+/// @nodoc
+class __$LoadFailedCopyWithImpl<$Res> implements _$LoadFailedCopyWith<$Res> {
+  __$LoadFailedCopyWithImpl(this._self, this._then);
+
+  final _LoadFailed _self;
+  final $Res Function(_LoadFailed) _then;
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  _$$_LoadFailedCopyWith<_$_LoadFailed> get copyWith =>
-      __$$_LoadFailedCopyWithImpl<_$_LoadFailed>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() valuesLoading,
-    required TResult Function(
-            List<ApplicationModel> values,
-            List<ApplicationModel> allValues,
-            List<String> tags,
-            String? selectedTag)
-        loadSucces,
-    required TResult Function() loadSuccesEmpty,
-    required TResult Function(
-            Option<StorageFailure> storageFailureOrSuccessOption)
-        loadFailed,
+  $Res call({
+    Object? storageFailureOrSuccessOption = null,
   }) {
-    return loadFailed(storageFailureOrSuccessOption);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? valuesLoading,
-    TResult? Function(
-            List<ApplicationModel> values,
-            List<ApplicationModel> allValues,
-            List<String> tags,
-            String? selectedTag)?
-        loadSucces,
-    TResult? Function()? loadSuccesEmpty,
-    TResult? Function(Option<StorageFailure> storageFailureOrSuccessOption)?
-        loadFailed,
-  }) {
-    return loadFailed?.call(storageFailureOrSuccessOption);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? valuesLoading,
-    TResult Function(
-            List<ApplicationModel> values,
-            List<ApplicationModel> allValues,
-            List<String> tags,
-            String? selectedTag)?
-        loadSucces,
-    TResult Function()? loadSuccesEmpty,
-    TResult Function(Option<StorageFailure> storageFailureOrSuccessOption)?
-        loadFailed,
-    required TResult orElse(),
-  }) {
-    if (loadFailed != null) {
-      return loadFailed(storageFailureOrSuccessOption);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadingFarmOverviews value) valuesLoading,
-    required TResult Function(_LoadSucces value) loadSucces,
-    required TResult Function(_LoadSuccesEmpty value) loadSuccesEmpty,
-    required TResult Function(_LoadFailed value) loadFailed,
-  }) {
-    return loadFailed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadingFarmOverviews value)? valuesLoading,
-    TResult? Function(_LoadSucces value)? loadSucces,
-    TResult? Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
-    TResult? Function(_LoadFailed value)? loadFailed,
-  }) {
-    return loadFailed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadingFarmOverviews value)? valuesLoading,
-    TResult Function(_LoadSucces value)? loadSucces,
-    TResult Function(_LoadSuccesEmpty value)? loadSuccesEmpty,
-    TResult Function(_LoadFailed value)? loadFailed,
-    required TResult orElse(),
-  }) {
-    if (loadFailed != null) {
-      return loadFailed(this);
-    }
-    return orElse();
+    return _then(_LoadFailed(
+      storageFailureOrSuccessOption: null == storageFailureOrSuccessOption
+          ? _self.storageFailureOrSuccessOption
+          : storageFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<StorageFailure>,
+    ));
   }
 }
 
-abstract class _LoadFailed implements HomeState {
-  const factory _LoadFailed(
-      {required final Option<StorageFailure>
-          storageFailureOrSuccessOption}) = _$_LoadFailed;
-
-  Option<StorageFailure> get storageFailureOrSuccessOption;
-  @JsonKey(ignore: true)
-  _$$_LoadFailedCopyWith<_$_LoadFailed> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

@@ -6,7 +6,7 @@ import 'package:passvera/domain/tag_palette.dart';
 part 'application_model.freezed.dart';
 
 @freezed
-class ApplicationModel with _$ApplicationModel {
+abstract class ApplicationModel with _$ApplicationModel {
   const ApplicationModel._();
 
   const factory ApplicationModel({

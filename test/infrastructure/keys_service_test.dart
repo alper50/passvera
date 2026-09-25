@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/domain/errors/storage_failures.dart';
 import 'package:passvera/infrastructure/keys/keys_service.dart';
+import 'package:passvera/infrastructure/keys/storage_keys.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -15,12 +16,13 @@ void main() {
 
   Future<void> seed(List<ApplicationModel> models) async {
     FlutterSecureStorage.setMockInitialValues({
-      for (final m in models) m.key: m.toStorageValue(),
+      for (final m in models) StorageKeys.password(m.key): m.toStorageValue(),
     });
     service = KeysService();
   }
 
-  Future<String?> read(String key) => service.storage.read(key: key);
+  Future<String?> read(String name) =>
+      service.storage.read(key: StorageKeys.password(name));
 
   group('updateSingleValue', () {
     test('rejects renaming onto an existing key and keeps both entries',

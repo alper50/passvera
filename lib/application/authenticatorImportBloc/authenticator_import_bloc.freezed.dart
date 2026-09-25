@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,178 +9,46 @@ part of 'authenticator_import_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AuthenticatorImportEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String raw) qrScanned,
-    required TResult Function(String id) selectionToggled,
-    required TResult Function() importConfirmed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String raw)? qrScanned,
-    TResult? Function(String id)? selectionToggled,
-    TResult? Function()? importConfirmed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String raw)? qrScanned,
-    TResult Function(String id)? selectionToggled,
-    TResult Function()? importConfirmed,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_QrScanned value) qrScanned,
-    required TResult Function(_SelectionToggled value) selectionToggled,
-    required TResult Function(_ImportConfirmed value) importConfirmed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_QrScanned value)? qrScanned,
-    TResult? Function(_SelectionToggled value)? selectionToggled,
-    TResult? Function(_ImportConfirmed value)? importConfirmed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_QrScanned value)? qrScanned,
-    TResult Function(_SelectionToggled value)? selectionToggled,
-    TResult Function(_ImportConfirmed value)? importConfirmed,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AuthenticatorImportEventCopyWith<$Res> {
-  factory $AuthenticatorImportEventCopyWith(AuthenticatorImportEvent value,
-          $Res Function(AuthenticatorImportEvent) then) =
-      _$AuthenticatorImportEventCopyWithImpl<$Res, AuthenticatorImportEvent>;
-}
-
-/// @nodoc
-class _$AuthenticatorImportEventCopyWithImpl<$Res,
-        $Val extends AuthenticatorImportEvent>
-    implements $AuthenticatorImportEventCopyWith<$Res> {
-  _$AuthenticatorImportEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$AuthenticatorImportEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_Started implements _Started {
-  const _$_Started();
-
   @override
-  String toString() {
-    return 'AuthenticatorImportEvent.started()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is AuthenticatorImportEvent);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String raw) qrScanned,
-    required TResult Function(String id) selectionToggled,
-    required TResult Function() importConfirmed,
-  }) {
-    return started();
+  String toString() {
+    return 'AuthenticatorImportEvent()';
   }
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String raw)? qrScanned,
-    TResult? Function(String id)? selectionToggled,
-    TResult? Function()? importConfirmed,
-  }) {
-    return started?.call();
-  }
+/// @nodoc
+class $AuthenticatorImportEventCopyWith<$Res> {
+  $AuthenticatorImportEventCopyWith(
+      AuthenticatorImportEvent _, $Res Function(AuthenticatorImportEvent) __);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String raw)? qrScanned,
-    TResult Function(String id)? selectionToggled,
-    TResult Function()? importConfirmed,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
+/// Adds pattern-matching-related methods to [AuthenticatorImportEvent].
+extension AuthenticatorImportEventPatterns on AuthenticatorImportEvent {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_QrScanned value) qrScanned,
-    required TResult Function(_SelectionToggled value) selectionToggled,
-    required TResult Function(_ImportConfirmed value) importConfirmed,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_QrScanned value)? qrScanned,
-    TResult? Function(_SelectionToggled value)? selectionToggled,
-    TResult? Function(_ImportConfirmed value)? importConfirmed,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
@@ -189,42 +57,268 @@ class _$_Started implements _Started {
     TResult Function(_ImportConfirmed value)? importConfirmed,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    final _that = this;
+    switch (_that) {
+      case _Started() when started != null:
+        return started(_that);
+      case _QrScanned() when qrScanned != null:
+        return qrScanned(_that);
+      case _SelectionToggled() when selectionToggled != null:
+        return selectionToggled(_that);
+      case _ImportConfirmed() when importConfirmed != null:
+        return importConfirmed(_that);
+      case _:
+        return orElse();
     }
-    return orElse();
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_QrScanned value) qrScanned,
+    required TResult Function(_SelectionToggled value) selectionToggled,
+    required TResult Function(_ImportConfirmed value) importConfirmed,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Started():
+        return started(_that);
+      case _QrScanned():
+        return qrScanned(_that);
+      case _SelectionToggled():
+        return selectionToggled(_that);
+      case _ImportConfirmed():
+        return importConfirmed(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_QrScanned value)? qrScanned,
+    TResult? Function(_SelectionToggled value)? selectionToggled,
+    TResult? Function(_ImportConfirmed value)? importConfirmed,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Started() when started != null:
+        return started(_that);
+      case _QrScanned() when qrScanned != null:
+        return qrScanned(_that);
+      case _SelectionToggled() when selectionToggled != null:
+        return selectionToggled(_that);
+      case _ImportConfirmed() when importConfirmed != null:
+        return importConfirmed(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String raw)? qrScanned,
+    TResult Function(String id)? selectionToggled,
+    TResult Function()? importConfirmed,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Started() when started != null:
+        return started();
+      case _QrScanned() when qrScanned != null:
+        return qrScanned(_that.raw);
+      case _SelectionToggled() when selectionToggled != null:
+        return selectionToggled(_that.id);
+      case _ImportConfirmed() when importConfirmed != null:
+        return importConfirmed();
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String raw) qrScanned,
+    required TResult Function(String id) selectionToggled,
+    required TResult Function() importConfirmed,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Started():
+        return started();
+      case _QrScanned():
+        return qrScanned(_that.raw);
+      case _SelectionToggled():
+        return selectionToggled(_that.id);
+      case _ImportConfirmed():
+        return importConfirmed();
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String raw)? qrScanned,
+    TResult? Function(String id)? selectionToggled,
+    TResult? Function()? importConfirmed,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Started() when started != null:
+        return started();
+      case _QrScanned() when qrScanned != null:
+        return qrScanned(_that.raw);
+      case _SelectionToggled() when selectionToggled != null:
+        return selectionToggled(_that.id);
+      case _ImportConfirmed() when importConfirmed != null:
+        return importConfirmed();
+      case _:
+        return null;
+    }
   }
 }
 
-abstract class _Started implements AuthenticatorImportEvent {
-  const factory _Started() = _$_Started;
+/// @nodoc
+
+class _Started implements AuthenticatorImportEvent {
+  const _Started();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Started);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'AuthenticatorImportEvent.started()';
+  }
 }
 
 /// @nodoc
-abstract class _$$_QrScannedCopyWith<$Res> {
-  factory _$$_QrScannedCopyWith(
-          _$_QrScanned value, $Res Function(_$_QrScanned) then) =
-      __$$_QrScannedCopyWithImpl<$Res>;
+
+class _QrScanned implements AuthenticatorImportEvent {
+  const _QrScanned(this.raw);
+
+  final String raw;
+
+  /// Create a copy of AuthenticatorImportEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$QrScannedCopyWith<_QrScanned> get copyWith =>
+      __$QrScannedCopyWithImpl<_QrScanned>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _QrScanned &&
+            (identical(other.raw, raw) || other.raw == raw));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, raw);
+
+  @override
+  String toString() {
+    return 'AuthenticatorImportEvent.qrScanned(raw: $raw)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$QrScannedCopyWith<$Res>
+    implements $AuthenticatorImportEventCopyWith<$Res> {
+  factory _$QrScannedCopyWith(
+          _QrScanned value, $Res Function(_QrScanned) _then) =
+      __$QrScannedCopyWithImpl;
   @useResult
   $Res call({String raw});
 }
 
 /// @nodoc
-class __$$_QrScannedCopyWithImpl<$Res>
-    extends _$AuthenticatorImportEventCopyWithImpl<$Res, _$_QrScanned>
-    implements _$$_QrScannedCopyWith<$Res> {
-  __$$_QrScannedCopyWithImpl(
-      _$_QrScanned _value, $Res Function(_$_QrScanned) _then)
-      : super(_value, _then);
+class __$QrScannedCopyWithImpl<$Res> implements _$QrScannedCopyWith<$Res> {
+  __$QrScannedCopyWithImpl(this._self, this._then);
 
+  final _QrScanned _self;
+  final $Res Function(_QrScanned) _then;
+
+  /// Create a copy of AuthenticatorImportEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? raw = null,
   }) {
-    return _then(_$_QrScanned(
+    return _then(_QrScanned(
       null == raw
-          ? _value.raw
+          ? _self.raw
           : raw // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -233,143 +327,62 @@ class __$$_QrScannedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_QrScanned implements _QrScanned {
-  const _$_QrScanned(this.raw);
+class _SelectionToggled implements AuthenticatorImportEvent {
+  const _SelectionToggled(this.id);
+
+  final String id;
+
+  /// Create a copy of AuthenticatorImportEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SelectionToggledCopyWith<_SelectionToggled> get copyWith =>
+      __$SelectionToggledCopyWithImpl<_SelectionToggled>(this, _$identity);
 
   @override
-  final String raw;
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _SelectionToggled &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
 
   @override
   String toString() {
-    return 'AuthenticatorImportEvent.qrScanned(raw: $raw)';
+    return 'AuthenticatorImportEvent.selectionToggled(id: $id)';
   }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_QrScanned &&
-            (identical(other.raw, raw) || other.raw == raw));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, raw);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_QrScannedCopyWith<_$_QrScanned> get copyWith =>
-      __$$_QrScannedCopyWithImpl<_$_QrScanned>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String raw) qrScanned,
-    required TResult Function(String id) selectionToggled,
-    required TResult Function() importConfirmed,
-  }) {
-    return qrScanned(raw);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String raw)? qrScanned,
-    TResult? Function(String id)? selectionToggled,
-    TResult? Function()? importConfirmed,
-  }) {
-    return qrScanned?.call(raw);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String raw)? qrScanned,
-    TResult Function(String id)? selectionToggled,
-    TResult Function()? importConfirmed,
-    required TResult orElse(),
-  }) {
-    if (qrScanned != null) {
-      return qrScanned(raw);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_QrScanned value) qrScanned,
-    required TResult Function(_SelectionToggled value) selectionToggled,
-    required TResult Function(_ImportConfirmed value) importConfirmed,
-  }) {
-    return qrScanned(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_QrScanned value)? qrScanned,
-    TResult? Function(_SelectionToggled value)? selectionToggled,
-    TResult? Function(_ImportConfirmed value)? importConfirmed,
-  }) {
-    return qrScanned?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_QrScanned value)? qrScanned,
-    TResult Function(_SelectionToggled value)? selectionToggled,
-    TResult Function(_ImportConfirmed value)? importConfirmed,
-    required TResult orElse(),
-  }) {
-    if (qrScanned != null) {
-      return qrScanned(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _QrScanned implements AuthenticatorImportEvent {
-  const factory _QrScanned(final String raw) = _$_QrScanned;
-
-  String get raw;
-  @JsonKey(ignore: true)
-  _$$_QrScannedCopyWith<_$_QrScanned> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_SelectionToggledCopyWith<$Res> {
-  factory _$$_SelectionToggledCopyWith(
-          _$_SelectionToggled value, $Res Function(_$_SelectionToggled) then) =
-      __$$_SelectionToggledCopyWithImpl<$Res>;
+abstract mixin class _$SelectionToggledCopyWith<$Res>
+    implements $AuthenticatorImportEventCopyWith<$Res> {
+  factory _$SelectionToggledCopyWith(
+          _SelectionToggled value, $Res Function(_SelectionToggled) _then) =
+      __$SelectionToggledCopyWithImpl;
   @useResult
   $Res call({String id});
 }
 
 /// @nodoc
-class __$$_SelectionToggledCopyWithImpl<$Res>
-    extends _$AuthenticatorImportEventCopyWithImpl<$Res, _$_SelectionToggled>
-    implements _$$_SelectionToggledCopyWith<$Res> {
-  __$$_SelectionToggledCopyWithImpl(
-      _$_SelectionToggled _value, $Res Function(_$_SelectionToggled) _then)
-      : super(_value, _then);
+class __$SelectionToggledCopyWithImpl<$Res>
+    implements _$SelectionToggledCopyWith<$Res> {
+  __$SelectionToggledCopyWithImpl(this._self, this._then);
 
+  final _SelectionToggled _self;
+  final $Res Function(_SelectionToggled) _then;
+
+  /// Create a copy of AuthenticatorImportEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? id = null,
   }) {
-    return _then(_$_SelectionToggled(
+    return _then(_SelectionToggled(
       null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -378,354 +391,101 @@ class __$$_SelectionToggledCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SelectionToggled implements _SelectionToggled {
-  const _$_SelectionToggled(this.id);
+class _ImportConfirmed implements AuthenticatorImportEvent {
+  const _ImportConfirmed();
 
   @override
-  final String id;
-
-  @override
-  String toString() {
-    return 'AuthenticatorImportEvent.selectionToggled(id: $id)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_SelectionToggled &&
-            (identical(other.id, id) || other.id == id));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, id);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_SelectionToggledCopyWith<_$_SelectionToggled> get copyWith =>
-      __$$_SelectionToggledCopyWithImpl<_$_SelectionToggled>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String raw) qrScanned,
-    required TResult Function(String id) selectionToggled,
-    required TResult Function() importConfirmed,
-  }) {
-    return selectionToggled(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String raw)? qrScanned,
-    TResult? Function(String id)? selectionToggled,
-    TResult? Function()? importConfirmed,
-  }) {
-    return selectionToggled?.call(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String raw)? qrScanned,
-    TResult Function(String id)? selectionToggled,
-    TResult Function()? importConfirmed,
-    required TResult orElse(),
-  }) {
-    if (selectionToggled != null) {
-      return selectionToggled(id);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_QrScanned value) qrScanned,
-    required TResult Function(_SelectionToggled value) selectionToggled,
-    required TResult Function(_ImportConfirmed value) importConfirmed,
-  }) {
-    return selectionToggled(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_QrScanned value)? qrScanned,
-    TResult? Function(_SelectionToggled value)? selectionToggled,
-    TResult? Function(_ImportConfirmed value)? importConfirmed,
-  }) {
-    return selectionToggled?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_QrScanned value)? qrScanned,
-    TResult Function(_SelectionToggled value)? selectionToggled,
-    TResult Function(_ImportConfirmed value)? importConfirmed,
-    required TResult orElse(),
-  }) {
-    if (selectionToggled != null) {
-      return selectionToggled(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SelectionToggled implements AuthenticatorImportEvent {
-  const factory _SelectionToggled(final String id) = _$_SelectionToggled;
-
-  String get id;
-  @JsonKey(ignore: true)
-  _$$_SelectionToggledCopyWith<_$_SelectionToggled> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_ImportConfirmedCopyWith<$Res> {
-  factory _$$_ImportConfirmedCopyWith(
-          _$_ImportConfirmed value, $Res Function(_$_ImportConfirmed) then) =
-      __$$_ImportConfirmedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_ImportConfirmedCopyWithImpl<$Res>
-    extends _$AuthenticatorImportEventCopyWithImpl<$Res, _$_ImportConfirmed>
-    implements _$$_ImportConfirmedCopyWith<$Res> {
-  __$$_ImportConfirmedCopyWithImpl(
-      _$_ImportConfirmed _value, $Res Function(_$_ImportConfirmed) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_ImportConfirmed implements _ImportConfirmed {
-  const _$_ImportConfirmed();
-
-  @override
-  String toString() {
-    return 'AuthenticatorImportEvent.importConfirmed()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ImportConfirmed);
+        (other.runtimeType == runtimeType && other is _ImportConfirmed);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(String raw) qrScanned,
-    required TResult Function(String id) selectionToggled,
-    required TResult Function() importConfirmed,
-  }) {
-    return importConfirmed();
+  String toString() {
+    return 'AuthenticatorImportEvent.importConfirmed()';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(String raw)? qrScanned,
-    TResult? Function(String id)? selectionToggled,
-    TResult? Function()? importConfirmed,
-  }) {
-    return importConfirmed?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(String raw)? qrScanned,
-    TResult Function(String id)? selectionToggled,
-    TResult Function()? importConfirmed,
-    required TResult orElse(),
-  }) {
-    if (importConfirmed != null) {
-      return importConfirmed();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_QrScanned value) qrScanned,
-    required TResult Function(_SelectionToggled value) selectionToggled,
-    required TResult Function(_ImportConfirmed value) importConfirmed,
-  }) {
-    return importConfirmed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_QrScanned value)? qrScanned,
-    TResult? Function(_SelectionToggled value)? selectionToggled,
-    TResult? Function(_ImportConfirmed value)? importConfirmed,
-  }) {
-    return importConfirmed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_QrScanned value)? qrScanned,
-    TResult Function(_SelectionToggled value)? selectionToggled,
-    TResult Function(_ImportConfirmed value)? importConfirmed,
-    required TResult orElse(),
-  }) {
-    if (importConfirmed != null) {
-      return importConfirmed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ImportConfirmed implements AuthenticatorImportEvent {
-  const factory _ImportConfirmed() = _$_ImportConfirmed;
 }
 
 /// @nodoc
 mixin _$AuthenticatorImportState {
   /// Importable accounts from every scanned batch, in scan order.
-  List<AuthenticatorEntry> get candidates => throw _privateConstructorUsedError;
+  List<AuthenticatorEntry> get candidates;
 
   /// Ids already in the vault; shown but not selectable.
-  Set<String> get existingIds => throw _privateConstructorUsedError;
-  Set<String> get selectedIds => throw _privateConstructorUsedError;
-  Set<int> get scannedBatches => throw _privateConstructorUsedError;
-  int? get batchSize => throw _privateConstructorUsedError;
-  int? get batchId => throw _privateConstructorUsedError;
-  int get skippedCount => throw _privateConstructorUsedError;
-  bool get isSaving => throw _privateConstructorUsedError;
-  Option<Either<AuthenticatorFailure, Unit>> get scanFailureOrSuccess =>
-      throw _privateConstructorUsedError;
+  Set<String> get existingIds;
+  Set<String> get selectedIds;
+  Set<int> get scannedBatches;
+  int? get batchSize;
+  int? get batchId;
+  int get skippedCount;
+  bool get isSaving;
+  Option<Either<AuthenticatorFailure, Unit>> get scanFailureOrSuccess;
 
   /// Right = number of accounts added.
-  Option<Either<AuthenticatorFailure, int>> get importFailureOrSuccess =>
-      throw _privateConstructorUsedError;
+  Option<Either<AuthenticatorFailure, int>> get importFailureOrSuccess;
 
-  @JsonKey(ignore: true)
-  $AuthenticatorImportStateCopyWith<AuthenticatorImportState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AuthenticatorImportStateCopyWith<$Res> {
-  factory $AuthenticatorImportStateCopyWith(AuthenticatorImportState value,
-          $Res Function(AuthenticatorImportState) then) =
-      _$AuthenticatorImportStateCopyWithImpl<$Res, AuthenticatorImportState>;
-  @useResult
-  $Res call(
-      {List<AuthenticatorEntry> candidates,
-      Set<String> existingIds,
-      Set<String> selectedIds,
-      Set<int> scannedBatches,
-      int? batchSize,
-      int? batchId,
-      int skippedCount,
-      bool isSaving,
-      Option<Either<AuthenticatorFailure, Unit>> scanFailureOrSuccess,
-      Option<Either<AuthenticatorFailure, int>> importFailureOrSuccess});
-}
-
-/// @nodoc
-class _$AuthenticatorImportStateCopyWithImpl<$Res,
-        $Val extends AuthenticatorImportState>
-    implements $AuthenticatorImportStateCopyWith<$Res> {
-  _$AuthenticatorImportStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of AuthenticatorImportState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $AuthenticatorImportStateCopyWith<AuthenticatorImportState> get copyWith =>
+      _$AuthenticatorImportStateCopyWithImpl<AuthenticatorImportState>(
+          this as AuthenticatorImportState, _$identity);
+
   @override
-  $Res call({
-    Object? candidates = null,
-    Object? existingIds = null,
-    Object? selectedIds = null,
-    Object? scannedBatches = null,
-    Object? batchSize = freezed,
-    Object? batchId = freezed,
-    Object? skippedCount = null,
-    Object? isSaving = null,
-    Object? scanFailureOrSuccess = null,
-    Object? importFailureOrSuccess = null,
-  }) {
-    return _then(_value.copyWith(
-      candidates: null == candidates
-          ? _value.candidates
-          : candidates // ignore: cast_nullable_to_non_nullable
-              as List<AuthenticatorEntry>,
-      existingIds: null == existingIds
-          ? _value.existingIds
-          : existingIds // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
-      selectedIds: null == selectedIds
-          ? _value.selectedIds
-          : selectedIds // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
-      scannedBatches: null == scannedBatches
-          ? _value.scannedBatches
-          : scannedBatches // ignore: cast_nullable_to_non_nullable
-              as Set<int>,
-      batchSize: freezed == batchSize
-          ? _value.batchSize
-          : batchSize // ignore: cast_nullable_to_non_nullable
-              as int?,
-      batchId: freezed == batchId
-          ? _value.batchId
-          : batchId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      skippedCount: null == skippedCount
-          ? _value.skippedCount
-          : skippedCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      isSaving: null == isSaving
-          ? _value.isSaving
-          : isSaving // ignore: cast_nullable_to_non_nullable
-              as bool,
-      scanFailureOrSuccess: null == scanFailureOrSuccess
-          ? _value.scanFailureOrSuccess
-          : scanFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthenticatorFailure, Unit>>,
-      importFailureOrSuccess: null == importFailureOrSuccess
-          ? _value.importFailureOrSuccess
-          : importFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthenticatorFailure, int>>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AuthenticatorImportState &&
+            const DeepCollectionEquality()
+                .equals(other.candidates, candidates) &&
+            const DeepCollectionEquality()
+                .equals(other.existingIds, existingIds) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedIds, selectedIds) &&
+            const DeepCollectionEquality()
+                .equals(other.scannedBatches, scannedBatches) &&
+            (identical(other.batchSize, batchSize) ||
+                other.batchSize == batchSize) &&
+            (identical(other.batchId, batchId) || other.batchId == batchId) &&
+            (identical(other.skippedCount, skippedCount) ||
+                other.skippedCount == skippedCount) &&
+            (identical(other.isSaving, isSaving) ||
+                other.isSaving == isSaving) &&
+            (identical(other.scanFailureOrSuccess, scanFailureOrSuccess) ||
+                other.scanFailureOrSuccess == scanFailureOrSuccess) &&
+            (identical(other.importFailureOrSuccess, importFailureOrSuccess) ||
+                other.importFailureOrSuccess == importFailureOrSuccess));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(candidates),
+      const DeepCollectionEquality().hash(existingIds),
+      const DeepCollectionEquality().hash(selectedIds),
+      const DeepCollectionEquality().hash(scannedBatches),
+      batchSize,
+      batchId,
+      skippedCount,
+      isSaving,
+      scanFailureOrSuccess,
+      importFailureOrSuccess);
+
+  @override
+  String toString() {
+    return 'AuthenticatorImportState(candidates: $candidates, existingIds: $existingIds, selectedIds: $selectedIds, scannedBatches: $scannedBatches, batchSize: $batchSize, batchId: $batchId, skippedCount: $skippedCount, isSaving: $isSaving, scanFailureOrSuccess: $scanFailureOrSuccess, importFailureOrSuccess: $importFailureOrSuccess)';
   }
 }
 
 /// @nodoc
-abstract class _$$_AuthenticatorImportStateCopyWith<$Res>
-    implements $AuthenticatorImportStateCopyWith<$Res> {
-  factory _$$_AuthenticatorImportStateCopyWith(
-          _$_AuthenticatorImportState value,
-          $Res Function(_$_AuthenticatorImportState) then) =
-      __$$_AuthenticatorImportStateCopyWithImpl<$Res>;
-  @override
+abstract mixin class $AuthenticatorImportStateCopyWith<$Res> {
+  factory $AuthenticatorImportStateCopyWith(AuthenticatorImportState value,
+          $Res Function(AuthenticatorImportState) _then) =
+      _$AuthenticatorImportStateCopyWithImpl;
   @useResult
   $Res call(
       {List<AuthenticatorEntry> candidates,
@@ -741,14 +501,15 @@ abstract class _$$_AuthenticatorImportStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AuthenticatorImportStateCopyWithImpl<$Res>
-    extends _$AuthenticatorImportStateCopyWithImpl<$Res,
-        _$_AuthenticatorImportState>
-    implements _$$_AuthenticatorImportStateCopyWith<$Res> {
-  __$$_AuthenticatorImportStateCopyWithImpl(_$_AuthenticatorImportState _value,
-      $Res Function(_$_AuthenticatorImportState) _then)
-      : super(_value, _then);
+class _$AuthenticatorImportStateCopyWithImpl<$Res>
+    implements $AuthenticatorImportStateCopyWith<$Res> {
+  _$AuthenticatorImportStateCopyWithImpl(this._self, this._then);
 
+  final AuthenticatorImportState _self;
+  final $Res Function(AuthenticatorImportState) _then;
+
+  /// Create a copy of AuthenticatorImportState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -763,55 +524,275 @@ class __$$_AuthenticatorImportStateCopyWithImpl<$Res>
     Object? scanFailureOrSuccess = null,
     Object? importFailureOrSuccess = null,
   }) {
-    return _then(_$_AuthenticatorImportState(
+    return _then(_self.copyWith(
       candidates: null == candidates
-          ? _value._candidates
+          ? _self.candidates
           : candidates // ignore: cast_nullable_to_non_nullable
               as List<AuthenticatorEntry>,
       existingIds: null == existingIds
-          ? _value._existingIds
+          ? _self.existingIds
           : existingIds // ignore: cast_nullable_to_non_nullable
               as Set<String>,
       selectedIds: null == selectedIds
-          ? _value._selectedIds
+          ? _self.selectedIds
           : selectedIds // ignore: cast_nullable_to_non_nullable
               as Set<String>,
       scannedBatches: null == scannedBatches
-          ? _value._scannedBatches
+          ? _self.scannedBatches
           : scannedBatches // ignore: cast_nullable_to_non_nullable
               as Set<int>,
       batchSize: freezed == batchSize
-          ? _value.batchSize
+          ? _self.batchSize
           : batchSize // ignore: cast_nullable_to_non_nullable
               as int?,
       batchId: freezed == batchId
-          ? _value.batchId
+          ? _self.batchId
           : batchId // ignore: cast_nullable_to_non_nullable
               as int?,
       skippedCount: null == skippedCount
-          ? _value.skippedCount
+          ? _self.skippedCount
           : skippedCount // ignore: cast_nullable_to_non_nullable
               as int,
       isSaving: null == isSaving
-          ? _value.isSaving
+          ? _self.isSaving
           : isSaving // ignore: cast_nullable_to_non_nullable
               as bool,
       scanFailureOrSuccess: null == scanFailureOrSuccess
-          ? _value.scanFailureOrSuccess
+          ? _self.scanFailureOrSuccess
           : scanFailureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Option<Either<AuthenticatorFailure, Unit>>,
       importFailureOrSuccess: null == importFailureOrSuccess
-          ? _value.importFailureOrSuccess
+          ? _self.importFailureOrSuccess
           : importFailureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Option<Either<AuthenticatorFailure, int>>,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [AuthenticatorImportState].
+extension AuthenticatorImportStatePatterns on AuthenticatorImportState {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_AuthenticatorImportState value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AuthenticatorImportState() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_AuthenticatorImportState value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AuthenticatorImportState():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_AuthenticatorImportState value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AuthenticatorImportState() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            List<AuthenticatorEntry> candidates,
+            Set<String> existingIds,
+            Set<String> selectedIds,
+            Set<int> scannedBatches,
+            int? batchSize,
+            int? batchId,
+            int skippedCount,
+            bool isSaving,
+            Option<Either<AuthenticatorFailure, Unit>> scanFailureOrSuccess,
+            Option<Either<AuthenticatorFailure, int>> importFailureOrSuccess)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AuthenticatorImportState() when $default != null:
+        return $default(
+            _that.candidates,
+            _that.existingIds,
+            _that.selectedIds,
+            _that.scannedBatches,
+            _that.batchSize,
+            _that.batchId,
+            _that.skippedCount,
+            _that.isSaving,
+            _that.scanFailureOrSuccess,
+            _that.importFailureOrSuccess);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            List<AuthenticatorEntry> candidates,
+            Set<String> existingIds,
+            Set<String> selectedIds,
+            Set<int> scannedBatches,
+            int? batchSize,
+            int? batchId,
+            int skippedCount,
+            bool isSaving,
+            Option<Either<AuthenticatorFailure, Unit>> scanFailureOrSuccess,
+            Option<Either<AuthenticatorFailure, int>> importFailureOrSuccess)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AuthenticatorImportState():
+        return $default(
+            _that.candidates,
+            _that.existingIds,
+            _that.selectedIds,
+            _that.scannedBatches,
+            _that.batchSize,
+            _that.batchId,
+            _that.skippedCount,
+            _that.isSaving,
+            _that.scanFailureOrSuccess,
+            _that.importFailureOrSuccess);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            List<AuthenticatorEntry> candidates,
+            Set<String> existingIds,
+            Set<String> selectedIds,
+            Set<int> scannedBatches,
+            int? batchSize,
+            int? batchId,
+            int skippedCount,
+            bool isSaving,
+            Option<Either<AuthenticatorFailure, Unit>> scanFailureOrSuccess,
+            Option<Either<AuthenticatorFailure, int>> importFailureOrSuccess)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AuthenticatorImportState() when $default != null:
+        return $default(
+            _that.candidates,
+            _that.existingIds,
+            _that.selectedIds,
+            _that.scannedBatches,
+            _that.batchSize,
+            _that.batchId,
+            _that.skippedCount,
+            _that.isSaving,
+            _that.scanFailureOrSuccess,
+            _that.importFailureOrSuccess);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 
-class _$_AuthenticatorImportState extends _AuthenticatorImportState {
-  const _$_AuthenticatorImportState(
+class _AuthenticatorImportState extends AuthenticatorImportState {
+  const _AuthenticatorImportState(
       {required final List<AuthenticatorEntry> candidates,
       required final Set<String> existingIds,
       required final Set<String> selectedIds,
@@ -881,16 +862,20 @@ class _$_AuthenticatorImportState extends _AuthenticatorImportState {
   @override
   final Option<Either<AuthenticatorFailure, int>> importFailureOrSuccess;
 
+  /// Create a copy of AuthenticatorImportState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'AuthenticatorImportState(candidates: $candidates, existingIds: $existingIds, selectedIds: $selectedIds, scannedBatches: $scannedBatches, batchSize: $batchSize, batchId: $batchId, skippedCount: $skippedCount, isSaving: $isSaving, scanFailureOrSuccess: $scanFailureOrSuccess, importFailureOrSuccess: $importFailureOrSuccess)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AuthenticatorImportStateCopyWith<_AuthenticatorImportState> get copyWith =>
+      __$AuthenticatorImportStateCopyWithImpl<_AuthenticatorImportState>(
+          this, _$identity);
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthenticatorImportState &&
+            other is _AuthenticatorImportState &&
             const DeepCollectionEquality()
                 .equals(other._candidates, _candidates) &&
             const DeepCollectionEquality()
@@ -926,58 +911,100 @@ class _$_AuthenticatorImportState extends _AuthenticatorImportState {
       scanFailureOrSuccess,
       importFailureOrSuccess);
 
-  @JsonKey(ignore: true)
+  @override
+  String toString() {
+    return 'AuthenticatorImportState(candidates: $candidates, existingIds: $existingIds, selectedIds: $selectedIds, scannedBatches: $scannedBatches, batchSize: $batchSize, batchId: $batchId, skippedCount: $skippedCount, isSaving: $isSaving, scanFailureOrSuccess: $scanFailureOrSuccess, importFailureOrSuccess: $importFailureOrSuccess)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$AuthenticatorImportStateCopyWith<$Res>
+    implements $AuthenticatorImportStateCopyWith<$Res> {
+  factory _$AuthenticatorImportStateCopyWith(_AuthenticatorImportState value,
+          $Res Function(_AuthenticatorImportState) _then) =
+      __$AuthenticatorImportStateCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {List<AuthenticatorEntry> candidates,
+      Set<String> existingIds,
+      Set<String> selectedIds,
+      Set<int> scannedBatches,
+      int? batchSize,
+      int? batchId,
+      int skippedCount,
+      bool isSaving,
+      Option<Either<AuthenticatorFailure, Unit>> scanFailureOrSuccess,
+      Option<Either<AuthenticatorFailure, int>> importFailureOrSuccess});
+}
+
+/// @nodoc
+class __$AuthenticatorImportStateCopyWithImpl<$Res>
+    implements _$AuthenticatorImportStateCopyWith<$Res> {
+  __$AuthenticatorImportStateCopyWithImpl(this._self, this._then);
+
+  final _AuthenticatorImportState _self;
+  final $Res Function(_AuthenticatorImportState) _then;
+
+  /// Create a copy of AuthenticatorImportState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthenticatorImportStateCopyWith<_$_AuthenticatorImportState>
-      get copyWith => __$$_AuthenticatorImportStateCopyWithImpl<
-          _$_AuthenticatorImportState>(this, _$identity);
+  $Res call({
+    Object? candidates = null,
+    Object? existingIds = null,
+    Object? selectedIds = null,
+    Object? scannedBatches = null,
+    Object? batchSize = freezed,
+    Object? batchId = freezed,
+    Object? skippedCount = null,
+    Object? isSaving = null,
+    Object? scanFailureOrSuccess = null,
+    Object? importFailureOrSuccess = null,
+  }) {
+    return _then(_AuthenticatorImportState(
+      candidates: null == candidates
+          ? _self._candidates
+          : candidates // ignore: cast_nullable_to_non_nullable
+              as List<AuthenticatorEntry>,
+      existingIds: null == existingIds
+          ? _self._existingIds
+          : existingIds // ignore: cast_nullable_to_non_nullable
+              as Set<String>,
+      selectedIds: null == selectedIds
+          ? _self._selectedIds
+          : selectedIds // ignore: cast_nullable_to_non_nullable
+              as Set<String>,
+      scannedBatches: null == scannedBatches
+          ? _self._scannedBatches
+          : scannedBatches // ignore: cast_nullable_to_non_nullable
+              as Set<int>,
+      batchSize: freezed == batchSize
+          ? _self.batchSize
+          : batchSize // ignore: cast_nullable_to_non_nullable
+              as int?,
+      batchId: freezed == batchId
+          ? _self.batchId
+          : batchId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      skippedCount: null == skippedCount
+          ? _self.skippedCount
+          : skippedCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      isSaving: null == isSaving
+          ? _self.isSaving
+          : isSaving // ignore: cast_nullable_to_non_nullable
+              as bool,
+      scanFailureOrSuccess: null == scanFailureOrSuccess
+          ? _self.scanFailureOrSuccess
+          : scanFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthenticatorFailure, Unit>>,
+      importFailureOrSuccess: null == importFailureOrSuccess
+          ? _self.importFailureOrSuccess
+          : importFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthenticatorFailure, int>>,
+    ));
+  }
 }
 
-abstract class _AuthenticatorImportState extends AuthenticatorImportState {
-  const factory _AuthenticatorImportState(
-      {required final List<AuthenticatorEntry> candidates,
-      required final Set<String> existingIds,
-      required final Set<String> selectedIds,
-      required final Set<int> scannedBatches,
-      final int? batchSize,
-      final int? batchId,
-      required final int skippedCount,
-      required final bool isSaving,
-      required final Option<Either<AuthenticatorFailure, Unit>>
-          scanFailureOrSuccess,
-      required final Option<Either<AuthenticatorFailure, int>>
-          importFailureOrSuccess}) = _$_AuthenticatorImportState;
-  const _AuthenticatorImportState._() : super._();
-
-  @override
-
-  /// Importable accounts from every scanned batch, in scan order.
-  List<AuthenticatorEntry> get candidates;
-  @override
-
-  /// Ids already in the vault; shown but not selectable.
-  Set<String> get existingIds;
-  @override
-  Set<String> get selectedIds;
-  @override
-  Set<int> get scannedBatches;
-  @override
-  int? get batchSize;
-  @override
-  int? get batchId;
-  @override
-  int get skippedCount;
-  @override
-  bool get isSaving;
-  @override
-  Option<Either<AuthenticatorFailure, Unit>> get scanFailureOrSuccess;
-  @override
-
-  /// Right = number of accounts added.
-  Option<Either<AuthenticatorFailure, int>> get importFailureOrSuccess;
-  @override
-  @JsonKey(ignore: true)
-  _$$_AuthenticatorImportStateCopyWith<_$_AuthenticatorImportState>
-      get copyWith => throw _privateConstructorUsedError;
-}
+// dart format on

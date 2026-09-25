@@ -9,7 +9,7 @@ description: >-
 
 # Passvera Architecture
 
-Offline Flutter password manager. Local-only: no backend, no sync, no accounts.
+Offline-first Flutter password manager. No backend and no accounts; the only network use is the optional, end-to-end encrypted Google Drive backup.
 
 ## Stack (required)
 
@@ -55,7 +55,7 @@ presentation → application → domain ← infrastructure
 - Repositories: abstract `I*` interfaces returning `Future<Either<Failure, T>>`.
 - No `encrypt*` naming unless real encryption is added. Prefer `save` / `write` / `upsert` for storage writes.
 
-Storage keys that are not user passwords (e.g. onboard flag) must be filtered out of password lists in the repository/service layer — never show meta keys in Home UI.
+Storage key layout (schema 2, `StorageKeys`): passwords `pw:<name>`, authenticator entries `totp:<id>`, app metadata `meta:<name>`. Never write a bare key; user entry names must not be able to collide with app metadata. Layout changes go through `IStorageMigration` (runs at startup via `InitializeApp.prepareStorage`, journaled and resumable) and are rehearsed on an emulator with `tool/rehearsal/`.
 
 ## Application (BLoC) rules
 
@@ -72,6 +72,9 @@ One concern per BLoC. Current map:
 | `AuthenticatorImportBloc` | Google Authenticator export: collect batches, select, import |
 | `ClipboardBloc` | Copy secrets with auto-expiry (`kSensitiveClipboardTtl`) |
 | `SessionBloc` | App-root lifecycle: privacy cover + relock on background |
+| `BackupSyncBloc` | App-root automatic Drive backup: debounce, retry, status |
+| `BackupSettingsBloc` | Backup screen: setup (key + confirmation), show/test key, turn off |
+| `RestoreBloc` | Restore from Drive: account, backup, key, preview, apply |
 
 Patterns:
 
@@ -83,17 +86,22 @@ Patterns:
 - Freezed states use value equality and BLoC drops an emit equal to the current state: emit the result field as `none()` before the new result, or a repeated identical result (same failure twice) never reaches listeners.
 - Never hand-write freezed look-alikes (manual `map`/`==`/`copyWith`); annotate with `@freezed` and run build_runner.
 
-After codegen changes: run `dart run build_runner build --delete-conflicting-outputs`.
-Dart 3.10+ needs `build_runner >=2.4.13` with `frontend_server_client 4.x` (older versions look for the removed `frontend_server.dart.snapshot`). Generated files are excluded from analysis in `analysis_options.yaml`; do not hand-edit them.
+After codegen changes: run `dart run build_runner build` (build_runner ≥2.15 removed `--delete-conflicting-outputs`; conflicts are handled automatically). Generated files are excluded from analysis in `analysis_options.yaml`; do not hand-edit them.
+
+- Every `@freezed` class is `sealed` (unions: several factory constructors) or `abstract` (single constructor). freezed 3 does not compile plain `class X with _$X` that has fields. `map`/`when` are still generated (as extensions).
+- A freezed class with a *private named* factory (e.g. `RecoveryKey._fromEntropy`) needs `@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)`: generated map/when would use the private name as a parameter.
+- Generated files are excluded from analysis, so their compile errors only show in `flutter test`/builds: always run tests after codegen.
+- `flutter analyze` does not compile dependencies: after bumping a package also run `flutter test` / a build. auto_route is capped `<11.2` because 11.2 needs a newer Flutter than the project's; lift the cap with the Flutter upgrade.
 
 ## Infrastructure rules
 
 - `KeysService`: low-level secure storage I/O.
 - `KeysRepository`: implements `IKeysRepository`, delegates to service, no UI logic.
-- Android: keep `encryptedSharedPreferences: true`.
+- Android storage options: `resetOnError: false` always (the plugin default is true since v10 and wipes the vault on any read error). Before changing the storage plugin or its options, rehearse on an emulator with `tool/rehearsal/` (seed with the old build, install the new build over it, verify).
 - Boolean / flag reads and writes must use the **same** literal (e.g. both `'true'` — never mismatch like `true` vs `truee`).
 - Duplicate-key checks: Left = failure (`keyAlreadyUsed`), Right = success. Do not invert Either meaning.
 - Update = one method: write the new key first, delete the old key only on rename (a failed write must never lose the original). Renaming onto another existing key returns `keyAlreadyUsed`. Return a dedicated Either for update.
+- Vault writes that should trigger a backup go through `KeysRepository`/`AuthenticatorRepository`, which notify `IVaultChanges`. Services writing storage directly (migration, restore) intentionally do not.
 - Platform APIs (method channels) live in infrastructure behind a domain interface, e.g. `ClipboardService` on `com.passvera.app/clipboard` (native side: `MainActivity.kt`, `AppDelegate.swift`).
 
 ## Presentation rules
@@ -109,6 +117,7 @@ presentation/
 - Provide BLoCs via `BlocProvider` / `MultiBlocProvider` + `getIt<T>()`.
 - Side effects (snackbar, navigation, dialog close) in `BlocListener` / `MultiBlocListener`, not in `builder`.
 - Navigate with **auto_route only** (`AutoRouter`, `context.router`, generated routes). Do not mix `Navigator.push(MaterialPageRoute)` with AutoRoute for the same flow.
+- Screens are `*View` widgets annotated `@RoutePage()` and listed in `MyRouter.routes` (`lib/presentation/core/route/route.dart`, part `route.gr.dart`). Navigate with the generated `*Route` classes (`HomeView` → `HomeRoute`, `PassDetailRoute(model: …)`), import `route.dart`.
 - Shared look: yellow surface, black border, offset shadow — reuse `MyCustomContainer` / `MySmallButton` / theme; avoid new one-off card systems unless product direction changes.
 - Forms for create/edit: `showFormDialog` (or a dedicated shared form widget). Keep generator config out of random widgets when extracting (single config place).
 
@@ -122,7 +131,7 @@ presentation/
 - Irreversible actions use `MyFormButton(isDestructive: true)`.
 - Parsing of external formats (otpauth, otpauth-migration) is pure Dart in `domain/`; no third-party parsers for secrets. `Uri.queryParameters` form-decodes `+` → space: read base64 query values from `uri.query` with `Uri.decodeComponent`.
 
-Screens today: Splash → Onboard | Lock | Home → PassDetail / Profile / QrScan → AuthenticatorImport.
+Screens today: Splash → Onboard (→ Restore) | Lock | Home → PassDetail / Profile → Backup (→ Restore) / QrScan → AuthenticatorImport.
 
 ## Lock & privacy
 
@@ -139,7 +148,8 @@ Screens today: Splash → Onboard | Lock | Home → PassDetail / Profile / QrSca
 ## Product constraints (keep unless user asks otherwise)
 
 - Offline-first password vault for app-name → password pairs.
-- No cloud sync, no accounts, no remote API in the default architecture.
+- No own server and no accounts. Drive backup: encrypted on device (AES-256-GCM, key from a 12-word BIP39 recovery key via HKDF), stored in the Drive app data folder (`drive.appdata` scope only), one-way (device → Drive), last 10 versions. The recovery key never leaves the device except on the user's paper; no path may upload or log it (`RecoveryKey.toString` is redacted).
+- Google OAuth ids come from `--dart-define=PASSVERA_GOOGLE_SERVER_CLIENT_ID=…` (`GoogleConfig`); never commit them.
 - Future lock features (master password / biometrics) belong in domain + application; UI only reacts to lock state. Prefer `local_auth` for biometrics when enabled.
 - Release readiness: application id is `com.passvera.app`; do not ship debug signing.
 
