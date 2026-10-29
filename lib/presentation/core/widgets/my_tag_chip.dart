@@ -17,6 +17,7 @@ class MyTagChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.colors;
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
@@ -25,15 +26,15 @@ class MyTagChip extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
         decoration: BoxDecoration(
           color: selected
-              ? MyColors.ink
-              : MyColors.surfaceWhite.withValues(alpha: 0.55),
+              ? colors.ink
+              : colors.surfaceWhite.withValues(alpha: 0.55),
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: MyColors.ink, width: 2),
+          border: Border.all(color: colors.ink, width: 2),
         ),
         child: AnimatedDefaultTextStyle(
           duration: const Duration(milliseconds: 180),
           style: MyTextStyles.bodySmallBold.copyWith(
-            color: selected ? MyColors.surfaceWhite : MyColors.ink,
+            color: selected ? colors.surfaceWhite : colors.ink,
           ),
           child: Text(label),
         ),

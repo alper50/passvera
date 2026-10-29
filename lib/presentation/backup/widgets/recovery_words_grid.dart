@@ -21,9 +21,9 @@ class RecoveryWordsGrid extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: MyColors.surfaceWhite,
+        color: context.colors.surfaceWhite,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: MyColors.ink, width: 3),
+        border: Border.all(color: context.colors.ink, width: 3),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,7 +53,8 @@ class _WordTile extends StatelessWidget {
             width: 28,
             child: Text(
               '$number.',
-              style: MyTextStyles.bodySmall.copyWith(color: MyColors.inkSoft),
+              style: MyTextStyles.bodySmall
+                  .copyWith(color: context.colors.inkSoft),
             ),
           ),
           Expanded(

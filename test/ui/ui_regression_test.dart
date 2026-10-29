@@ -15,6 +15,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:passvera/application/backupSettingsBloc/backup_settings_bloc.dart';
 import 'package:passvera/domain/application_model.dart';
+import 'package:passvera/domain/appearance_mode.dart';
 import 'package:passvera/domain/backup/i_backup_repository.dart';
 import 'package:passvera/domain/backup/recovery_key.dart';
 import 'package:passvera/domain/i_lock_repository.dart';
@@ -22,6 +23,7 @@ import 'package:passvera/infrastructure/keys/storage_keys.dart';
 import 'package:passvera/injection.dart';
 import 'package:passvera/main.dart';
 import 'package:passvera/presentation/core/route/route.dart';
+import 'package:passvera/presentation/core/theme/colors.dart';
 
 import '../application/fakes.dart';
 import '../domain/migration_payload_builder.dart';
@@ -135,6 +137,9 @@ void _flow(
   Future<void> Function(_Session s) body, {
   /// Registers test doubles in a GetIt scope that lives for this flow only.
   void Function()? overrides,
+
+  /// Starts the app as if this preference had been stored.
+  AppearanceMode appearance = AppearanceMode.system,
 }) {
   for (final entry in _sizes.entries) {
     testWidgets('$name @ ${entry.key}', (tester) async {
@@ -152,7 +157,7 @@ void _flow(
       }
 
       try {
-        await tester.pumpWidget(const MyApp());
+        await tester.pumpWidget(MyApp(appearance: appearance));
         await session.settle(15);
         await body(session);
       } finally {
@@ -244,6 +249,61 @@ void main() {
   _flow('lock screen', _vault(pin: true), (s) async {
     await s.golden('14_lock');
   });
+
+  // --- Dark mode: no goldens; every size must render without framework
+  // errors (overflow, ...) and brand surfaces must keep black ink. --------
+
+  _flow('dark: picked in profile, kept on this device', _vault(), (s) async {
+    await s.tap(find.byIcon(Icons.person_outline_rounded));
+    await s.tap(find.text('Dark'));
+    expect(
+      s.tester.widget<MaterialApp>(find.byType(MaterialApp)).themeMode,
+      ThemeMode.dark,
+    );
+    expect(
+      await const FlutterSecureStorage().read(key: StorageKeys.appearance),
+      'dark',
+    );
+    await s.tap(find.text('System'));
+    expect(
+      await const FlutterSecureStorage().read(key: StorageKeys.appearance),
+      isNull,
+    );
+  });
+
+  _flow('dark: secrets, dialogs, detail, codes', _vault(), (s) async {
+    final title = s.tester.element(find.text('Passvera'));
+    expect(Theme.of(title).brightness, Brightness.dark);
+    expect(
+      DefaultTextStyle.of(s.tester.element(find.text('Bank'))).style.color,
+      MyColors.ink,
+      reason: 'card text stays black on the tag color',
+    );
+
+    await s.tap(find.text('General'));
+    await s.tap(find.text('All'));
+    await s.tap(find.byType(FloatingActionButton));
+    await s.tap(find.text('Close'));
+    await s.tap(find.text('Bank'));
+    await s.tap(find.text('Delete password'));
+    await s.tap(find.text('Cancel'));
+    await s.tap(find.byIcon(Icons.arrow_back_ios_new_rounded));
+    await s.tap(find.text('Codes'));
+    await s.tap(find.byIcon(Icons.person_outline_rounded));
+    await s.tap(find.byIcon(Icons.lock_outline));
+  }, appearance: AppearanceMode.dark);
+
+  _flow('dark: lock screen', _vault(pin: true), (s) async {
+    expect(find.text('Unlock Passvera'), findsOneWidget);
+  }, appearance: AppearanceMode.dark);
+
+  _flow('dark: onboarding', const {}, (s) async {
+    expect(find.byType(PageView), findsOneWidget);
+  }, appearance: AppearanceMode.dark);
+
+  _flow('dark: empty vault', _onboarded, (s) async {
+    await s.tap(find.text('Codes'));
+  }, appearance: AppearanceMode.dark);
 
   _flow('empty vault', _onboarded, (s) async {
     await s.golden('15_empty_secrets');

@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:passvera/application/clipboardBloc/clipboard_bloc.dart';
 import 'package:passvera/domain/authenticator_entry.dart';
 import 'package:passvera/domain/totp_generator.dart';
+import 'package:passvera/presentation/core/theme/brand_surface.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/core/widgets/confirm_dialog.dart';
@@ -78,91 +79,93 @@ class _AuthenticatorTileState extends State<AuthenticatorTile> {
           color: MyColors.ink,
           width: 3.0,
         ),
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
-            color: MyColors.inkSoft,
-            offset: Offset(-5.0, 7.0),
+            color: context.colors.inkSoft,
+            offset: const Offset(-5.0, 7.0),
             blurRadius: 5.0,
             blurStyle: BlurStyle.solid,
           ),
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.entry.displayTitle,
-                      style: MyTextStyles.headline2Bold,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    if (widget.entry.displaySubtitle.isNotEmpty) ...[
-                      const SizedBox(height: 2),
+      child: BrandSurface(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                       Text(
-                        widget.entry.displaySubtitle,
-                        style: MyTextStyles.bodySmallBold,
+                        widget.entry.displayTitle,
+                        style: MyTextStyles.headline2Bold,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
+                      if (widget.entry.displaySubtitle.isNotEmpty) ...[
+                        const SizedBox(height: 2),
+                        Text(
+                          widget.entry.displaySubtitle,
+                          style: MyTextStyles.bodySmallBold,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
                     ],
-                  ],
-                ),
-              ),
-              IconButton(
-                tooltip: 'Delete',
-                onPressed: () async {
-                  final confirmed = await showConfirmDialog(
-                    context: context,
-                    title: 'Delete code?',
-                    message:
-                        'Remove ${widget.entry.displayTitle} from authenticator?',
-                  );
-                  if (confirmed) {
-                    widget.onDelete();
-                  }
-                },
-                icon: const Icon(Icons.delete_outline_rounded),
-              ),
-            ],
-          ),
-          const SizedBox(height: 12),
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  _formattedCode,
-                  style: MyTextStyles.headline1Bold.copyWith(
-                    letterSpacing: 2,
-                    fontFeatures: const [FontFeature.tabularFigures()],
                   ),
                 ),
-              ),
-              SizedBox(
-                width: 36,
-                height: 36,
-                child: CircularProgressIndicator(
-                  value: _progress,
-                  strokeWidth: 4,
-                  color: MyColors.ink,
-                  backgroundColor: MyColors.inkSoft.withValues(alpha: 0.2),
+                IconButton(
+                  tooltip: 'Delete',
+                  onPressed: () async {
+                    final confirmed = await showConfirmDialog(
+                      context: context,
+                      title: 'Delete code?',
+                      message:
+                          'Remove ${widget.entry.displayTitle} from authenticator?',
+                    );
+                    if (confirmed) {
+                      widget.onDelete();
+                    }
+                  },
+                  icon: const Icon(Icons.delete_outline_rounded),
                 ),
-              ),
-              const SizedBox(width: 12),
-              MySmallButton(
-                icon: const Icon(Icons.copy_rounded, size: 35),
-                onTap: () => context.read<ClipboardBloc>().add(
-                      ClipboardEvent.copySensitive(text: _code),
+              ],
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    _formattedCode,
+                    style: MyTextStyles.headline1Bold.copyWith(
+                      letterSpacing: 2,
+                      fontFeatures: const [FontFeature.tabularFigures()],
                     ),
-              ),
-            ],
-          ),
-        ],
+                  ),
+                ),
+                SizedBox(
+                  width: 36,
+                  height: 36,
+                  child: CircularProgressIndicator(
+                    value: _progress,
+                    strokeWidth: 4,
+                    color: MyColors.ink,
+                    backgroundColor: MyColors.inkSoft.withValues(alpha: 0.2),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                MySmallButton(
+                  icon: const Icon(Icons.copy_rounded, size: 35),
+                  onTap: () => context.read<ClipboardBloc>().add(
+                        ClipboardEvent.copySensitive(text: _code),
+                      ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

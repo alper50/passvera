@@ -135,6 +135,9 @@ class BackupCodec {
               'algorithm': e.algorithm.wireName,
             },
         ],
+        // Optional within schema 1: older apps ignore it, and backups made
+        // before it existed decode with an empty order.
+        'tagOrder': p.tagOrder,
       };
 
   static BackupPayload _payloadFromJson(Object? json) {
@@ -165,6 +168,9 @@ class BackupCodec {
             period: e['period'] as int,
             algorithm: TotpAlgorithm.fromString(e['algorithm'] as String),
           ),
+      ],
+      tagOrder: [
+        for (final tag in (map['tagOrder'] as List?) ?? const []) tag as String,
       ],
     );
   }

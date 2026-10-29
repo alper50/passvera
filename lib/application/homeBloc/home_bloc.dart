@@ -5,6 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/domain/errors/storage_failures.dart';
 import 'package:passvera/domain/i_keys_repository.dart';
+import 'package:passvera/domain/tag_order.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
@@ -25,6 +26,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             emit(const HomeState.valuesLoading());
 
             final result = await _keysRepository.getAllValues();
+            // The order is cosmetic: if it cannot be read, show alphabetical.
+            final tagOrder =
+                (await _keysRepository.getTagOrder()).getOrElse(() => const []);
 
             result.fold(
                 (failure) => emit(HomeState.loadFailed(
@@ -32,30 +36,49 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
                 (succes) {
               succes.isEmpty
                   ? emit(const HomeState.loadSuccesEmpty())
-                  : emit(_withTagFilter(succes, previousTag));
+                  : emit(_withTagFilter(succes, previousTag, tagOrder));
             });
           },
           tagSelected: (e) async {
             state.maybeMap(
               loadSucces: (s) {
                 final next = _sameTag(e.tag, s.selectedTag) ? null : e.tag;
-                emit(_withTagFilter(s.allValues, next));
+                emit(_withTagFilter(s.allValues, next, s.tags));
               },
               orElse: () {},
             );
+          },
+          tagsReordered: (e) async {
+            final previous = state.maybeMap(
+              loadSucces: (s) => s,
+              orElse: () => null,
+            );
+            if (previous == null) return;
+            // Optimistic: the chip stays where it was dropped.
+            emit(_withTagFilter(
+                previous.allValues, previous.selectedTag, e.tags));
+            final saved = await _keysRepository.saveTagOrder(e.tags);
+            if (saved.isLeft()) emit(previous);
           },
         );
       },
     );
   }
 
-  /// Distinct tags (case-insensitive, in list order) and the entries matching
-  /// [tag]. A tag that no longer exists falls back to showing everything.
-  static HomeState _withTagFilter(List<ApplicationModel> all, String? tag) {
-    final tags = <String>[];
-    for (final model in all) {
-      if (!tags.any((t) => _sameTag(t, model.tag))) tags.add(model.tag);
+  /// Distinct tags (case-insensitive, arranged by [tagOrder]), the entries
+  /// grouped in that order, and the ones matching [tag]. A tag that no longer
+  /// exists falls back to showing everything.
+  static HomeState _withTagFilter(
+    List<ApplicationModel> entries,
+    String? tag,
+    List<String> tagOrder,
+  ) {
+    final distinct = <String>[];
+    for (final model in entries) {
+      if (!distinct.any((t) => _sameTag(t, model.tag))) distinct.add(model.tag);
     }
+    final tags = TagOrder.arrange(distinct, tagOrder);
+    final all = TagOrder.sortEntries(entries, tags);
     final selected = tags.where((t) => _sameTag(t, tag)).firstOrNull;
     return HomeState.loadSucces(
       allValues: all,

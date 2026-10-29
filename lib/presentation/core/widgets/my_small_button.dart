@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:passvera/presentation/core/theme/brand_surface.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 
@@ -27,28 +28,30 @@ class MySmallButton extends StatelessWidget {
             color: MyColors.ink,
             width: 3.0,
           ),
-          boxShadow: const [
+          boxShadow: [
             BoxShadow(
-              color: MyColors.inkSoft,
-              offset: Offset(-3.0, 3.0),
+              color: context.colors.inkSoft,
+              offset: const Offset(-3.0, 3.0),
               blurRadius: 5.0,
               blurStyle: BlurStyle.solid,
             ),
           ],
         ),
-        child: buttonText == null
-            ? icon
-            : Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  icon,
-                  Text(
-                    buttonText!,
-                    style: MyTextStyles.bodyLarge,
-                  ),
-                  const SizedBox(),
-                ],
-              ),
+        child: BrandSurface(
+          child: buttonText == null
+              ? icon
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    icon,
+                    Text(
+                      buttonText!,
+                      style: MyTextStyles.bodyLarge,
+                    ),
+                    const SizedBox(),
+                  ],
+                ),
+        ),
       ),
     );
   }

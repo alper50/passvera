@@ -6,6 +6,7 @@ import 'package:passvera/application/authenticatorImportBloc/authenticator_impor
 import 'package:passvera/domain/authenticator_entry.dart';
 import 'package:passvera/domain/otp_migration_parser.dart';
 import 'package:passvera/injection.dart';
+import 'package:passvera/presentation/core/theme/brand_surface.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/core/utils/failure_messages.dart';
@@ -279,15 +280,20 @@ class _CandidateTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.colors;
+    // Selected = brand surface: black ink in both themes.
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 6, 20, 6),
       child: Opacity(
         opacity: alreadyAdded ? 0.5 : 1,
         child: Material(
-          color: selected ? MyColors.brand : MyColors.surfaceWhite,
+          color: selected ? MyColors.brand : colors.surfaceWhite,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
-            side: const BorderSide(color: MyColors.ink, width: 2.5),
+            side: BorderSide(
+              color: selected ? MyColors.ink : colors.ink,
+              width: 2.5,
+            ),
           ),
           clipBehavior: Clip.antiAlias,
           child: InkWell(
@@ -296,38 +302,42 @@ class _CandidateTile extends StatelessWidget {
                 : () => context.read<AuthenticatorImportBloc>().add(
                       AuthenticatorImportEvent.selectionToggled(entry.id),
                     ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-              child: Row(
-                children: [
-                  _CheckBox(checked: selected),
-                  const SizedBox(width: 14),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          entry.displayTitle,
-                          style: MyTextStyles.headline3Bold,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        if (entry.displaySubtitle.isNotEmpty)
+            child: BrandSurface(
+              enabled: selected,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                child: Row(
+                  children: [
+                    _CheckBox(checked: selected),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
                           Text(
-                            entry.displaySubtitle,
-                            style: MyTextStyles.bodySmall,
+                            entry.displayTitle,
+                            style: MyTextStyles.headline3Bold,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
-                        if (alreadyAdded)
-                          const Text(
-                            'Already in Passvera',
-                            style: MyTextStyles.bodySmallBold,
-                          ),
-                      ],
+                          if (entry.displaySubtitle.isNotEmpty)
+                            Text(
+                              entry.displaySubtitle,
+                              style: MyTextStyles.bodySmall,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          if (alreadyAdded)
+                            const Text(
+                              'Already in Passvera',
+                              style: MyTextStyles.bodySmallBold,
+                            ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -349,9 +359,9 @@ class _CheckBox extends StatelessWidget {
       width: 26,
       height: 26,
       decoration: BoxDecoration(
-        color: checked ? MyColors.ink : MyColors.surfaceWhite,
+        color: checked ? context.colors.ink : context.colors.surfaceWhite,
         borderRadius: BorderRadius.circular(6),
-        border: Border.all(color: MyColors.ink, width: 2.5),
+        border: Border.all(color: context.colors.ink, width: 2.5),
       ),
       child: checked
           ? const Icon(Icons.check, size: 18, color: MyColors.brand)

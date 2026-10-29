@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:passvera/domain/tag_palette.dart';
+import 'package:passvera/presentation/core/theme/brand_surface.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/core/widgets/my_tag_chip.dart';
@@ -20,13 +21,16 @@ void showFormDialog({
   showDialog(
     context: context,
     barrierColor: MyColors.ink.withValues(alpha: 0.35),
-    builder: (BuildContext context) => _SecretFormDialog(
-      title: title!,
-      controllerAppKey: controllerAppKey!,
-      controllerAppValue: controllerAppValue!,
-      initialTag: initialTag,
-      initialColorValue: initialColorValue,
-      onPressed: onPressed,
+    // Painted in the entry's tag color: a brand surface in both themes.
+    builder: (BuildContext context) => BrandSurface(
+      child: _SecretFormDialog(
+        title: title!,
+        controllerAppKey: controllerAppKey!,
+        controllerAppValue: controllerAppValue!,
+        initialTag: initialTag,
+        initialColorValue: initialColorValue,
+        onPressed: onPressed,
+      ),
     ),
   );
 }
@@ -351,23 +355,25 @@ class MyFormButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.colors;
     return SizedBox(
       width: double.infinity,
       height: 48,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          foregroundColor: MyColors.ink,
-          disabledForegroundColor: MyColors.ink.withValues(alpha: 0.4),
-          disabledBackgroundColor: MyColors.surfaceWhite.withValues(alpha: 0.4),
+          // The error fill is a brand surface: black ink in both themes.
+          foregroundColor: isDestructive ? MyColors.ink : colors.ink,
+          disabledForegroundColor: colors.ink.withValues(alpha: 0.4),
+          disabledBackgroundColor: colors.surfaceWhite.withValues(alpha: 0.4),
           backgroundColor: isDestructive
               ? MyColors.error
-              : MyColors.surfaceWhite.withValues(alpha: 0.72),
+              : colors.surfaceWhite.withValues(alpha: 0.72),
           textStyle: MyTextStyles.bodyLargeBold,
           padding: EdgeInsets.zero,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
-            side: const BorderSide(
-              color: MyColors.ink,
+            side: BorderSide(
+              color: colors.ink,
               width: 2.0,
             ),
           ),

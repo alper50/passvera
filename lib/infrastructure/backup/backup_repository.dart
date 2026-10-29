@@ -8,12 +8,14 @@ import 'package:passvera/domain/backup/remote_backup.dart';
 import 'package:passvera/domain/backup/restore_mode.dart';
 import 'package:passvera/domain/errors/backup_failures.dart';
 import 'package:passvera/infrastructure/backup/backup_service.dart';
+import 'package:passvera/infrastructure/backup/vault_change_notifier.dart';
 
 @LazySingleton(as: IBackupRepository)
 class BackupRepository implements IBackupRepository {
-  BackupRepository(this._service);
+  BackupRepository(this._service, this._changes);
 
   final BackupService _service;
+  final VaultChangeNotifier _changes;
 
   @override
   Future<Either<BackupFailure, BackupStatus>> status() => _service.status();
@@ -64,10 +66,15 @@ class BackupRepository implements IBackupRepository {
   }) =>
       _service.openRemoteBackup(backup: backup, key: key, account: account);
 
+  /// A restore is a vault write like any other: announcing it keeps an
+  /// already enabled automatic backup in sync.
   @override
   Future<Either<BackupFailure, int>> restore({
     required BackupPayload payload,
     required RestoreMode mode,
-  }) =>
-      _service.restore(payload: payload, mode: mode);
+  }) async {
+    final result = await _service.restore(payload: payload, mode: mode);
+    if (result.isRight()) _changes.notify();
+    return result;
+  }
 }

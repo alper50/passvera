@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:dartz/dartz.dart';
@@ -13,7 +14,9 @@ import 'package:passvera/domain/errors/backup_failures.dart';
 import 'package:passvera/infrastructure/authenticator/authenticator_service.dart';
 import 'package:passvera/infrastructure/backup/backup_codec.dart';
 import 'package:passvera/infrastructure/backup/backup_remote.dart';
+import 'package:passvera/infrastructure/backup/backup_repository.dart';
 import 'package:passvera/infrastructure/backup/backup_service.dart';
+import 'package:passvera/infrastructure/backup/vault_change_notifier.dart';
 import 'package:passvera/infrastructure/keys/keys_service.dart';
 import 'package:passvera/infrastructure/keys/storage_keys.dart';
 
@@ -141,6 +144,15 @@ void main() {
     );
   });
 
+  test('the backup carries the saved tag order', () async {
+    seed({
+      StorageKeys.tagOrder: jsonEncode(['Work', 'Mail'])
+    });
+    await service.enable(key: key, accountEmail: _account);
+
+    expect((await decodeLatest()).tagOrder, ['Work', 'Mail']);
+  });
+
   test('changing account keeps the key and marks a pending upload', () async {
     await service.enable(key: key, accountEmail: _account);
     expect(
@@ -264,7 +276,36 @@ void main() {
           secret: 'GEZDGNBVGY3TQOJQ',
         ),
       ],
+      tagOrder: const ['Finance', 'Mail'],
     );
+
+    Future<List<String>> storedTagOrder() async =>
+        (await keys.getTagOrder()).getOrElse(() => throw StateError('read'));
+
+    test('the appearance preference stays with the phone', () async {
+      seed({StorageKeys.appearance: 'light'});
+      await service.restore(payload: backup, mode: RestoreMode.replace);
+
+      expect(await keys.storage.read(key: StorageKeys.appearance), 'light');
+    });
+
+    test('replace takes the tag order of the backup', () async {
+      seed({
+        StorageKeys.tagOrder: jsonEncode(['Mail', 'Work'])
+      });
+      await service.restore(payload: backup, mode: RestoreMode.replace);
+
+      expect(await storedTagOrder(), ['Finance', 'Mail']);
+    });
+
+    test('merge keeps the device tag order and appends the new tags', () async {
+      seed({
+        StorageKeys.tagOrder: jsonEncode(['Mail', 'Work'])
+      });
+      await service.restore(payload: backup, mode: RestoreMode.merge);
+
+      expect(await storedTagOrder(), ['Mail', 'Work', 'Finance']);
+    });
 
     test('merge keeps device entries and adds the rest', () async {
       final written = await service.restore(
@@ -296,6 +337,20 @@ void main() {
       expect(all.containsKey(github.id), isFalse, reason: 'not in backup');
       expect(all[StorageKeys.pinHash], 'hash');
       expect(all[StorageKeys.onboard], StorageKeys.onboardCompletedValue);
+    });
+
+    test('announces the vault change so automatic backup picks it up',
+        () async {
+      final changes = VaultChangeNotifier();
+      final repository = BackupRepository(service, changes);
+      var notified = 0;
+      final subscription = changes.changes.listen((_) => notified++);
+
+      await repository.restore(payload: backup, mode: RestoreMode.merge);
+      await Future<void>.delayed(Duration.zero);
+
+      expect(notified, 1);
+      await subscription.cancel();
     });
   });
 }

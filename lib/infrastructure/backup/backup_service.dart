@@ -10,6 +10,7 @@ import 'package:passvera/domain/backup/remote_backup.dart';
 import 'package:passvera/domain/backup/restore_mode.dart';
 import 'package:passvera/domain/errors/backup_failures.dart';
 import 'package:passvera/domain/otp_auth_parser.dart';
+import 'package:passvera/domain/tag_order.dart';
 import 'package:passvera/infrastructure/authenticator/authenticator_service.dart';
 import 'package:passvera/infrastructure/backup/backup_codec.dart';
 import 'package:passvera/infrastructure/backup/backup_remote.dart';
@@ -233,6 +234,7 @@ class BackupService {
             }
           }
         }
+        await _restoreTagOrder(payload.tagOrder, replace);
         return Right(
           written.where((k) => replace || !existing.containsKey(k)).length,
         );
@@ -241,19 +243,39 @@ class BackupService {
   Future<Either<BackupFailure, BackupPayload>> _currentVault() async {
     final passwords = await _keys.getAllValues();
     final authenticators = await _authenticators.getAll();
+    final tagOrder = await _keys.getTagOrder();
     return passwords.fold(
       (f) => Left(BackupFailure.unexpected(f)),
       (List<ApplicationModel> p) => authenticators.fold(
         (f) => Left(BackupFailure.unexpected(f)),
-        (List<AuthenticatorEntry> a) => Right(
-          BackupPayload(
-            createdAt: DateTime.now(),
-            passwords: p,
-            authenticators: a,
+        (List<AuthenticatorEntry> a) => tagOrder.fold(
+          (f) => Left(BackupFailure.unexpected(f)),
+          (List<String> t) => Right(
+            BackupPayload(
+              createdAt: DateTime.now(),
+              passwords: p,
+              authenticators: a,
+              tagOrder: t,
+            ),
           ),
         ),
       ),
     );
+  }
+
+  /// Replace mirrors the backup's order; merge keeps the device order and
+  /// appends the tags only the backup has arranged.
+  Future<void> _restoreTagOrder(List<String> backupOrder, bool replace) async {
+    final List<String> order;
+    if (replace) {
+      order = backupOrder;
+    } else {
+      final deviceOrder = (await _keys.getTagOrder())
+          .getOrElse(() => throw StateError('tag order unreadable'));
+      order = TagOrder.merge(deviceOrder, backupOrder);
+    }
+    (await _keys.saveTagOrder(order))
+        .fold((f) => throw StateError('tag order not saved: $f'), (_) {});
   }
 
   Future<void> _prune(String account) async {

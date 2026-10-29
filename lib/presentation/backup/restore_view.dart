@@ -10,6 +10,7 @@ import 'package:passvera/domain/backup/restore_mode.dart';
 import 'package:passvera/injection.dart';
 import 'package:passvera/presentation/backup/widgets/recovery_word_fields.dart';
 import 'package:passvera/presentation/core/route/route.dart';
+import 'package:passvera/presentation/core/theme/brand_surface.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/core/utils/failure_messages.dart';
@@ -192,46 +193,54 @@ class _BackupTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.colors;
+    // Selected = brand surface: black ink in both themes.
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Material(
-        color: selected ? MyColors.brand : MyColors.surfaceWhite,
+        color: selected ? MyColors.brand : colors.surfaceWhite,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
-          side: const BorderSide(color: MyColors.ink, width: 2.5),
+          side: BorderSide(
+            color: selected ? MyColors.ink : colors.ink,
+            width: 2.5,
+          ),
         ),
         clipBehavior: Clip.antiAlias,
         child: InkWell(
           onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-            child: Row(
-              children: [
-                Icon(
-                  selected
-                      ? Icons.radio_button_checked_rounded
-                      : Icons.radio_button_unchecked_rounded,
-                  size: 22,
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        shortDateTime(backup.createdAt),
-                        style: MyTextStyles.bodyLargeBold,
-                      ),
-                      Text(
-                        isLatest
-                            ? 'Latest · ${relativeTime(backup.createdAt)}'
-                            : relativeTime(backup.createdAt),
-                        style: MyTextStyles.bodySmall,
-                      ),
-                    ],
+          child: BrandSurface(
+            enabled: selected,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+              child: Row(
+                children: [
+                  Icon(
+                    selected
+                        ? Icons.radio_button_checked_rounded
+                        : Icons.radio_button_unchecked_rounded,
+                    size: 22,
                   ),
-                ),
-              ],
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          shortDateTime(backup.createdAt),
+                          style: MyTextStyles.bodyLargeBold,
+                        ),
+                        Text(
+                          isLatest
+                              ? 'Latest · ${relativeTime(backup.createdAt)}'
+                              : relativeTime(backup.createdAt),
+                          style: MyTextStyles.bodySmall,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

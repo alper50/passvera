@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:passvera/presentation/core/theme/brand_surface.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 
@@ -9,16 +10,18 @@ class PrivacyCover extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Material(
-      color: MyColors.brand,
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(Icons.lock_outline_rounded, size: 64, color: MyColors.ink),
-            SizedBox(height: 12),
-            Text('Passvera', style: MyTextStyles.headline1Bold),
-          ],
+    return const BrandSurface(
+      child: Material(
+        color: MyColors.brand,
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.lock_outline_rounded, size: 64, color: MyColors.ink),
+              SizedBox(height: 12),
+              Text('Passvera', style: MyTextStyles.headline1Bold),
+            ],
+          ),
         ),
       ),
     );

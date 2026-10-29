@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:passvera/initialization.dart';
 import 'package:passvera/main.dart';
-import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/core/theme/theme.dart';
 import 'package:passvera/presentation/core/widgets/form_dialog.dart';
@@ -22,7 +21,7 @@ class _StartupFailureAppState extends State<StartupFailureApp> {
   Future<void> _retry() async {
     setState(() => _retrying = true);
     if (await InitializeApp.prepareStorage()) {
-      runApp(const MyApp());
+      runApp(MyApp(appearance: await InitializeApp.loadAppearance()));
       return;
     }
     if (mounted) setState(() => _retrying = false);
@@ -30,11 +29,12 @@ class _StartupFailureAppState extends State<StartupFailureApp> {
 
   @override
   Widget build(BuildContext context) {
+    // Storage is unreadable, so is the saved preference: follow the system.
     return MaterialApp(
-      theme: MyThemeData.lightheme,
+      theme: MyThemeData.light,
+      darkTheme: MyThemeData.dark,
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: MyColors.surface,
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(24),

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
@@ -56,6 +58,36 @@ class KeysService {
         return a.key.toLowerCase().compareTo(b.key.toLowerCase());
       });
       return Right(models);
+    } catch (e) {
+      return Left(StorageFailure.unexpected(e));
+    }
+  }
+
+  /// A missing or unreadable value means "never reordered" (alphabetical).
+  Future<Either<StorageFailure, List<String>>> getTagOrder() async {
+    try {
+      final raw = await storage.read(key: StorageKeys.tagOrder);
+      if (raw == null) return const Right([]);
+      try {
+        final decoded = jsonDecode(raw);
+        if (decoded is List) return Right(decoded.whereType<String>().toList());
+      } on FormatException {
+        // Fall through: a damaged order must not hide the vault.
+      }
+      return const Right([]);
+    } catch (e) {
+      return Left(StorageFailure.unexpected(e));
+    }
+  }
+
+  Future<Either<StorageFailure, Unit>> saveTagOrder(List<String> tags) async {
+    try {
+      if (tags.isEmpty) {
+        await storage.delete(key: StorageKeys.tagOrder);
+      } else {
+        await storage.write(key: StorageKeys.tagOrder, value: jsonEncode(tags));
+      }
+      return const Right(unit);
     } catch (e) {
       return Left(StorageFailure.unexpected(e));
     }

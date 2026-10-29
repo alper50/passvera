@@ -6,6 +6,7 @@ import 'package:passvera/application/passActionBloc/pass_action_bloc.dart';
 import 'package:passvera/domain/application_model.dart';
 import 'package:passvera/injection.dart';
 import 'package:passvera/presentation/core/route/route.dart';
+import 'package:passvera/presentation/core/theme/brand_surface.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/utils/failure_messages.dart';
 import 'package:passvera/presentation/core/widgets/clipboard_snackbar_listener.dart';
@@ -84,25 +85,28 @@ class PassDetailView extends StatelessWidget {
             },
           ),
         ],
-        child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Color(model.colorValue),
-            elevation: 0,
-            automaticallyImplyLeading: false,
-            leading: IconButton(
-              icon: const Icon(
-                Icons.arrow_back_ios_new_rounded,
-                color: MyColors.ink,
+        // The whole screen is painted in the entry's tag color.
+        child: BrandSurface(
+          child: Scaffold(
+            appBar: AppBar(
+              backgroundColor: Color(model.colorValue),
+              elevation: 0,
+              automaticallyImplyLeading: false,
+              leading: IconButton(
+                icon: const Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  color: MyColors.ink,
+                ),
+                onPressed: () {
+                  AutoRouter.of(context).pop();
+                },
               ),
-              onPressed: () {
-                AutoRouter.of(context).pop();
-              },
             ),
-          ),
-          backgroundColor: Color(model.colorValue),
-          body: SafeArea(
-            top: false,
-            child: PassDetailBody(model: model),
+            backgroundColor: Color(model.colorValue),
+            body: SafeArea(
+              top: false,
+              child: PassDetailBody(model: model),
+            ),
           ),
         ),
       ),

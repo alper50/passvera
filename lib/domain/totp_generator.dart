@@ -91,13 +91,21 @@ class TotpGenerator {
     return out.toString();
   }
 
+  /// True if [input] is Base32 that [decodeBase32] fully understands (same
+  /// separators ignored) and decodes to at least one byte.
+  static bool isValidBase32(String input) {
+    final cleaned = _cleanBase32(input);
+    return RegExp(r'^[A-Z2-7]+$').hasMatch(cleaned) &&
+        decodeBase32(cleaned).isNotEmpty;
+  }
+
+  static String _cleanBase32(String input) =>
+      input.toUpperCase().replaceAll(RegExp(r'[\s=]+'), '').replaceAll('-', '');
+
   /// RFC 4648 Base32 (ignores spaces and padding).
   static Uint8List decodeBase32(String input) {
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
-    final cleaned = input
-        .toUpperCase()
-        .replaceAll(RegExp(r'[\s=]+'), '')
-        .replaceAll('-', '');
+    final cleaned = _cleanBase32(input);
     if (cleaned.isEmpty) return Uint8List(0);
 
     var buffer = 0;

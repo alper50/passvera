@@ -13,6 +13,7 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import 'application/appearanceBloc/appearance_bloc.dart' as _i535;
 import 'application/authenticatorBloc/authenticator_bloc.dart' as _i836;
 import 'application/authenticatorImportBloc/authenticator_import_bloc.dart'
     as _i380;
@@ -26,13 +27,17 @@ import 'application/onboardBloc/onboard_bloc.dart' as _i190;
 import 'application/passActionBloc/pass_action_bloc.dart' as _i311;
 import 'application/restoreBloc/restore_bloc.dart' as _i78;
 import 'application/sessionBloc/session_bloc.dart' as _i931;
+import 'domain/appearance_mode.dart' as _i596;
 import 'domain/backup/i_backup_repository.dart' as _i260;
 import 'domain/backup/i_vault_changes.dart' as _i78;
+import 'domain/i_appearance_repository.dart' as _i290;
 import 'domain/i_authenticator_repository.dart' as _i882;
 import 'domain/i_clipboard_repository.dart' as _i625;
 import 'domain/i_keys_repository.dart' as _i284;
 import 'domain/i_lock_repository.dart' as _i760;
 import 'domain/i_storage_migration.dart' as _i95;
+import 'infrastructure/appearance/appearance_repository.dart' as _i250;
+import 'infrastructure/appearance/appearance_service.dart' as _i1061;
 import 'infrastructure/authenticator/authenticator_repository.dart' as _i523;
 import 'infrastructure/authenticator/authenticator_service.dart' as _i64;
 import 'infrastructure/backup/backup_codec.dart' as _i264;
@@ -74,6 +79,8 @@ _i174.GetIt $initGetIt(
       () => _i380.HomeActionBloc(gh<_i284.IKeysRepository>()));
   gh.factory<_i866.HomeBloc>(() => _i866.HomeBloc(gh<_i284.IKeysRepository>()));
   gh.lazySingleton<_i325.BackupRemote>(() => _i307.GoogleDriveBackupRemote());
+  gh.lazySingleton<_i1061.AppearanceService>(
+      () => _i1061.AppearanceService(gh<_i1.KeysService>()));
   gh.lazySingleton<_i64.AuthenticatorService>(
       () => _i64.AuthenticatorService(gh<_i1.KeysService>()));
   gh.lazySingleton<_i214.LockService>(
@@ -96,8 +103,14 @@ _i174.GetIt $initGetIt(
       () => _i190.OnboardBloc(gh<_i284.IKeysRepository>()));
   gh.lazySingleton<_i625.IClipboardRepository>(
       () => _i759.ClipboardRepository(gh<_i580.ClipboardService>()));
-  gh.lazySingleton<_i260.IBackupRepository>(
-      () => _i891.BackupRepository(gh<_i922.BackupService>()));
+  gh.lazySingleton<_i260.IBackupRepository>(() => _i891.BackupRepository(
+        gh<_i922.BackupService>(),
+        gh<_i886.VaultChangeNotifier>(),
+      ));
+  gh.factory<_i189.BackupSettingsBloc>(() => _i189.BackupSettingsBloc(
+        gh<_i260.IBackupRepository>(),
+        gh<_i760.ILockRepository>(),
+      ));
   gh.factory<_i1011.ClipboardBloc>(
       () => _i1011.ClipboardBloc(gh<_i625.IClipboardRepository>()));
   gh.factory<_i178.BackupSyncBloc>(() => _i178.BackupSyncBloc(
@@ -109,6 +122,8 @@ _i174.GetIt $initGetIt(
             gh<_i64.AuthenticatorService>(),
             gh<_i886.VaultChangeNotifier>(),
           ));
+  gh.lazySingleton<_i290.IAppearanceRepository>(
+      () => _i250.AppearanceRepository(gh<_i1061.AppearanceService>()));
   gh.factory<_i280.LockBloc>(() => _i280.LockBloc(gh<_i760.ILockRepository>()));
   gh.factory<_i931.SessionBloc>(
       () => _i931.SessionBloc(gh<_i760.ILockRepository>()));
@@ -121,9 +136,13 @@ _i174.GetIt $initGetIt(
       () => _i836.AuthenticatorBloc(gh<_i882.IAuthenticatorRepository>()));
   gh.factory<_i380.AuthenticatorImportBloc>(() =>
       _i380.AuthenticatorImportBloc(gh<_i882.IAuthenticatorRepository>()));
-  gh.factory<_i189.BackupSettingsBloc>(() => _i189.BackupSettingsBloc(
-        gh<_i260.IBackupRepository>(),
-        gh<_i760.ILockRepository>(),
+  gh.factoryParam<_i535.AppearanceBloc, _i596.AppearanceMode?, dynamic>((
+    initial,
+    _,
+  ) =>
+      _i535.AppearanceBloc(
+        gh<_i290.IAppearanceRepository>(),
+        initial,
       ));
   return getIt;
 }

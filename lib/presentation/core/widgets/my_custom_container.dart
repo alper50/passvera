@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:passvera/presentation/core/theme/brand_surface.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 
 class MyCustomContainer extends StatelessWidget {
@@ -25,17 +26,17 @@ class MyCustomContainer extends StatelessWidget {
           color: MyColors.ink,
           width: 3.0,
         ),
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
-            color: MyColors.inkSoft,
-            offset: Offset(-5.0, 7.0),
+            color: context.colors.inkSoft,
+            offset: const Offset(-5.0, 7.0),
             blurRadius: 5.0,
             blurStyle: BlurStyle.solid,
           ),
         ],
       ),
       padding: padding,
-      child: child,
+      child: child == null ? null : BrandSurface(child: child!),
     );
   }
 }

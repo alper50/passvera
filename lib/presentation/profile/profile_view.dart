@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:passvera/application/appearanceBloc/appearance_bloc.dart';
 import 'package:passvera/application/lockBloc/lock_bloc.dart';
+import 'package:passvera/domain/appearance_mode.dart';
 import 'package:passvera/domain/lock_constants.dart';
 import 'package:passvera/injection.dart';
 import 'package:passvera/presentation/backup/backup_view.dart';
@@ -9,6 +11,7 @@ import 'package:passvera/presentation/core/route/route.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/core/utils/failure_messages.dart';
 import 'package:passvera/presentation/core/widgets/my_custom_container.dart';
+import 'package:passvera/presentation/core/widgets/my_segmented_control.dart';
 import 'package:passvera/presentation/core/widgets/my_small_button.dart';
 import 'package:passvera/presentation/core/widgets/my_snackbar.dart';
 import 'package:passvera/presentation/core/widgets/pin_pad.dart';
@@ -245,7 +248,8 @@ class _ProfileViewBodyState extends State<_ProfileViewBody> {
               );
             }
 
-            return Padding(
+            // Scrolls: with a PIN set the cards outgrow small phones.
+            return SingleChildScrollView(
               padding: const EdgeInsets.all(20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -286,6 +290,8 @@ class _ProfileViewBodyState extends State<_ProfileViewBody> {
                   ],
                   const SizedBox(height: 32),
                   const _BackupEntry(),
+                  const SizedBox(height: 32),
+                  const _AppearanceEntry(),
                 ],
               ),
             );
@@ -318,6 +324,48 @@ class _ProfileAction extends StatelessWidget {
           MySmallButton(
             icon: Icon(icon, size: 32),
             onTap: onTap,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Light/dark preference. Device-only: not part of Drive backups.
+class _AppearanceEntry extends StatelessWidget {
+  const _AppearanceEntry();
+
+  static final _segments = [
+    for (final mode in AppearanceMode.values)
+      switch (mode) {
+        AppearanceMode.system => const MySegment(
+            label: 'System',
+            icon: Icons.brightness_auto_outlined,
+          ),
+        AppearanceMode.light =>
+          const MySegment(label: 'Light', icon: Icons.light_mode_outlined),
+        AppearanceMode.dark =>
+          const MySegment(label: 'Dark', icon: Icons.dark_mode_outlined),
+      },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MyCustomContainer(
+      padding: const EdgeInsets.fromLTRB(12, 10, 12, 14),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text('Appearance', style: MyTextStyles.headline3Bold),
+          const SizedBox(height: 10),
+          BlocBuilder<AppearanceBloc, AppearanceState>(
+            builder: (context, state) => MySegmentedControl(
+              segments: _segments,
+              selectedIndex: state.mode.index,
+              onSelected: (i) => context.read<AppearanceBloc>().add(
+                    AppearanceEvent.modeChanged(AppearanceMode.values[i]),
+                  ),
+            ),
           ),
         ],
       ),

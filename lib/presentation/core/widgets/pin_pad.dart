@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:passvera/domain/lock_constants.dart';
+import 'package:passvera/presentation/core/theme/brand_surface.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 
@@ -78,8 +79,8 @@ class _PinDot extends StatelessWidget {
           height: 18,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: filled ? MyColors.ink : MyColors.transparent,
-            border: Border.all(color: MyColors.ink, width: 2),
+            color: filled ? context.colors.ink : MyColors.transparent,
+            border: Border.all(color: context.colors.ink, width: 2),
           ),
         ),
       ),
@@ -218,7 +219,7 @@ class _KeyButtonState extends State<_KeyButton>
                     border: Border.all(color: MyColors.ink, width: 3),
                     boxShadow: [
                       BoxShadow(
-                        color: MyColors.inkSoft,
+                        color: context.colors.inkSoft,
                         offset: Offset(-offset, offset),
                         blurRadius: 4,
                         blurStyle: BlurStyle.solid,
@@ -230,7 +231,7 @@ class _KeyButtonState extends State<_KeyButton>
               ),
             );
           },
-          child: widget.child,
+          child: BrandSurface(child: widget.child),
         ),
       ),
     );

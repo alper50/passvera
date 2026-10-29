@@ -46,6 +46,15 @@ class KeysRepository extends IKeysRepository {
   }
 
   @override
+  Future<Either<StorageFailure, List<String>>> getTagOrder() =>
+      _service.getTagOrder();
+
+  /// Notifies too: the tag order is part of the Drive backup.
+  @override
+  Future<Either<StorageFailure, Unit>> saveTagOrder(List<String> tags) =>
+      _notifying(_service.saveTagOrder(tags));
+
+  @override
   Future<Either<StorageFailure, bool>> isOnboardCompleted() =>
       _service.isOnboardCompleted();
 

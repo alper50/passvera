@@ -18,6 +18,10 @@ mixin _$BackupPayload {
   List<ApplicationModel> get passwords;
   List<AuthenticatorEntry> get authenticators;
 
+  /// Saved tag order (see TagOrder); empty in backups made before it
+  /// existed or when the user never reordered.
+  List<String> get tagOrder;
+
   /// Create a copy of BackupPayload
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -35,7 +39,8 @@ mixin _$BackupPayload {
                 other.createdAt == createdAt) &&
             const DeepCollectionEquality().equals(other.passwords, passwords) &&
             const DeepCollectionEquality()
-                .equals(other.authenticators, authenticators));
+                .equals(other.authenticators, authenticators) &&
+            const DeepCollectionEquality().equals(other.tagOrder, tagOrder));
   }
 
   @override
@@ -43,11 +48,12 @@ mixin _$BackupPayload {
       runtimeType,
       createdAt,
       const DeepCollectionEquality().hash(passwords),
-      const DeepCollectionEquality().hash(authenticators));
+      const DeepCollectionEquality().hash(authenticators),
+      const DeepCollectionEquality().hash(tagOrder));
 
   @override
   String toString() {
-    return 'BackupPayload(createdAt: $createdAt, passwords: $passwords, authenticators: $authenticators)';
+    return 'BackupPayload(createdAt: $createdAt, passwords: $passwords, authenticators: $authenticators, tagOrder: $tagOrder)';
   }
 }
 
@@ -60,7 +66,8 @@ abstract mixin class $BackupPayloadCopyWith<$Res> {
   $Res call(
       {DateTime createdAt,
       List<ApplicationModel> passwords,
-      List<AuthenticatorEntry> authenticators});
+      List<AuthenticatorEntry> authenticators,
+      List<String> tagOrder});
 }
 
 /// @nodoc
@@ -79,6 +86,7 @@ class _$BackupPayloadCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? passwords = null,
     Object? authenticators = null,
+    Object? tagOrder = null,
   }) {
     return _then(_self.copyWith(
       createdAt: null == createdAt
@@ -93,6 +101,10 @@ class _$BackupPayloadCopyWithImpl<$Res>
           ? _self.authenticators
           : authenticators // ignore: cast_nullable_to_non_nullable
               as List<AuthenticatorEntry>,
+      tagOrder: null == tagOrder
+          ? _self.tagOrder
+          : tagOrder // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -191,14 +203,15 @@ extension BackupPayloadPatterns on BackupPayload {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(DateTime createdAt, List<ApplicationModel> passwords,
-            List<AuthenticatorEntry> authenticators)?
+            List<AuthenticatorEntry> authenticators, List<String> tagOrder)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _BackupPayload() when $default != null:
-        return $default(_that.createdAt, _that.passwords, _that.authenticators);
+        return $default(_that.createdAt, _that.passwords, _that.authenticators,
+            _that.tagOrder);
       case _:
         return orElse();
     }
@@ -220,13 +233,14 @@ extension BackupPayloadPatterns on BackupPayload {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(DateTime createdAt, List<ApplicationModel> passwords,
-            List<AuthenticatorEntry> authenticators)
+            List<AuthenticatorEntry> authenticators, List<String> tagOrder)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _BackupPayload():
-        return $default(_that.createdAt, _that.passwords, _that.authenticators);
+        return $default(_that.createdAt, _that.passwords, _that.authenticators,
+            _that.tagOrder);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -247,13 +261,14 @@ extension BackupPayloadPatterns on BackupPayload {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(DateTime createdAt, List<ApplicationModel> passwords,
-            List<AuthenticatorEntry> authenticators)?
+            List<AuthenticatorEntry> authenticators, List<String> tagOrder)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _BackupPayload() when $default != null:
-        return $default(_that.createdAt, _that.passwords, _that.authenticators);
+        return $default(_that.createdAt, _that.passwords, _that.authenticators,
+            _that.tagOrder);
       case _:
         return null;
     }
@@ -266,9 +281,11 @@ class _BackupPayload implements BackupPayload {
   const _BackupPayload(
       {required this.createdAt,
       required final List<ApplicationModel> passwords,
-      required final List<AuthenticatorEntry> authenticators})
+      required final List<AuthenticatorEntry> authenticators,
+      final List<String> tagOrder = const <String>[]})
       : _passwords = passwords,
-        _authenticators = authenticators;
+        _authenticators = authenticators,
+        _tagOrder = tagOrder;
 
   @override
   final DateTime createdAt;
@@ -286,6 +303,20 @@ class _BackupPayload implements BackupPayload {
     if (_authenticators is EqualUnmodifiableListView) return _authenticators;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_authenticators);
+  }
+
+  /// Saved tag order (see TagOrder); empty in backups made before it
+  /// existed or when the user never reordered.
+  final List<String> _tagOrder;
+
+  /// Saved tag order (see TagOrder); empty in backups made before it
+  /// existed or when the user never reordered.
+  @override
+  @JsonKey()
+  List<String> get tagOrder {
+    if (_tagOrder is EqualUnmodifiableListView) return _tagOrder;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tagOrder);
   }
 
   /// Create a copy of BackupPayload
@@ -306,7 +337,8 @@ class _BackupPayload implements BackupPayload {
             const DeepCollectionEquality()
                 .equals(other._passwords, _passwords) &&
             const DeepCollectionEquality()
-                .equals(other._authenticators, _authenticators));
+                .equals(other._authenticators, _authenticators) &&
+            const DeepCollectionEquality().equals(other._tagOrder, _tagOrder));
   }
 
   @override
@@ -314,11 +346,12 @@ class _BackupPayload implements BackupPayload {
       runtimeType,
       createdAt,
       const DeepCollectionEquality().hash(_passwords),
-      const DeepCollectionEquality().hash(_authenticators));
+      const DeepCollectionEquality().hash(_authenticators),
+      const DeepCollectionEquality().hash(_tagOrder));
 
   @override
   String toString() {
-    return 'BackupPayload(createdAt: $createdAt, passwords: $passwords, authenticators: $authenticators)';
+    return 'BackupPayload(createdAt: $createdAt, passwords: $passwords, authenticators: $authenticators, tagOrder: $tagOrder)';
   }
 }
 
@@ -333,7 +366,8 @@ abstract mixin class _$BackupPayloadCopyWith<$Res>
   $Res call(
       {DateTime createdAt,
       List<ApplicationModel> passwords,
-      List<AuthenticatorEntry> authenticators});
+      List<AuthenticatorEntry> authenticators,
+      List<String> tagOrder});
 }
 
 /// @nodoc
@@ -352,6 +386,7 @@ class __$BackupPayloadCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? passwords = null,
     Object? authenticators = null,
+    Object? tagOrder = null,
   }) {
     return _then(_BackupPayload(
       createdAt: null == createdAt
@@ -366,6 +401,10 @@ class __$BackupPayloadCopyWithImpl<$Res>
           ? _self._authenticators
           : authenticators // ignore: cast_nullable_to_non_nullable
               as List<AuthenticatorEntry>,
+      tagOrder: null == tagOrder
+          ? _self._tagOrder
+          : tagOrder // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }

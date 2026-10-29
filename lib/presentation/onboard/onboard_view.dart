@@ -140,9 +140,9 @@ class OnboardViewState extends State<OnboardView> {
       height: 14,
       width: isSelected ? 32 : 14,
       decoration: BoxDecoration(
-        color: isSelected ? MyColors.brand : MyColors.surfaceWhite,
+        color: isSelected ? MyColors.brand : context.colors.surfaceWhite,
         borderRadius: BorderRadius.circular(7),
-        border: Border.all(color: MyColors.ink, width: 2),
+        border: Border.all(color: context.colors.ink, width: 2),
       ),
     );
   }

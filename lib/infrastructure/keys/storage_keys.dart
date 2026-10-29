@@ -17,6 +17,12 @@ abstract final class StorageKeys {
   static const String onboard = '${metaPrefix}onboard';
   static const String onboardCompletedValue = 'true';
 
+  /// JSON list of tag labels in the order the user arranged them.
+  static const String tagOrder = '${metaPrefix}tag_order';
+
+  /// `light` / `dark`; absent = follow the system (see AppearanceMode).
+  static const String appearance = '${metaPrefix}appearance';
+
   static const String pinHash = '${metaPrefix}app_pin_hash';
   static const String pinSalt = '${metaPrefix}app_pin_salt';
   static const String pinAttempts = '${metaPrefix}app_pin_attempts';

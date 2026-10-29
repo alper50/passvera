@@ -136,7 +136,7 @@ class _LockViewBodyState extends State<_LockViewBody> {
         ),
       ],
       child: Scaffold(
-        backgroundColor: MyColors.surface,
+        backgroundColor: context.colors.surface,
         body: SafeArea(
           child: BlocBuilder<LockBloc, AppLockState>(
             builder: (context, state) {

@@ -52,6 +52,7 @@ extension HomeEventPatterns on HomeEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetKeys value)? getAllValues,
     TResult Function(_TagSelected value)? tagSelected,
+    TResult Function(_TagsReordered value)? tagsReordered,
     required TResult orElse(),
   }) {
     final _that = this;
@@ -60,6 +61,8 @@ extension HomeEventPatterns on HomeEvent {
         return getAllValues(_that);
       case _TagSelected() when tagSelected != null:
         return tagSelected(_that);
+      case _TagsReordered() when tagsReordered != null:
+        return tagsReordered(_that);
       case _:
         return orElse();
     }
@@ -82,6 +85,7 @@ extension HomeEventPatterns on HomeEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetKeys value) getAllValues,
     required TResult Function(_TagSelected value) tagSelected,
+    required TResult Function(_TagsReordered value) tagsReordered,
   }) {
     final _that = this;
     switch (_that) {
@@ -89,6 +93,8 @@ extension HomeEventPatterns on HomeEvent {
         return getAllValues(_that);
       case _TagSelected():
         return tagSelected(_that);
+      case _TagsReordered():
+        return tagsReordered(_that);
     }
   }
 
@@ -108,6 +114,7 @@ extension HomeEventPatterns on HomeEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetKeys value)? getAllValues,
     TResult? Function(_TagSelected value)? tagSelected,
+    TResult? Function(_TagsReordered value)? tagsReordered,
   }) {
     final _that = this;
     switch (_that) {
@@ -115,6 +122,8 @@ extension HomeEventPatterns on HomeEvent {
         return getAllValues(_that);
       case _TagSelected() when tagSelected != null:
         return tagSelected(_that);
+      case _TagsReordered() when tagsReordered != null:
+        return tagsReordered(_that);
       case _:
         return null;
     }
@@ -136,6 +145,7 @@ extension HomeEventPatterns on HomeEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllValues,
     TResult Function(String? tag)? tagSelected,
+    TResult Function(List<String> tags)? tagsReordered,
     required TResult orElse(),
   }) {
     final _that = this;
@@ -144,6 +154,8 @@ extension HomeEventPatterns on HomeEvent {
         return getAllValues();
       case _TagSelected() when tagSelected != null:
         return tagSelected(_that.tag);
+      case _TagsReordered() when tagsReordered != null:
+        return tagsReordered(_that.tags);
       case _:
         return orElse();
     }
@@ -166,6 +178,7 @@ extension HomeEventPatterns on HomeEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getAllValues,
     required TResult Function(String? tag) tagSelected,
+    required TResult Function(List<String> tags) tagsReordered,
   }) {
     final _that = this;
     switch (_that) {
@@ -173,6 +186,8 @@ extension HomeEventPatterns on HomeEvent {
         return getAllValues();
       case _TagSelected():
         return tagSelected(_that.tag);
+      case _TagsReordered():
+        return tagsReordered(_that.tags);
     }
   }
 
@@ -192,6 +207,7 @@ extension HomeEventPatterns on HomeEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllValues,
     TResult? Function(String? tag)? tagSelected,
+    TResult? Function(List<String> tags)? tagsReordered,
   }) {
     final _that = this;
     switch (_that) {
@@ -199,6 +215,8 @@ extension HomeEventPatterns on HomeEvent {
         return getAllValues();
       case _TagSelected() when tagSelected != null:
         return tagSelected(_that.tag);
+      case _TagsReordered() when tagsReordered != null:
+        return tagsReordered(_that.tags);
       case _:
         return null;
     }
@@ -284,6 +302,76 @@ class __$TagSelectedCopyWithImpl<$Res> implements _$TagSelectedCopyWith<$Res> {
           ? _self.tag
           : tag // ignore: cast_nullable_to_non_nullable
               as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _TagsReordered implements HomeEvent {
+  const _TagsReordered(final List<String> tags) : _tags = tags;
+
+  final List<String> _tags;
+  List<String> get tags {
+    if (_tags is EqualUnmodifiableListView) return _tags;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tags);
+  }
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$TagsReorderedCopyWith<_TagsReordered> get copyWith =>
+      __$TagsReorderedCopyWithImpl<_TagsReordered>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _TagsReordered &&
+            const DeepCollectionEquality().equals(other._tags, _tags));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tags));
+
+  @override
+  String toString() {
+    return 'HomeEvent.tagsReordered(tags: $tags)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$TagsReorderedCopyWith<$Res>
+    implements $HomeEventCopyWith<$Res> {
+  factory _$TagsReorderedCopyWith(
+          _TagsReordered value, $Res Function(_TagsReordered) _then) =
+      __$TagsReorderedCopyWithImpl;
+  @useResult
+  $Res call({List<String> tags});
+}
+
+/// @nodoc
+class __$TagsReorderedCopyWithImpl<$Res>
+    implements _$TagsReorderedCopyWith<$Res> {
+  __$TagsReorderedCopyWithImpl(this._self, this._then);
+
+  final _TagsReordered _self;
+  final $Res Function(_TagsReordered) _then;
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? tags = null,
+  }) {
+    return _then(_TagsReordered(
+      null == tags
+          ? _self._tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }

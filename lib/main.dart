@@ -1,8 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:passvera/application/appearanceBloc/appearance_bloc.dart';
 import 'package:passvera/application/backupSyncBloc/backup_sync_bloc.dart';
 import 'package:passvera/application/sessionBloc/session_bloc.dart';
+import 'package:passvera/domain/appearance_mode.dart';
 import 'package:passvera/initialization.dart';
 import 'package:passvera/injection.dart';
 import 'package:passvera/presentation/core/route/route.dart';
@@ -14,17 +16,27 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await InitializeApp.initalize();
   final storageReady = await InitializeApp.prepareStorage();
-  runApp(storageReady ? const MyApp() : const StartupFailureApp());
+  runApp(
+    storageReady
+        ? MyApp(appearance: await InitializeApp.loadAppearance())
+        : const StartupFailureApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, this.appearance = AppearanceMode.system});
+
+  /// Stored preference, read before the first frame.
+  final AppearanceMode appearance;
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => getIt<SessionBloc>()),
+        BlocProvider(
+          create: (_) => getIt<AppearanceBloc>(param1: appearance),
+        ),
         // Automatic Drive backup lives for the whole app session.
         BlocProvider(
           create: (_) =>
@@ -46,6 +58,9 @@ class _AppView extends StatefulWidget {
 
 class _AppViewState extends State<_AppView> with WidgetsBindingObserver {
   final _appRouter = MyRouter();
+
+  /// Built once: the app rebuilds on theme changes and must keep its router.
+  late final _routerConfig = _appRouter.config();
 
   /// Screens that already gate access; relocking there is pointless.
   static const _unlockedFreeRoutes = {
@@ -104,22 +119,26 @@ class _AppViewState extends State<_AppView> with WidgetsBindingObserver {
         _showLock();
         context.read<SessionBloc>().add(const SessionEvent.lockHandled());
       },
-      child: MaterialApp.router(
-        theme: MyThemeData.lightheme,
-        debugShowCheckedModeBanner: false,
-        routerConfig: _appRouter.config(),
-        builder: (context, child) => Stack(
-          fit: StackFit.expand,
-          children: [
-            child!,
-            BlocBuilder<SessionBloc, SessionState>(
-              buildWhen: (previous, current) =>
-                  previous.isObscured != current.isObscured,
-              builder: (context, state) => state.isObscured
-                  ? const Positioned.fill(child: PrivacyCover())
-                  : const SizedBox.shrink(),
-            ),
-          ],
+      child: BlocBuilder<AppearanceBloc, AppearanceState>(
+        builder: (context, appearance) => MaterialApp.router(
+          theme: MyThemeData.light,
+          darkTheme: MyThemeData.dark,
+          themeMode: appearance.mode.themeMode,
+          debugShowCheckedModeBanner: false,
+          routerConfig: _routerConfig,
+          builder: (context, child) => Stack(
+            fit: StackFit.expand,
+            children: [
+              child!,
+              BlocBuilder<SessionBloc, SessionState>(
+                buildWhen: (previous, current) =>
+                    previous.isObscured != current.isObscured,
+                builder: (context, state) => state.isObscured
+                    ? const Positioned.fill(child: PrivacyCover())
+                    : const SizedBox.shrink(),
+              ),
+            ],
+          ),
         ),
       ),
     );

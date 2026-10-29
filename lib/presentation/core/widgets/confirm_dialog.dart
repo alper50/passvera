@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:passvera/presentation/core/theme/brand_surface.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 import 'package:passvera/presentation/core/widgets/form_dialog.dart';
@@ -16,7 +17,8 @@ Future<bool> showConfirmDialog({
   final result = await showDialog<bool>(
     context: context,
     builder: (BuildContext dialogContext) {
-      return AlertDialog(
+      return BrandSurface(
+          child: AlertDialog(
         backgroundColor: MyColors.brand,
         contentPadding: const EdgeInsets.fromLTRB(24, 16, 24, 24),
         shape: RoundedRectangleBorder(
@@ -53,7 +55,7 @@ Future<bool> showConfirmDialog({
             ),
           ],
         ),
-      );
+      ));
     },
   );
   return result ?? false;

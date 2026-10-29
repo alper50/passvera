@@ -1,6 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:passvera/application/homeBloc/home_bloc.dart';
 import 'package:passvera/domain/application_model.dart';
+import 'package:passvera/domain/errors/storage_failures.dart';
 
 import 'fakes.dart';
 
@@ -60,6 +62,49 @@ void main() {
 
     expect(success((_, __, selected) => selected), 'Finance');
     expect(success((values, _, __) => values), [bank]);
+  });
+
+  test('loads the saved tag order and groups the list by it', () async {
+    repository.tagOrder = const ['work', 'Finance'];
+    await send(const HomeEvent.getAllValues());
+
+    expect(success((_, tags, __) => tags), ['Work', 'Finance']);
+    expect(success((values, _, __) => values), [jira, vpn, bank]);
+  });
+
+  test('a tag that is not in the saved order goes last', () async {
+    const chat = ApplicationModel(key: 'Chat', value: 'x', tag: 'Apps');
+    repository
+      ..tagOrder = const ['Work', 'Finance']
+      ..storedValues = const [chat, bank, jira, vpn];
+    await send(const HomeEvent.getAllValues());
+
+    expect(success((_, tags, __) => tags), ['Work', 'Finance', 'Apps']);
+  });
+
+  test('reordering saves the order and keeps the selected tag', () async {
+    await send(const HomeEvent.tagSelected('Finance'));
+    await send(const HomeEvent.tagsReordered(['Work', 'Finance']));
+
+    expect(repository.tagOrder, ['Work', 'Finance']);
+    expect(success((_, tags, __) => tags), ['Work', 'Finance']);
+    expect(success((_, __, selected) => selected), 'Finance');
+    expect(success((values, _, __) => values), [bank]);
+  });
+
+  test('selecting a tag keeps a reordered bar as it is', () async {
+    await send(const HomeEvent.tagsReordered(['Work', 'Finance']));
+    await send(const HomeEvent.tagSelected('Work'));
+
+    expect(success((_, tags, __) => tags), ['Work', 'Finance']);
+  });
+
+  test('a failed save puts the previous order back', () async {
+    repository.saveTagOrderResult =
+        Left(StorageFailure.unexpected(StateError('disk')));
+    await send(const HomeEvent.tagsReordered(['Work', 'Finance']));
+
+    expect(success((_, tags, __) => tags), ['Finance', 'Work']);
   });
 
   test('drops the filter when its tag no longer exists after reload', () async {

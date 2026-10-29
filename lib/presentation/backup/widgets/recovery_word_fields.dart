@@ -150,6 +150,7 @@ class _WordField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final valid = RecoveryKey.isWord(controller.text);
+    final colors = context.colors;
     return TextField(
       controller: controller,
       focusNode: focusNode,
@@ -169,22 +170,22 @@ class _WordField extends StatelessWidget {
           padding: const EdgeInsets.only(left: 10, right: 4),
           child: Text(
             '$number.',
-            style: MyTextStyles.bodySmall.copyWith(color: MyColors.inkSoft),
+            style: MyTextStyles.bodySmall.copyWith(color: colors.inkSoft),
           ),
         ),
         prefixIconConstraints: const BoxConstraints(minWidth: 0),
         suffixIcon: valid
-            ? const Icon(Icons.check_rounded, size: 18, color: MyColors.ink)
+            ? Icon(Icons.check_rounded, size: 18, color: colors.ink)
             : null,
         filled: true,
-        fillColor: MyColors.surfaceWhite,
+        fillColor: colors.surfaceWhite,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: MyColors.ink, width: 2),
+          borderSide: BorderSide(color: colors.ink, width: 2),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: MyColors.ink, width: 3),
+          borderSide: BorderSide(color: colors.ink, width: 3),
         ),
       ),
     );

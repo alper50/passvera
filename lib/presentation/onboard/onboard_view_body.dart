@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:passvera/presentation/core/theme/brand_surface.dart';
 import 'package:passvera/presentation/core/theme/colors.dart';
 import 'package:passvera/presentation/core/theme/text_styles.dart';
 
@@ -26,34 +27,36 @@ class OnboardViewBody extends StatelessWidget {
           color: MyColors.ink,
           width: 3.0,
         ),
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(
-            color: MyColors.inkSoft,
-            offset: Offset(-3.0, 3.0),
+            color: context.colors.inkSoft,
+            offset: const Offset(-3.0, 3.0),
             blurRadius: 5.0,
             blurStyle: BlurStyle.solid,
           ),
         ],
       ),
-      child: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(icon, size: 72, color: MyColors.ink),
-              const SizedBox(height: 24),
-              Text(
-                title,
-                style: MyTextStyles.headline2Bold,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 12),
-              Text(
-                description,
-                style: MyTextStyles.bodyLarge,
-                textAlign: TextAlign.center,
-              ),
-            ],
+      child: BrandSurface(
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(icon, size: 72, color: MyColors.ink),
+                const SizedBox(height: 24),
+                Text(
+                  title,
+                  style: MyTextStyles.headline2Bold,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  description,
+                  style: MyTextStyles.bodyLarge,
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
           ),
         ),
       ),

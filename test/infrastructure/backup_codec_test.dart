@@ -1,5 +1,8 @@
+import 'dart:convert';
 import 'dart:math';
+import 'dart:typed_data';
 
+import 'package:cryptography/cryptography.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:passvera/domain/application_model.dart';
@@ -35,6 +38,7 @@ void main() {
         algorithm: TotpAlgorithm.sha256,
       ),
     ],
+    tagOrder: const ['Finance', 'Personal'],
   );
 
   Future<Either<BackupFailure, BackupPayload>> roundTrip(
@@ -105,6 +109,48 @@ void main() {
         BackupFailure.unsupportedVersion(),
       ),
     );
+  });
+
+  test('backups made before tag order existed still open', () async {
+    // A v1 file written exactly as the format doc describes, without the
+    // optional `tagOrder` field.
+    final createdAt = DateTime.utc(2026, 9, 1);
+    final json = utf8.encode(jsonEncode({
+      'schema': BackupCodec.payloadSchema,
+      'createdAt': createdAt.toIso8601String(),
+      'passwords': [
+        {'name': 'Gmail', 'password': 'p', 'tag': 'Mail', 'color': 1},
+      ],
+      'authenticators': [],
+    }));
+    final encKey = await Hkdf(hmac: Hmac.sha256(), outputLength: 32).deriveKey(
+      secretKey: SecretKey(key.bytes),
+      nonce: utf8.encode('passvera/backup'),
+      info: utf8.encode('passvera/backup/enc/v1'),
+    );
+    final aes = AesGcm.with256bits();
+    final nonce = aes.newNonce();
+    final header = [
+      ...BackupCodec.magic,
+      BackupCodec.version,
+      ...await codec.keyIdOf(key),
+      ...nonce,
+      ...(ByteData(8)..setUint64(0, createdAt.millisecondsSinceEpoch))
+          .buffer
+          .asUint8List(),
+    ];
+    final box = await aes.encrypt(
+      json,
+      secretKey: encKey,
+      nonce: nonce,
+      aad: header,
+    );
+
+    final decoded =
+        await roundTrip([...header, ...box.cipherText, ...box.mac.bytes]);
+    final legacy = decoded.getOrElse(() => throw StateError('$decoded'));
+    expect(legacy.passwords.single.key, 'Gmail');
+    expect(legacy.tagOrder, isEmpty);
   });
 
   test('empty vault round-trips', () async {

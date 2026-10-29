@@ -88,10 +88,10 @@ class AuthenticatorBody extends StatelessWidget {
                 ),
                 Container(
                   height: 24,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: MyColors.surface,
+                        color: context.colors.surface,
                         blurRadius: 15.0,
                         spreadRadius: 20,
                         blurStyle: BlurStyle.normal,

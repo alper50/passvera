@@ -15,6 +15,8 @@ import 'package:passvera/domain/errors/authenticator_failures.dart';
 import 'package:passvera/domain/errors/clipboard_failures.dart';
 import 'package:passvera/domain/errors/lock_failures.dart';
 import 'package:passvera/domain/errors/storage_failures.dart';
+import 'package:passvera/domain/appearance_mode.dart';
+import 'package:passvera/domain/i_appearance_repository.dart';
 import 'package:passvera/domain/i_authenticator_repository.dart';
 import 'package:passvera/domain/i_clipboard_repository.dart';
 import 'package:passvera/domain/i_keys_repository.dart';
@@ -43,6 +45,18 @@ class FakeKeysRepository implements IKeysRepository {
   Either<StorageFailure, Unit> updateResult = const Right(unit);
   List<ApplicationModel> storedValues = const [];
   bool onboardCompleted = false;
+  List<String> tagOrder = const [];
+  Either<StorageFailure, Unit> saveTagOrderResult = const Right(unit);
+
+  @override
+  Future<Either<StorageFailure, List<String>>> getTagOrder() async =>
+      Right(tagOrder);
+
+  @override
+  Future<Either<StorageFailure, Unit>> saveTagOrder(List<String> tags) async {
+    if (saveTagOrderResult.isRight()) tagOrder = tags;
+    return saveTagOrderResult;
+  }
 
   @override
   Future<Either<StorageFailure, Unit>> completeOnboard() async {
@@ -66,6 +80,21 @@ class FakeKeysRepository implements IKeysRepository {
   @override
   dynamic noSuchMethod(Invocation invocation) =>
       throw UnimplementedError(invocation.memberName.toString());
+}
+
+class FakeAppearanceRepository implements IAppearanceRepository {
+  AppearanceMode stored = AppearanceMode.system;
+  Either<StorageFailure, Unit> saveResult = const Right(unit);
+
+  @override
+  Future<Either<StorageFailure, AppearanceMode>> getMode() async =>
+      Right(stored);
+
+  @override
+  Future<Either<StorageFailure, Unit>> saveMode(AppearanceMode mode) async {
+    if (saveResult.isRight()) stored = mode;
+    return saveResult;
+  }
 }
 
 class FakeClipboardRepository implements IClipboardRepository {

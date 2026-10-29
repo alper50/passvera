@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:passvera/application/appearanceBloc/appearance_bloc.dart';
 import 'package:passvera/application/authenticatorBloc/authenticator_bloc.dart';
 import 'package:passvera/application/authenticatorImportBloc/authenticator_import_bloc.dart';
 import 'package:passvera/application/backupSyncBloc/backup_sync_bloc.dart';
@@ -9,7 +10,9 @@ import 'package:passvera/application/lockBloc/lock_bloc.dart';
 import 'package:passvera/application/onboardBloc/onboard_bloc.dart';
 import 'package:passvera/application/passActionBloc/pass_action_bloc.dart';
 import 'package:passvera/application/sessionBloc/session_bloc.dart';
+import 'package:passvera/domain/appearance_mode.dart';
 import 'package:passvera/domain/backup/i_backup_repository.dart';
+import 'package:passvera/domain/i_appearance_repository.dart';
 import 'package:passvera/domain/backup/i_vault_changes.dart';
 import 'package:passvera/domain/i_storage_migration.dart';
 import 'package:passvera/infrastructure/backup/vault_change_notifier.dart';
@@ -24,6 +27,8 @@ void main() {
 
   test('all app-level types resolve', () {
     getIt<IStorageMigration>();
+    getIt<IAppearanceRepository>();
+    getIt<AppearanceBloc>(param1: AppearanceMode.dark);
     getIt<IBackupRepository>();
     getIt<AuthenticatorBloc>();
     getIt<BackupSyncBloc>();
