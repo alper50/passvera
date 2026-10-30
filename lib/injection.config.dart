@@ -26,6 +26,7 @@ import 'application/lockBloc/lock_bloc.dart' as _i280;
 import 'application/onboardBloc/onboard_bloc.dart' as _i190;
 import 'application/passActionBloc/pass_action_bloc.dart' as _i311;
 import 'application/restoreBloc/restore_bloc.dart' as _i78;
+import 'application/screenCaptureBloc/screen_capture_bloc.dart' as _i887;
 import 'application/sessionBloc/session_bloc.dart' as _i931;
 import 'domain/appearance_mode.dart' as _i596;
 import 'domain/backup/i_backup_repository.dart' as _i260;
@@ -36,6 +37,7 @@ import 'domain/i_clipboard_repository.dart' as _i625;
 import 'domain/i_keys_repository.dart' as _i284;
 import 'domain/i_lock_repository.dart' as _i760;
 import 'domain/i_relock_guard.dart' as _i417;
+import 'domain/i_screen_capture_repository.dart' as _i953;
 import 'domain/i_storage_migration.dart' as _i95;
 import 'infrastructure/appearance/appearance_repository.dart' as _i250;
 import 'infrastructure/appearance/appearance_service.dart' as _i1061;
@@ -55,6 +57,8 @@ import 'infrastructure/keys/storage_migration.dart' as _i435;
 import 'infrastructure/lock/lock_repository.dart' as _i701;
 import 'infrastructure/lock/lock_service.dart' as _i214;
 import 'infrastructure/lock/relock_guard.dart' as _i99;
+import 'infrastructure/screen_capture/screen_capture_repository.dart' as _i140;
+import 'infrastructure/screen_capture/screen_capture_service.dart' as _i216;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 _i174.GetIt $initGetIt(
@@ -73,6 +77,8 @@ _i174.GetIt $initGetIt(
       () => _i886.VaultChangeNotifier());
   gh.lazySingleton<_i580.ClipboardService>(() => _i580.ClipboardService());
   gh.lazySingleton<_i1.KeysService>(() => _i1.KeysService());
+  gh.lazySingleton<_i216.ScreenCaptureService>(
+      () => _i216.ScreenCaptureService());
   gh.lazySingleton<_i417.IRelockGuard>(() => _i99.RelockGuard());
   gh.lazySingleton<_i284.IKeysRepository>(() => _i760.KeysRepository(
         gh<_i1.KeysService>(),
@@ -81,6 +87,8 @@ _i174.GetIt $initGetIt(
   gh.factory<_i380.HomeActionBloc>(
       () => _i380.HomeActionBloc(gh<_i284.IKeysRepository>()));
   gh.factory<_i866.HomeBloc>(() => _i866.HomeBloc(gh<_i284.IKeysRepository>()));
+  gh.lazySingleton<_i953.IScreenCaptureRepository>(
+      () => _i140.ScreenCaptureRepository(gh<_i216.ScreenCaptureService>()));
   gh.lazySingleton<_i1061.AppearanceService>(
       () => _i1061.AppearanceService(gh<_i1.KeysService>()));
   gh.lazySingleton<_i64.AuthenticatorService>(
@@ -121,6 +129,8 @@ _i174.GetIt $initGetIt(
         gh<_i260.IBackupRepository>(),
         gh<_i78.IVaultChanges>(),
       ));
+  gh.factory<_i887.ScreenCaptureBloc>(
+      () => _i887.ScreenCaptureBloc(gh<_i953.IScreenCaptureRepository>()));
   gh.lazySingleton<_i882.IAuthenticatorRepository>(
       () => _i523.AuthenticatorRepository(
             gh<_i64.AuthenticatorService>(),

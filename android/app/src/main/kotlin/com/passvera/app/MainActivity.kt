@@ -1,5 +1,6 @@
 package com.passvera.app
 
+import android.app.Activity
 import android.content.ClipData
 import android.content.ClipDescription
 import android.content.ClipboardManager
@@ -18,6 +19,12 @@ class MainActivity : FlutterActivity() {
     private val clipboardChannel = "com.passvera.app/clipboard"
     private val clearHandler = Handler(Looper.getMainLooper())
     private var pendingClear: Runnable? = null
+
+    private var screenCaptureChannel: MethodChannel? = null
+
+    // Activity.ScreenCaptureCallback (API 34+); typed loosely so older
+    // devices never resolve the class.
+    private var screenCaptureCallback: Any? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +53,55 @@ class MainActivity : FlutterActivity() {
                     else -> result.notImplemented()
                 }
             }
+        screenCaptureChannel = MethodChannel(
+            flutterEngine.dartExecutor.binaryMessenger,
+            "com.passvera.app/screen_capture",
+        ).also { channel ->
+            channel.setMethodCallHandler { call, result ->
+                when (call.method) {
+                    "allow" -> result.success(allowScreenCapture())
+                    "block" -> {
+                        blockScreenCapture()
+                        result.success(null)
+                    }
+                    else -> result.notImplemented()
+                }
+            }
+        }
+    }
+
+    /**
+     * Lifts FLAG_SECURE for the recovery key screens, only where each
+     * screenshot is reported so the app can warn right after it (API 34+).
+     * Elsewhere the screen stays protected and this returns false.
+     */
+    private fun allowScreenCapture(): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) return false
+        if (screenCaptureCallback == null) {
+            val callback = Activity.ScreenCaptureCallback {
+                screenCaptureChannel?.invokeMethod("captured", null)
+            }
+            registerScreenCaptureCallback(mainExecutor, callback)
+            screenCaptureCallback = callback
+        }
+        // FLAG_SECURE also kept the words out of the recents thumbnail.
+        setRecentsScreenshotEnabled(false)
+        window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
+        return true
+    }
+
+    private fun blockScreenCapture() {
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_SECURE,
+            WindowManager.LayoutParams.FLAG_SECURE,
+        )
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            setRecentsScreenshotEnabled(true)
+            (screenCaptureCallback as? Activity.ScreenCaptureCallback)?.let {
+                unregisterScreenCaptureCallback(it)
+            }
+            screenCaptureCallback = null
+        }
     }
 
     override fun onDestroy() {

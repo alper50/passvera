@@ -5,9 +5,10 @@ import 'package:passvera/presentation/core/theme/text_styles.dart';
 void showMySnackBar(
     {required BuildContext context,
     required String message,
-    bool isError = false}) {
+    bool isError = false,
+    Duration duration = const Duration(seconds: 3)}) {
   ScaffoldMessenger.of(context).showSnackBar(
-    displaySnackBar(message: message, isError: isError),
+    displaySnackBar(message: message, isError: isError, duration: duration),
   );
 }
 
@@ -15,7 +16,8 @@ SnackBar displaySnackBar(
     {required String message,
     String? actionMessage,
     VoidCallback? onClick,
-    bool isError = false}) {
+    bool isError = false,
+    Duration duration = const Duration(seconds: 3)}) {
   return SnackBar(
     behavior: SnackBarBehavior.floating,
     elevation: 0,
@@ -32,7 +34,7 @@ SnackBar displaySnackBar(
             },
           )
         : null,
-    duration: const Duration(seconds: 3),
+    duration: duration,
     backgroundColor: isError ? MyColors.error : MyColors.brand,
   );
 }

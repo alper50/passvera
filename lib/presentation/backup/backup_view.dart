@@ -6,6 +6,7 @@ import 'package:passvera/application/backupSyncBloc/backup_sync_bloc.dart';
 import 'package:passvera/domain/backup/recovery_key.dart';
 import 'package:passvera/domain/lock_constants.dart';
 import 'package:passvera/injection.dart';
+import 'package:passvera/presentation/backup/widgets/recovery_key_capture_scope.dart';
 import 'package:passvera/presentation/backup/widgets/recovery_word_fields.dart';
 import 'package:passvera/presentation/backup/widgets/recovery_words_grid.dart';
 import 'package:passvera/presentation/core/route/route.dart';
@@ -400,7 +401,7 @@ class _WordsStep extends StatelessWidget {
           'safe. Do not store them with your Google password.',
           icon: Icons.edit_note_rounded,
         ),
-        RecoveryWordsGrid(words: words),
+        RecoveryKeyCaptureScope(child: RecoveryWordsGrid(words: words)),
         const SizedBox(height: 16),
         const _Paragraph(
           'Anyone with these words and your Google account can open your '
@@ -602,7 +603,7 @@ class _RevealKey extends StatelessWidget {
       children: [
         const Text('Your recovery key', style: MyTextStyles.headline2Bold),
         const SizedBox(height: 12),
-        RecoveryWordsGrid(words: key.words),
+        RecoveryKeyCaptureScope(child: RecoveryWordsGrid(words: key.words)),
         const SizedBox(height: 16),
         MyFormButton(title: 'Hide', onPressed: onHide),
       ],

@@ -21,6 +21,7 @@ import 'package:passvera/domain/i_authenticator_repository.dart';
 import 'package:passvera/domain/i_clipboard_repository.dart';
 import 'package:passvera/domain/i_keys_repository.dart';
 import 'package:passvera/domain/i_lock_repository.dart';
+import 'package:passvera/domain/i_screen_capture_repository.dart';
 
 class FakeLockRepository implements ILockRepository {
   FakeLockRepository(this.isPinSetResult, {this.pin = '1234'});
@@ -95,6 +96,39 @@ class FakeAppearanceRepository implements IAppearanceRepository {
     if (saveResult.isRight()) stored = mode;
     return saveResult;
   }
+}
+
+class FakeScreenCaptureRepository implements IScreenCaptureRepository {
+  FakeScreenCaptureRepository({this.canAllow = true});
+
+  final bool canAllow;
+  final _captures = StreamController<void>.broadcast();
+  var blocked = false;
+
+  /// Platform calls in the order they reached the "platform".
+  final calls = <String>[];
+
+  /// When set, allow stays pending until it completes (an in-flight call).
+  Completer<void>? holdAllow;
+
+  void capture() => _captures.add(null);
+
+  @override
+  Future<bool> allowWithWarning() async {
+    await holdAllow?.future;
+    calls.add('allow');
+    blocked = false;
+    return canAllow;
+  }
+
+  @override
+  Future<void> block() async {
+    calls.add('block');
+    blocked = true;
+  }
+
+  @override
+  Stream<void> get captures => _captures.stream;
 }
 
 class FakeClipboardRepository implements IClipboardRepository {

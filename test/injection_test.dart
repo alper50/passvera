@@ -9,6 +9,7 @@ import 'package:passvera/application/homeBloc/home_bloc.dart';
 import 'package:passvera/application/lockBloc/lock_bloc.dart';
 import 'package:passvera/application/onboardBloc/onboard_bloc.dart';
 import 'package:passvera/application/passActionBloc/pass_action_bloc.dart';
+import 'package:passvera/application/screenCaptureBloc/screen_capture_bloc.dart';
 import 'package:passvera/application/sessionBloc/session_bloc.dart';
 import 'package:passvera/domain/appearance_mode.dart';
 import 'package:passvera/domain/backup/i_backup_repository.dart';
@@ -40,6 +41,7 @@ void main() {
     getIt<OnboardBloc>();
     getIt<PassActionBloc>();
     getIt<SessionBloc>();
+    getIt<ScreenCaptureBloc>();
   });
 
   test('writers and listeners share one change notifier', () {
