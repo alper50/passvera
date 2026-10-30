@@ -47,3 +47,7 @@ app.*.map.json
 
 # Golden test failure diffs
 test/ui/failures/
+
+# Build-time config with Google OAuth client ids (see GoogleConfig);
+# dart_defines.example.json shows the shape.
+/dart_defines.json

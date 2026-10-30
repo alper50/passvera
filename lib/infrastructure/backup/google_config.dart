@@ -1,8 +1,9 @@
 /// Google OAuth configuration, supplied at build time so no project ids live
-/// in the repository:
+/// in the repository. Copy `dart_defines.example.json` to the gitignored
+/// `dart_defines.json`, fill it in, then:
 ///
-///   flutter build apk --release \
-///     --dart-define=PASSVERA_GOOGLE_SERVER_CLIENT_ID=WEB_CLIENT_ID
+///   flutter run --dart-define-from-file=dart_defines.json
+///   flutter build apk --release --dart-define-from-file=dart_defines.json
 ///
 /// Without it the app works normally and Drive backup reports
 /// `BackupFailure.notConfigured`.

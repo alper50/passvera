@@ -35,6 +35,7 @@ import 'domain/i_authenticator_repository.dart' as _i882;
 import 'domain/i_clipboard_repository.dart' as _i625;
 import 'domain/i_keys_repository.dart' as _i284;
 import 'domain/i_lock_repository.dart' as _i760;
+import 'domain/i_relock_guard.dart' as _i417;
 import 'domain/i_storage_migration.dart' as _i95;
 import 'infrastructure/appearance/appearance_repository.dart' as _i250;
 import 'infrastructure/appearance/appearance_service.dart' as _i1061;
@@ -53,6 +54,7 @@ import 'infrastructure/keys/keys_service.dart' as _i1;
 import 'infrastructure/keys/storage_migration.dart' as _i435;
 import 'infrastructure/lock/lock_repository.dart' as _i701;
 import 'infrastructure/lock/lock_service.dart' as _i214;
+import 'infrastructure/lock/relock_guard.dart' as _i99;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 _i174.GetIt $initGetIt(
@@ -71,6 +73,7 @@ _i174.GetIt $initGetIt(
       () => _i886.VaultChangeNotifier());
   gh.lazySingleton<_i580.ClipboardService>(() => _i580.ClipboardService());
   gh.lazySingleton<_i1.KeysService>(() => _i1.KeysService());
+  gh.lazySingleton<_i417.IRelockGuard>(() => _i99.RelockGuard());
   gh.lazySingleton<_i284.IKeysRepository>(() => _i760.KeysRepository(
         gh<_i1.KeysService>(),
         gh<_i886.VaultChangeNotifier>(),
@@ -78,7 +81,6 @@ _i174.GetIt $initGetIt(
   gh.factory<_i380.HomeActionBloc>(
       () => _i380.HomeActionBloc(gh<_i284.IKeysRepository>()));
   gh.factory<_i866.HomeBloc>(() => _i866.HomeBloc(gh<_i284.IKeysRepository>()));
-  gh.lazySingleton<_i325.BackupRemote>(() => _i307.GoogleDriveBackupRemote());
   gh.lazySingleton<_i1061.AppearanceService>(
       () => _i1061.AppearanceService(gh<_i1.KeysService>()));
   gh.lazySingleton<_i64.AuthenticatorService>(
@@ -87,6 +89,8 @@ _i174.GetIt $initGetIt(
       () => _i214.LockService(gh<_i1.KeysService>()));
   gh.lazySingleton<_i760.ILockRepository>(
       () => _i701.LockRepository(gh<_i214.LockService>()));
+  gh.lazySingleton<_i325.BackupRemote>(
+      () => _i307.GoogleDriveBackupRemote(gh<_i417.IRelockGuard>()));
   gh.lazySingleton<_i78.IVaultChanges>(
       () => vaultChangesModule.vaultChanges(gh<_i886.VaultChangeNotifier>()));
   gh.lazySingleton<_i922.BackupService>(() => _i922.BackupService(
@@ -124,9 +128,11 @@ _i174.GetIt $initGetIt(
           ));
   gh.lazySingleton<_i290.IAppearanceRepository>(
       () => _i250.AppearanceRepository(gh<_i1061.AppearanceService>()));
+  gh.factory<_i931.SessionBloc>(() => _i931.SessionBloc(
+        gh<_i760.ILockRepository>(),
+        gh<_i417.IRelockGuard>(),
+      ));
   gh.factory<_i280.LockBloc>(() => _i280.LockBloc(gh<_i760.ILockRepository>()));
-  gh.factory<_i931.SessionBloc>(
-      () => _i931.SessionBloc(gh<_i760.ILockRepository>()));
   gh.factory<_i78.RestoreBloc>(() => _i78.RestoreBloc(
         gh<_i260.IBackupRepository>(),
         gh<_i284.IKeysRepository>(),

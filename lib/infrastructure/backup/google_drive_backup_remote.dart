@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 import 'package:passvera/domain/backup/remote_backup.dart';
 import 'package:passvera/domain/errors/backup_failures.dart';
+import 'package:passvera/domain/i_relock_guard.dart';
 import 'package:passvera/infrastructure/backup/backup_remote.dart';
 import 'package:passvera/infrastructure/backup/google_config.dart';
 
@@ -18,6 +19,10 @@ import 'package:passvera/infrastructure/backup/google_config.dart';
 /// no access to the user's other files.
 @LazySingleton(as: BackupRemote)
 class GoogleDriveBackupRemote implements BackupRemote {
+  GoogleDriveBackupRemote(this._relockGuard);
+
+  final IRelockGuard _relockGuard;
+
   static const List<String> _scopes = [drive.DriveApi.driveAppdataScope];
   static const String _folder = 'appDataFolder';
   static const String _namePrefix = 'vault-';
@@ -44,10 +49,16 @@ class GoogleDriveBackupRemote implements BackupRemote {
     try {
       final ready = await _ensureInitialized();
       if (ready.isLeft()) return ready.map((_) => '');
-      final account = await GoogleSignIn.instance.authenticate(
-        scopeHint: _scopes,
-      );
-      await account.authorizationClient.authorizeScopes(_scopes);
+      // The account picker and consent screen take over the screen; the app
+      // must not relock and lose the flow waiting for them. Silent token
+      // refreshes (_withDrive) stay outside the guard.
+      final account = await _relockGuard.suspendWhile(() async {
+        final account = await GoogleSignIn.instance.authenticate(
+          scopeHint: _scopes,
+        );
+        await account.authorizationClient.authorizeScopes(_scopes);
+        return account;
+      });
       return Right(account.email);
     } on GoogleSignInException catch (e) {
       return Left(_signInFailure(e));
