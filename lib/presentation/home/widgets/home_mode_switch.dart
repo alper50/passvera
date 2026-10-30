@@ -18,14 +18,18 @@ class HomeModeSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // The tab animation (not just the index): the highlight slides with a
+    // tap and follows the finger while the pages are swiped.
+    final animation = controller.animation!;
     return AnimatedBuilder(
-      animation: controller,
+      animation: animation,
       builder: (context, _) {
         return Padding(
           padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
           child: MySegmentedControl(
             segments: _segments,
             selectedIndex: controller.index,
+            position: animation.value,
             onSelected: controller.animateTo,
           ),
         );

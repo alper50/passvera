@@ -65,6 +65,8 @@ class _SecretFormDialogState extends State<_SecretFormDialog> {
       ValueNotifier(_strengthOf(widget.controllerAppValue.text));
   late int _selectedColor = widget.initialColorValue;
 
+  static const double _strengthBarHeight = 22;
+
   static PasswordStrength? _strengthOf(String text) =>
       text.isEmpty ? null : PasswordStrength.calculate(text: text);
 
@@ -138,19 +140,32 @@ class _SecretFormDialogState extends State<_SecretFormDialog> {
                       onChanged: (value) =>
                           _strength.value = _strengthOf(value),
                     ),
-                    PasswordStrengthChecker(
-                      strength: _strength,
-                      configuration: const PasswordStrengthCheckerConfiguration(
-                        height: 22,
-                        borderWidth: 2,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: _GeneratePasswordButton(
-                        onPressed: _generatePassword,
-                      ),
+                    // The generator sits next to the meter it fills. Aligned
+                    // to the bar, not the row: the meter adds a status line
+                    // below the bar once there is a password.
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              top: (_GeneratePasswordButton.size -
+                                      _strengthBarHeight) /
+                                  2,
+                            ),
+                            child: PasswordStrengthChecker(
+                              strength: _strength,
+                              configuration:
+                                  const PasswordStrengthCheckerConfiguration(
+                                height: _strengthBarHeight,
+                                borderWidth: 2,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        _GeneratePasswordButton(onPressed: _generatePassword),
+                      ],
                     ),
                     const SizedBox(height: 18),
                     const _SectionLabel('Tag'),
@@ -304,32 +319,31 @@ class _ColorDot extends StatelessWidget {
 class _GeneratePasswordButton extends StatelessWidget {
   const _GeneratePasswordButton({required this.onPressed});
 
+  static const double size = 36;
+
   final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: MyColors.transparent,
-      child: InkWell(
-        onTap: onPressed,
-        borderRadius: BorderRadius.circular(8),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-          decoration: BoxDecoration(
-            color: MyColors.surfaceWhite.withValues(alpha: 0.55),
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: MyColors.ink, width: 2),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.auto_awesome, size: 16, color: MyColors.ink),
-              const SizedBox(width: 6),
-              Text(
-                'Generate',
-                style: MyTextStyles.bodySmallBold.copyWith(color: MyColors.ink),
-              ),
-            ],
+    // Icon only: the tooltip names it (long press, screen readers).
+    return Tooltip(
+      message: 'Generate password',
+      child: Material(
+        color: MyColors.transparent,
+        child: InkWell(
+          onTap: onPressed,
+          borderRadius: BorderRadius.circular(8),
+          child: Container(
+            width: size,
+            height: size,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: MyColors.surfaceWhite.withValues(alpha: 0.55),
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: MyColors.ink, width: 2),
+            ),
+            child:
+                const Icon(Icons.auto_awesome, size: 20, color: MyColors.ink),
           ),
         ),
       ),
